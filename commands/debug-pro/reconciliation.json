@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "status": "reconciled-with-approved-adaptive-depth",
+  "source_snapshot": {
+    "kind": "historical-debug-command-and-guidance",
+    "command_sha256": "50d12e79df1d01365ce8ea1cb509a8476187b7f2ca069cf65ff276feb55d4bae",
+    "governance_sha256": "960fb088dbd07d636bf9fb554140b13e993a4eaf92a7324ceee7d0f1a177342f",
+    "diagnosis_guidance_sha256": "1f9087e416beb7acc59b1de381720f8b56e95fb1b31f1682ccf1bd8cbd83f386",
+    "command_words": 6970,
+    "command_lines": 329
+  },
+  "preserved_outcomes": [
+    "thirteen investigation stages in original order with normalized numbering",
+    "direct defect and independently validated Review-origin intake",
+    "exact symptom and agreed expected-behavior contract",
+    "trusted repository identity and pre-edit dirty baseline",
+    "safe observation and untrusted-input boundaries",
+    "typed evidence limits and prompt durable observability-gap reporting",
+    "exact deterministic or measured flaky reproduction",
+    "origin-directed causal trace and discriminating experiments",
+    "conditional counterfactual proof and independent challenge",
+    "specification decision and architecture seam escalation",
+    "eligibility and declared file scope before permanent regression edits",
+    "meaningful RED before production and matching GREEN after correction",
+    "fresh original reproduction and actual-stack broader verification",
+    "independent scoped code review and four relevant failure stories",
+    "separately authorized historical-data repair and explicit residuals",
+    "temporary teardown preserving existing dirty work",
+    "honest report for every terminal status",
+    "canonical nested resolution and independent Review Pro re-verification"
+  ],
+  "normalizations": [
+    "runtime-neutral Pro-Level Defect Resolver identity",
+    "repository-owned .agents/debug artifact root",
+    "one public command with phase and capability routing",
+    "two canonical skills and three lazily loaded detail references",
+    "reuse existing general skills agents and MCP contracts",
+    "source phases zero through twelve become one through thirteen",
+    "existing shared Review resolution wire contract remains authoritative",
+    "confidence compatibility field is null for new producer packets",
+    "empty compatibility ledger arrays unless real ledger entries exist",
+    "report-contained plan allowed without a separate repair-plan artifact",
+    "current canonical methods delivered under Debug-owned governance with actual reviewer provenance in the existing report",
+    "invariant-centered diagnosis and faithful experiments preserve original outcomes and disconfirm plausible rivals",
+    "qualifying evidence is reused across phases while fresh final repair proof remains mandatory"
+  ],
+  "conditionalized": [
+    {
+      "source": "unconditional seven-lane telemetry sweep before code",
+      "target": "targeted observation chosen by the question; source may be read early",
+      "evidence": "phases/03-observation.md"
+    },
+    {
+      "source": "full reproduction ladder on every investigation",
+      "target": "smallest safe exact loop; ten options retained for escalation",
+      "evidence": "skills/debug-core/references/causal-experiments.md"
+    },
+    {
+      "source": "fixed hypothesis axes and all counterfactual obligations",
+      "target": "ambiguity and risk determine depth; exact origin confirmation remains mandatory",
+      "evidence": "phases/10-confirmation.md"
+    },
+    {
+      "source": "mandatory spawn availability and tier machinery",
+      "target": "optional permitted agents or evidence-backed adversarial re-derivation",
+      "evidence": "routing.md"
+    },
+    {
+      "source": "full dedicated incident RCA artifact family",
+      "target": "one durable report with incident timing/prevention analysis when applicable",
+      "evidence": "skills/debug-core/references/repair-and-handoff.md"
+    },
+    {
+      "source": "instrumentation loops and bisect substrate",
+      "target": "only when evidence gap or code-history question justifies them under explicit authority",
+      "evidence": "phases/08-instrumentation.md"
+    }
+  ],
+  "removed_ceremony": [
+    "mandatory state and versioned ledger families for routine runs",
+    "numerical confidence formula and fanout-derived ceiling",
+    "new probe registry or consent-receipt schema",
+    "separate RCA JSON and Markdown plus required MES and hypothesis files",
+    "mandatory standalone repair-plan file",
+    "runtime-specific command aliases and tool-name dependencies"
+  ],
+  "retained_safety": [
+    "diagnosis-only scope does not authorize repair",
+    "observe-only performs no active probes or project edits",
+    "yolo does not widen execution or side-effect authority",
+    "production requires separate exact scoped confirmation",
+    "harmful duplicate side effects remain forbidden against shared targets",
+    "redact sensitive evidence before persistence",
+    "no manufactured ledger sequence or execution result",
+    "no automatic commit deployment data mutation or Review dispatch",
+    "old runs remain unchanged and require revalidation before reuse"
+  ],
+  "phase_map": [
+    {
+      "source": 0,
+      "target": 1
+    },
+    {
+      "source": 1,
+      "target": 2
+    },
+    {
+      "source": 2,
+      "target": 3
+    },
+    {
+      "source": 3,
+      "target": 4
+    },
+    {
+      "source": 4,
+      "target": 5
+    },
+    {
+      "source": 5,
+      "target": 6
+    },
+    {
+      "source": 6,
+      "target": 7
+    },
+    {
+      "source": 7,
+      "target": 8
+    },
+    {
+      "source": 8,
+      "target": 9
+    },
+    {
+      "source": 9,
+      "target": 10
+    },
+    {
+      "source": 10,
+      "target": 11
+    },
+    {
+      "source": 11,
+      "target": 12
+    },
+    {
+      "source": 12,
+      "target": 13
+    }
+  ]
+}

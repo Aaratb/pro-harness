@@ -1,0 +1,39 @@
+{
+  "schema_version": "review-pro/state@1",
+  "run_id": "review-11111111-1111-4111-8111-111111111111",
+  "slug": "sample-change",
+  "mode": "deep",
+  "repository_root": "/workspace/sample",
+  "artifact_root": "/workspace/sample/.agents/reviews/sample-change",
+  "target": {
+    "repository_identity": "example/sample",
+    "base_sha": "1111111111111111111111111111111111111111",
+    "reviewed_head_sha": "2222222222222222222222222222222222222222",
+    "diff_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "changed_files": ["src/example.js"],
+    "workspace_digest": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "workspace_changed_files": [],
+    "captured_at": "2026-01-01T00:00:00.000Z",
+    "stale": false
+  },
+  "current_phase": 1,
+  "phases": {
+    "1": "in_progress", "2": "pending", "3": "pending", "4": "pending", "5": "pending",
+    "6": "pending", "7": "pending", "8": "pending", "9": "pending", "10": "pending"
+  },
+  "lanes": { "triggered": [], "completed": [], "blocked": [] },
+  "evidence_caps": [],
+  "findings": { "path": null, "digest": null, "count": 0 },
+  "production_risks": { "path": null, "digest": null, "count": 0 },
+  "outputs": {},
+  "transport": { "comment": false, "mutation": false, "load": false, "network": false },
+  "workflow_trace": { "status": "pending", "path": "run-events.jsonl" },
+  "loaded_contract": {
+    "command_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "core_skill_digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "routing_digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "policy_digest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "loaded_at": "2026-01-01T00:00:00.000Z"
+  },
+  "decision": "REVIEW_INCOMPLETE"
+}

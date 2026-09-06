@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "name": "observability",
+  "transport": "adapter-resolved",
+  "launch": { "mode": "adapter-resolved", "provider_candidates": ["provider-native-observability", "runtime-native-observability"] },
+  "authentication": { "required": true, "secret_storage": "runtime-managed", "may_print_secret": false, "missing_behavior": "report-monitoring-capability-unavailable" },
+  "capabilities": {
+    "observability.read": { "purpose": "Read bounded metrics, logs, traces, alerts, and service-objective evidence for an approved service and time window." }
+  },
+  "data_policy": { "network_authorization": "required-by-active-task", "artifact_root_required": true, "forbidden_inputs": ["credentials", "unredacted personal data", "unbounded log exports"], "external_mutation": "forbidden" }
+}

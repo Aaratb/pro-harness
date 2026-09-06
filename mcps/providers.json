@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "providers": {
+    "firecrawl": {
+      "description": "Web search, extraction, mapping, crawling, and deep research.",
+      "enabled_by_default": true,
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp@3.24.0"],
+      "required_env": ["FIRECRAWL_API_KEY"],
+      "capabilities": ["firecrawl.search", "firecrawl.scrape", "firecrawl.crawl", "firecrawl.extract", "firecrawl.map", "firecrawl.deep-research"]
+    },
+    "exa": {
+      "description": "Public web search, page fetching, and targeted subpage research alongside Firecrawl.",
+      "enabled_by_default": false,
+      "transport": "streamable-http",
+      "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa",
+      "required_env": [],
+      "capabilities": ["exa.search", "exa.fetch", "exa.advanced-search"]
+    },
+    "playwright": {
+      "description": "Local browser navigation, inspection, interaction, and capture.",
+      "enabled_by_default": true,
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@0.0.80"],
+      "required_env": [],
+      "capabilities": ["browser.navigate", "browser.inspect", "browser.interact", "browser.capture"]
+    },
+    "mermaid": {
+      "description": "Local Mermaid diagram rendering.",
+      "enabled_by_default": true,
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "@peng-shawn/mermaid-mcp-server@0.2.0"],
+      "required_env": [],
+      "capabilities": ["diagram.render"]
+    },
+    "vercel": {
+      "description": "OAuth-backed Vercel project, deployment, and log inspection.",
+      "enabled_by_default": false,
+      "transport": "streamable-http",
+      "url": "https://mcp.vercel.com",
+      "required_env": [],
+      "capabilities": ["deployment.inspect", "observability.read"]
+    }
+  },
+  "rules": [
+    "Only configure providers selected by the installer user.",
+    "Required environment variables are read from the installing process and never stored in this catalog.",
+    "A provider may implement only the capabilities listed here; runtime-native fallbacks remain valid for other capabilities.",
+    "External writes remain governed by the canonical capability contracts and explicit user approval."
+  ]
+}

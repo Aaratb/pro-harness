@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/explainer-pro/doubt.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "question", "capability", "evidence_refs", "status", "created_at", "resolved_at", "answer"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^doubt-[a-z0-9-]+$" },
+    "question": { "type": "string", "minLength": 1 },
+    "capability": { "type": ["string", "null"] },
+    "evidence_refs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "status": { "enum": ["open", "answered", "requires-regeneration"] },
+    "created_at": { "type": "string", "format": "date-time" },
+    "resolved_at": { "type": ["string", "null"], "format": "date-time" },
+    "answer": { "type": ["string", "null"] }
+  }
+}

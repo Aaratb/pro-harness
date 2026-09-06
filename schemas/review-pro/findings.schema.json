@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/review-pro/findings.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "allOf": [{ "$ref": "state.schema.json#/$defs/reviewBinding" }],
+  "required": ["schema_version", "repository_identity", "base_sha", "reviewed_head_sha", "diff_digest", "records", "content_digest"],
+  "properties": {
+    "schema_version": { "const": "review-pro/findings@1" },
+    "repository_identity": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "comparison": { "$ref": "state.schema.json#/$defs/comparison" },
+    "local_scope": { "$ref": "state.schema.json#/$defs/localScope" },
+    "base_sha": { "type": ["string", "null"] },
+    "reviewed_head_sha": { "type": ["string", "null"] },
+    "diff_digest": { "$ref": "#/$defs/digest" },
+    "records": { "type": "array", "items": { "$ref": "finding.schema.json" } },
+    "content_digest": { "$ref": "#/$defs/digest" }
+  },
+  "$defs": {
+    "gitSha": { "type": "string", "pattern": "^[0-9a-f]{40,64}$" },
+    "digest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+  }
+}

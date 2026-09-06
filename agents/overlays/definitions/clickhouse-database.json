@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "name": "clickhouse-database",
+  "description": "Adds ClickHouse-specific modeling, engine, partition, ordering, projection, mutation, retention, and query guidance to compatible agents.",
+  "applies_to": ["database-engineer", "database-reviewer", "backend-developer", "performance-benchmarker", "data-model-architect", "query-performance-architect", "performance-architect"],
+  "detect": { "files_any": ["clickhouse-server", "clickhouse-client"], "dependencies_any": ["@clickhouse/client", "clickhouse-connect", "clickhouse-driver"] },
+  "skills": ["clickhouse-modeling"],
+  "instructions": [
+    "Inspect table engines, partition and ordering keys, projections, materialized views, retention, mutation cost, distributed tables, and workload shape.",
+    "Keep engine and version assumptions evidence-backed and require representative plans or measurements for performance claims."
+  ],
+  "capability_widening": false
+}

@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "hooks": [
+    {
+      "id": "debug-pro.completion",
+      "workflow": "debug-pro",
+      "event": "before-run-completion",
+      "failure_policy": "block",
+      "steps": [
+        { "script": "scripts/validate-debug-pro-command.mjs", "arguments": [] },
+        {
+          "script": "scripts/validate-workflow-trace.mjs",
+          "arguments": ["--artifact-root", "{artifact_root}", "--workflow", "debug-pro"]
+        }
+      ]
+    },
+    {
+      "id": "architecture-pro.phase-transition",
+      "workflow": "architecture-pro",
+      "event": "before-phase-transition",
+      "failure_policy": "block",
+      "steps": [
+        {
+          "script": "scripts/validate-architecture-pro-run.mjs",
+          "arguments": ["--repo-root", "{repository_root}", "--artifact-root", "{artifact_root}"]
+        }
+      ]
+    },
+    {
+      "id": "architecture-pro.completion",
+      "workflow": "architecture-pro",
+      "event": "before-run-completion",
+      "failure_policy": "block",
+      "steps": [
+        { "script": "scripts/validate-architecture-pro-command.mjs", "arguments": [] },
+        {
+          "script": "scripts/validate-architecture-pro-run.mjs",
+          "arguments": ["--repo-root", "{repository_root}", "--artifact-root", "{artifact_root}", "--require-complete"]
+        }
+      ]
+    },
+    {
+      "id": "explainer-pro.phase-transition",
+      "workflow": "explainer-pro",
+      "event": "before-phase-transition",
+      "failure_policy": "block",
+      "steps": [
+        {
+          "script": "scripts/validate-explainer-pro-run.mjs",
+          "arguments": ["--repo-root", "{repository_root}", "--artifact-root", "{artifact_root}"]
+        }
+      ]
+    },
+    {
+      "id": "explainer-pro.completion",
+      "workflow": "explainer-pro",
+      "event": "before-run-completion",
+      "failure_policy": "block",
+      "steps": [
+        { "script": "scripts/validate-explainer-pro-command.mjs", "arguments": [] },
+        {
+          "script": "scripts/validate-explainer-pro-run.mjs",
+          "arguments": ["--repo-root", "{repository_root}", "--artifact-root", "{artifact_root}", "--require-complete"]
+        }
+      ]
+    },
+    {
+      "id": "review-pro.phase-transition",
+      "workflow": "review-pro",
+      "event": "before-phase-transition",
+      "failure_policy": "block",
+      "steps": [
+        {
+          "script": "scripts/validate-review-pro-run.mjs",
+          "arguments": ["--repo-root", "{repository_root}", "--artifact-root", "{artifact_root}"]
+        }
+      ]
+    },
+    {
+      "id": "review-pro.completion",
+      "workflow": "review-pro",
+      "event": "before-run-completion",
+      "failure_policy": "block",
+      "steps": [
+        { "script": "scripts/validate-review-pro-command.mjs", "arguments": [] },
+        {
+          "script": "scripts/validate-review-pro-run.mjs",
+          "arguments": ["--repo-root", "{repository_root}", "--artifact-root", "{artifact_root}", "--require-complete"]
+        },
+        {
+          "script": "scripts/validate-review-handoffs.mjs",
+          "arguments": ["--repo-root", "{repository_root}", "--artifact-root", "{artifact_root}"]
+        },
+        {
+          "script": "scripts/validate-workflow-trace.mjs",
+          "arguments": ["--artifact-root", "{artifact_root}", "--workflow", "review-pro"]
+        }
+      ]
+    }
+  ]
+}

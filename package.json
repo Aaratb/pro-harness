@@ -1,0 +1,14 @@
+{
+  "name": "pro-harness",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "adapters:generate": "node scripts/generate-runtime-adapters.mjs --output-root adapters/generated",
+    "install:dry-run": "node scripts/install.mjs --dry-run",
+    "validate": "node scripts/validate-feature-pro-command.mjs && node scripts/validate-architecture-pro-command.mjs && node scripts/validate-explainer-pro-command.mjs && node scripts/validate-review-pro-command.mjs && node scripts/validate-debug-pro-command.mjs && node scripts/validate-outcome-pro-command.mjs && node scripts/validate-customer-backward-pro-command.mjs && node scripts/validate-roadmap-pro-command.mjs && node scripts/validate-agent-catalog.mjs && node scripts/validate-skill-catalog.mjs && node scripts/validate-mcp-catalog.mjs",
+    "test": "npm run validate && node --test tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

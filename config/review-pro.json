@@ -1,0 +1,35 @@
+{
+  "schema_version": "review-pro/policy@1",
+  "phase_count": 10,
+  "artifact_root_pattern": "^\\.agents/reviews/[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$",
+  "allowed_modes": ["deep", "fast", "reverify"],
+  "verdicts": ["SAFE_TO_MERGE", "SAFE_WITH_CONDITIONS", "BLOCKED", "REVIEW_INCOMPLETE"],
+  "verification_statuses": ["CONFIRMED", "REPRODUCED", "LIKELY", "UNVERIFIED", "REFUTED"],
+  "reverification_statuses": ["RESOLVED", "PARTIALLY_RESOLVED", "STILL_PRESENT", "REVERIFICATION_BLOCKED"],
+  "high_severity_minimum_confidence": 80,
+  "max_parallel_lanes": 3,
+  "lanes": [
+    { "id": "repository", "phase": 2, "agent": "repository-explorer", "profile": "review-read-only", "trigger": "always" },
+    { "id": "code", "phase": 5, "agent": "code-reviewer", "profile": "review-read-only", "trigger": "always" },
+    { "id": "architecture", "phase": 5, "agent": "architecture-conformance-reviewer", "profile": "static-analysis-read-only", "trigger": "architecture-bearing-change" },
+    { "id": "database", "phase": 5, "agent": "database-reviewer", "profile": "review-read-only", "trigger": "data-or-migration-change" },
+    { "id": "legal-risk", "phase": 5, "agent": "legal-risk-reviewer", "profile": "review-read-only", "trigger": "dependency-data-or-terms-change" },
+    { "id": "security", "phase": 6, "agent": "security-reviewer", "profile": "review-read-only", "trigger": "attack-surface-change" },
+    { "id": "resilience", "phase": 6, "agent": "resilience-analyst", "profile": "static-analysis-read-only", "trigger": "risk-bearing-runtime-path" },
+    { "id": "performance", "phase": 6, "agent": "performance-architect", "profile": "static-analysis-read-only", "trigger": "throughput-or-latency-sensitive-change" },
+    { "id": "capacity", "phase": 6, "agent": "capacity-planner", "profile": "static-analysis-read-only", "trigger": "resource-ceiling-change" },
+    { "id": "operability", "phase": 6, "agent": "operability-reviewer", "profile": "static-analysis-read-only", "trigger": "deployable-or-operated-boundary" }
+  ],
+  "security_routes": [
+    { "focus": "api-and-authorization", "agent": "security-reviewer", "skill": "security-review", "profile": "review-read-only" },
+    { "focus": "identity-and-secrets", "agent": "security-reviewer", "skill": "security-review", "profile": "review-read-only" },
+    { "focus": "privacy-and-data-transfer", "agent": "security-reviewer", "skill": "security-review", "profile": "review-read-only" },
+    { "focus": "ai-and-tool-boundaries", "agent": "security-reviewer", "skill": "security-review", "profile": "review-read-only" },
+    { "focus": "infrastructure-and-delivery", "agent": "security-reviewer", "skill": "security-review", "profile": "review-read-only" }
+  ],
+  "required_outputs": {
+    "deep": ["CODE_REVIEW.md", "SCORECARD.md", "PRODUCTION_READINESS.md", "PM_REVIEW.md", "findings.json", "production-risks.json"],
+    "fast": ["CODE_REVIEW.md", "findings.json", "production-risks.json"],
+    "reverify": ["CODE_REVIEW.md", "SCORECARD.md", "PRODUCTION_READINESS.md", "PM_REVIEW.md", "findings.json", "production-risks.json"]
+  }
+}

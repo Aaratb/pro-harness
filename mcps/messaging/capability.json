@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "name": "messaging",
+  "transport": "adapter-resolved",
+  "launch": { "mode": "adapter-resolved", "provider_candidates": ["slack", "teams", "runtime-native-messaging"] },
+  "authentication": { "required": true, "secret_storage": "runtime-managed", "may_print_secret": false, "missing_behavior": "return-local-draft-only" },
+  "capabilities": {
+    "messaging.channel.resolve": { "purpose": "Resolve an exact approved destination before sending." },
+    "messaging.send": { "purpose": "Send an approved handoff message to the resolved destination after explicit confirmation." }
+  },
+  "data_policy": { "network_authorization": "required-by-active-task", "artifact_root_required": true, "forbidden_inputs": ["credentials", "unapproved personal data"], "external_write_approval": "explicit-confirmation-required" }
+}

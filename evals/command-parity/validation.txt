@@ -1,0 +1,97 @@
+
+> pro-harness@0.1.0 validate
+> node scripts/validate-feature-pro-command.mjs && node scripts/validate-architecture-pro-command.mjs && node scripts/validate-explainer-pro-command.mjs && node scripts/validate-review-pro-command.mjs && node scripts/validate-debug-pro-command.mjs && node scripts/validate-outcome-pro-command.mjs && node scripts/validate-customer-backward-pro-command.mjs && node scripts/validate-roadmap-pro-command.mjs && node scripts/validate-agent-catalog.mjs && node scripts/validate-skill-catalog.mjs && node scripts/validate-mcp-catalog.mjs
+
+Feature Pro command valid: 20 phases, 61 agent routes, 121 resolvable skills, 26 MCP capabilities; main 1647 words/142 lines, active context <=5900 words
+Architecture Pro command valid: 13 phases, 10 architecture lanes, 5 security focus routes, 121 resolvable skills; main 1365 words/120 lines, command-shell context <=4200 words (excludes routed skill and agent payloads)
+{
+  "status": "success",
+  "summary": "Explainer Pro command contract is valid",
+  "phases": 8,
+  "skills": 9,
+  "main_words": 1454,
+  "main_lines": 125,
+  "context_budget_scope": "command-shell-only",
+  "artifacts": [
+    "commands/explainer-pro.md",
+    "commands/explainer-pro/contract.json"
+  ],
+  "next_actions": [
+    "Use the lifecycle hook for generated run and course validation."
+  ]
+}
+{
+  "status": "success",
+  "summary": "Review Pro command contract is valid",
+  "phases": 10,
+  "skills": 5,
+  "lanes": 10,
+  "security_focuses": 5,
+  "main_words": 1597,
+  "main_lines": 125,
+  "context_budget_scope": "command-shell-only",
+  "artifacts": [
+    "commands/review-pro.md",
+    "commands/review-pro/contract.json"
+  ],
+  "next_actions": [
+    "Run Review Pro behavior and distribution validation."
+  ]
+}
+{
+  "status": "success",
+  "summary": "Debug Pro command contract is valid",
+  "phases": 13,
+  "new_skills": 2,
+  "main_words": 1384,
+  "global_words": 3239,
+  "artifacts": [
+    "commands/debug-pro.md",
+    "commands/debug-pro/contract.json"
+  ],
+  "next_actions": [
+    "Run Debug behavior, Review compatibility and isolated distribution tests."
+  ]
+}
+{
+  "status": "success",
+  "summary": "Outcome Pro command contract is valid",
+  "phases": 4,
+  "new_skills": 4,
+  "main_words": 1195,
+  "global_words": 1700,
+  "artifacts": [
+    "commands/outcome-pro.md",
+    "commands/outcome-pro/contract.json"
+  ],
+  "next_actions": [
+    "Run Outcome arithmetic, report, repository-root and distribution behavior checks."
+  ]
+}
+{
+  "status": "success",
+  "summary": "Customer Backward Pro command contract is valid",
+  "phases": 8,
+  "research_methods": 16,
+  "canonical_agents": 2,
+  "main_words": 1246,
+  "global_words": 2086,
+  "context_budget_scope": "command-shell-only",
+  "artifacts": [
+    "commands/customer-backward-pro.md",
+    "commands/customer-backward-pro/contract.json"
+  ]
+}
+{
+  "status": "success",
+  "summary": "Roadmap Pro command contract is valid",
+  "phases": 7,
+  "methods": 6,
+  "canonical_agents": 2,
+  "main_words": 1173,
+  "global_words": 2102,
+  "context_budget_scope": "command-shell-only"
+}
+agent catalog valid: 61 definitions, 66 imported sources, 11 created agents, 8 overlays, 10 profiles, 34 capabilities
+skill catalog valid: 121 canonical skills, 60 Feature Pro routes, 6 Firecrawl capabilities
+MCP catalog valid: 9 contracts, 26 canonical capabilities, 5 provider configurations

@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/review-pro/debug-handoff.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "handoff_id", "created_at", "review", "target", "symptom", "evidence", "reproduction", "suspected_boundary", "logs_and_traces", "failure_story", "acceptance_criteria", "constraints", "route", "content_digest"],
+  "properties": {
+    "schema_version": { "const": "review-pro/debug-handoff@2" },
+    "handoff_id": { "type": "string", "pattern": "^review-[A-Za-z0-9._:-]+:RP-[A-Z0-9-]+$" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "review": {
+      "type": "object", "additionalProperties": false,
+      "required": ["review_id", "finding_id", "finding_digest", "artifact_path", "artifact_digest"],
+      "properties": {
+        "review_id": { "type": "string", "pattern": "^review-[A-Za-z0-9._:-]+$" },
+        "finding_id": { "type": "string", "pattern": "^RP-[A-Z0-9-]+$" },
+        "finding_digest": { "$ref": "#/$defs/digest" },
+        "artifact_path": { "$ref": "#/$defs/safePath" },
+        "artifact_digest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "target": {
+      "type": "object", "additionalProperties": false,
+      "required": ["repository_identity", "pull_request_url", "base_sha", "reviewed_head_sha", "diff_digest", "files"],
+      "allOf": [{ "$ref": "state.schema.json#/$defs/reviewBinding" }],
+      "properties": {
+        "repository_identity": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "pull_request_url": { "anyOf": [{ "type": "string", "pattern": "^https://", "maxLength": 2048 }, { "type": "null" }] },
+        "base_sha": { "anyOf": [{ "$ref": "#/$defs/gitSha" }, { "type": "null" }] },
+        "reviewed_head_sha": { "anyOf": [{ "$ref": "#/$defs/gitSha" }, { "type": "null" }] },
+        "comparison": { "$ref": "state.schema.json#/$defs/comparison" },
+        "local_scope": { "$ref": "state.schema.json#/$defs/localScope" },
+        "diff_digest": { "$ref": "#/$defs/digest" },
+        "files": { "$ref": "#/$defs/paths" }
+      }
+    },
+    "symptom": {
+      "type": "object", "additionalProperties": false,
+      "required": ["summary", "expected", "actual", "customer_impact", "side_effect_class"],
+      "properties": {
+        "summary": { "$ref": "#/$defs/text" },
+        "expected": { "$ref": "#/$defs/text" },
+        "actual": { "$ref": "#/$defs/text" },
+        "customer_impact": { "$ref": "#/$defs/text" },
+        "side_effect_class": { "enum": ["pure-read", "idempotent-write", "non-idempotent-write", "money-or-message-emitting", "unknown"] }
+      }
+    },
+    "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidenceRef" } },
+    "reproduction": {
+      "type": "object", "additionalProperties": false,
+      "required": ["prerequisites", "steps", "expected", "actual", "safety_constraints"],
+      "properties": {
+        "prerequisites": { "$ref": "#/$defs/textArray" },
+        "steps": { "$ref": "#/$defs/textArray" },
+        "expected": { "$ref": "#/$defs/text" },
+        "actual": { "$ref": "#/$defs/text" },
+        "safety_constraints": { "$ref": "#/$defs/textArray" }
+      }
+    },
+    "suspected_boundary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["provisional", "component", "location", "reason"],
+      "properties": {
+        "provisional": { "const": true },
+        "component": { "$ref": "#/$defs/text" },
+        "location": { "$ref": "#/$defs/text" },
+        "reason": { "$ref": "#/$defs/text" }
+      }
+    },
+    "logs_and_traces": {
+      "type": "object", "additionalProperties": false,
+      "required": ["request_ids", "trace_ids", "evidence_ids", "missing_evidence"],
+      "properties": {
+        "request_ids": { "$ref": "#/$defs/textArray" },
+        "trace_ids": { "$ref": "#/$defs/textArray" },
+        "evidence_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^RPE-[A-Z0-9-]+$" } },
+        "missing_evidence": { "$ref": "#/$defs/textArray" }
+      }
+    },
+    "failure_story": { "$ref": "#/$defs/failureStory" },
+    "acceptance_criteria": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/text" } },
+    "constraints": { "$ref": "#/$defs/textArray" },
+    "route": {
+      "type": "object", "additionalProperties": false,
+      "required": ["command", "flag"],
+      "properties": { "command": { "const": "debug-pro" }, "flag": { "const": "--from-review" } }
+    },
+    "content_digest": { "$ref": "#/$defs/digest" }
+  },
+  "$defs": {
+    "gitSha": { "type": "string", "pattern": "^[0-9a-f]{40,64}$" },
+    "digest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "safePath": { "type": "string", "minLength": 1, "maxLength": 4096, "pattern": "^(?!/)(?!.*\\\\)(?!.*(^|/)\\.\\.(/|$))(?!.*[\\u0000-\\u001f]).+$" },
+    "paths": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/safePath" } },
+    "text": { "type": "string", "minLength": 1, "maxLength": 10000 },
+    "textArray": { "type": "array", "items": { "type": "string", "maxLength": 10000 } },
+    "evidenceRef": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "location", "summary", "content_digest"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^RPE-[A-Z0-9-]+$" },
+        "type": { "enum": ["source", "test", "runtime", "log", "trace", "ci", "modeled", "human-provided"] },
+        "location": { "$ref": "#/$defs/text" },
+        "summary": { "$ref": "#/$defs/text" },
+        "content_digest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "failureStoryEntry": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "summary", "evidence_ids"],
+      "properties": {
+        "status": { "enum": ["PASS", "FAIL", "N/A", "UNVERIFIED"] },
+        "summary": { "$ref": "#/$defs/text" },
+        "evidence_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^RPE-[A-Z0-9-]+$" } }
+      }
+    },
+    "failureStory": {
+      "type": "object", "additionalProperties": false,
+      "required": ["dependency_unavailable", "simultaneous_execution", "malicious_input", "ten_x_volume"],
+      "properties": {
+        "dependency_unavailable": { "$ref": "#/$defs/failureStoryEntry" },
+        "simultaneous_execution": { "$ref": "#/$defs/failureStoryEntry" },
+        "malicious_input": { "$ref": "#/$defs/failureStoryEntry" },
+        "ten_x_volume": { "$ref": "#/$defs/failureStoryEntry" }
+      }
+    }
+  }
+}

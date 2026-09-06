@@ -1,0 +1,8 @@
+{
+  "created_at": "2026-09-05T23:17:35.042Z",
+  "archive": "evidence.tar.gz",
+  "bytes": 2470534,
+  "sha256": "05bd2d8be4ed3856ea322ab24f07eea539e9f83974e966454bc2eea2dbb6992a",
+  "scope": "Maintainer-only retained audit evidence, not public runtime material",
+  "pending_trial_runners": 0
+}

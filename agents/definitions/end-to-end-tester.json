@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "name": "end-to-end-tester",
+  "description": "Authors and runs end-to-end tests for critical user journeys using the repository's supported browser and test infrastructure.",
+  "classification": "core",
+  "mode": "testing",
+  "capability_profile": "test-repo-write",
+  "skills": ["e2e-testing", "browser-qa"],
+  "required_inputs": ["task", "artifact_root"],
+  "artifact_policy": { "root_input": "artifact_root", "repository_writes": "task-scoped", "invent_paths": false, "path_escape": "forbid" },
+  "source_agents": ["e2e-runner"],
+  "instructions": [
+    "Identify critical journeys, environment prerequisites, test data, authentication state, and existing end-to-end conventions before authoring tests.",
+    "Prefer stable user-observable assertions and capture exact failure evidence, avoiding brittle selectors and hidden environment assumptions.",
+    "Store reports, screenshots, videos, and traces only beneath the supplied artifact root unless the repository already defines an approved test-artifact path."
+  ]
+}

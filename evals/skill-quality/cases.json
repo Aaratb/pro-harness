@@ -1,0 +1,29 @@
+{
+  "description": "Synthetic decision-quality probes. Same inputs and response budget before/after; not production feature acceptance or a visual-design benchmark.",
+  "cases": [
+    {
+      "id": "product",
+      "skills": ["product-discovery", "plan-product-review"],
+      "task": "Advise whether to build the proposed AI assignment assistant and define the smallest next decision. A six-person support team says 'we need AI to sort our inbox.' Twelve of fifteen interviewees like the mockup; nobody has used it. In a sample of 30 late tickets, 21 were waiting for another team's acceptance, 6 had incorrect labels, and 3 had no recorded cause. Median initial sorting takes 40 seconds. The lead proposes success = 80% assistant usage. The existing tool supports labels and assignment but no acceptance acknowledgement. The sponsor permits a two-week local experiment, not a platform rebuild. Give your recommendation, strongest alternative, uncertainty, decision-changing evidence, and one measurable experiment. Do not ask a long questionnaire.",
+      "rubric": ["Distinguish enthusiasm from behavior evidence", "Recognize handoff acceptance as stronger observed bottleneck than initial sorting", "Consider existing-tool/process alternative instead of reflexively adding AI", "Use outcome and guardrail measures rather than usage alone", "Specify a bounded experiment and evidence that changes the recommendation"]
+    },
+    {
+      "id": "design",
+      "skills": ["design-options", "plan-design-review"],
+      "task": "Review and improve a proposed internal incident-triage interface. Users compare about 600 cases/day under deadline pressure; some use keyboard only. Desktop is primary; narrow screens are used for on-call checks. Current wireframe: top half is four large KPI cards; underneath is a queue; each row has six colored badges of equal emphasis, an unlabeled sparkle icon, and a truncated title. Selecting a row opens detail; auto-refresh re-sorts rows while typing. A confident AI score is larger than the authoritative deadline. Proposed alternatives are 'blue gradient rounded cards' and 'purple gradient rounded cards.' Existing system uses restrained colors, compact tables, system sans typography. No browser rendering or user test has occurred. Recommend two meaningfully different directions, select one with contextual visual rationale, show its content/interaction hierarchy and one recovery state. Be candid about what cannot be verified.",
+      "rubric": ["Distinguish information/interaction alternatives from recoloring", "Make authoritative deadline and primary action dominant over decorative KPI/AI content", "Give coherent contextual typography/density/composition choices rather than arbitrary brand prescriptions", "Handle refresh/reordering focus and orientation risk", "Explain narrow-screen/recovery behavior and do not claim rendered or user-tested evidence"]
+    },
+    {
+      "id": "engineering",
+      "skills": ["implementation-planning", "plan-engineering-review"],
+      "task": "Review this approved feature plan before implementation. Existing single service has SQL storage, an authenticated case API, and an outbox worker used elsewhere. Three engineers need an advisory risk score on the case screen. A human override must win over automated updates. Draft plan: create a scoring microservice plus new queue; call provider synchronously in GET /cases; save score and override using last-write-wins; retry timeouts twice; return HTTP 200 on provider failure with an empty score; then build UI, then add tests. Provider can be slow or return a result after the human has overridden a case. No permission exists to send raw customer text. Recommend the smallest fitting architecture and first two end-to-end slices, identify high-consequence failure paths, specify exact acceptance assertions and recovery. Do not implement code or invent operational authority.",
+      "rubric": ["Reuse service/outbox before adding microservice/queue", "Prevent stale automated completion from overwriting human override", "Separate read-path availability from provider failure with explicit state/fallback", "Name assertions for delayed completion and retry/duplicate behavior at an appropriate test level", "Respect data-transfer limits and make delivery slices end-to-end with recovery proof"]
+    },
+    {
+      "id": "qa",
+      "skills": ["browser-qa", "e2e-testing"],
+      "task": "Assess release readiness using only this evidence and propose the highest-value next tests; do not claim to run anything. Feature: agents change case priority; viewers may read but not change; success must persist after reload; delayed AI updates must not undo human overrides. Evidence: unit tests for sorting pass; a desktop screenshot shows a green 'Saved' toast; a click log shows the override button was pressed; no subsequent network/persistence assertion exists. Tests used administrator role only. A flaky reload check was disabled. On narrow screens the dialog close control is outside the screenshot; keyboard flow was not exercised. Draft QA verdict says '100% passed; all workflows verified.' Return justified verdict, ranked failure hypotheses, precise precondition/action/expected assertions, and an honest coverage summary. Separate a confirmed defect from missing evidence.",
+      "rubric": ["Reject unsupported all-passed claim without fabricating a product defect", "Require durable reload/readback proof rather than toast/click evidence", "Cover denied viewer mutation and stale AI overwrite", "Treat disabled reload test as an unresolved gap, not removed risk", "Separate passed/blocked/not-run evidence and test keyboard/narrow-screen recovery"]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+# Phase 12 — Technical Walkthrough
+
+Load `architecture-explanation-diagrams` and produce `EXPLAIN.md` plus its rendered `EXPLAIN.html` companion from one evidence-linked component inventory. Follow the method's bounded local rendering path and show the companion, not Mermaid source as the visual outcome.
+
+Reuse and reconcile the views already shown during context recovery, options, and deep design. Cover the architecture flow, component view, primary sequence, code-execution flow, and highest-risk failure sequence; one view may serve several purposes when legible. Show proposed execution for unbuilt code without inventing file locations or observed behavior. Add state, data, asynchronous, deployment, or decision views only when material. Maintain an applicability matrix and path ledger covering success, alternatives, rejection, timeout, cancellation, late success, retries, duplication, reordering, queues, overload, partition, repair, races, and unknowns; justify immaterial paths without fabricating them.
+
+Walk the user through the decision, the credible rejected alternatives actually considered, selected choice costs, reuse assessment, operation-level consistency, edge-case complexity and stopping rule, consequences, residual risks, and unverified paths. Preserve the governed narrowed option set; no rejected-alternative quota.
+
+Local diagram source is canonical and remains available as collapsed detail beside rendered views. Keep the existing/new/changed/proposed-removal legend visible on components and relationships; walk through what remains and what changes against the named baseline. Inspect the rendered result when a viewing surface is available and disclose any visual inspection or rendering gap. External rendering requires its own approved manifest and consent.
+
+Make this a collaborative stress test of a meaningful operation and its consequential failure. Invite a changed assumption, alternate scenario, unacceptable trade-off or missing concern; disagreement is not a comprehension failure. Load `grill-with-docs` only for a newly unresolved trade, not to repeat settled questions. Show the effect of the answer in the relevant view and contract. A rejected design returns to Phase 8; a material audit disagreement returns to Phase 4.

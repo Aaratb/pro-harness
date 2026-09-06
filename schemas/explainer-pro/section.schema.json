@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/explainer-pro/section.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "capability", "phase", "title", "prerequisites", "claim_ids", "content", "status", "source_fingerprint_sha256", "diagrams", "quiz"],
+  "properties": {
+    "schema_version": { "const": "explainer-pro/section@1" },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "capability": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "phase": { "type": "integer", "minimum": 1, "maximum": 8 },
+    "title": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "prerequisites": { "type": "array", "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" }, "uniqueItems": true },
+    "claim_ids": { "type": "array", "items": { "type": "string", "pattern": "^claim-[a-z0-9-]+$" }, "uniqueItems": true },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["orientation", "mechanism", "evidence", "consequence"],
+      "properties": {
+        "orientation": { "type": "string", "minLength": 1 },
+        "mechanism": { "type": "string", "minLength": 1 },
+        "evidence": { "type": "string", "minLength": 1 },
+        "consequence": { "type": "string", "minLength": 1 }
+      }
+    },
+    "status": { "enum": ["gated", "partial"] },
+    "source_fingerprint_sha256": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "diagrams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "source", "rendered_svg", "alt", "claim_ids"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+          "title": { "type": "string", "minLength": 1 },
+          "source": { "type": "string", "minLength": 1 },
+          "rendered_svg": { "type": ["string", "null"] },
+          "alt": { "type": "string", "minLength": 1 },
+          "claim_ids": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^claim-[a-z0-9-]+$" }, "uniqueItems": true }
+        }
+      }
+    },
+    "quiz": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["question", "options", "correct_index", "explanations", "claim_ids"],
+        "properties": {
+          "question": { "type": "string", "minLength": 1 },
+          "options": { "type": "array", "minItems": 2, "maxItems": 6, "items": { "type": "string", "minLength": 1 } },
+          "correct_index": { "type": "integer", "minimum": 0, "maximum": 5 },
+          "explanations": { "type": "array", "minItems": 2, "maxItems": 6, "items": { "type": "string", "minLength": 1 } },
+          "claim_ids": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^claim-[a-z0-9-]+$" }, "uniqueItems": true }
+        }
+      }
+    }
+  }
+}

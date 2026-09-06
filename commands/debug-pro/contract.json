@@ -1,0 +1,251 @@
+{
+  "schema_version": 1,
+  "command": "debug-pro",
+  "identity": "Pro-Level Defect Resolver",
+  "phase_count": 13,
+  "loading": "global-once-current-phase-only",
+  "global_context": [
+    "commands/debug-pro.md",
+    "skills/debug-core/SKILL.md",
+    "commands/debug-pro/routing.md"
+  ],
+  "artifact_root": "$REPO_ROOT/.agents/debug/<debug-slug>",
+  "modes": {
+    "adaptive": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "deep": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "fast": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "observe-only": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      13
+    ]
+  },
+  "phases": [
+    {
+      "number": 1,
+      "name": "Roadmap and Resume",
+      "file": "phases/01-roadmap.md",
+      "required_skills": [
+        "debug-core"
+      ],
+      "optional_skills": [],
+      "agents": [],
+      "capabilities": []
+    },
+    {
+      "number": 2,
+      "name": "Symptom Contract and Evidence Plan",
+      "file": "phases/02-intake.md",
+      "required_skills": [
+        "debug-core"
+      ],
+      "optional_skills": [],
+      "agents": [
+        "repository-explorer"
+      ],
+      "capabilities": []
+    },
+    {
+      "number": 3,
+      "name": "Targeted Observation",
+      "file": "phases/03-observation.md",
+      "required_skills": [
+        "debug-core"
+      ],
+      "optional_skills": [
+        "observability-by-design"
+      ],
+      "agents": [
+        "site-reliability-engineer"
+      ],
+      "capabilities": [
+        "observability.read",
+        "browser.inspect",
+        "browser.capture",
+        "ci.read",
+        "scm.pull-request.read"
+      ]
+    },
+    {
+      "number": 4,
+      "name": "Evidence and Reproduction Recipe",
+      "file": "phases/04-evidence.md",
+      "required_skills": [
+        "debug-core"
+      ],
+      "optional_skills": [],
+      "agents": [],
+      "capabilities": []
+    },
+    {
+      "number": 5,
+      "name": "Observability Gaps",
+      "file": "phases/05-gaps.md",
+      "required_skills": [
+        "debug-core"
+      ],
+      "optional_skills": [
+        "observability-by-design"
+      ],
+      "agents": [],
+      "capabilities": []
+    },
+    {
+      "number": 6,
+      "name": "Reproduction",
+      "file": "phases/06-reproduction.md",
+      "required_skills": [
+        "systematic-debugging"
+      ],
+      "optional_skills": ["ai-product-engineering"],
+      "agents": [],
+      "capabilities": []
+    },
+    {
+      "number": 7,
+      "name": "Causal Trace and Hypotheses",
+      "file": "phases/07-causal-trace.md",
+      "required_skills": [
+        "systematic-debugging"
+      ],
+      "optional_skills": ["architecture-diagnostics"],
+      "agents": [
+        "repository-explorer",
+        "system-diagnostics-analyst"
+      ],
+      "capabilities": []
+    },
+    {
+      "number": 8,
+      "name": "Targeted Instrumentation",
+      "file": "phases/08-instrumentation.md",
+      "required_skills": [
+        "debug-core"
+      ],
+      "optional_skills": [
+        "observability-by-design"
+      ],
+      "agents": [],
+      "capabilities": []
+    },
+    {
+      "number": 9,
+      "name": "Causal Experiments",
+      "file": "phases/09-experiments.md",
+      "required_skills": [
+        "systematic-debugging"
+      ],
+      "optional_skills": [],
+      "agents": [],
+      "capabilities": []
+    },
+    {
+      "number": 10,
+      "name": "Confirmation and Independent Challenge",
+      "file": "phases/10-confirmation.md",
+      "required_skills": [
+        "verification-before-completion"
+      ],
+      "optional_skills": [
+        "systematic-debugging",
+        "architecture-diagnostics"
+      ],
+      "agents": ["system-diagnostics-analyst"],
+      "capabilities": []
+    },
+    {
+      "number": 11,
+      "name": "Repair Plan and RED",
+      "file": "phases/11-repair-plan-red.md",
+      "required_skills": [
+        "test-driven-development"
+      ],
+      "optional_skills": [
+        "implementation-planning",
+        "library-first-engineering"
+      ],
+      "agents": [
+        "implementation-planner",
+        "unit-test-engineer"
+      ],
+      "capabilities": ["firecrawl.search", "firecrawl.scrape"]
+    },
+    {
+      "number": 12,
+      "name": "Minimal Correction and GREEN",
+      "file": "phases/12-correction-green.md",
+      "required_skills": [
+        "verification-before-completion",
+        "library-first-engineering"
+      ],
+      "optional_skills": [
+        "test-driven-development",
+        "pre-merge-review",
+        "ai-product-engineering"
+      ],
+      "agents": [
+        "code-reviewer", "typescript-reviewer", "python-reviewer", "java-reviewer",
+        "kotlin-reviewer", "go-reviewer", "rust-reviewer", "cpp-reviewer", "flutter-reviewer", "security-reviewer"
+      ],
+      "capabilities": []
+    },
+    {
+      "number": 13,
+      "name": "Report and Review Return",
+      "file": "phases/13-report.md",
+      "required_skills": [
+        "debug-core"
+      ],
+      "optional_skills": [
+        "verification-before-completion"
+      ],
+      "agents": [],
+      "capabilities": []
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/architecture-pro/contract.schema.json",
+  "title": "Architecture Pro boundary contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "boundary", "owner", "consumers", "inputs", "outputs", "errors", "timeouts", "retries", "idempotency", "compatibility", "observability"],
+  "properties": {
+    "id": { "$ref": "common.schema.json#/$defs/identifier" },
+    "boundary": { "type": "string", "minLength": 1 },
+    "owner": { "type": "string", "minLength": 1 },
+    "consumers": { "type": "array", "items": { "type": "string" } },
+    "inputs": { "type": "array", "items": { "type": "object" } },
+    "outputs": { "type": "array", "items": { "type": "object" } },
+    "errors": { "type": "array", "items": { "type": "object" } },
+    "timeouts": { "type": "object" },
+    "retries": { "type": "object" },
+    "idempotency": { "type": "object" },
+    "compatibility": { "type": "object" },
+    "observability": { "type": "object" }
+  }
+}

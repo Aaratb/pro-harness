@@ -1,0 +1,15 @@
+# Phase 1 — Intake and Safety Preflight
+
+Establish mode, target, primary repository, additional read-only repositories, focus, measurable quality targets, hard constraints, non-goals, decision authority, risk appetite, and edge-case complexity budget from the request and verified context. Ask one bundled question for material missing or conflicting inputs; do not ask the user to reconfirm settled choices. Disclose applicable policy budget ceilings and use any stricter approved limits. Additional budget or authority still needs explicit approval.
+
+Start from the business goal and the capability it requires, using existing product requirements or the Feature Pro packet when supplied. If these do not exist, establish the goal without demanding a full PRD. Identify whose outcome matters, the harmful failure to avoid, and constraints such as team capacity, operating cost, time, privacy, or compatibility that can change the architecture. Separate supplied facts, source-supported facts, and proposed assumptions.
+
+Load `grill-with-docs` only for unresolved decision-sensitive intent or trade-offs. Use its native question selector when available and permitted; ask for intent, not facts the repository can answer. Reuse prior answers. A recommendation or default is not approval; authority requests retain the runtime's explicit approval mechanism.
+
+Normalize arguments and validate the architecture slug. Resolve the physical repository root and caller-supplied `artifact_root`; reject orphan output, traversal, unsafe components, and symlink escapes. Acquire one per-slug lock before resumable state is read.
+
+Validate policy and selected current-phase dependencies using deterministic helpers; installation-wide catalog validation is not full-catalog prompt context. Reuse a successful dependency check only while its inputs and harness provenance are unchanged. Check later routes when selected. The effective concurrency is the smaller of policy maximum and runtime capacity. Each selected mandatory lane must resolve its canonical agent, static-analysis profile, required skills, approved roots, input/output limits, and lane-report schema before dispatch; unresolved mandatory dependencies block that lane.
+
+Fingerprint normalized arguments, every approved repository, relevant tracked and untracked content, and harness provenance separately. Resume only on an exact match with valid artifact digests and a free lock.
+
+`--fast` is triage: record material lanes and claims as unverified and prohibit certification. `--live`, `--docs`, and `--render-diagram` create plans only. Continue to Phase 2 when intake is resolved and within approved authority and budgets; pause only for unresolved material choices or requested checkpoints.

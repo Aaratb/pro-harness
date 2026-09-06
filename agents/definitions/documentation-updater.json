@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "name": "documentation-updater",
+  "description": "Updates repository documentation and code maps to reflect verified behavior, interfaces, setup, operations, and architectural changes.",
+  "classification": "core",
+  "mode": "implementation",
+  "capability_profile": "implementation-repo-write",
+  "skills": [],
+  "required_inputs": ["task", "artifact_root"],
+  "artifact_policy": { "root_input": "artifact_root", "repository_writes": "task-scoped", "invent_paths": false, "path_escape": "forbid" },
+  "source_agents": ["doc-updater"],
+  "instructions": [
+    "Derive documentation changes from verified code, configuration, tests, and approved decisions rather than copying unverified implementation claims.",
+    "Update only repository-defined documentation locations or the supplied artifact root, preserving established structure and terminology.",
+    "Record what changed, source evidence, links checked, generated content, and any documentation gap that cannot be resolved from the repository."
+  ]
+}

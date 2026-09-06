@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/review-pro/policy.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "phase_count", "artifact_root_pattern", "allowed_modes", "verdicts", "verification_statuses", "reverification_statuses", "high_severity_minimum_confidence", "max_parallel_lanes", "lanes", "security_routes", "required_outputs"],
+  "properties": {
+    "schema_version": { "const": "review-pro/policy@1" },
+    "phase_count": { "const": 10 },
+    "artifact_root_pattern": { "type": "string", "minLength": 1 },
+    "allowed_modes": { "type": "array", "minItems": 3, "uniqueItems": true, "items": { "enum": ["deep", "fast", "reverify"] } },
+    "verdicts": { "type": "array", "minItems": 4, "uniqueItems": true, "items": { "type": "string" } },
+    "verification_statuses": { "type": "array", "minItems": 5, "uniqueItems": true, "items": { "type": "string" } },
+    "reverification_statuses": { "type": "array", "minItems": 4, "uniqueItems": true, "items": { "type": "string" } },
+    "high_severity_minimum_confidence": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "max_parallel_lanes": { "type": "integer", "minimum": 1, "maximum": 8 },
+    "lanes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "phase", "agent", "profile", "trigger"],
+        "properties": {
+          "id": { "$ref": "#/$defs/name" },
+          "phase": { "type": "integer", "minimum": 1, "maximum": 10 },
+          "agent": { "$ref": "#/$defs/name" },
+          "profile": { "$ref": "#/$defs/name" },
+          "trigger": { "$ref": "#/$defs/name" }
+        }
+      }
+    },
+    "security_routes": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["focus", "agent", "skill", "profile"],
+        "properties": {
+          "focus": { "$ref": "#/$defs/name" },
+          "agent": { "$ref": "#/$defs/name" },
+          "skill": { "$ref": "#/$defs/name" },
+          "profile": { "$ref": "#/$defs/name" }
+        }
+      }
+    },
+    "required_outputs": {
+      "type": "object", "additionalProperties": false, "required": ["deep", "fast", "reverify"],
+      "properties": {
+        "deep": { "$ref": "#/$defs/outputList" },
+        "fast": { "$ref": "#/$defs/outputList" },
+        "reverify": { "$ref": "#/$defs/outputList" }
+      }
+    }
+  },
+  "$defs": {
+    "name": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$" },
+    "outputList": { "type": "array", "minItems": 3, "uniqueItems": true, "items": { "type": "string", "pattern": "^[A-Za-z0-9._-]+$" } }
+  }
+}

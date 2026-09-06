@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "name": "go-build-resolver",
+  "description": "Diagnoses and fixes Go compilation, module, vet, generated-code, platform, and build-configuration failures with minimal changes.",
+  "classification": "specialist",
+  "mode": "implementation",
+  "capability_profile": "implementation-repo-write",
+  "skills": [],
+  "required_inputs": ["task", "artifact_root"],
+  "artifact_policy": { "root_input": "artifact_root", "repository_writes": "task-scoped", "invent_paths": false, "path_escape": "forbid" },
+  "source_agents": ["go-build-resolver"],
+  "instructions": [
+    "Reproduce the failing Go command and isolate the first causal compiler, module, generated-code, platform, or vet error.",
+    "Apply the smallest idiomatic fix, preserve public behavior, and rerun the original command plus affected tests or vet checks.",
+    "Stop after three failed fix attempts on the same symptom and report evidence and unresolved hypotheses."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "name": "nestjs-backend",
+  "description": "Adds NestJS-specific module, dependency-injection, controller, DTO, validation, and testing guidance to compatible canonical agents.",
+  "applies_to": ["backend-developer", "code-reviewer", "api-test-engineer", "typescript-reviewer"],
+  "detect": { "files_any": ["nest-cli.json"], "dependencies_any": ["@nestjs/core", "@nestjs/common"] },
+  "skills": ["api-and-interface-design"],
+  "instructions": [
+    "Respect the repository's module boundaries, provider scopes, pipes, guards, interceptors, exception filters, and established DTO validation patterns.",
+    "Verify dependency injection and request lifecycle behavior with the repository's configured NestJS test utilities."
+  ],
+  "capability_widening": false
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "name": "cpp-build-resolver",
+  "description": "Diagnoses and fixes C++ compiler, CMake, dependency, template, platform, ABI, and linker failures with minimal changes.",
+  "classification": "specialist",
+  "mode": "implementation",
+  "capability_profile": "implementation-repo-write",
+  "skills": [],
+  "required_inputs": ["task", "artifact_root"],
+  "artifact_policy": { "root_input": "artifact_root", "repository_writes": "task-scoped", "invent_paths": false, "path_escape": "forbid" },
+  "source_agents": ["cpp-build-resolver"],
+  "instructions": [
+    "Reproduce the failing build command and isolate the first causal compiler, template, dependency, platform, CMake, ABI, or linker error.",
+    "Apply the smallest standards-compatible fix and rerun the original command plus focused tests without hiding warnings or undefined behavior.",
+    "Stop after three failed fix attempts on the same symptom and report evidence and unresolved hypotheses."
+  ]
+}

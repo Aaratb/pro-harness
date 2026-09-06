@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "ai-product",
+  "description": "Adds AI product, model, prompt, retrieval, tool, evaluation, safety, cost, latency, fallback, and observability discipline to compatible canonical agents.",
+  "applies_to": ["product-manager", "product-owner", "system-architect", "implementation-planner", "backend-developer", "code-reviewer", "security-reviewer", "unit-test-engineer", "api-test-engineer", "end-to-end-tester", "performance-benchmarker", "site-reliability-engineer"],
+  "detect": {
+    "files_any": ["prompts", "evals", "src/prompts", "src/evals", "src/ai", "app/ai"],
+    "dependencies_any": ["openai", "@openai/agents", "anthropic", "@anthropic-ai/sdk", "langchain", "@langchain/core", "llama-index", "llamaindex", "transformers", "torch"],
+    "terms_any": ["AI feature", "LLM", "language model", "embedding", "retrieval", "RAG", "system prompt", "tool calling", "agentic"]
+  },
+  "skills": ["ai-product-engineering", "observability-by-design"],
+  "instructions": [
+    "Treat model, system-prompt, context, retrieval, tool, schema, safety, evaluation dataset, and scorer versions as explicit contracts rather than hidden implementation details.",
+    "Separate deterministic correctness from probabilistic quality; define baselines, thresholds, important slices, uncertainty, fallback, and release rollback before accepting the feature.",
+    "Minimize transferred data, enforce authorization outside the model, red-team untrusted content and tool escalation, and never request or log chain-of-thought.",
+    "Account for quality, latency, token and provider cost, rate limits, outages, retries, and drift in planning, verification, and production evidence."
+  ],
+  "capability_widening": false
+}

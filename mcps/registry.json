@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "selection": "capability-first",
+  "contracts": [
+    { "name": "exa", "path": "exa/capability.json", "requirement": "optional-for-approved-public-research", "workflows": { "feature-pro": [4], "architecture-pro": [2, 3, 7, 9], "explainer-pro": [6], "review-pro": [4], "debug-pro": [11], "customer-backward-pro": [2] } },
+    { "name": "firecrawl", "path": "firecrawl/capability.json", "requirement": "required-for-approved-public-research", "workflows": { "feature-pro": [4], "architecture-pro": [2, 3, 7, 9], "explainer-pro": [6], "review-pro": [4], "debug-pro": [11], "customer-backward-pro": [2] } },
+    { "name": "diagram", "path": "diagram/capability.json", "requirement": "required-for-rendered-diagrams", "workflows": { "feature-pro": [7, 14], "architecture-pro": [12], "explainer-pro": [3, 4, 5] } },
+    { "name": "browser", "path": "browser/capability.json", "requirement": "required-for-user-facing-features", "workflows": { "feature-pro": [5, 8, 9, 13], "explainer-pro": [7], "review-pro": [7], "debug-pro": [3] } },
+    { "name": "source-control", "path": "source-control/capability.json", "requirement": "required-when-pull-requests-are-in-scope", "workflows": { "feature-pro": [17, 18], "explainer-pro": [1, 4], "review-pro": [2, 10], "debug-pro": [3] } },
+    { "name": "prototyping", "path": "prototyping/capability.json", "requirement": "optional", "workflows": { "feature-pro": [5] } },
+    { "name": "deployment", "path": "deployment/capability.json", "requirement": "required-when-release-phases-run", "workflows": { "feature-pro": [18, 19] } },
+    { "name": "observability", "path": "observability/capability.json", "requirement": "required-when-production-monitoring-runs", "workflows": { "feature-pro": [19], "review-pro": [6, 7], "debug-pro": [3] } },
+    { "name": "messaging", "path": "messaging/capability.json", "requirement": "optional-and-confirmation-gated", "workflows": { "feature-pro": [20] } }
+  ],
+  "rules": [
+    "Resolve a canonical capability before selecting a provider or runtime tool.",
+    "Feature Pro phases 5 and 8 use an available authorized browser for local visual evidence; missing rendering follows their explicit waiver/stop policy, never automatic provider installation or a visual pass.",
+    "Do not install or enable a provider that no active capability requires.",
+    "Credentials remain in runtime secret stores and must never appear in this registry or generated artifacts.",
+    "External writes require the active task to authorize the action and the owning capability contract to permit it."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "name": "flutter-mobile",
+  "description": "Adds Flutter and Dart widget, state, navigation, lifecycle, accessibility, platform, performance, and testing guidance to compatible agents.",
+  "applies_to": ["frontend-developer", "flutter-reviewer", "accessibility-reviewer", "visual-tester", "unit-test-engineer"],
+  "detect": { "files_any": ["pubspec.yaml", "analysis_options.yaml"], "dependencies_any": ["flutter"] },
+  "skills": ["design-system"],
+  "instructions": [
+    "Follow the repository's widget composition, state-management, navigation, lifecycle, platform-integration, and Dart analysis conventions.",
+    "Check semantics, rebuild scope, async lifecycle safety, platform behavior, and the configured unit, widget, and integration test layers."
+  ],
+  "capability_widening": false
+}

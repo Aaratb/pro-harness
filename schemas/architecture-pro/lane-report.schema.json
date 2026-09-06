@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/architecture-pro/lane-report.schema.json",
+  "title": "Architecture Pro lane report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "lane", "phase", "agent", "status", "scope", "claims", "evidence_ids", "finding_ids", "fitness_specifications", "measurement_specifications", "unknowns", "blocked_reasons", "handoff_notes", "outcome_recommendations", "artifact_paths"],
+  "properties": {
+    "schema_version": { "const": "architecture-pro/lane-report@1" },
+    "lane": { "type": "string" },
+    "phase": { "type": "integer", "minimum": 1, "maximum": 13 },
+    "agent": { "type": "string" },
+    "status": { "enum": ["COMPLETE", "NOT_APPLICABLE", "BLOCKED", "DEGRADED"] },
+    "scope": { "type": "string" },
+    "claims": { "type": "array", "items": { "type": "object" } },
+    "evidence_ids": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/identifier" } },
+    "finding_ids": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/identifier" } },
+    "fitness_specifications": { "type": "array", "items": { "type": "object" } },
+    "measurement_specifications": { "type": "array", "items": { "type": "object" } },
+    "unknowns": { "type": "array", "items": { "type": "string" } },
+    "blocked_reasons": { "type": "array", "items": { "type": "string" } },
+    "handoff_notes": { "type": "array", "items": { "type": "string" } },
+    "outcome_recommendations": { "type": "object", "required": ["health_grade", "evidence_confidence", "target_attainment"] },
+    "artifact_paths": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/relative_path" } }
+  }
+}

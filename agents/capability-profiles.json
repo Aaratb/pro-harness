@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "profiles": {
+    "evidence-analysis-read-only": {
+      "capabilities": ["filesystem.read", "workspace.search", "terminal.inspect"],
+      "repository_access": "read",
+      "external_access": "deny"
+    },
+    "static-analysis-read-only": {
+      "capabilities": ["filesystem.read", "workspace.search"],
+      "repository_access": "read",
+      "external_access": "deny"
+    },
+    "advisory-read-only": {
+      "capabilities": ["filesystem.read", "workspace.search", "artifact.write"],
+      "repository_access": "read",
+      "external_access": "deny"
+    },
+    "review-read-only": {
+      "capabilities": ["filesystem.read", "workspace.search", "terminal.inspect", "artifact.write"],
+      "repository_access": "read",
+      "external_access": "deny"
+    },
+    "implementation-repo-write": {
+      "capabilities": ["filesystem.read", "workspace.search", "terminal.execute", "repository.write", "artifact.write"],
+      "repository_access": "task-scoped-write",
+      "external_access": "approval-required"
+    },
+    "test-repo-write": {
+      "capabilities": ["filesystem.read", "workspace.search", "terminal.execute", "repository.write", "artifact.write", "browser.automate"],
+      "repository_access": "task-scoped-write",
+      "external_access": "approval-required"
+    },
+    "external-tool-with-approval": {
+      "capabilities": ["filesystem.read", "workspace.search", "artifact.write", "mcp.invoke", "browser.automate"],
+      "repository_access": "read",
+      "external_access": "approval-required"
+    },
+    "monitor-read-only": {
+      "capabilities": ["filesystem.read", "workspace.search", "terminal.inspect", "artifact.write", "ci.read"],
+      "repository_access": "read",
+      "external_access": "read-only"
+    },
+    "external-implementation-with-approval": {
+      "capabilities": ["filesystem.read", "workspace.search", "terminal.execute", "repository.write", "artifact.write", "mcp.invoke", "ci.read", "ci.write", "deployment.execute", "observability.read"],
+      "repository_access": "task-scoped-write",
+      "external_access": "approval-required"
+    },
+    "observability-monitor-read-only": {
+      "capabilities": ["filesystem.read", "workspace.search", "terminal.inspect", "artifact.write", "mcp.invoke", "observability.read"],
+      "repository_access": "read",
+      "external_access": "read-only"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/agent.schema.json",
+  "title": "Pro Harness canonical agent",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "name",
+    "description",
+    "classification",
+    "mode",
+    "capability_profile",
+    "skills",
+    "required_inputs",
+    "artifact_policy",
+    "source_agents",
+    "instructions"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "description": { "type": "string", "minLength": 20, "maxLength": 240 },
+    "classification": { "enum": ["core", "specialist"] },
+    "mode": {
+      "enum": ["advisory", "review", "implementation", "testing", "monitoring"]
+    },
+    "capability_profile": { "type": "string", "minLength": 1 },
+    "skills": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "required_inputs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "contains": { "const": "artifact_root" },
+      "uniqueItems": true
+    },
+    "artifact_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root_input", "repository_writes", "invent_paths", "path_escape"],
+      "properties": {
+        "root_input": { "const": "artifact_root" },
+        "repository_writes": { "enum": ["deny", "task-scoped"] },
+        "invent_paths": { "const": false },
+        "path_escape": { "const": "forbid" }
+      }
+    },
+    "source_agents": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "instructions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 12 },
+      "minItems": 3,
+      "maxItems": 12
+    }
+  }
+}

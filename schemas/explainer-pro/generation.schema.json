@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/explainer-pro/generation.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "generation_id", "previous_generation", "created_at", "mode", "audience", "status", "source_fingerprint_sha256", "sections", "claim_count", "coverage", "artifact_digests"],
+  "properties": {
+    "schema_version": { "const": "explainer-pro/generation@1" },
+    "generation_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$" },
+    "previous_generation": { "type": ["string", "null"] },
+    "created_at": { "type": "string", "format": "date-time" },
+    "mode": { "enum": ["COURSE", "CHANGE", "MIXED"] },
+    "audience": { "enum": ["PM", "ENG", "STAFF", "FSB"] },
+    "status": { "enum": ["partial", "certified"] },
+    "source_fingerprint_sha256": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "capability", "phase", "digest"],
+        "properties": {
+          "id": { "type": "string" },
+          "capability": { "type": "string" },
+          "phase": { "type": "integer", "minimum": 1, "maximum": 8 },
+          "digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+        }
+      }
+    },
+    "claim_count": { "type": "integer", "minimum": 0 },
+    "coverage": { "type": "object" },
+    "artifact_digests": { "type": "object", "additionalProperties": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" } }
+  }
+}

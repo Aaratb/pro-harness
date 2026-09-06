@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/mcp-providers.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "providers", "rules"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "providers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["description", "enabled_by_default", "transport", "required_env", "capabilities"],
+        "properties": {
+          "description": { "type": "string", "minLength": 12 },
+          "enabled_by_default": { "type": "boolean" },
+          "transport": { "enum": ["stdio", "streamable-http"] },
+          "command": { "type": "string", "minLength": 1 },
+          "args": { "type": "array", "items": { "type": "string" } },
+          "url": { "type": "string", "format": "uri" },
+          "required_env": { "type": "array", "items": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]*$" }, "uniqueItems": true },
+          "capabilities": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1, "uniqueItems": true }
+        },
+        "allOf": [
+          { "if": { "properties": { "transport": { "const": "stdio" } } }, "then": { "required": ["command", "args"] } },
+          { "if": { "properties": { "transport": { "const": "streamable-http" } } }, "then": { "required": ["url"] } }
+        ]
+      }
+    },
+    "rules": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+  }
+}

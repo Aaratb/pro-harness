@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/debug-pro/resolution.schema.json",
+  "title": "Debug Pro canonical repair packet",
+  "description": "Reuse the existing nested Review intake contract; do not fork a second wire schema.",
+  "allOf": [
+    { "$ref": "../review-pro/debug-resolution-input.schema.json#/$defs/nested" },
+    { "properties": { "diagnosis": { "properties": { "confidence": { "type": "null" } } } } }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/architecture-pro/evidence.schema.json",
+  "title": "Architecture Pro evidence record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "claim", "status", "source", "location", "captured_at", "redacted"],
+  "properties": {
+    "id": { "$ref": "common.schema.json#/$defs/identifier" },
+    "claim": { "type": "string", "minLength": 1, "maxLength": 2000 },
+    "status": { "$ref": "common.schema.json#/$defs/evidence_status" },
+    "source": { "enum": ["repository", "documentation", "probe", "operator", "calculation"] },
+    "location": { "type": "string", "minLength": 1, "maxLength": 1000 },
+    "captured_at": { "type": "string", "format": "date-time" },
+    "redacted": { "type": "boolean" },
+    "digest": { "$ref": "common.schema.json#/$defs/digest" },
+    "formula": { "type": "string" },
+    "units": { "type": "string" },
+    "sensitivity": { "type": "string" }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/architecture-pro/probe-plan.schema.json",
+  "title": "Architecture Pro live probe plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "environment", "registry_entry", "purpose", "inputs", "expected_output", "invariant", "read_only", "manifest_digest"],
+  "properties": {
+    "schema_version": { "const": "architecture-pro/probe-plan@1" },
+    "id": { "$ref": "common.schema.json#/$defs/identifier" },
+    "environment": { "type": "string" },
+    "registry_entry": { "$ref": "common.schema.json#/$defs/identifier" },
+    "purpose": { "type": "string", "minLength": 1 },
+    "inputs": { "type": "object" },
+    "expected_output": { "type": "object" },
+    "invariant": { "type": "string", "minLength": 1 },
+    "read_only": { "const": true },
+    "manifest_digest": { "$ref": "common.schema.json#/$defs/digest" }
+  }
+}

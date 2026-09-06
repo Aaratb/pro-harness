@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "name": "deployment",
+  "transport": "adapter-resolved",
+  "launch": { "mode": "adapter-resolved", "provider_candidates": ["provider-native-deployment", "runtime-native-deployment"] },
+  "authentication": { "required": true, "secret_storage": "runtime-managed", "may_print_secret": false, "missing_behavior": "stop-before-deployment" },
+  "capabilities": {
+    "deployment.inspect": { "purpose": "Read deployment target, configuration, status, logs, and rollback metadata." },
+    "deployment.execute": { "purpose": "Execute an explicitly approved staging or production deployment against an exact target." },
+    "deployment.rollback": { "purpose": "Execute an explicitly approved rollback against a previously resolved release target." }
+  },
+  "data_policy": { "network_authorization": "required-by-active-task", "artifact_root_required": true, "forbidden_inputs": ["credentials", "unredacted environment secrets"], "external_write_approval": "required", "production_confirmation": "required" }
+}

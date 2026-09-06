@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/mcp-capability.schema.json",
+  "title": "Pro Harness MCP capability contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "name", "transport", "launch", "authentication", "capabilities", "data_policy"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "name": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "transport": { "enum": ["stdio", "streamable-http", "adapter-resolved"] },
+    "launch": { "type": "object" },
+    "authentication": { "type": "object" },
+    "capabilities": { "type": "object", "minProperties": 1 },
+    "data_policy": { "type": "object" }
+  }
+}

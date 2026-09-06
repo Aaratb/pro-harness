@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "name": "rust-build-resolver",
+  "description": "Diagnoses and fixes Rust compiler, Cargo, feature, target, ownership, lifetime, and linker failures with minimal scoped changes.",
+  "classification": "specialist",
+  "mode": "implementation",
+  "capability_profile": "implementation-repo-write",
+  "skills": [],
+  "required_inputs": ["task", "artifact_root"],
+  "artifact_policy": { "root_input": "artifact_root", "repository_writes": "task-scoped", "invent_paths": false, "path_escape": "forbid" },
+  "source_agents": ["rust-build-resolver"],
+  "instructions": [
+    "Reproduce the failing Cargo command and identify the first causal compiler, feature, target, dependency, or linker error.",
+    "Apply the smallest sound fix without introducing unnecessary cloning, unsafe code, or broad lint suppression, then rerun focused verification.",
+    "Stop after three failed fix attempts on the same symptom and report evidence and unresolved hypotheses."
+  ]
+}

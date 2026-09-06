@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "name": "mongodb-database",
+  "description": "Adds MongoDB-specific document modeling, indexes, aggregation, consistency, migration, sharding, and performance guidance to compatible agents.",
+  "applies_to": ["database-engineer", "database-reviewer", "backend-developer", "performance-benchmarker", "data-model-architect", "query-performance-architect", "performance-architect"],
+  "detect": { "files_any": ["mongod.conf"], "dependencies_any": ["mongodb", "mongoose", "pymongo", "motor"] },
+  "skills": ["mongodb-performance"],
+  "instructions": [
+    "Review document shape, index coverage, aggregation behavior, consistency requirements, migration safety, shard-key implications, and driver configuration.",
+    "Base performance conclusions on explain output or measurements when available and identify unverified production assumptions."
+  ],
+  "capability_widening": false
+}

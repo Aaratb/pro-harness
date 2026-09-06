@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "command": "roadmap-pro",
+  "identity": "Pro-Level Roadmap Developer",
+  "phase_count": 7,
+  "loading": "global-once-current-phase-only",
+  "global_context": ["commands/roadmap-pro.md", "commands/roadmap-pro/routing.md"],
+  "artifact_root": "$PROJECT_ROOT/.agents/roadmaps/<roadmap-slug>",
+  "modes": { "default": [1, 2, 3, 4, 5, 6, 7] },
+  "capability_routes": [
+    {"selector":"backlog","skill":"roadmap-backlog-structuring","agent":"roadmap-curator","phase":2},
+    {"selector":"priorities","skill":"roadmap-priority-advisory","agent":"roadmap-analyst","phase":3},
+    {"selector":"challenge","skill":"roadmap-independent-challenge","agent":"roadmap-analyst","phase":4},
+    {"selector":"human-review","skill":"roadmap-human-review","agent":"roadmap-curator","phase":5},
+    {"selector":"product-notes","skill":"roadmap-product-note","agent":"roadmap-curator","phase":6},
+    {"selector":"execution","skill":"roadmap-execution-planning","agent":"roadmap-analyst","phase":7}
+  ],
+  "phases": [
+    {"number":1,"name":"Goal & Decision Context","file":"phases/01-context.md","required_skills":[],"optional_skills":["customer-evidence-audit"],"agents":["customer-evidence-analyst"],"capabilities":[]},
+    {"number":2,"name":"Backlog & Feature Boundaries","file":"phases/02-backlog.md","required_skills":["roadmap-backlog-structuring"],"optional_skills":["customer-insight-synthesis","customer-strategy-synthesis","customer-solution-validation"],"agents":["roadmap-curator","customer-researcher"],"capabilities":[]},
+    {"number":3,"name":"Priority Advice & Trade-offs","file":"phases/03-priorities.md","required_skills":["roadmap-priority-advisory"],"optional_skills":["customer-opportunity-economics","customer-strategy-synthesis","customer-evidence-audit"],"agents":["roadmap-analyst","customer-evidence-analyst","customer-researcher"],"capabilities":[]},
+    {"number":4,"name":"Independent Challenge","file":"phases/04-challenge.md","required_skills":["roadmap-independent-challenge"],"optional_skills":["customer-independent-challenge"],"agents":["roadmap-analyst","customer-evidence-analyst"],"capabilities":[]},
+    {"number":5,"name":"Human Review & Selection","file":"phases/05-selection.md","required_skills":["roadmap-human-review"],"optional_skills":[],"agents":["roadmap-curator"],"capabilities":[]},
+    {"number":6,"name":"Product Notes & Coverage","file":"phases/06-notes.md","required_skills":["roadmap-product-note"],"optional_skills":[],"agents":["roadmap-curator"],"capabilities":[]},
+    {"number":7,"name":"Execution View & Handoff","file":"phases/07-execution.md","required_skills":["roadmap-execution-planning"],"optional_skills":[],"agents":["roadmap-analyst"],"capabilities":[]}
+  ]
+}

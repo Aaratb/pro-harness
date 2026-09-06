@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "name": "vue-nuxt-frontend",
+  "description": "Adds Vue and Nuxt composition, rendering, state, routing, component, accessibility, and test conventions to compatible canonical agents.",
+  "applies_to": ["frontend-developer", "code-reviewer", "accessibility-reviewer", "visual-tester", "typescript-reviewer"],
+  "detect": { "files_any": ["nuxt.config.ts", "nuxt.config.js"], "dependencies_any": ["vue", "nuxt"] },
+  "skills": ["design-system"],
+  "instructions": [
+    "Follow the repository's Composition API, composable, state-management, server-rendering, routing, and component-boundary conventions.",
+    "Check hydration safety, accessible component semantics, reactive dependency correctness, and the configured Vue or Nuxt test stack."
+  ],
+  "capability_widening": false
+}

@@ -1,0 +1,1621 @@
+{
+  "captured_at": "2026-09-05T23:16:43.281Z",
+  "audit_root": "/private/tmp/pro-parity-audit.1Lnfhp",
+  "planned_initial_runs": 36,
+  "started_case_runtime_pairs": 11,
+  "attempts": 13,
+  "substantial_runs": 0,
+  "notes": [
+    "Returned means a CLI turn returned, not workflow completion or a passing grade.",
+    "Elapsed time includes permission/model/tool latency and is not controlled performance evidence.",
+    "Agent call counts are invocation events, not proof of completion, independence or consequential challenge.",
+    "Token fields are runtime-reported and not directly comparable across providers.",
+    "Native question controls, rendered artifact screenshots and release stages remain unperformed."
+  ],
+  "runs": [
+    {
+      "run": "architecture-small-claude-1",
+      "case_id": "architecture-small",
+      "runtime": "claude",
+      "attempt": 1,
+      "model": "fable[1m]",
+      "effort": "medium",
+      "fixture_sha256": "3aa20deed1f1e569cd85a63403186cef6e48a5df2783ed8a60d27bfec94cdc6c",
+      "session_id": "0d244166-6e8e-40b7-a152-745177222f47",
+      "turns": [
+        {
+          "turn": 0,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 30073,
+          "first_assistant_text_ms": 5979,
+          "events": 18,
+          "session_id": "0d244166-6e8e-40b7-a152-745177222f47",
+          "finished_at": "2026-09-05T23:02:11.951Z",
+          "status": "returned"
+        },
+        {
+          "turn": 1,
+          "reply_selector": null,
+          "exit_code": 1,
+          "timed_out": false,
+          "elapsed_ms": 138322,
+          "first_assistant_text_ms": 28871,
+          "events": 80,
+          "session_id": "0d244166-6e8e-40b7-a152-745177222f47",
+          "finished_at": "2026-09-05T23:05:46.562Z",
+          "status": "runtime_error"
+        }
+      ],
+      "pending_turns": [],
+      "completed_turn_wall_ms": 168395,
+      "first_text_ms": 5979,
+      "shell_completed_events": 0,
+      "claude_tool_result_events": 20,
+      "agent_call_events": 0,
+      "permission_denials_reported": 0,
+      "provider_list_cost_usd": 2.121248,
+      "usage": [
+        {
+          "turn": 0,
+          "source": "provider result; list-cost estimate, not billing",
+          "usage": {
+            "input_tokens": 66,
+            "cache_creation_input_tokens": 44544,
+            "cache_read_input_tokens": 110809,
+            "output_tokens": 1859,
+            "output_tokens_details": {},
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "service_tier": "standard",
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 44544,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "inference_geo": "not_available",
+            "iterations": [
+              {
+                "input_tokens": 32,
+                "output_tokens": 1636,
+                "cache_read_input_tokens": 50777,
+                "cache_creation_input_tokens": 3890,
+                "cache_creation": {
+                  "ephemeral_5m_input_tokens": 0,
+                  "ephemeral_1h_input_tokens": 3890
+                },
+                "type": "message"
+              }
+            ],
+            "speed": "standard"
+          },
+          "model_usage": {
+            "claude-fable-5-1": {
+              "inputTokens": 66,
+              "outputTokens": 1859,
+              "cacheReadInputTokens": 110809,
+              "cacheCreationInputTokens": 44544,
+              "webSearchRequests": 0,
+              "costUSD": 1.01219225,
+              "contextWindow": 1000000,
+              "maxOutputTokens": 64000,
+              "canonicalModel": "claude-fable-5-1",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          }
+        },
+        {
+          "turn": 1,
+          "source": "provider result; list-cost estimate, not billing",
+          "usage": {
+            "input_tokens": 194,
+            "cache_creation_input_tokens": 39024,
+            "cache_read_input_tokens": 466543,
+            "output_tokens": 4200,
+            "output_tokens_details": {},
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "service_tier": "standard",
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 39024,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "inference_geo": "not_available",
+            "iterations": [
+              {
+                "input_tokens": 32,
+                "output_tokens": 465,
+                "cache_read_input_tokens": 83980,
+                "cache_creation_input_tokens": 9711,
+                "cache_creation": {
+                  "ephemeral_5m_input_tokens": 0,
+                  "ephemeral_1h_input_tokens": 9711
+                },
+                "type": "message"
+              }
+            ],
+            "speed": "standard"
+          },
+          "model_usage": {
+            "claude-fable-5-1": {
+              "inputTokens": 194,
+              "outputTokens": 4200,
+              "cacheReadInputTokens": 466543,
+              "cacheCreationInputTokens": 39024,
+              "webSearchRequests": 0,
+              "costUSD": 1.10905575,
+              "contextWindow": 1000000,
+              "maxOutputTokens": 64000,
+              "canonicalModel": "claude-fable-5-1",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          }
+        }
+      ],
+      "phase_banner_occurrences": [
+        {
+          "turn": 1,
+          "number": 1,
+          "total": 13,
+          "name": "Intake and Safety Preflight"
+        }
+      ],
+      "source_change": null
+    },
+    {
+      "run": "architecture-small-codex-1",
+      "case_id": "architecture-small",
+      "runtime": "codex",
+      "attempt": 1,
+      "model": "gpt-5.6-sol",
+      "effort": "medium",
+      "fixture_sha256": "3aa20deed1f1e569cd85a63403186cef6e48a5df2783ed8a60d27bfec94cdc6c",
+      "session_id": "01a073ce-828d-71c3-a348-cc9b05cdda0a",
+      "turns": [
+        {
+          "turn": 0,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 30432,
+          "first_assistant_text_ms": 8759,
+          "events": 10,
+          "session_id": "01a073ce-828d-71c3-a348-cc9b05cdda0a",
+          "finished_at": "2026-09-05T23:02:18.138Z",
+          "status": "returned"
+        },
+        {
+          "turn": 1,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 129736,
+          "first_assistant_text_ms": 18861,
+          "events": 28,
+          "session_id": "01a073ce-828d-71c3-a348-cc9b05cdda0a",
+          "finished_at": "2026-09-05T23:05:45.881Z",
+          "status": "returned"
+        }
+      ],
+      "pending_turns": [],
+      "completed_turn_wall_ms": 160168,
+      "first_text_ms": 8759,
+      "shell_completed_events": 13,
+      "claude_tool_result_events": 0,
+      "agent_call_events": 0,
+      "permission_denials_reported": 0,
+      "provider_list_cost_usd": 0,
+      "usage": [
+        {
+          "turn": 0,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 90680,
+            "cached_input_tokens": 73728,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 736
+          }
+        },
+        {
+          "turn": 1,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 307697,
+            "cached_input_tokens": 270848,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2796
+          }
+        }
+      ],
+      "phase_banner_occurrences": [
+        {
+          "turn": 1,
+          "number": 1,
+          "total": 13,
+          "name": "Intake and Safety Preflight"
+        }
+      ],
+      "source_change": null
+    },
+    {
+      "run": "customer-small-claude-1",
+      "case_id": "customer-small",
+      "runtime": "claude",
+      "attempt": 1,
+      "model": "fable[1m]",
+      "effort": "medium",
+      "fixture_sha256": "9cc80249105b152b187a74de798638ac351f36e207dd41bd0acdab8510cc0d65",
+      "session_id": "4548da0c-5dc3-4b29-b18d-495939fb7940",
+      "turns": [
+        {
+          "turn": 0,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 24834,
+          "first_assistant_text_ms": 7750,
+          "events": 18,
+          "session_id": "4548da0c-5dc3-4b29-b18d-495939fb7940",
+          "finished_at": "2026-09-05T23:01:41.473Z",
+          "status": "returned"
+        },
+        {
+          "turn": 1,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 136271,
+          "first_assistant_text_ms": 6196,
+          "events": 68,
+          "session_id": "4548da0c-5dc3-4b29-b18d-495939fb7940",
+          "finished_at": "2026-09-05T23:03:57.988Z",
+          "status": "returned"
+        },
+        {
+          "turn": 2,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 25089,
+          "first_assistant_text_ms": 23331,
+          "events": 4,
+          "session_id": "4548da0c-5dc3-4b29-b18d-495939fb7940",
+          "finished_at": "2026-09-05T23:04:26.050Z",
+          "status": "returned"
+        }
+      ],
+      "pending_turns": [],
+      "completed_turn_wall_ms": 186194,
+      "first_text_ms": 7750,
+      "shell_completed_events": 0,
+      "claude_tool_result_events": 18,
+      "agent_call_events": 0,
+      "permission_denials_reported": 0,
+      "provider_list_cost_usd": 2.2920944999999997,
+      "usage": [
+        {
+          "turn": 0,
+          "source": "provider result; list-cost estimate, not billing",
+          "usage": {
+            "input_tokens": 66,
+            "cache_creation_input_tokens": 43618,
+            "cache_read_input_tokens": 110245,
+            "output_tokens": 1238,
+            "output_tokens_details": {},
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "service_tier": "standard",
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 43618,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "inference_geo": "not_available",
+            "iterations": [
+              {
+                "input_tokens": 32,
+                "output_tokens": 1021,
+                "cache_read_input_tokens": 50308,
+                "cache_creation_input_tokens": 3433,
+                "cache_creation": {
+                  "ephemeral_5m_input_tokens": 0,
+                  "ephemeral_1h_input_tokens": 3433
+                },
+                "type": "message"
+              }
+            ],
+            "speed": "standard"
+          },
+          "model_usage": {
+            "claude-fable-5-1": {
+              "inputTokens": 66,
+              "outputTokens": 1238,
+              "cacheReadInputTokens": 110245,
+              "cacheCreationInputTokens": 43618,
+              "webSearchRequests": 0,
+              "costUSD": 0.96248125,
+              "contextWindow": 1000000,
+              "maxOutputTokens": 64000,
+              "canonicalModel": "claude-fable-5-1",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          }
+        },
+        {
+          "turn": 1,
+          "source": "provider result; list-cost estimate, not billing",
+          "usage": {
+            "input_tokens": 290,
+            "cache_creation_input_tokens": 34447,
+            "cache_read_input_tokens": 685025,
+            "output_tokens": 7746,
+            "output_tokens_details": {},
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "service_tier": "standard",
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 34447,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "inference_geo": "not_available",
+            "iterations": [
+              {
+                "input_tokens": 32,
+                "output_tokens": 1308,
+                "cache_read_input_tokens": 86272,
+                "cache_creation_input_tokens": 1916,
+                "cache_creation": {
+                  "ephemeral_5m_input_tokens": 0,
+                  "ephemeral_1h_input_tokens": 1916
+                },
+                "type": "message"
+              }
+            ],
+            "speed": "standard"
+          },
+          "model_usage": {
+            "claude-fable-5-1": {
+              "inputTokens": 290,
+              "outputTokens": 7746,
+              "cacheReadInputTokens": 685025,
+              "cacheCreationInputTokens": 34447,
+              "webSearchRequests": 0,
+              "costUSD": 1.2503962499999999,
+              "contextWindow": 1000000,
+              "maxOutputTokens": 64000,
+              "canonicalModel": "claude-fable-5-1",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          }
+        },
+        {
+          "turn": 2,
+          "source": "provider result; list-cost estimate, not billing",
+          "usage": {
+            "input_tokens": 2,
+            "cache_creation_input_tokens": 1355,
+            "cache_read_input_tokens": 88188,
+            "output_tokens": 601,
+            "output_tokens_details": {},
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "service_tier": "standard",
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 1355,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "inference_geo": "not_available",
+            "iterations": [
+              {
+                "input_tokens": 2,
+                "output_tokens": 601,
+                "cache_read_input_tokens": 88188,
+                "cache_creation_input_tokens": 1355,
+                "cache_creation": {
+                  "ephemeral_5m_input_tokens": 0,
+                  "ephemeral_1h_input_tokens": 1355
+                },
+                "type": "message"
+              }
+            ],
+            "speed": "standard"
+          },
+          "model_usage": {
+            "claude-fable-5-1": {
+              "inputTokens": 2,
+              "outputTokens": 601,
+              "cacheReadInputTokens": 88188,
+              "cacheCreationInputTokens": 1355,
+              "webSearchRequests": 0,
+              "costUSD": 0.079217,
+              "contextWindow": 1000000,
+              "maxOutputTokens": 64000,
+              "canonicalModel": "claude-fable-5-1",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          }
+        }
+      ],
+      "phase_banner_occurrences": [
+        {
+          "turn": 1,
+          "number": 1,
+          "total": 8,
+          "name": "Goal & Current Beliefs"
+        },
+        {
+          "turn": 1,
+          "number": 2,
+          "total": 8,
+          "name": "Evidence & Access"
+        },
+        {
+          "turn": 1,
+          "number": 4,
+          "total": 8,
+          "name": "Research Records"
+        },
+        {
+          "turn": 1,
+          "number": 5,
+          "total": 8,
+          "name": "Behavior & Insights"
+        },
+        {
+          "turn": 1,
+          "number": 8,
+          "total": 8,
+          "name": "Challenge & Handoff"
+        }
+      ],
+      "source_change": null
+    },
+    {
+      "run": "customer-small-codex-1",
+      "case_id": "customer-small",
+      "runtime": "codex",
+      "attempt": 1,
+      "model": "gpt-5.6-sol",
+      "effort": "medium",
+      "fixture_sha256": "9cc80249105b152b187a74de798638ac351f36e207dd41bd0acdab8510cc0d65",
+      "session_id": "01a073cd-bf31-7d02-9cfe-87bbac838bb5",
+      "turns": [
+        {
+          "turn": 0,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 21958,
+          "first_assistant_text_ms": 8281,
+          "events": 10,
+          "session_id": "01a073cd-bf31-7d02-9cfe-87bbac838bb5",
+          "finished_at": "2026-09-05T23:01:20.020Z",
+          "status": "returned"
+        },
+        {
+          "turn": 1,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 105436,
+          "first_assistant_text_ms": 9551,
+          "events": 45,
+          "session_id": "01a073cd-bf31-7d02-9cfe-87bbac838bb5",
+          "finished_at": "2026-09-05T23:03:08.459Z",
+          "status": "returned"
+        },
+        {
+          "turn": 2,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 20201,
+          "first_assistant_text_ms": 18745,
+          "events": 4,
+          "session_id": "01a073cd-bf31-7d02-9cfe-87bbac838bb5",
+          "finished_at": "2026-09-05T23:03:36.368Z",
+          "status": "returned"
+        }
+      ],
+      "pending_turns": [],
+      "completed_turn_wall_ms": 147595,
+      "first_text_ms": 8281,
+      "shell_completed_events": 18,
+      "claude_tool_result_events": 0,
+      "agent_call_events": 0,
+      "permission_denials_reported": 0,
+      "provider_list_cost_usd": 0,
+      "usage": [
+        {
+          "turn": 0,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 90144,
+            "cached_input_tokens": 44544,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 638
+          }
+        },
+        {
+          "turn": 1,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 558828,
+            "cached_input_tokens": 517888,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 4258
+          }
+        },
+        {
+          "turn": 2,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 54668,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 97
+          }
+        }
+      ],
+      "phase_banner_occurrences": [
+        {
+          "turn": 1,
+          "number": 1,
+          "total": 8,
+          "name": "Goal & Current Beliefs"
+        },
+        {
+          "turn": 1,
+          "number": 2,
+          "total": 8,
+          "name": "Evidence & Access"
+        },
+        {
+          "turn": 1,
+          "number": 4,
+          "total": 8,
+          "name": "Research Records"
+        },
+        {
+          "turn": 1,
+          "number": 5,
+          "total": 8,
+          "name": "Behavior & Insights"
+        },
+        {
+          "turn": 1,
+          "number": 8,
+          "total": 8,
+          "name": "Challenge & Handoff"
+        }
+      ],
+      "source_change": null
+    },
+    {
+      "run": "feature-small-claude-1",
+      "case_id": "feature-small",
+      "runtime": "claude",
+      "attempt": 1,
+      "model": "fable[1m]",
+      "effort": "medium",
+      "fixture_sha256": "cbd33c386b48bc1002a6b374c3901d2c26be1d5651d7ef1be0db496a7677aea0",
+      "session_id": "d880c5a1-6f2a-4916-97b4-f6f89fc3ffa9",
+      "turns": [
+        {
+          "turn": 0,
+          "exit_code": 1,
+          "timed_out": false,
+          "elapsed_ms": 658442,
+          "first_assistant_text_ms": 5143,
+          "events": 413,
+          "session_id": "d880c5a1-6f2a-4916-97b4-f6f89fc3ffa9",
+          "finished_at": "2026-09-05T23:05:46.564Z",
+          "status": "runtime_error"
+        }
+      ],
+      "pending_turns": [],
+      "completed_turn_wall_ms": 658442,
+      "first_text_ms": 5143,
+      "shell_completed_events": 0,
+      "claude_tool_result_events": 122,
+      "agent_call_events": 2,
+      "permission_denials_reported": 5,
+      "provider_list_cost_usd": 6.68915625,
+      "usage": [
+        {
+          "turn": 0,
+          "source": "provider result; list-cost estimate, not billing",
+          "usage": {
+            "input_tokens": 482,
+            "cache_creation_input_tokens": 148610,
+            "cache_read_input_tokens": 1399568,
+            "output_tokens": 43371,
+            "output_tokens_details": {},
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "service_tier": "standard",
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 148610,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "inference_geo": "not_available",
+            "iterations": [
+              {
+                "input_tokens": 32,
+                "output_tokens": 8410,
+                "cache_read_input_tokens": 145650,
+                "cache_creation_input_tokens": 13083,
+                "cache_creation": {
+                  "ephemeral_5m_input_tokens": 0,
+                  "ephemeral_1h_input_tokens": 13083
+                },
+                "type": "message"
+              }
+            ],
+            "speed": "standard"
+          },
+          "model_usage": {
+            "claude-fable-5-1": {
+              "inputTokens": 614,
+              "outputTokens": 52719,
+              "cacheReadInputTokens": 1485615,
+              "cacheCreationInputTokens": 204887,
+              "webSearchRequests": 0,
+              "costUSD": 6.68915625,
+              "contextWindow": 1000000,
+              "maxOutputTokens": 64000,
+              "canonicalModel": "claude-fable-5-1",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          }
+        }
+      ],
+      "phase_banner_occurrences": [],
+      "source_change": null
+    },
+    {
+      "run": "feature-small-claude-2",
+      "case_id": "feature-small",
+      "runtime": "claude",
+      "attempt": 2,
+      "model": "fable[1m]",
+      "effort": "medium",
+      "fixture_sha256": "cbd33c386b48bc1002a6b374c3901d2c26be1d5651d7ef1be0db496a7677aea0",
+      "session_id": "5106b610-d311-4379-b4b6-15a718b83bc5",
+      "turns": [
+        {
+          "turn": 0,
+          "reply_selector": null,
+          "exit_code": 1,
+          "timed_out": false,
+          "elapsed_ms": 496716,
+          "first_assistant_text_ms": 11783,
+          "events": 232,
+          "session_id": "5106b610-d311-4379-b4b6-15a718b83bc5",
+          "finished_at": "2026-09-05T23:05:50.977Z",
+          "status": "runtime_error"
+        }
+      ],
+      "pending_turns": [],
+      "completed_turn_wall_ms": 496716,
+      "first_text_ms": 11783,
+      "shell_completed_events": 0,
+      "claude_tool_result_events": 44,
+      "agent_call_events": 2,
+      "permission_denials_reported": 0,
+      "provider_list_cost_usd": 4.465242,
+      "usage": [
+        {
+          "turn": 0,
+          "source": "provider result; list-cost estimate, not billing",
+          "usage": {
+            "input_tokens": 386,
+            "cache_creation_input_tokens": 109141,
+            "cache_read_input_tokens": 953409,
+            "output_tokens": 30539,
+            "output_tokens_details": {},
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "service_tier": "standard",
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 109141,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "inference_geo": "not_available",
+            "iterations": [
+              {
+                "input_tokens": 32,
+                "output_tokens": 1494,
+                "cache_read_input_tokens": 113034,
+                "cache_creation_input_tokens": 6230,
+                "cache_creation": {
+                  "ephemeral_5m_input_tokens": 0,
+                  "ephemeral_1h_input_tokens": 6230
+                },
+                "type": "message"
+              }
+            ],
+            "speed": "standard"
+          },
+          "model_usage": {
+            "claude-fable-5-1": {
+              "inputTokens": 420,
+              "outputTokens": 35305,
+              "cacheReadInputTokens": 973138,
+              "cacheCreationInputTokens": 130716,
+              "webSearchRequests": 0,
+              "costUSD": 4.465242,
+              "contextWindow": 1000000,
+              "maxOutputTokens": 64000,
+              "canonicalModel": "claude-fable-5-1",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          }
+        }
+      ],
+      "phase_banner_occurrences": [],
+      "source_change": null
+    },
+    {
+      "run": "feature-small-codex-1",
+      "case_id": "feature-small",
+      "runtime": "codex",
+      "attempt": 1,
+      "model": "gpt-5.6-sol",
+      "effort": "medium",
+      "fixture_sha256": "cbd33c386b48bc1002a6b374c3901d2c26be1d5651d7ef1be0db496a7677aea0",
+      "session_id": "01a073c8-2c17-7831-bce4-ec232eedd373",
+      "turns": [
+        {
+          "turn": 0,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 56222,
+          "first_assistant_text_ms": 8136,
+          "events": 19,
+          "session_id": "01a073c8-2c17-7831-bce4-ec232eedd373",
+          "finished_at": "2026-09-05T22:55:48.367Z",
+          "status": "returned"
+        },
+        {
+          "turn": 1,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 78288,
+          "first_assistant_text_ms": 20454,
+          "events": 17,
+          "session_id": "01a073c8-2c17-7831-bce4-ec232eedd373",
+          "finished_at": "2026-09-05T22:58:29.416Z",
+          "status": "returned"
+        }
+      ],
+      "pending_turns": [],
+      "completed_turn_wall_ms": 134510,
+      "first_text_ms": 8136,
+      "shell_completed_events": 11,
+      "claude_tool_result_events": 0,
+      "agent_call_events": 0,
+      "permission_denials_reported": 0,
+      "provider_list_cost_usd": 0,
+      "usage": [
+        {
+          "turn": 0,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 223100,
+            "cached_input_tokens": 184576,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1773
+          }
+        },
+        {
+          "turn": 1,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 375337,
+            "cached_input_tokens": 359424,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2910
+          }
+        }
+      ],
+      "phase_banner_occurrences": [
+        {
+          "turn": 1,
+          "number": 1,
+          "total": 20,
+          "name": "Repo Setup"
+        }
+      ],
+      "source_change": null
+    },
+    {
+      "run": "feature-small-codex-2",
+      "case_id": "feature-small",
+      "runtime": "codex",
+      "attempt": 2,
+      "model": "gpt-5.6-sol",
+      "effort": "medium",
+      "fixture_sha256": "cbd33c386b48bc1002a6b374c3901d2c26be1d5651d7ef1be0db496a7677aea0",
+      "session_id": "01a073cd-a01f-7a80-ae50-beefc051449a",
+      "turns": [
+        {
+          "turn": 0,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 32769,
+          "first_assistant_text_ms": 8818,
+          "events": 13,
+          "session_id": "01a073cd-a01f-7a80-ae50-beefc051449a",
+          "finished_at": "2026-09-05T23:01:22.935Z",
+          "status": "returned"
+        },
+        {
+          "turn": 1,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 417725,
+          "first_assistant_text_ms": 15352,
+          "events": 134,
+          "session_id": "01a073cd-a01f-7a80-ae50-beefc051449a",
+          "finished_at": "2026-09-05T23:10:40.293Z",
+          "status": "returned"
+        }
+      ],
+      "pending_turns": [],
+      "completed_turn_wall_ms": 450494,
+      "first_text_ms": 8818,
+      "shell_completed_events": 60,
+      "claude_tool_result_events": 0,
+      "agent_call_events": 0,
+      "permission_denials_reported": 0,
+      "provider_list_cost_usd": 0,
+      "usage": [
+        {
+          "turn": 0,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 123430,
+            "cached_input_tokens": 89472,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1151
+          }
+        },
+        {
+          "turn": 1,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 1264116,
+            "cached_input_tokens": 1194240,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 12653
+          }
+        }
+      ],
+      "phase_banner_occurrences": [
+        {
+          "turn": 1,
+          "number": 1,
+          "total": 20,
+          "name": "Repo Setup"
+        },
+        {
+          "turn": 1,
+          "number": 2,
+          "total": 20,
+          "name": "Requirements & Framing"
+        }
+      ],
+      "source_change": null
+    },
+    {
+      "run": "outcome-small-claude-1",
+      "case_id": "outcome-small",
+      "runtime": "claude",
+      "attempt": 1,
+      "model": "fable[1m]",
+      "effort": "medium",
+      "fixture_sha256": "bf5df304aa092e4f33ff31adc9790248b4e60aff61c3373a7bdf6fb6ef89e67a",
+      "session_id": "121034d4-226e-46d1-b698-2363435b9e10",
+      "turns": [
+        {
+          "turn": 0,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 31837,
+          "first_assistant_text_ms": 7759,
+          "events": 19,
+          "session_id": "121034d4-226e-46d1-b698-2363435b9e10",
+          "finished_at": "2026-09-05T22:59:29.265Z",
+          "status": "returned"
+        },
+        {
+          "turn": 1,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 89616,
+          "first_assistant_text_ms": 6700,
+          "events": 64,
+          "session_id": "121034d4-226e-46d1-b698-2363435b9e10",
+          "finished_at": "2026-09-05T23:00:59.120Z",
+          "status": "returned"
+        },
+        {
+          "turn": 2,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 15379,
+          "first_assistant_text_ms": 14040,
+          "events": 4,
+          "session_id": "121034d4-226e-46d1-b698-2363435b9e10",
+          "finished_at": "2026-09-05T23:01:14.819Z",
+          "status": "returned"
+        }
+      ],
+      "pending_turns": [],
+      "completed_turn_wall_ms": 136832,
+      "first_text_ms": 7759,
+      "shell_completed_events": 0,
+      "claude_tool_result_events": 16,
+      "agent_call_events": 0,
+      "permission_denials_reported": 0,
+      "provider_list_cost_usd": 1.8908515,
+      "usage": [
+        {
+          "turn": 0,
+          "source": "provider result; list-cost estimate, not billing",
+          "usage": {
+            "input_tokens": 66,
+            "cache_creation_input_tokens": 43718,
+            "cache_read_input_tokens": 110419,
+            "output_tokens": 1131,
+            "output_tokens_details": {},
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "service_tier": "standard",
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 43718,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "inference_geo": "not_available",
+            "iterations": [
+              {
+                "input_tokens": 32,
+                "output_tokens": 905,
+                "cache_read_input_tokens": 50488,
+                "cache_creation_input_tokens": 3353,
+                "cache_creation": {
+                  "ephemeral_5m_input_tokens": 0,
+                  "ephemeral_1h_input_tokens": 3353
+                },
+                "type": "message"
+              }
+            ],
+            "speed": "standard"
+          },
+          "model_usage": {
+            "claude-fable-5-1": {
+              "inputTokens": 66,
+              "outputTokens": 1131,
+              "cacheReadInputTokens": 110419,
+              "cacheCreationInputTokens": 43718,
+              "webSearchRequests": 0,
+              "costUSD": 0.95917475,
+              "contextWindow": 1000000,
+              "maxOutputTokens": 64000,
+              "canonicalModel": "claude-fable-5-1",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          }
+        },
+        {
+          "turn": 1,
+          "source": "provider result; list-cost estimate, not billing",
+          "usage": {
+            "input_tokens": 418,
+            "cache_creation_input_tokens": 22174,
+            "cache_read_input_tokens": 877852,
+            "output_tokens": 4265,
+            "output_tokens_details": {},
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "service_tier": "standard",
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 22174,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "inference_geo": "not_available",
+            "iterations": [
+              {
+                "input_tokens": 32,
+                "output_tokens": 1352,
+                "cache_read_input_tokens": 74153,
+                "cache_creation_input_tokens": 1862,
+                "cache_creation": {
+                  "ephemeral_5m_input_tokens": 0,
+                  "ephemeral_1h_input_tokens": 1862
+                },
+                "type": "message"
+              }
+            ],
+            "speed": "standard"
+          },
+          "model_usage": {
+            "claude-fable-5-1": {
+              "inputTokens": 418,
+              "outputTokens": 4265,
+              "cacheReadInputTokens": 877852,
+              "cacheCreationInputTokens": 22174,
+              "webSearchRequests": 0,
+              "costUSD": 0.8803730000000001,
+              "contextWindow": 1000000,
+              "maxOutputTokens": 64000,
+              "canonicalModel": "claude-fable-5-1",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          }
+        },
+        {
+          "turn": 2,
+          "source": "provider result; list-cost estimate, not billing",
+          "usage": {
+            "input_tokens": 2,
+            "cache_creation_input_tokens": 1399,
+            "cache_read_input_tokens": 76015,
+            "output_tokens": 86,
+            "output_tokens_details": {},
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "service_tier": "standard",
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 1399,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "inference_geo": "not_available",
+            "iterations": [
+              {
+                "input_tokens": 2,
+                "output_tokens": 86,
+                "cache_read_input_tokens": 76015,
+                "cache_creation_input_tokens": 1399,
+                "cache_creation": {
+                  "ephemeral_5m_input_tokens": 0,
+                  "ephemeral_1h_input_tokens": 1399
+                },
+                "type": "message"
+              }
+            ],
+            "speed": "standard"
+          },
+          "model_usage": {
+            "claude-fable-5-1": {
+              "inputTokens": 2,
+              "outputTokens": 86,
+              "cacheReadInputTokens": 76015,
+              "cacheCreationInputTokens": 1399,
+              "webSearchRequests": 0,
+              "costUSD": 0.05130375,
+              "contextWindow": 1000000,
+              "maxOutputTokens": 64000,
+              "canonicalModel": "claude-fable-5-1",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          }
+        }
+      ],
+      "phase_banner_occurrences": [
+        {
+          "turn": 1,
+          "number": 2,
+          "total": 4,
+          "name": "Evidence"
+        },
+        {
+          "turn": 1,
+          "number": 3,
+          "total": 4,
+          "name": "Assessment"
+        },
+        {
+          "turn": 1,
+          "number": 4,
+          "total": 4,
+          "name": "Recommendation"
+        }
+      ],
+      "source_change": null
+    },
+    {
+      "run": "outcome-small-codex-1",
+      "case_id": "outcome-small",
+      "runtime": "codex",
+      "attempt": 1,
+      "model": "gpt-5.6-sol",
+      "effort": "medium",
+      "fixture_sha256": "bf5df304aa092e4f33ff31adc9790248b4e60aff61c3373a7bdf6fb6ef89e67a",
+      "session_id": "01a073cc-04f5-79f0-bdcd-f2ec37cd408a",
+      "turns": [
+        {
+          "turn": 0,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 22713,
+          "first_assistant_text_ms": 11009,
+          "events": 10,
+          "session_id": "01a073cc-04f5-79f0-bdcd-f2ec37cd408a",
+          "finished_at": "2026-09-05T22:59:26.875Z",
+          "status": "returned"
+        },
+        {
+          "turn": 1,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 73367,
+          "first_assistant_text_ms": 9047,
+          "events": 34,
+          "session_id": "01a073cc-04f5-79f0-bdcd-f2ec37cd408a",
+          "finished_at": "2026-09-05T23:00:42.059Z",
+          "status": "returned"
+        },
+        {
+          "turn": 2,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 13451,
+          "first_assistant_text_ms": 11339,
+          "events": 4,
+          "session_id": "01a073cc-04f5-79f0-bdcd-f2ec37cd408a",
+          "finished_at": "2026-09-05T23:00:56.831Z",
+          "status": "returned"
+        }
+      ],
+      "pending_turns": [],
+      "completed_turn_wall_ms": 109531,
+      "first_text_ms": 11009,
+      "shell_completed_events": 15,
+      "claude_tool_result_events": 0,
+      "agent_call_events": 0,
+      "permission_denials_reported": 0,
+      "provider_list_cost_usd": 0,
+      "usage": [
+        {
+          "turn": 0,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 87766,
+            "cached_input_tokens": 71936,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 556
+          }
+        },
+        {
+          "turn": 1,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 380646,
+            "cached_input_tokens": 364928,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 3802
+          }
+        },
+        {
+          "turn": 2,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 44926,
+            "cached_input_tokens": 44544,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 29
+          }
+        }
+      ],
+      "phase_banner_occurrences": [
+        {
+          "turn": 1,
+          "number": 1,
+          "total": 4,
+          "name": "Intent"
+        },
+        {
+          "turn": 1,
+          "number": 2,
+          "total": 4,
+          "name": "Evidence"
+        },
+        {
+          "turn": 1,
+          "number": 3,
+          "total": 4,
+          "name": "Assessment"
+        },
+        {
+          "turn": 1,
+          "number": 4,
+          "total": 4,
+          "name": "Recommendation"
+        }
+      ],
+      "source_change": null
+    },
+    {
+      "run": "review-small-codex-1",
+      "case_id": "review-small",
+      "runtime": "codex",
+      "attempt": 1,
+      "model": "gpt-5.6-sol",
+      "effort": "medium",
+      "fixture_sha256": "d61e3a44a6c8dadc2233da69f1f5dd002c1f60d66fbaee096f4180741708c2fe",
+      "session_id": "01a073ca-c634-7353-ba13-ebfbdf64d611",
+      "turns": [
+        {
+          "turn": 0,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 34049,
+          "first_assistant_text_ms": 9070,
+          "events": 22,
+          "session_id": "01a073ca-c634-7353-ba13-ebfbdf64d611",
+          "finished_at": "2026-09-05T22:58:15.743Z",
+          "status": "returned"
+        },
+        {
+          "turn": 1,
+          "reply_selector": null,
+          "exit_code": null,
+          "timed_out": true,
+          "elapsed_ms": 900131,
+          "first_assistant_text_ms": 8624,
+          "events": 246,
+          "session_id": "01a073ca-c634-7353-ba13-ebfbdf64d611",
+          "finished_at": "2026-09-05T23:16:37.272Z",
+          "status": "timeout"
+        }
+      ],
+      "pending_turns": [],
+      "completed_turn_wall_ms": 934180,
+      "first_text_ms": 9070,
+      "shell_completed_events": 111,
+      "claude_tool_result_events": 0,
+      "agent_call_events": 0,
+      "permission_denials_reported": 0,
+      "provider_list_cost_usd": 0,
+      "usage": [
+        {
+          "turn": 0,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 121054,
+            "cached_input_tokens": 85888,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1182
+          }
+        }
+      ],
+      "phase_banner_occurrences": [
+        {
+          "turn": 1,
+          "number": 1,
+          "total": 10,
+          "name": "Roadmap and Resume"
+        },
+        {
+          "turn": 1,
+          "number": 2,
+          "total": 10,
+          "name": "Change Intake"
+        },
+        {
+          "turn": 1,
+          "number": 3,
+          "total": 10,
+          "name": "Scope and Risk Routing"
+        },
+        {
+          "turn": 1,
+          "number": 4,
+          "total": 10,
+          "name": "Context Grounding"
+        },
+        {
+          "turn": 1,
+          "number": 5,
+          "total": 10,
+          "name": "Review Lanes"
+        },
+        {
+          "turn": 1,
+          "number": 6,
+          "total": 10,
+          "name": "Security and Production Challenge"
+        },
+        {
+          "turn": 1,
+          "number": 7,
+          "total": 10,
+          "name": "Tests Runtime and Observability"
+        }
+      ],
+      "source_change": null
+    },
+    {
+      "run": "roadmap-small-claude-1",
+      "case_id": "roadmap-small",
+      "runtime": "claude",
+      "attempt": 1,
+      "model": "fable[1m]",
+      "effort": "medium",
+      "fixture_sha256": "2e3509f0f237fb433f15ad3c0d99ad21d06d60634fdaa81f280c02e705598a62",
+      "session_id": "7f075a72-bb87-4a54-9e17-e679a38f375e",
+      "turns": [
+        {
+          "turn": 0,
+          "reply_selector": null,
+          "exit_code": 1,
+          "timed_out": false,
+          "elapsed_ms": 73259,
+          "first_assistant_text_ms": 37517,
+          "events": 12,
+          "session_id": "7f075a72-bb87-4a54-9e17-e679a38f375e",
+          "finished_at": "2026-09-05T23:05:49.415Z",
+          "status": "runtime_error"
+        }
+      ],
+      "pending_turns": [],
+      "completed_turn_wall_ms": 73259,
+      "first_text_ms": 37517,
+      "shell_completed_events": 0,
+      "claude_tool_result_events": 1,
+      "agent_call_events": 0,
+      "permission_denials_reported": 0,
+      "provider_list_cost_usd": 0.80416075,
+      "usage": [
+        {
+          "turn": 0,
+          "source": "provider result; list-cost estimate, not billing",
+          "usage": {
+            "input_tokens": 2,
+            "cache_creation_input_tokens": 39678,
+            "cache_read_input_tokens": 10123,
+            "output_tokens": 161,
+            "output_tokens_details": {},
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "service_tier": "standard",
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 39678,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "inference_geo": "not_available",
+            "iterations": [
+              {
+                "input_tokens": 2,
+                "output_tokens": 161,
+                "cache_read_input_tokens": 10123,
+                "cache_creation_input_tokens": 39678,
+                "cache_creation": {
+                  "ephemeral_5m_input_tokens": 0,
+                  "ephemeral_1h_input_tokens": 39678
+                },
+                "type": "message"
+              }
+            ],
+            "speed": "standard"
+          },
+          "model_usage": {
+            "claude-fable-5-1": {
+              "inputTokens": 2,
+              "outputTokens": 161,
+              "cacheReadInputTokens": 10123,
+              "cacheCreationInputTokens": 39678,
+              "webSearchRequests": 0,
+              "costUSD": 0.80416075,
+              "contextWindow": 1000000,
+              "maxOutputTokens": 64000,
+              "canonicalModel": "claude-fable-5-1",
+              "provider": "firstParty",
+              "costBasis": "list"
+            }
+          }
+        }
+      ],
+      "phase_banner_occurrences": [],
+      "source_change": null
+    },
+    {
+      "run": "roadmap-small-codex-1",
+      "case_id": "roadmap-small",
+      "runtime": "codex",
+      "attempt": 1,
+      "model": "gpt-5.6-sol",
+      "effort": "medium",
+      "fixture_sha256": "2e3509f0f237fb433f15ad3c0d99ad21d06d60634fdaa81f280c02e705598a62",
+      "session_id": "01a073d0-4f76-7342-af3f-2a2c0ae43a09",
+      "turns": [
+        {
+          "turn": 0,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 41719,
+          "first_assistant_text_ms": 16040,
+          "events": 10,
+          "session_id": "01a073d0-4f76-7342-af3f-2a2c0ae43a09",
+          "finished_at": "2026-09-05T23:04:26.742Z",
+          "status": "returned"
+        },
+        {
+          "turn": 1,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 189978,
+          "first_assistant_text_ms": 20667,
+          "events": 52,
+          "session_id": "01a073d0-4f76-7342-af3f-2a2c0ae43a09",
+          "finished_at": "2026-09-05T23:07:44.444Z",
+          "status": "returned"
+        },
+        {
+          "turn": 2,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 54110,
+          "first_assistant_text_ms": 22051,
+          "events": 16,
+          "session_id": "01a073d0-4f76-7342-af3f-2a2c0ae43a09",
+          "finished_at": "2026-09-05T23:08:42.168Z",
+          "status": "returned"
+        },
+        {
+          "turn": 3,
+          "reply_selector": null,
+          "exit_code": 0,
+          "timed_out": false,
+          "elapsed_ms": 27675,
+          "first_assistant_text_ms": 26089,
+          "events": 4,
+          "session_id": "01a073d0-4f76-7342-af3f-2a2c0ae43a09",
+          "finished_at": "2026-09-05T23:09:13.919Z",
+          "status": "returned"
+        }
+      ],
+      "pending_turns": [],
+      "completed_turn_wall_ms": 313482,
+      "first_text_ms": 16040,
+      "shell_completed_events": 26,
+      "claude_tool_result_events": 0,
+      "agent_call_events": 0,
+      "permission_denials_reported": 0,
+      "provider_list_cost_usd": 0,
+      "usage": [
+        {
+          "turn": 0,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 89937,
+            "cached_input_tokens": 59392,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 568
+          }
+        },
+        {
+          "turn": 1,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 659078,
+            "cached_input_tokens": 601728,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 4973
+          }
+        },
+        {
+          "turn": 2,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 213828,
+            "cached_input_tokens": 207488,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1487
+          }
+        },
+        {
+          "turn": 3,
+          "source": "runtime turn.completed",
+          "usage": {
+            "input_tokens": 56636,
+            "cached_input_tokens": 56064,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 105
+          }
+        }
+      ],
+      "phase_banner_occurrences": [
+        {
+          "turn": 1,
+          "number": 1,
+          "total": 7,
+          "name": "Goal & Decision Context"
+        },
+        {
+          "turn": 1,
+          "number": 2,
+          "total": 7,
+          "name": "Backlog & Feature Boundaries"
+        },
+        {
+          "turn": 1,
+          "number": 3,
+          "total": 7,
+          "name": "Priority Advice & Trade-offs"
+        },
+        {
+          "turn": 1,
+          "number": 4,
+          "total": 7,
+          "name": "Independent Challenge"
+        },
+        {
+          "turn": 1,
+          "number": 5,
+          "total": 7,
+          "name": "Human Review & Selection"
+        },
+        {
+          "turn": 2,
+          "number": 6,
+          "total": 7,
+          "name": "Product Notes & Coverage"
+        },
+        {
+          "turn": 2,
+          "number": 7,
+          "total": 7,
+          "name": "Execution View & Handoff"
+        }
+      ],
+      "source_change": null
+    }
+  ]
+}

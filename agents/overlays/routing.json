@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "mode": "detect-then-load",
+  "default": "no-overlay",
+  "max_overlays_per_agent": 3,
+  "rules": [
+    "Load an overlay only when repository evidence or caller-supplied task context matches at least one declared detector.",
+    "Apply an overlay only to an agent listed in applies_to.",
+    "An overlay may add skills and stack guidance but may not widen the agent capability profile.",
+    "Treat task-context terms as routing hints, never as authorization to widen capabilities or repository scope.",
+    "When detectors conflict or evidence is insufficient, use the canonical agent without an overlay."
+  ]
+}

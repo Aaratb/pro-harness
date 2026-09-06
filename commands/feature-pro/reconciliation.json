@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "status": "reconciled-with-approved-normalizations",
+  "reconciled_at": "2026-09-03",
+  "source_snapshot": {
+    "label": "pre-externalization-feature-pro",
+    "sha256": "9c35fd27ad4eb6152650a2bd639687241c6e8745b85e901249e9fb2afe0db9ce",
+    "words": 14824,
+    "lines": 1086
+  },
+  "target_contract": "contract.json",
+  "phase_map": [
+    { "source_name": "Repo Setup", "target": 1 },
+    { "source_name": "Requirements & Framing", "target": 2 },
+    { "source_name": "PRD", "target": 3 },
+    { "source_name": "Competitive Research", "target": 4 },
+    { "source_name": "Design / Options", "target": 5 },
+    { "source_name": "Plan + API Impact", "target": 6 },
+    { "source_name": "Engineering Requirements & Impact Map", "target": 7 },
+    { "source_name": "Build", "target": 8 },
+    { "source_name": "Local Runtime Gate", "target": 9 },
+    { "source_name": "Compression", "target": 10 },
+    { "source_name": "Review + Legal", "target": 11 },
+    { "source_name": "Debug / Fixes", "target": 12 },
+    { "source_name": "Test + QA", "target": 13 },
+    { "source_name": "Docs + i18n", "target": 14 },
+    { "source_name": "Setup Audit", "target": 15 },
+    { "source_name": "Specialist Review", "target": 16 },
+    { "source_name": "PR & CI", "target": 17 },
+    { "source_name": "Staging", "target": 18 },
+    { "source_name": "Deployment", "target": 19 },
+    { "source_name": "Handoff & Reviewer Pack", "target": 20 }
+  ],
+  "approved_normalizations": [
+    {
+      "id": "visual-direction-through-fresh-workers",
+      "classification": "approved",
+      "replacement": "Design reuse requires a current approved direction and relevant visual evidence, not folder existence. Existing design methods ground art direction in inspected references and real content, show representative rendered work for material choices, and distinguish usability, fidelity and taste. Planning and Ralph briefs carry selected visual artifacts and defining decisions. Compare the first implemented screen before visual propagation; preserve finite budgets and record unverified evidence or explicit waivers. Runtime and QA retain this direction rather than blessing a new baseline. No new phases, roles, providers, schema or artifact family; no universal aesthetic or option quota.",
+      "evidence": ["commands/feature-pro.md", "commands/feature-pro/contract.json", "commands/feature-pro/phases/05-design.md", "commands/feature-pro/phases/06-plan.md", "commands/feature-pro/phases/08-build.md", "commands/feature-pro/phases/09-local-runtime.md", "commands/feature-pro/phases/13-test-qa.md", "skills/ralph-loop/SKILL.md", "skills/design-options/SKILL.md", "skills/design-system/SKILL.md", "skills/plan-design-review/SKILL.md", "agents/definitions/frontend-developer.json", "mcps/registry.json", "tests/feature-pro-support.test.js", "tests/skill-quality-contract.test.js"]
+    },
+    {
+      "id": "phase-eight-bounded-ralph-loop",
+      "classification": "approved",
+      "replacement": "Phase 8 uses native fresh-context task attempts through the canonical ralph-loop skill. Reuse approved tasks, the task-wave scheduler, existing implementers, work ledger, state, trace, and verification; persist finite budgets across retries/resume. Checked diffs and proof control progress. No legacy runner, extra planner, automatic Git publishing, or new schema. Preserve existing build and later gates; align governance with Phase 8's passing characterization baseline before pure refactoring.",
+      "evidence": ["commands/feature-pro/phases/08-build.md", "commands/feature-pro/contract.json", "commands/feature-pro/governance.md", "skills/ralph-loop/SKILL.md", "skills/resolution-manifest.json", "tests/feature-pro-ralph-loop.test.js"]
+    },
+    {
+      "id": "architecture-before-detailed-planning",
+      "classification": "approved",
+      "replacement": "Phase 5 surfaces architecture-driving decisions. Phase 6 explains and independently challenges the overall architecture, recommends a consented Architecture Pro detour for major scope, validates returned design handoffs, and requires architecture approval before detailed specs/tasks. Existing components map to contracts, tests and end-to-end implementation slices; small changes use local assessment without mandatory detour.",
+      "evidence": ["commands/feature-pro/phases/05-design.md", "commands/feature-pro/phases/06-plan.md", "commands/feature-pro/state.example.json", "tests/feature-pro-feedback.test.js"]
+    },
+    {
+      "id": "bounded-independent-product-design-plan-challenge",
+      "classification": "approved",
+      "replacement": "Phases 3, 5 when applicable, and 6 require actual independent agent challenge before decision approval or freeze. Design includes a separate taste critique and UX assessment. Keep intake inline, bounded rounds, existing artifacts, material-only escalation, and explicit waiver when independent agents are unavailable.",
+      "evidence": ["commands/feature-pro/routing.md", "commands/feature-pro/phases/03-prd.md", "commands/feature-pro/phases/05-design.md", "commands/feature-pro/phases/06-plan.md", "tests/feature-pro-feedback.test.js"]
+    },
+    {
+      "id": "pilot-feedback-proportionate-execution",
+      "classification": "approved",
+      "replacement": "Approved pilot feedback changes behavior, not just loading: missing codemaps never block, greenfield baseline absence is explicit, framing and required skills run inline by default, questions are prompt and nonduplicative, phase pauses are approval-driven unless checkpoints are requested, optional companions stay optional, and verified local reuse closes the gate without package research. All 20 phases and substantive approval, independent review, safety, verification, and release gates remain.",
+      "evidence": ["commands/feature-pro.md", "commands/feature-pro/governance.md", "commands/feature-pro/phases/01-repo-setup.md", "commands/feature-pro/phases/02-requirements.md", "skills/library-first-engineering/SKILL.md", "tests/feature-pro-feedback.test.js"]
+    },
+    {
+      "id": "repository-owned-artifacts",
+      "classification": "approved",
+      "replacement": "$REPO_ROOT/.agents/features/<feature-slug>",
+      "evidence": ["commands/feature-pro.md", "scripts/resolve-feature-root.sh"]
+    },
+    {
+      "id": "whole-number-phases",
+      "classification": "approved",
+      "replacement": "20 integer phases",
+      "evidence": ["commands/feature-pro/contract.json", "commands/feature-pro/phases/"]
+    },
+    {
+      "id": "canonical-skill-leveling",
+      "classification": "approved",
+      "replacement": "flat canonical skills with source aliases retained only in the resolution manifest",
+      "evidence": ["skills/resolution-manifest.json", "commands/feature-pro/routing.md"]
+    },
+    {
+      "id": "canonical-agent-leveling",
+      "classification": "approved",
+      "replacement": "runtime-neutral canonical agents with evidence-gated overlays",
+      "evidence": ["agents/rename-manifest.json", "agents/overlays/routing.json"]
+    },
+    {
+      "id": "capability-first-mcp-routing",
+      "classification": "approved",
+      "replacement": "canonical capabilities selected before provider tools",
+      "evidence": ["mcps/registry.json", "agents/adapters/capabilities.json"]
+    },
+    {
+      "id": "external-ready-terminology",
+      "classification": "approved",
+      "replacement": "Pro-Level Feature Developer and provider-neutral terminology",
+      "evidence": ["commands/feature-pro.md"]
+    },
+    {
+      "id": "progressive-loading",
+      "classification": "approved-with-guard",
+      "replacement": "main command plus digest-verified governance and routing plus one active phase",
+      "evidence": ["commands/feature-pro.md", "commands/feature-pro/governance.md", "commands/feature-pro/routing.md"]
+    },
+    {
+      "id": "repository-policy-precedence",
+      "classification": "reconciled",
+      "replacement": "repository-local test, branch, framework, and deployment policies override generic defaults",
+      "evidence": ["commands/feature-pro/governance.md", "commands/feature-pro/phases/13-test-qa.md", "commands/feature-pro/phases/17-pr-ci.md"]
+    }
+  ],
+  "behavior_domains": [
+    { "id": "artifact-containment", "phases": [1, 20], "evidence": ["commands/feature-pro.md", "scripts/resolve-feature-root.sh"] },
+    { "id": "product-before-solution", "phases": [2, 3, 4], "evidence": ["commands/feature-pro/governance.md", "commands/feature-pro/phases/02-requirements.md"] },
+    { "id": "competitive-research-with-firecrawl", "phases": [4], "evidence": ["commands/feature-pro/phases/04-competitive-research.md", "mcps/firecrawl/capability.json"] },
+    { "id": "design-options-and-accessibility", "phases": [5], "evidence": ["commands/feature-pro/phases/05-design.md"] },
+    { "id": "architecture-handoff-and-plan-review", "phases": [6], "evidence": ["commands/feature-pro/phases/06-plan.md", "schemas/architecture-handoff/handoff.schema.json"] },
+    { "id": "impact-map-and-rendered-diagrams", "phases": [7], "evidence": ["commands/feature-pro/phases/07-impact-map.md", "mcps/diagram/capability.json"] },
+    { "id": "fail-first-build-and-seam-check", "phases": [8], "evidence": ["commands/feature-pro/phases/08-build.md", "skills/ralph-loop/SKILL.md"] },
+    { "id": "ordered-local-runtime-proof", "phases": [9], "evidence": ["commands/feature-pro/phases/09-local-runtime.md"] },
+    { "id": "verified-sequential-compression", "phases": [10], "evidence": ["commands/feature-pro/phases/10-compression.md"] },
+    { "id": "sequenced-review-and-conditional-security", "phases": [11], "evidence": ["commands/feature-pro/phases/11-review.md", "commands/feature-pro/routing.md"] },
+    { "id": "root-cause-debugging-and-regression-proof", "phases": [12], "evidence": ["commands/feature-pro/phases/12-debug.md"] },
+    { "id": "test-quality-and-repository-native-placement", "phases": [13], "evidence": ["commands/feature-pro/phases/13-test-qa.md"] },
+    { "id": "documentation-archaeology-and-drift", "phases": [14], "evidence": ["commands/feature-pro/phases/14-docs-i18n.md"] },
+    { "id": "fresh-setup-audit", "phases": [15], "evidence": ["commands/feature-pro/phases/15-setup-audit.md"] },
+    { "id": "diff-triggered-review-only-specialists", "phases": [16], "evidence": ["commands/feature-pro/phases/16-specialist-review.md"] },
+    { "id": "slice-before-publish-and-ci-repair", "phases": [17], "evidence": ["commands/feature-pro/phases/17-pr-ci.md"] },
+    { "id": "staging-staleness-and-rollback", "phases": [18], "evidence": ["commands/feature-pro/phases/18-staging.md"] },
+    { "id": "authorized-deployment-and-delta-watch", "phases": [19], "evidence": ["commands/feature-pro/phases/19-deployment.md"] },
+    { "id": "evidence-separated-provider-neutral-handoff", "phases": [20], "evidence": ["commands/feature-pro/phases/20-handoff.md"] },
+    { "id": "completion-evidence-and-human-gates", "phases": [6, 7, 10, 15, 17, 19], "evidence": ["commands/feature-pro/governance.md"] },
+    { "id": "resume-and-state-integrity", "phases": [1, 20], "evidence": ["commands/feature-pro/governance.md", "commands/feature-pro/state.example.json"] },
+    { "id": "business-goal-and-product-solution-approval", "phases": [2, 3], "evidence": ["commands/feature-pro/governance.md", "commands/feature-pro/phases/02-requirements.md", "commands/feature-pro/phases/03-prd.md"] },
+    { "id": "product-observability-and-harness-execution-tracing", "phases": [2, 3, 6, 7, 8, 9, 11, 12, 15, 19, 20], "evidence": ["commands/feature-pro/governance.md", "skills/observability-by-design/SKILL.md", "schemas/workflow-event/workflow-event.schema.json"] },
+    { "id": "post-build-api-and-sequence-verification", "phases": [6, 7, 9, 13, 14], "evidence": ["commands/feature-pro/phases/06-plan.md", "commands/feature-pro/phases/07-impact-map.md", "commands/feature-pro/phases/09-local-runtime.md"] },
+    { "id": "conditional-ai-product-engineering-and-evaluation", "phases": [2, 3, 6, 7, 8, 9, 11, 12, 13, 15, 16, 19], "evidence": ["skills/ai-product-engineering/SKILL.md", "agents/overlays/definitions/ai-product.json", "agents/definitions/ai-evaluation-engineer.json"] },
+    { "id": "library-first-planning-build-and-review", "phases": [2, 6, 8, 10, 11], "evidence": ["skills/library-first-engineering/SKILL.md", "agents/definitions/implementation-planner.json", "commands/feature-pro/governance.md"] }
+  ],
+  "validation": {
+    "structural": "scripts/validate-feature-pro-command.mjs",
+    "semantic_scenarios": "tests/feature-pro-behavior.test.js",
+    "source_snapshot_check": "scripts/verify-feature-pro-reconciliation.mjs"
+  }
+}

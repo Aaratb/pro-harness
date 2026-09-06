@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/explainer-pro/claims.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "records"],
+  "properties": {
+    "schema_version": { "const": "explainer-pro/claims@1" },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "owner_section", "type", "level", "text", "cite", "quote", "material", "independently_verified", "gated_at"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^claim-[a-z0-9-]+$" },
+          "owner_section": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+          "type": { "type": "string", "minLength": 1 },
+          "level": { "enum": ["CONFIRMED", "INFERRED", "UNVERIFIED"] },
+          "text": { "type": "string", "minLength": 1 },
+          "cite": { "type": "string", "minLength": 1 },
+          "quote": { "type": "string" },
+          "material": { "type": "boolean" },
+          "independently_verified": { "type": "boolean" },
+          "gated_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}

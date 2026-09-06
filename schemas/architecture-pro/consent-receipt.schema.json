@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/architecture-pro/consent-receipt.schema.json",
+  "title": "Architecture Pro explicit consent receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "kind", "scope", "manifest_digest", "approved_by", "approved_at", "expires_at"],
+  "properties": {
+    "id": { "$ref": "common.schema.json#/$defs/identifier" },
+    "kind": { "enum": ["documentation", "diagram-render", "live-probe", "production-live-probe"] },
+    "scope": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "manifest_digest": { "$ref": "common.schema.json#/$defs/digest" },
+    "approved_by": { "type": "string", "minLength": 1 },
+    "approved_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": ["string", "null"], "format": "date-time" }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "status": "reconciled-with-approved-normalizations",
+  "source_snapshot": {
+    "kind": "historical-review-command",
+    "command_sha256": "9bd317d8367171d097759c28456ba104afe4cf7723a475a7e05517598a01016b",
+    "validator_sha256": "ba8fecc772e5d62190c1655653ac51995dff682324239848d0d86ae0f75cdd07",
+    "command_words": 3199,
+    "command_lines": 318
+  },
+  "preserved_outcomes": [
+    "strict source-read-only review",
+    "authenticated change intake",
+    "triggered specialist review",
+    "edge-case and hygiene coverage",
+    "security and four-part failure challenge",
+    "static and authorized measured performance evidence",
+    "test runtime logging and trace evidence",
+    "independent finding verification",
+    "honest Top 5 Production Risks",
+    "readiness verdict",
+    "eligible Debug Pro handoff",
+    "independent resolution reverification",
+    "optional idempotent pull-request comment"
+  ],
+  "normalizations": [
+    "renumbered roadmap phase zero to phase one",
+    "split monolithic command into ten progressive phase files",
+    "moved artifacts to repository-local .agents/reviews",
+    "restricted repository writes to the exact artifact root",
+    "replaced legacy agent aliases with canonical runtime-neutral names",
+    "consolidated security routing through one coordinator",
+    "reused existing skills and MCP capability contracts",
+    "replaced the monolithic CommonJS validator with focused Node-native validators",
+    "strengthened handoff integrity and structured command routing",
+    "accepted nested and flat Debug resolution packets without rewriting producer evidence",
+    "made original handoff binding conditional on Review origin while rejecting fabricated direct-origin identities",
+    "read and scanned referenced resolution evidence with no-follow containment and byte limits",
+    "limited resolution Git exclusions to exact authorized Review and Debug run subtrees",
+    "delivered current Review-owned methods to canonical specialists without importing another workflow's governance",
+    "deepened before-after product behavior, assertion quality, disconfirming verification, and composed production scenarios using existing skills and reports"
+  ],
+  "phase_map": [
+    { "source": 0, "target": 1 },
+    { "source": 1, "target": 2 },
+    { "source": 2, "target": 3 },
+    { "source": 3, "target": 4 },
+    { "source": 4, "target": 5 },
+    { "source": 5, "target": 6 },
+    { "source": 6, "target": 7 },
+    { "source": 7, "target": 8 },
+    { "source": 8, "target": 9 },
+    { "source": 9, "target": 10 }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "name": "browser",
+  "transport": "adapter-resolved",
+  "launch": { "mode": "adapter-resolved", "provider_candidates": ["playwright", "chrome-devtools", "runtime-native-browser"] },
+  "authentication": { "required": false, "session_auth": "caller-controlled", "missing_behavior": "report-browser-capability-unavailable" },
+  "capabilities": {
+    "browser.navigate": { "purpose": "Open an approved local, staging, or production URL in a controlled browser session." },
+    "browser.inspect": { "purpose": "Read DOM, accessibility, console, and network evidence from the approved session." },
+    "browser.interact": { "purpose": "Perform bounded interactions required by an approved test journey." },
+    "browser.capture": { "purpose": "Capture screenshots or traces beneath the repository-local artifact root." }
+  },
+  "data_policy": { "network_authorization": "required-by-active-task", "artifact_root_required": true, "forbidden_inputs": ["credentials in prompts", "unapproved personal data"], "external_mutation": "bounded-to-approved-test-journey" }
+}

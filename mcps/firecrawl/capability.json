@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "firecrawl",
+  "transport": "stdio",
+  "launch": {
+    "command": "npx",
+    "args": ["-y", "firecrawl-mcp"],
+    "environment": ["FIRECRAWL_API_KEY"]
+  },
+  "authentication": {
+    "required": true,
+    "secret_environment_variable": "FIRECRAWL_API_KEY",
+    "may_print_secret": false,
+    "missing_behavior": "stop-and-request-authentication"
+  },
+  "capabilities": {
+    "firecrawl.search": {
+      "purpose": "Discover relevant public web pages for an approved research question.",
+      "tool_candidates": ["firecrawl_search", "mcp__firecrawl__firecrawl_search"]
+    },
+    "firecrawl.scrape": {
+      "purpose": "Extract content from an approved public URL.",
+      "tool_candidates": ["firecrawl_scrape", "mcp__firecrawl__firecrawl_scrape"]
+    },
+    "firecrawl.crawl": {
+      "purpose": "Crawl an approved public site within a bounded scope.",
+      "tool_candidates": ["firecrawl_crawl", "mcp__firecrawl__firecrawl_crawl"]
+    },
+    "firecrawl.extract": {
+      "purpose": "Extract structured fields from approved public pages.",
+      "tool_candidates": ["firecrawl_extract", "mcp__firecrawl__firecrawl_extract"]
+    },
+    "firecrawl.map": {
+      "purpose": "Map approved public site URLs before a bounded crawl.",
+      "tool_candidates": ["firecrawl_map", "mcp__firecrawl__firecrawl_map"]
+    },
+    "firecrawl.deep-research": {
+      "purpose": "Run a bounded multi-source public-web research task with citations.",
+      "tool_candidates": ["firecrawl_deep_research", "mcp__firecrawl__firecrawl_deep_research"]
+    }
+  },
+  "data_policy": {
+    "network_authorization": "required-by-active-task",
+    "allowed_inputs": ["public URLs", "public research queries", "explicitly approved public fields"],
+    "forbidden_inputs": ["secrets", "credentials", "private repository content", "personal data without explicit approval"],
+    "artifact_root_required": true,
+    "record_sources": true
+  }
+}

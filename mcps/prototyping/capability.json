@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "name": "prototyping",
+  "transport": "adapter-resolved",
+  "launch": { "mode": "adapter-resolved", "provider_candidates": ["stitch", "runtime-native-design-tool"] },
+  "authentication": { "required": false, "provider_may_require_authentication": true, "secret_storage": "runtime-managed", "may_print_secret": false, "missing_behavior": "continue-with-local-design-artifacts" },
+  "capabilities": {
+    "prototype.generate": { "purpose": "Generate an approved interface prototype from repository-backed requirements and design constraints." },
+    "prototype.inspect": { "purpose": "Read generated prototype structure, screens, and links for validation." }
+  },
+  "data_policy": { "network_authorization": "required-by-active-task", "artifact_root_required": true, "forbidden_inputs": ["secrets", "private source code not required by the design task"], "external_write_approval": "required" }
+}

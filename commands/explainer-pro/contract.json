@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "command": "explainer-pro",
+  "identity": "Pro-Level Repository Learning Guide",
+  "phase_count": 8,
+  "loading": "global-once-current-phase-only",
+  "global_context": [
+    "commands/explainer-pro.md",
+    "skills/explainer-core/SKILL.md",
+    "commands/explainer-pro/routing.md"
+  ],
+  "artifact_root": "$REPO_ROOT/.agents/explanations/<explanation-slug>",
+  "modes": {
+    "course": [1, 2, 3, 4, 5, 6, 7, 8],
+    "change": [1, 2, 4, 7],
+    "mixed": [1, 2, 3, 4, 5, 6, 7, 8]
+  },
+  "phases": [
+    {
+      "number": 1,
+      "name": "Intake",
+      "file": "phases/01-intake.md",
+      "required_skills": ["explainer-core"],
+      "optional_skills": ["workspace-codemap-context", "change-explanation"],
+      "agents": ["repository-explorer"],
+      "capabilities": ["scm.pull-request.read"]
+    },
+    {
+      "number": 2,
+      "name": "Orient",
+      "file": "phases/02-orient.md",
+      "required_skills": ["explainer-orientation"],
+      "optional_skills": ["workspace-codemap-context"],
+      "agents": ["repository-explorer"],
+      "capabilities": []
+    },
+    {
+      "number": 3,
+      "name": "Shape",
+      "file": "phases/03-shape.md",
+      "required_skills": ["explainer-architecture"],
+      "optional_skills": ["architecture-explanation-diagrams"],
+      "agents": ["repository-explorer", "system-architect"],
+      "capabilities": ["diagram.render"]
+    },
+    {
+      "number": 4,
+      "name": "Trace",
+      "file": "phases/04-trace.md",
+      "required_skills": ["explainer-feature-tracing"],
+      "optional_skills": ["change-explanation"],
+      "agents": ["repository-explorer"],
+      "capabilities": ["diagram.render", "scm.pull-request.read"]
+    },
+    {
+      "number": 5,
+      "name": "System Views",
+      "file": "phases/05-system-views.md",
+      "required_skills": ["explainer-system-views"],
+      "optional_skills": [],
+      "agents": ["repository-explorer", "data-model-architect"],
+      "capabilities": ["diagram.render"]
+    },
+    {
+      "number": 6,
+      "name": "Reference",
+      "file": "phases/06-reference.md",
+      "required_skills": ["explainer-reference"],
+      "optional_skills": [],
+      "agents": ["repository-explorer"],
+      "capabilities": ["firecrawl.search", "firecrawl.scrape"]
+    },
+    {
+      "number": 7,
+      "name": "Verify",
+      "file": "phases/07-verify.md",
+      "required_skills": ["explainer-comprehension", "verification-before-completion"],
+      "optional_skills": [],
+      "agents": ["repository-explorer"],
+      "capabilities": ["browser.inspect", "browser.capture"],
+      "hard_gate": true
+    },
+    {
+      "number": 8,
+      "name": "Codemap",
+      "file": "phases/08-codemap.md",
+      "required_skills": ["workspace-codemap-context"],
+      "optional_skills": [],
+      "agents": ["repository-explorer"],
+      "capabilities": []
+    }
+  ],
+  "global_gates": [
+    "Phase 1 requires an explicit target, primary repository, artifact root, mode, audience, trust boundary, and source fingerprint.",
+    "Each meaningful phase or requested-capability checkpoint batches related sections; all material claims retain independent grounding against the current source fingerprint, reusing unchanged verified evidence only while claims and dependencies remain unchanged.",
+    "Single-capability runs require persisted prerequisites and invalidate every downstream dependent section.",
+    "External documentation and pull-request metadata require explicit consent and never prove repository behavior.",
+    "The target source is never executed, graded, fixed, or modified by Explainer Pro.",
+    "Phase 7 requires a self-contained accessible course whose questions use confirmed taught claims only.",
+    "Phase 8 never writes or repairs a repository codemap; it emits only a partial evidence bundle and factual drift record.",
+    "All artifacts remain beneath the active repository's Explainer Pro root."
+  ]
+}

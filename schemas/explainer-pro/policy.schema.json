@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/explainer-pro/policy.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "phase_count", "allowed_modes", "allowed_audiences", "artifact_prefix", "phase_transitions", "capability_dependencies", "section_order", "external_access", "publication"],
+  "properties": {
+    "schema_version": { "const": "explainer-pro/policy@1" },
+    "phase_count": { "const": 8 },
+    "allowed_modes": { "type": "array", "const": ["COURSE", "CHANGE", "MIXED"] },
+    "allowed_audiences": { "type": "array", "const": ["PM", "ENG", "STAFF", "FSB"] },
+    "artifact_prefix": { "const": ".agents/explanations" },
+    "phase_transitions": { "type": "object", "minProperties": 8, "maxProperties": 8, "additionalProperties": { "type": "array", "items": { "type": "integer", "minimum": 1, "maximum": 8 }, "uniqueItems": true } },
+    "capability_dependencies": { "type": "object", "minProperties": 18, "additionalProperties": { "type": "array", "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" }, "uniqueItems": true } },
+    "section_order": { "type": "array", "minItems": 18, "uniqueItems": true, "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" } },
+    "external_access": { "type": "object", "required": ["default", "consent_required"] },
+    "publication": { "type": "object", "required": ["directory_mode", "file_mode", "current_pointer", "immutable_generations", "external_assets"] }
+  }
+}

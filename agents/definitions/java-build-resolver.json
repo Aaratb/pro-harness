@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "name": "java-build-resolver",
+  "description": "Diagnoses and fixes Java compiler, Maven, Gradle, dependency, annotation-processing, test-compilation, and linker failures.",
+  "classification": "specialist",
+  "mode": "implementation",
+  "capability_profile": "implementation-repo-write",
+  "skills": [],
+  "required_inputs": ["task", "artifact_root"],
+  "artifact_policy": { "root_input": "artifact_root", "repository_writes": "task-scoped", "invent_paths": false, "path_escape": "forbid" },
+  "source_agents": ["java-build-resolver"],
+  "instructions": [
+    "Reproduce the failing build command and isolate the first causal compiler, dependency, plugin, annotation-processing, or test-compilation error.",
+    "Apply the smallest compatible fix and rerun the original command plus affected tests without disabling meaningful checks.",
+    "Stop after three failed fix attempts on the same symptom and report evidence and unresolved hypotheses."
+  ]
+}

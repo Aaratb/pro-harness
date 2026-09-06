@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "name": "source-control",
+  "transport": "adapter-resolved",
+  "launch": { "mode": "adapter-resolved", "provider_candidates": ["github", "runtime-native-source-control", "gh-cli"] },
+  "authentication": { "required": true, "secret_storage": "runtime-managed", "may_print_secret": false, "missing_behavior": "stop-before-external-operation" },
+  "capabilities": {
+    "scm.pull-request.read": { "purpose": "Read pull-request metadata, reviews, comments, and merge state." },
+    "scm.pull-request.write": { "purpose": "Create or update an explicitly approved pull request." },
+    "ci.read": { "purpose": "Read check status and bounded failure evidence." },
+    "ci.write": { "purpose": "Retry or dispatch an explicitly approved CI operation." }
+  },
+  "data_policy": { "network_authorization": "required-by-active-task", "artifact_root_required": true, "forbidden_inputs": ["credentials", "unredacted unrelated logs"], "external_write_approval": "required" }
+}

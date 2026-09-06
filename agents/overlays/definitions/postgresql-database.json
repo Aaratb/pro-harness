@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "name": "postgresql-database",
+  "description": "Adds PostgreSQL-specific schema, transaction, indexing, query-plan, constraint, migration, and operational guidance to compatible agents.",
+  "applies_to": ["database-engineer", "database-reviewer", "backend-developer", "performance-benchmarker", "data-model-architect", "query-performance-architect", "performance-architect"],
+  "detect": { "files_any": ["postgresql.conf", "schema.sql"], "dependencies_any": ["pg", "postgres", "psycopg", "postgresql"] },
+  "skills": ["postgres-patterns"],
+  "instructions": [
+    "Evaluate constraints, transaction boundaries, lock behavior, migration safety, query plans, index write cost, and PostgreSQL version compatibility.",
+    "Use measured access patterns and repository-owned migrations; label assumptions when production statistics are unavailable."
+  ],
+  "capability_widening": false
+}

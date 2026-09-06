@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "status": "reconciled-with-approved-normalizations",
+  "reconciled_at": "2026-09-03",
+  "source_snapshot": {
+    "label": "pre-externalization-architecture-pro",
+    "sha256": "f19eb5b64b7ae2dbd373ddf8b78e4b8439b7d3f330aae82302145b5cf5a9ffa9",
+    "words": 5643,
+    "lines": 787
+  },
+  "target_contract": "contract.json",
+  "phase_map": [
+    { "source_stage": "Intake and safety preflight", "target": 1 },
+    { "source_stage": "Context and as-built recovery", "target": 2 },
+    { "source_stage": "Architecture findings", "target": 3 },
+    { "source_stage": "Independent verification", "target": 4 },
+    { "source_stage": "Audit synthesis", "target": 5 },
+    { "source_stage": "Audit certification", "target": 6 },
+    { "source_stage": "Requirements and options", "target": 7 },
+    { "source_stage": "Architecture decision", "target": 8 },
+    { "source_stage": "Deep design", "target": 9 },
+    { "source_stage": "Design certification", "target": 10 },
+    { "source_stage": "Handoff assembly", "target": 11 },
+    { "source_stage": "Technical walkthrough", "target": 12 },
+    { "source_stage": "Architect review and seal", "target": 13 }
+  ],
+  "approved_normalizations": [
+    {
+      "id": "repository-owned-artifacts",
+      "replacement": "$REPO_ROOT/.agents/architecture/<architecture-slug>",
+      "evidence": ["commands/architecture-pro.md", "scripts/resolve-architecture-root.mjs"]
+    },
+    {
+      "id": "whole-number-phases",
+      "replacement": "13 integer phases with mode-specific legal paths",
+      "evidence": ["commands/architecture-pro/contract.json", "config/architecture-pro.json"]
+    },
+    {
+      "id": "runtime-neutral-routing",
+      "replacement": "canonical agents and capability profiles with runtime adapters",
+      "evidence": ["agents/definitions/", "agents/capability-profiles.json", "agents/adapters/capabilities.json"]
+    },
+    {
+      "id": "flat-canonical-skills",
+      "replacement": "function-oriented skills with dependencies resolved through one manifest",
+      "evidence": ["skills/resolution-manifest.json", "commands/architecture-pro/contract.json"]
+    },
+    {
+      "id": "consolidated-security-routing",
+      "replacement": "one security-reviewer agent invoked with five explicit focus contracts",
+      "evidence": ["config/architecture-pro.json", "commands/architecture-pro/routing.md"]
+    },
+    {
+      "id": "capability-first-external-access",
+      "replacement": "documentation and diagram capabilities selected before providers and executed only with bounded consent",
+      "evidence": ["config/architecture-pro.json", "mcps/registry.json"]
+    },
+    {
+      "id": "external-ready-terminology",
+      "replacement": "Pro-Level System Architect and provider-neutral language",
+      "evidence": ["commands/architecture-pro.md"]
+    },
+    {
+      "id": "proportionate-architecture-process",
+      "replacement": "Immediate authorized intake, evidence-triggered depth, credible option counts with fresh independent challenge, and one lifecycle validation entry point; substantive human gates retained",
+      "evidence": ["commands/architecture-pro.md", "commands/architecture-pro/routing.md", "schemas/architecture-pro/decision.schema.json", "tests/architecture-pro-efficiency.test.js"]
+    },
+    {
+      "id": "architectural-depth-and-context-delivery",
+      "replacement": "Deliver current canonical methods to actual specialist instances; connect business scenarios to visible architecture choices, independent objections, coherent deep design, and buildable handoff without new runtime machinery",
+      "evidence": ["commands/architecture-pro/routing.md", "commands/architecture-pro/phases/07-options.md", "commands/architecture-pro/phases/09-deep-design.md", "docs/disciplinary-quality.md", "tests/architecture-pro-depth.test.js"]
+    }
+  ],
+  "behavior_domains": [
+    { "id": "artifact-containment-and-resume", "phases": [1, 13] },
+    { "id": "as-built-evidence-and-trust-boundaries", "phases": [2, 3] },
+    { "id": "material-lane-routing-without-silent-substitution", "phases": [2, 3, 9] },
+    { "id": "independent-finding-verification", "phases": [4, 6] },
+    { "id": "separate-health-confidence-and-target-axes", "phases": [5, 6, 10] },
+    { "id": "credible-options-independent-challenge-and-reuse-first-design", "phases": [7, 8] },
+    { "id": "decision-reopen-with-preserved-history", "phases": [8, 9, 13] },
+    { "id": "full-depth-design-contracts", "phases": [9, 10] },
+    { "id": "digest-bound-feature-handoff", "phases": [10, 11] },
+    { "id": "source-backed-diagrams-and-teach-back", "phases": [12, 13] },
+    { "id": "static-default-and-explicit-live-consent", "phases": [1, 2, 4] },
+    { "id": "probe-tristate-and-evidence-redaction", "phases": [3, 4, 6, 10] },
+    { "id": "modeled-formulas-with-units-and-sensitivity", "phases": [3, 5, 9] },
+    { "id": "consolidated-triggered-security-review", "phases": [2, 3, 4, 9, 10] }
+  ],
+  "validation": {
+    "structural": "scripts/validate-architecture-pro-command.mjs",
+    "run_packet": "scripts/validate-architecture-pro-run.mjs",
+    "semantic_scenarios": "tests/architecture-pro-behavior.test.js"
+  }
+}

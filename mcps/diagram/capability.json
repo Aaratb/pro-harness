@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "name": "diagram",
+  "transport": "adapter-resolved",
+  "launch": { "mode": "adapter-resolved", "provider_candidates": ["mermaid", "local-mermaid-renderer"] },
+  "authentication": { "required": false, "missing_behavior": "stop-with-unrendered-source" },
+  "capabilities": {
+    "diagram.render": { "purpose": "Render caller-supplied Mermaid source into a repository-owned SVG without network publication.", "input": ["mermaid source", "output path", "artifact root"], "output": ["SVG path", "render status", "diagnostics"] }
+  },
+  "data_policy": { "network_authorization": "not-required-for-local-provider", "artifact_root_required": true, "forbidden_inputs": ["secrets", "credentials"], "external_publish": "forbidden" }
+}

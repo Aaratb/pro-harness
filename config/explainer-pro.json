@@ -1,0 +1,68 @@
+{
+  "schema_version": "explainer-pro/policy@1",
+  "phase_count": 8,
+  "allowed_modes": ["COURSE", "CHANGE", "MIXED"],
+  "allowed_audiences": ["PM", "ENG", "STAFF", "FSB"],
+  "artifact_prefix": ".agents/explanations",
+  "phase_transitions": {
+    "1": [1, 2],
+    "2": [1, 2, 3],
+    "3": [1, 2, 3, 4],
+    "4": [1, 2, 3, 4, 5],
+    "5": [1, 2, 3, 4, 5, 6],
+    "6": [1, 2, 3, 4, 5, 6, 7],
+    "7": [1, 2, 3, 4, 5, 6, 7, 8],
+    "8": [1, 2, 3, 4, 5, 6, 7, 8]
+  },
+  "capability_dependencies": {
+    "repo-map": [],
+    "reading-plan": ["repo-map"],
+    "architecture": ["repo-map"],
+    "feature-map": ["repo-map", "architecture"],
+    "trace-feature": ["feature-map"],
+    "business-logic": ["trace-feature"],
+    "explain-file": ["trace-feature"],
+    "explain-function": ["trace-feature"],
+    "sequence": ["trace-feature", "explain-function"],
+    "dependency-graph": ["repo-map"],
+    "data-model": ["architecture"],
+    "sync-async": ["trace-feature"],
+    "libraries": ["repo-map"],
+    "conventions": ["architecture"],
+    "glossary": ["repo-map"],
+    "quiz": ["reading-plan", "architecture", "trace-feature", "dependency-graph", "libraries", "conventions", "glossary"],
+    "codemap": ["quiz"],
+    "change": ["repo-map"]
+  },
+  "section_order": [
+    "repo-map",
+    "reading-plan",
+    "architecture",
+    "feature-map",
+    "trace-feature",
+    "business-logic",
+    "explain-file",
+    "explain-function",
+    "sequence",
+    "change",
+    "dependency-graph",
+    "data-model",
+    "sync-async",
+    "libraries",
+    "conventions",
+    "glossary",
+    "quiz",
+    "codemap"
+  ],
+  "external_access": {
+    "default": "deny",
+    "consent_required": ["scm.pull-request.read", "firecrawl.search", "firecrawl.scrape"]
+  },
+  "publication": {
+    "directory_mode": "0700",
+    "file_mode": "0600",
+    "current_pointer": "CURRENT",
+    "immutable_generations": true,
+    "external_assets": "forbid"
+  }
+}

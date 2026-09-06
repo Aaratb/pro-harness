@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "feature_slug": "sample-feature",
+  "feature_title": "Sample Feature",
+  "command": "feature-pro",
+  "run_id": "feature-pro-example-001",
+  "loaded_contract": {
+    "command_digest": null,
+    "governance_digest": null,
+    "routing_digest": null,
+    "loaded_at": null
+  },
+  "business_requirement": {
+    "goal": null,
+    "user_outcome": null,
+    "business_outcome": null,
+    "metric": null,
+    "target": null,
+    "measurement_window": null,
+    "owner": null,
+    "approved": false,
+    "approved_at": null
+  },
+  "product_solution": {
+    "selected": null,
+    "alternatives": [],
+    "do_nothing_considered": false,
+    "rejected_reasons": [],
+    "approved": false,
+    "approved_at": null
+  },
+  "verification_contract": {
+    "api_applicable": null,
+    "endpoints": [],
+    "external_docs": [],
+    "authentication": "undetermined",
+    "runnable_url": null,
+    "sample_data": null,
+    "sample_data_owner": null,
+    "planned_sequence": null,
+    "observed_sequence": null,
+    "status": "pending"
+  },
+  "product_observability": {
+    "applicable": null,
+    "logs": [],
+    "metrics": [],
+    "traces": [],
+    "correlation": null,
+    "dashboards": [],
+    "alerts": [],
+    "privacy_reviewed": false,
+    "owner": null,
+    "status": "pending"
+  },
+  "ai_delivery": {
+    "applicable": null,
+    "overlay_evidence": [],
+    "contracts": [],
+    "evaluation_artifact": null,
+    "baseline": null,
+    "critical_slices": [],
+    "release_thresholds": [],
+    "fallback_verified": false,
+    "cost_latency_verified": false,
+    "status": "not-applicable"
+  },
+  "workflow_trace": {
+    "path": "run-events.jsonl",
+    "schema": "pro-harness/workflow-event@1",
+    "status": "pending",
+    "last_event_id": null,
+    "validated_at": null
+  },
+  "current_phase": 1,
+  "phases": {
+    "1": "in_progress",
+    "2": "pending",
+    "3": "pending",
+    "4": "pending",
+    "5": "pending",
+    "6": "pending",
+    "7": "pending",
+    "8": "pending",
+    "9": "pending",
+    "10": "pending",
+    "11": "pending",
+    "12": "pending",
+    "13": "pending",
+    "14": "pending",
+    "15": "pending",
+    "16": "pending",
+    "17": "pending",
+    "18": "pending",
+    "19": "pending",
+    "20": "pending"
+  },
+  "staff_discipline": {
+    "module_map_approved": false,
+    "module_map_path": null,
+    "max_file_lines": 400,
+    "reuse_gate_log": [],
+    "compression_pass": {
+      "done": false,
+      "waived": false,
+      "lines_removed": 0,
+      "artifact": null
+    },
+    "pr_slice": {
+      "required": false,
+      "total_loc": 0,
+      "pr_count": 0,
+      "pr_urls": []
+    }
+  },
+  "agent_runs": {},
+  "skill_runs": {},
+  "artifact_companions": [],
+  "local_runtime": {
+    "host_url": null,
+    "api_base_url": null,
+    "sample_data_recipe": null,
+    "api_cases": [],
+    "observed_sequence_artifact": null,
+    "commands": [],
+    "evidence": [],
+    "blockers": []
+  },
+  "architecture_handoff_intake": {
+    "checkpoint": {
+      "status": "pending",
+      "route": null,
+      "rationale": null,
+      "proposal_reference": null,
+      "approved": false,
+      "approved_at": null
+    },
+    "source_run_id": null,
+    "handoff_digest": null,
+    "source_fingerprint_digest": null,
+    "harness_provenance_digest": null,
+    "validation_result": "not-present",
+    "imported_decision_ids": []
+  },
+  "handoff": {
+    "status": "pending",
+    "current_state_phase": 1,
+    "message_draft": ".agents/features/sample-feature/handoff/slack-handoff.md",
+    "slack_draft": ".agents/features/sample-feature/handoff/slack-handoff.md",
+    "reviewer_pack": null,
+    "ready_status": null,
+    "artifacts_included": [],
+    "pr_urls": [],
+    "staging_url": null,
+    "message_posted": false,
+    "slack_posted": false
+  }
+}

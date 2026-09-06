@@ -1,0 +1,46 @@
+{
+  "schema_version": "explainer-pro/state@1",
+  "run_id": "explainer-run-example",
+  "slug": "sample-repository",
+  "mode": "COURSE",
+  "audience": "PM",
+  "repository_root": "/repository",
+  "artifact_root": "/repository/.agents/explanations/sample-repository",
+  "current_phase": 1,
+  "current_generation": null,
+  "source_fingerprint": {
+    "head": "unborn",
+    "worktree_sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "captured_at": "2026-01-01T00:00:00.000Z"
+  },
+  "loaded_contract": {
+    "command_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "core_skill_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "routing_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "contract_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "loaded_at": "2026-01-01T00:00:00.000Z"
+  },
+  "phases": {
+    "1": "in_progress",
+    "2": "pending",
+    "3": "pending",
+    "4": "pending",
+    "5": "pending",
+    "6": "pending",
+    "7": "pending",
+    "8": "pending"
+  },
+  "capabilities": {},
+  "invalidated_sections": [],
+  "doubts": [],
+  "coverage": {
+    "scope": "sample repository",
+    "limitations": [],
+    "static_only": true
+  },
+  "workflow_trace": {
+    "status": "pending",
+    "path": "run-events.jsonl"
+  },
+  "transition_log": []
+}

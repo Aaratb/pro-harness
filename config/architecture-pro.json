@@ -1,0 +1,76 @@
+{
+  "schema": "architecture-pro/policy@1",
+  "default_mode": "static-only",
+  "artifact_root": "$REPO_ROOT/.agents/architecture/<architecture-slug>",
+  "effective_lane_profile": "static-analysis-read-only",
+  "runtime_concurrency": "min(policy_maximum,runtime_capacity)",
+  "handoff_schema": "schemas/architecture-handoff/handoff.schema.json",
+  "workflow_trace": {
+    "schema": "workflow-event@1",
+    "path": "run-events.jsonl",
+    "writer": "scripts/record-workflow-event.mjs",
+    "validator": "scripts/validate-workflow-trace.mjs"
+  },
+  "capabilities": {
+    "diagram": ["diagram.render"],
+    "primary_documentation": ["firecrawl.search", "firecrawl.scrape"]
+  },
+  "external_access": {
+    "default": "deny",
+    "documentation_plan_flag": "--docs",
+    "documentation_execute_flag": "--execute-docs",
+    "render_plan_flag": "--render-diagram",
+    "render_execute_flag": "--execute-render",
+    "consent_bound_to_manifest_digest": true
+  },
+  "live": {
+    "plan_flag": "--live",
+    "execute_flag": "--execute-probes",
+    "operator_registry": "config/architecture-pro-probes.local.json",
+    "production_requires_second_confirmation": true,
+    "yolo_authorizes_live": false,
+    "forbidden_executors": ["package-runner", "repository-binary", "shell-interpolation"]
+  },
+  "budgets": {
+    "repositories": 5,
+    "concurrent_agents": 8,
+    "files": 20000,
+    "source_bytes": 52428800,
+    "agent_calls": 24,
+    "verification_calls": 8,
+    "tool_calls": 120,
+    "lane_input_bytes": 524288,
+    "lane_output_bytes": 65536,
+    "wall_clock_minutes": 20,
+    "findings": 200,
+    "persisted_evidence_bytes": 2097152,
+    "total_artifact_bytes": 10485760
+  },
+  "lanes": [
+    { "id": "design-owner", "agent": "system-architect", "phases": [7, 8, 9, 10, 12, 13], "required_when": ["design"], "profile": "static-analysis-read-only" },
+    { "id": "conformance", "agent": "architecture-conformance-reviewer", "phases": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13], "required_when": ["always"], "profile": "static-analysis-read-only" },
+    { "id": "security-baseline", "agent": "security-reviewer", "phases": [2, 3, 4, 7, 9, 10], "required_when": ["always"], "profile": "static-analysis-read-only" },
+    { "id": "data-model", "agent": "data-model-architect", "phases": [2, 3, 4, 9], "required_when": ["data-model"], "profile": "static-analysis-read-only" },
+    { "id": "performance", "agent": "performance-architect", "phases": [2, 3, 4, 9], "required_when": ["performance"], "profile": "static-analysis-read-only" },
+    { "id": "query-performance", "agent": "query-performance-architect", "phases": [2, 3, 4, 9], "required_when": ["database-on-material-path", "query-performance"], "profile": "static-analysis-read-only" },
+    { "id": "diagnostics", "agent": "system-diagnostics-analyst", "phases": [2, 3, 4, 9], "required_when": ["multi-component", "async-boundary", "availability-or-latency-target"], "profile": "static-analysis-read-only" },
+    { "id": "operability", "agent": "operability-reviewer", "phases": [2, 3, 4, 9], "required_when": ["operability"], "profile": "static-analysis-read-only" },
+    { "id": "resilience", "agent": "resilience-analyst", "phases": [2, 3, 4, 9], "required_when": ["external-dependency", "async-boundary", "recovery", "overload"], "profile": "static-analysis-read-only" },
+    { "id": "capacity", "agent": "capacity-planner", "phases": [2, 3, 4, 9], "required_when": ["capacity", "10x-or-100x-target"], "profile": "static-analysis-read-only" }
+  ],
+  "security_triggers": ["authentication", "authorization", "tenancy", "personal-data", "payments", "secrets", "public-api", "webhook", "external-transfer", "ai-or-tools", "infrastructure", "delivery-pipeline"],
+  "security_routes": [
+    { "focus": "api-and-authorization", "agent": "security-reviewer", "skill": "architecture-security-review", "triggers": ["authentication", "authorization", "public-api", "webhook"], "profile": "static-analysis-read-only" },
+    { "focus": "secrets-and-machine-identity", "agent": "security-reviewer", "skill": "architecture-security-review", "triggers": ["secrets", "infrastructure", "delivery-pipeline"], "profile": "static-analysis-read-only" },
+    { "focus": "privacy-and-data-transfer", "agent": "security-reviewer", "skill": "architecture-security-review", "triggers": ["tenancy", "personal-data", "payments", "external-transfer"], "profile": "static-analysis-read-only" },
+    { "focus": "ai-and-tool-boundaries", "agent": "security-reviewer", "skill": "architecture-security-review", "triggers": ["ai-or-tools"], "profile": "static-analysis-read-only" },
+    { "focus": "infrastructure-and-delivery", "agent": "security-reviewer", "skill": "architecture-security-review", "triggers": ["infrastructure", "delivery-pipeline"], "profile": "static-analysis-read-only" }
+  ],
+  "state_machine": {
+    "AUDIT": ["1>2", "2>3", "3>4", "4>5", "5>6", "6>11", "11>12", "12>13", "12>4", "13>4"],
+    "DESIGN": ["1>2", "2>7", "7>8", "8>9", "9>10", "10>11", "11>12", "12>13", "9>8", "12>8", "13>8"],
+    "MIXED": ["1>2", "2>3", "3>4", "4>5", "5>6", "6>7", "7>8", "8>9", "9>10", "10>11", "11>12", "12>13", "9>8", "12>4", "12>8", "13>4", "13>8"],
+    "ADR_ONLY": ["1>2", "2>7", "7>8", "8>9", "9>10"],
+    "max_decision_reopens": 2
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "canonical_root": "~/.agents",
+  "generation": "scripts/generate-runtime-adapters.mjs",
+  "runtimes": {
+    "claude": {
+      "commands": "~/.claude/commands/<name>.md",
+      "agents": "~/.claude/agents/<name>.md",
+      "skills": "~/.claude/skills/<name>",
+      "mcp_config": "~/.claude.json",
+      "command_invocation": "/<name>"
+    },
+    "codex": {
+      "commands": "generated as adapter-owned skills",
+      "agents": "~/.codex/agents/<name>.toml",
+      "skills": "~/.codex/skills/<name>",
+      "mcp_config": "~/.codex/config.toml",
+      "command_invocation": "$<name>"
+    },
+    "cursor": {
+      "commands": "~/.cursor/commands/<name>.md",
+      "agents": "~/.cursor/agents/<name>.md",
+      "skills": "~/.cursor/skills/<name>",
+      "mcp_config": "~/.cursor/mcp.json",
+      "command_invocation": "/<name>"
+    }
+  },
+  "rules": [
+    "Generated adapters contain platform syntax and installation-root bindings only; canonical workflow behavior remains under the chosen target (default ~/.agents).",
+    "Install per-item symlinks and never replace an unrelated runtime directory.",
+    "Do not place credentials or machine-specific paths in the canonical adapter manifest."
+  ]
+}

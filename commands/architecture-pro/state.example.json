@@ -1,0 +1,67 @@
+{
+  "schema_version": "architecture-pro/state@1",
+  "architecture_slug": "sample-system",
+  "architecture_title": "Sample System",
+  "command": "architecture-pro",
+  "run_id": "architecture-pro-example-001",
+  "mode": "MIXED",
+  "artifact_root": ".agents/architecture/sample-system",
+  "loaded_contract": {
+    "command_digest": null,
+    "governance_skill_digest": null,
+    "routing_digest": null,
+    "contract_digest": null,
+    "loaded_at": null
+  },
+  "input_fingerprint": {
+    "source_fingerprint_digest": null,
+    "repositories": []
+  },
+  "harness_provenance_digest": null,
+  "current_phase": 1,
+  "phases": {
+    "1": "in_progress",
+    "2": "pending",
+    "3": "pending",
+    "4": "pending",
+    "5": "pending",
+    "6": "pending",
+    "7": "pending",
+    "8": "pending",
+    "9": "pending",
+    "10": "pending",
+    "11": "pending",
+    "12": "pending",
+    "13": "pending"
+  },
+  "lane_runs": {},
+  "security_focus_runs": {},
+  "consent_receipts": [],
+  "decision_reopens": 0,
+  "transition_log": [],
+  "outcome_axes": {
+    "health_grade": null,
+    "evidence_confidence": "INSUFFICIENT",
+    "target_attainment": "UNVERIFIED"
+  },
+  "audit_certification": "pending",
+  "design_certification": "pending",
+  "artifact_digests": {},
+  "handoff_digest": null,
+  "budget_usage": {
+    "repositories": 0,
+    "agent_calls": 0,
+    "verification_calls": 0,
+    "tool_calls": 0,
+    "source_bytes": 0,
+    "persisted_evidence_bytes": 0,
+    "total_artifact_bytes": 0
+  },
+  "workflow_trace": {
+    "path": "run-events.jsonl",
+    "schema": "pro-harness/workflow-event@1",
+    "status": "pending",
+    "last_event_id": null,
+    "validated_at": null
+  }
+}

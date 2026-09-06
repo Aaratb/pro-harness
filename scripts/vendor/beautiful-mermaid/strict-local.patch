@@ -1,0 +1,215 @@
+--- a/src/class/renderer.ts
++++ b/src/class/renderer.ts
+@@ -89,11 +89,11 @@
+     `\n    <polygon points="0 0, 12 5, 0 10" fill="var(--bg)" stroke="var(--_arrow)" stroke-width="1.5" />` +
+     `\n  </marker>` +
+     // Filled diamond (composition) — points at source
+-    `\n  <marker id="cls-composition" markerWidth="12" markerHeight="10" refX="0" refY="5" orient="auto-start-reverse">` +
++    `\n  <marker id="cls-composition" markerWidth="12" markerHeight="10" refX="12" refY="5" orient="auto-start-reverse">` +
+     `\n    <polygon points="6 0, 12 5, 6 10, 0 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="1" />` +
+     `\n  </marker>` +
+     // Hollow diamond (aggregation) — points at source
+-    `\n  <marker id="cls-aggregation" markerWidth="12" markerHeight="10" refX="0" refY="5" orient="auto-start-reverse">` +
++    `\n  <marker id="cls-aggregation" markerWidth="12" markerHeight="10" refX="12" refY="5" orient="auto-start-reverse">` +
+     `\n    <polygon points="6 0, 12 5, 6 10, 0 5" fill="var(--bg)" stroke="var(--_arrow)" stroke-width="1.5" />` +
+     `\n  </marker>` +
+     // Open arrow (association, dependency)
+--- a/src/class/parser.ts
++++ b/src/class/parser.ts
+@@ -51,6 +51,7 @@
+         }
+         continue
+       }
++      if (/[{}]/.test(line)) throw new Error('Class members and braces must be on separate lines')
+ 
+       // Check for annotation like <<interface>>
+       const annotMatch = line.match(/^<<(\w+)>>$/)
+@@ -74,6 +75,7 @@
+     // --- Namespace block start ---
+     const nsMatch = line.match(/^namespace\s+(\S+)\s*\{$/)
+     if (nsMatch) {
++      if (currentNamespace) throw new Error('Nested namespaces require a different renderer')
+       currentNamespace = { name: nsMatch[1]!, classIds: [] }
+       continue
+     }
+@@ -156,8 +158,10 @@
+       diagram.relationships.push(rel)
+       continue
+     }
++    throw new Error(`Unsupported class statement: ${line}`)
+   }
+ 
++  if (currentClass || currentNamespace) throw new Error('Unclosed class or namespace block')
+   diagram.classes = [...classMap.values()]
+   return diagram
+ }
+--- a/src/er/parser.ts
++++ b/src/er/parser.ts
+@@ -54,7 +54,7 @@
+       const attr = parseAttribute(line)
+       if (attr) {
+         currentEntity.attributes.push(attr)
+-      }
++      } else throw new Error(`Unsupported entity attribute: ${line}`)
+       continue
+     }
+ 
+@@ -76,8 +76,10 @@
+       diagram.relationships.push(rel)
+       continue
+     }
++    throw new Error(`Unsupported entity relationship statement: ${line}`)
+   }
+ 
++  if (currentEntity) throw new Error('Unclosed entity block')
+   diagram.entities = [...entityMap.values()]
+   return diagram
+ }
+@@ -118,7 +120,7 @@
+     const upper = part.toUpperCase()
+     if (upper === 'PK' || upper === 'FK' || upper === 'UK') {
+       keys.push(upper as 'PK' | 'FK' | 'UK')
+-    }
++    } else if (part) throw new Error(`Unsupported entity attribute constraint: ${part}`)
+   }
+ 
+   return { type, name, keys, comment }
+--- a/src/parser.ts
++++ b/src/parser.ts
+@@ -147,6 +147,7 @@
+     // --- subgraph end ---
+     if (line === 'end') {
+       const completed = subgraphStack.pop()
++      if (!completed) throw new Error('Unexpected subgraph end')
+       if (completed) {
+         if (subgraphStack.length > 0) {
+           subgraphStack[subgraphStack.length - 1]!.children.push(completed)
+@@ -161,6 +162,7 @@
+     parseEdgeLine(line, graph, subgraphStack)
+   }
+ 
++  if (subgraphStack.length) throw new Error('Unclosed subgraph')
+   return graph
+ }
+ 
+@@ -249,6 +251,7 @@
+     // --- composite state end ---
+     if (line === '}') {
+       const completed = compositeStack.pop()
++      if (!completed) throw new Error('Unexpected composite state end')
+       if (completed) {
+         if (compositeStack.length > 0) {
+           compositeStack[compositeStack.length - 1]!.children.push(completed)
+@@ -314,8 +317,10 @@
+       registerStateNode(graph, compositeStack, { id, label, shape: 'rounded' })
+       continue
+     }
++    throw new Error(`Unsupported state statement: ${line}`)
+   }
+ 
++  if (compositeStack.length) throw new Error('Unclosed composite state')
+   return graph
+ }
+ 
+@@ -328,6 +333,8 @@
+   const isNew = !graph.nodes.has(node.id)
+   if (isNew) {
+     graph.nodes.set(node.id, node)
++  } else if (graph.nodes.get(node.id)!.label !== node.label) {
++    throw new Error(`Declare the label for ${node.id} before its first transition`)
+   }
+   if (compositeStack.length > 0) {
+     const current = compositeStack[compositeStack.length - 1]!
+@@ -437,7 +444,7 @@
+ ]
+ 
+ /** Regex for a bare node reference (just an ID, no shape brackets) */
+-const BARE_NODE_REGEX = /^([\w-]+)/
++const BARE_NODE_REGEX = /^([\w]+(?:-[\w]+)*)/
+ 
+ /** Regex for ::: class shorthand suffix — matches :::className immediately after a node */
+ const CLASS_SHORTHAND_REGEX = /^:::([\w][\w-]*)/
+@@ -456,7 +463,7 @@
+ 
+   // Parse the first node group (possibly with & separators)
+   const firstGroup = consumeNodeGroup(remaining, graph, subgraphStack)
+-  if (!firstGroup || firstGroup.ids.length === 0) return
++  if (!firstGroup || firstGroup.ids.length === 0) throw new Error(`Unsupported flow statement: ${line}`)
+ 
+   remaining = firstGroup.remaining.trim()
+   let prevGroupIds = firstGroup.ids
+@@ -480,7 +487,7 @@
+     } else {
+       // Fallback: text-embedded label syntax (-- Yes -->, -. Maybe .->, == Sure ==>)
+       const textMatch = remaining.match(TEXT_ARROW_REGEX)
+-      if (!textMatch) break
++      if (!textMatch) throw new Error(`Unsupported flow statement suffix: ${remaining}`)
+       hasArrowStart = Boolean(textMatch[1])
+       const rawLabel = textMatch[3]!.trim()
+       edgeLabel = rawLabel ? normalizeBrTags(rawLabel) : undefined
+@@ -493,7 +500,7 @@
+ 
+     // Parse the next node group
+     const nextGroup = consumeNodeGroup(remaining, graph, subgraphStack)
+-    if (!nextGroup || nextGroup.ids.length === 0) break
++    if (!nextGroup || nextGroup.ids.length === 0) throw new Error(`Missing flow edge target: ${remaining}`)
+ 
+     remaining = nextGroup.remaining.trim()
+ 
+@@ -539,7 +546,7 @@
+   while (remaining.startsWith('&')) {
+     remaining = remaining.slice(1).trim()
+     const next = consumeNode(remaining, graph, subgraphStack)
+-    if (!next) break
++    if (!next) throw new Error('Missing node after ampersand')
+     ids.push(next.id)
+     remaining = next.remaining.trim()
+   }
+@@ -613,6 +620,8 @@
+   const isNew = !graph.nodes.has(node.id)
+   if (isNew) {
+     graph.nodes.set(node.id, node)
++  } else if (graph.nodes.get(node.id)!.label !== node.label || graph.nodes.get(node.id)!.shape !== node.shape) {
++    throw new Error(`Declare the label and shape for ${node.id} before its first edge`)
+   }
+   trackInSubgraph(subgraphStack, node.id)
+ }
+--- a/src/sequence/parser.ts
++++ b/src/sequence/parser.ts
+@@ -190,11 +190,10 @@
+       continue
+     }
+ 
+-    // --- activate / deactivate explicit commands ---
+-    // These are handled implicitly via +/- on messages but can also appear standalone
+-    // For now, we skip explicit activate/deactivate lines (they affect rendering only)
++    throw new Error(`Unsupported sequence statement: ${line}`)
+   }
+ 
++  if (blockStack.length) throw new Error('Unclosed sequence block')
+   return diagram
+ }
+ 
+--- a/src/theme.ts
++++ b/src/theme.ts
+@@ -236,12 +236,6 @@
+  * a blended value from --fg and --bg using color-mix().
+  */
+ export function buildStyleBlock(font: string, hasMonoFont: boolean): string {
+-  const fontImports = [
+-    `@import url('https://fonts.googleapis.com/css2?family=${encodeURIComponent(font)}:wght@400;500;600;700&amp;display=swap');`,
+-    ...(hasMonoFont
+-      ? [`@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;display=swap');`]
+-      : []),
+-  ]
+ 
+   // Derived CSS variables: use override if set, else mix from bg+fg.
+   // The --_ prefix signals "private/derived" — not meant for external override.
+@@ -262,7 +256,6 @@
+ 
+   return [
+     '<style>',
+-    `  ${fontImports.join('\n  ')}`,
+     `  text { font-family: '${font}', system-ui, sans-serif; }`,
+     ...(hasMonoFont ? [`  .mono { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, monospace; }`] : []),
+     `  svg {${derivedVars}`,

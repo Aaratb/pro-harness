@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/review-pro/lane-report.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "allOf": [{ "$ref": "state.schema.json#/$defs/reviewBinding" }],
+  "required": ["schema_version", "lane_id", "agent", "profile", "repository_identity", "base_sha", "reviewed_head_sha", "diff_digest", "status", "evidence_ids", "finding_ids", "gaps", "content_digest"],
+  "properties": {
+    "schema_version": { "const": "review-pro/lane-report@1" },
+    "lane_id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "agent": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$" },
+    "profile": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$" },
+    "repository_identity": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "comparison": { "$ref": "state.schema.json#/$defs/comparison" },
+    "local_scope": { "$ref": "state.schema.json#/$defs/localScope" },
+    "base_sha": { "type": ["string", "null"] },
+    "reviewed_head_sha": { "type": ["string", "null"] },
+    "diff_digest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "status": { "enum": ["passed", "findings", "blocked", "not-applicable"] },
+    "evidence_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^RPE-[A-Z0-9-]+$" } },
+    "finding_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^RP-[A-Z0-9-]+$" } },
+    "gaps": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 2000 } },
+    "content_digest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+  }
+}

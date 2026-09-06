@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/workflow-event.schema.json",
+  "title": "Pro Harness workflow execution event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "event_id", "run_id", "workflow", "event", "status", "occurred_at", "summary", "artifacts"],
+  "properties": {
+    "schema_version": { "const": "pro-harness/workflow-event@1" },
+    "event_id": { "type": "string", "format": "uuid" },
+    "run_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$" },
+    "workflow": { "enum": ["architecture-pro", "customer-backward-pro", "debug-pro", "explainer-pro", "feature-pro", "outcome-pro", "review-pro", "roadmap-pro"] },
+    "event": {
+      "enum": [
+        "run-started", "run-resumed", "phase-started", "phase-completed", "phase-skipped", "phase-blocked", "phase-waived",
+        "skill-loaded", "skill-completed", "agent-dispatched", "agent-completed", "capability-resolved", "capability-used",
+        "evidence-created", "evidence-validated", "approval-requested", "approval-recorded", "gate-evaluated",
+        "retry-attempted", "degraded", "terminal-failure", "run-completed"
+      ]
+    },
+    "phase": { "type": "integer", "minimum": 1, "maximum": 99 },
+    "actor": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$" },
+    "status": { "enum": ["planned", "in-progress", "passed", "failed", "skipped", "degraded"] },
+    "occurred_at": { "type": "string", "format": "date-time" },
+    "summary": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "artifacts": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 512 },
+      "uniqueItems": true
+    },
+    "duration_ms": { "type": "integer", "minimum": 0 }
+  }
+}

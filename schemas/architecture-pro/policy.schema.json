@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/architecture-pro/policy.schema.json",
+  "title": "Architecture Pro policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "default_mode", "artifact_root", "effective_lane_profile", "runtime_concurrency", "handoff_schema", "workflow_trace", "capabilities", "external_access", "live", "budgets", "lanes", "security_triggers", "security_routes", "state_machine"],
+  "properties": {
+    "schema": { "const": "architecture-pro/policy@1" },
+    "default_mode": { "const": "static-only" },
+    "artifact_root": { "const": "$REPO_ROOT/.agents/architecture/<architecture-slug>" },
+    "effective_lane_profile": { "const": "static-analysis-read-only" },
+    "runtime_concurrency": { "type": "string", "minLength": 1 },
+    "handoff_schema": { "const": "schemas/architecture-handoff/handoff.schema.json" },
+    "workflow_trace": { "type": "object", "required": ["schema", "path", "writer", "validator"] },
+    "capabilities": { "type": "object", "required": ["diagram", "primary_documentation"] },
+    "external_access": { "type": "object", "required": ["default", "consent_bound_to_manifest_digest"] },
+    "live": { "type": "object", "required": ["execute_flag", "operator_registry", "production_requires_second_confirmation", "yolo_authorizes_live", "forbidden_executors"] },
+    "budgets": { "type": "object", "minProperties": 8, "additionalProperties": { "type": "integer", "minimum": 1 } },
+    "lanes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/lane" } },
+    "security_triggers": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } },
+    "security_routes": { "type": "array", "minItems": 5, "items": { "$ref": "#/$defs/security_route" } },
+    "state_machine": { "type": "object", "required": ["AUDIT", "DESIGN", "MIXED", "ADR_ONLY", "max_decision_reopens"] }
+  },
+  "$defs": {
+    "lane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "agent", "phases", "required_when", "profile"],
+      "properties": {
+        "id": { "type": "string" }, "agent": { "type": "string" },
+        "phases": { "type": "array", "minItems": 1, "items": { "type": "integer", "minimum": 1, "maximum": 13 } },
+        "required_when": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "profile": { "const": "static-analysis-read-only" }
+      }
+    },
+    "security_route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["focus", "agent", "skill", "triggers", "profile"],
+      "properties": {
+        "focus": { "type": "string" }, "agent": { "const": "security-reviewer" },
+        "skill": { "const": "architecture-security-review" },
+        "triggers": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "profile": { "const": "static-analysis-read-only" }
+      }
+    }
+  }
+}

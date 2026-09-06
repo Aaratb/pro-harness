@@ -1,0 +1,106 @@
+{
+  "case_id": "customer-small",
+  "candidates": [
+    {
+      "candidate": "1132ebe3",
+      "scores": [
+        {
+          "criterion": "Small-task navigation and useful scope",
+          "score": 1,
+          "reason": "Turn 0 provides the named eight-phase roadmap, applicability and an opening choice, and waits. Turn 1 uses actual named entries for the appropriate 1 -> 2 -> 4 -> 5 -> 8 route and skips 3, 6 and 7. However, each selected phase becomes a substantial report, with repeated beliefs, counts, episode records, question tables, findings, a long handoff and a work receipt. This is unnecessary ceremony for the requested short note, despite correct routing and no mandatory new study or artifact."
+        },
+        {
+          "criterion": "Source families and evidence fidelity",
+          "score": 1,
+          "reason": "The essential lineage is correct: turn 1 calls N4 derivative, identifies N1/N2 as two roles on H-7, distinguishes Cedar's C-2, and calls the medium notes rather than transcripts. Fidelity weakens when its question-coverage table presents a 'Recent missing-receipt episode, neutral' question and 'Would you pay extra for receipt search' as questions actually asked; the supplied notes do not establish either script/context. It also moves from 'No mockup exposure recorded' for N2 to 'N2 and N3 were never shown the mockup', although only N3's non-exposure is explicit. These source-context distinctions remain imprecise rather than earning full fidelity credit."
+        },
+        {
+          "criterion": "Bias and contradictory evidence",
+          "score": 2,
+          "reason": "Turns 1 and 2 distinguish N1's post-mockup 'That looks useful' from demand and identify N3's saving-hours agreement without assistant exposure. They retain N2's 'We would not pay extra for receipt search' and Cedar's adequate current export. No willingness-to-pay or demand validation is inferred from the positive responses."
+        },
+        {
+          "criterion": "Behavioral interpretation and next learning",
+          "score": 2,
+          "reason": "Turn 1 reconstructs successful existing search in H-7, month-end export in C-2, and the buyer's internal-approval explanation rather than a retrieval failure. It keeps lookup effort at volume and buyer/operator perspectives as unresolved alternatives. The suggested next learning concerns recent pre-mockup episodes and neutral buyer inquiry, not assistant endorsement or immediate software work. The follow-up list could be smaller, but it is tied to the actual rival explanations."
+        },
+        {
+          "criterion": "Readable bounded handoff",
+          "score": 1,
+          "reason": "Turn 2 preserves the correct nonvalidation conclusion and counterevidence, but even after 'Keep the final note concise enough to paste into our team conversation' it delivers numerous labeled sections, bullets, quoted sponsor claims, counts, non-decisions, separators and a closing status receipt. This is a shortened report rather than the requested concise team note. It does not invent market prevalence, contacts, product approval or independent review."
+        }
+      ],
+      "total": 7,
+      "critical_failures": [],
+      "outcome_verdict": "FAIL",
+      "experience": {
+        "outcome_correct": true,
+        "verdict_interpretation": "The core research conclusion is correct, but the candidate misses the supplied passing threshold because of proportionality, source-fidelity and handoff weaknesses. This is not a claim that it validated demand or failed because native UI testing was absent.",
+        "opening_map_and_choice": "Clear opening roadmap and genuine wait for next. Actual named entries are present and irrelevant phases are skipped.",
+        "clarity": "Useful source-specific reasoning is repeatedly restated. The requested compact final note remains overloaded with headings and process information.",
+        "method_depth": "Strong attention to correlated role accounts, leading prompts, successful alternatives, buyer versus operator value and approval versus retrieval. Some interpretive language exceeds the notes: 'no cost' in turn 2 is stronger than no cost consequence being reported, and clean question execution should not be inferred from pre-mockup timing.",
+        "useful_work_vs_ceremony": "The source audit and behavioral discrimination help. Repeated counts, parallel episode restatements, a question-coverage ledger, permission caveats and a closing workflow receipt contribute little to a small synthetic chat note.",
+        "evidence_honesty": "The candidate correctly says no independent challenge was run and does not claim new customer contact or source edits. Its table label 'Counts, computed directly from the notes' is not evidence of an independently executed numerical check: recorded tool inputs contain reads/discovery, not a calculation result. Unsupported question-context assertions are treated as fidelity defects, not as proof that outreach actually occurred."
+      },
+      "limitations": [
+        "Native UI was not observed; command discovery, rendered interaction and native invocation parity are untested.",
+        "Recorded tool events for this candidate contain inputs but no outputs or exit statuses. Successful reads and execution cannot be independently certified from those events.",
+        "No candidate command was rerun and no actor repository or runtime mapping was inspected. The substantive answer was checked against the supplied fixture notes.",
+        "The supplied notes do not establish N1's exact neutral discovery question, a payment question being asked to N2, or N2 never seeing a mockup. These are uncertainty boundaries, not evidence of failed customer research outside the fixture.",
+        "No fresh independent challenge is required by this narrow supplied-notes case, and its absence is not penalized.",
+        "The supplied passing rule requires at least 8 points, no zero score and no critical failure; a total of 7 fails that rule despite the correct core conclusion."
+      ]
+    },
+    {
+      "candidate": "77093081",
+      "scores": [
+        {
+          "criterion": "Small-task navigation and useful scope",
+          "score": 2,
+          "reason": "Turn 0 shows all phase names and purposes, marks the notes-only route and waits for next. Turn 1 enters named phases 1, 2, 4, 5 and 8, explains their purposes and explicitly skips research design, fit and strategy. It requires no recruitment study, codemap, artifact, full eight-stage execution or automatic reviewer panel."
+        },
+        {
+          "criterion": "Source families and evidence fidelity",
+          "score": 2,
+          "reason": "Turn 1 identifies 'three participant conversations represented by N1-N3, plus one derivative sponsor summary (N4), not four independent sources'; it states that N1/N2 share H-7 and distinguishes the two organizations and operator examples. It explicitly limits exact quotations to wording in notes, 'not against recordings or transcripts'. N4 is not used as corroboration."
+        },
+        {
+          "criterion": "Bias and contradictory evidence",
+          "score": 2,
+          "reason": "Turn 1 separates N1's post-mockup leading-prompt reaction from N3's saving-hours agreement without assistant exposure and says neither establishes an unprompted request or purchase commitment. It retains the existing three-minute search result, the buyer's approval-delay explanation and refusal to pay extra, and Cedar's adequate export. The final note preserves the payment and successful-alternative counterevidence."
+        },
+        {
+          "criterion": "Behavioral interpretation and next learning",
+          "score": 2,
+          "reason": "Turn 1 connects the real jobs to existing search/export and identifies Harbor's approval-process constraint rather than missing search capability. It explicitly leaves latent need elsewhere open and proposes neutral recent cases where current methods fail or incur time/cost, including operator and buyer perspectives. Turn 2 retains a small recent-case learning direction rather than proposing software or another leading feature-validation question."
+        },
+        {
+          "criterion": "Readable bounded handoff",
+          "score": 2,
+          "reason": "Turn 2 is a short paste-ready paragraph: 'These notes don't show customers asking for a receipt assistant' followed by prompted interest, successful current alternatives, the buyer's refusal to pay extra, 'Demand remains unvalidated', and a neutral recent-case next step. It contains no process receipt, invented prevalence, completed outreach, product approval or independent-review claim."
+        }
+      ],
+      "total": 10,
+      "critical_failures": [],
+      "outcome_verdict": "PASS",
+      "experience": {
+        "outcome_correct": true,
+        "verdict_interpretation": "Pass for this supplied-notes transcript under all five criteria, not proof of general research quality or native command parity.",
+        "opening_map_and_choice": "Clear roadmap, opening wait and visible entry into the relevant phases, with explicit skipping of irrelevant phases.",
+        "clarity": "The initial phase account is longer than the end user's final note needs, but the final follow-up successfully compresses it into a useful bounded paragraph.",
+        "method_depth": "Preserves the decisive distinctions: accounts versus conversations versus shared episode, derivative sponsor summary, pre/post-concept context, actual current alternatives and approval delay versus receipt retrieval.",
+        "useful_work_vs_ceremony": "Core reads and source-linked analysis support the answer. It does not manufacture a study, artifact, quantitative assessment or independent challenge. The intermediate explanation can be shortened without losing its method, but the requested final communication is proportionate.",
+        "evidence_honesty": "The packet includes a bounded-read output containing the README and notes, matching the supplied source text. This supports what was read, not independent verification of the reported customer events. The candidate does not claim external research or customer contact and accurately states that a challenger was not required for this narrow summary."
+      },
+      "limitations": [
+        "Native UI was not observed; no native invocation, rendering or interaction parity is certified.",
+        "Tool outputs are observations rather than proof of source truth. These are synthetic supplied notes with no recordings or transcripts, not independently observed customer behavior.",
+        "No separate arithmetic output is recorded for the simple prose tallies, so the grader checks the source distinctions directly rather than certifying executed calculation coverage.",
+        "The phrase 'three roles' in turn 1 is best understood as three role-account records, not three distinct role types; the actual source roles are operator and buyer. This minor wording issue does not change the explicit account/episode distinctions.",
+        "Several canonical-document outputs begin mid-document, so complete dependency loading is not established by the packet alone. This is not scored as a wrong research conclusion.",
+        "The final short paragraph omits detailed lineage and the notes-only medium caveat supplied earlier; its bounded 'these notes' and unvalidated-demand wording remains adequate for the requested concise handoff.",
+        "No candidate commands were rerun, no runtime mapping was consulted, and no independent challenge or external study was performed by the grader."
+      ]
+    }
+  ]
+}

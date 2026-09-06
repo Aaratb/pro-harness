@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "name": "ci-monitor",
+  "description": "Monitors the active change's continuous-integration checks and reports actionable status without mutating repository or pipeline state.",
+  "classification": "core",
+  "mode": "monitoring",
+  "capability_profile": "monitor-read-only",
+  "skills": [],
+  "required_inputs": ["task", "artifact_root"],
+  "artifact_policy": { "root_input": "artifact_root", "repository_writes": "deny", "invent_paths": false, "path_escape": "forbid" },
+  "source_agents": ["ci-watcher"],
+  "instructions": [
+    "Resolve the repository's CI provider and the exact branch, change, or run before monitoring status.",
+    "Report completed, pending, cancelled, and failed checks with direct evidence and the smallest useful failure excerpt or link.",
+    "Remain read-only, do not rerun, cancel, approve, merge, or deploy without explicit authorization, and stop when checks reach a terminal state."
+  ]
+}

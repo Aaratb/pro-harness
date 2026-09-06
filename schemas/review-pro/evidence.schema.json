@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/review-pro/evidence.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "allOf": [{ "$ref": "state.schema.json#/$defs/reviewBinding" }],
+  "required": ["schema_version", "id", "type", "repository_identity", "base_sha", "reviewed_head_sha", "diff_digest", "location", "summary", "collection", "artifact_path", "artifact_digest", "content_digest"],
+  "properties": {
+    "schema_version": { "const": "review-pro/evidence@1" },
+    "id": { "type": "string", "pattern": "^RPE-[A-Z0-9-]+$" },
+    "type": { "enum": ["source", "test", "runtime", "log", "trace", "ci", "modeled", "human-provided"] },
+    "repository_identity": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "comparison": { "$ref": "state.schema.json#/$defs/comparison" },
+    "local_scope": { "$ref": "state.schema.json#/$defs/localScope" },
+    "base_sha": { "type": ["string", "null"] },
+    "reviewed_head_sha": { "type": ["string", "null"] },
+    "diff_digest": { "$ref": "#/$defs/digest" },
+    "location": { "type": "string", "minLength": 1, "maxLength": 4096 },
+    "summary": { "type": "string", "minLength": 1, "maxLength": 10000 },
+    "collection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "status", "captured_at"],
+      "properties": {
+        "method": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "status": { "enum": ["observed", "modeled", "provided", "unavailable"] },
+        "captured_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "artifact_path": { "anyOf": [{ "$ref": "#/$defs/safePath" }, { "type": "null" }] },
+    "artifact_digest": { "anyOf": [{ "$ref": "#/$defs/digest" }, { "type": "null" }] },
+    "content_digest": { "$ref": "#/$defs/digest" }
+  },
+  "$defs": {
+    "gitSha": { "type": "string", "pattern": "^[0-9a-f]{40,64}$" },
+    "digest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "safePath": { "type": "string", "pattern": "^(?!/)(?!.*\\\\)(?!.*(^|/)\\.\\.(/|$))(?!.*[\\u0000-\\u001f]).+$" }
+  }
+}

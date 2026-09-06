@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "name": "kubernetes-platform",
+  "description": "Adds Kubernetes workload, deployment, policy, identity, health-probe, resource, rollout, and rollback guidance to compatible canonical agents.",
+  "applies_to": ["platform-engineer", "code-reviewer", "security-reviewer", "release-engineer", "ci-automation-engineer", "site-reliability-engineer"],
+  "detect": { "files_any": ["Chart.yaml", "skaffold.yaml", "kustomization.yaml"], "dependencies_any": [] },
+  "skills": ["production-readiness"],
+  "instructions": [
+    "Inspect workload identity, namespace boundaries, network exposure, probes, resource requests and limits, disruption behavior, rollout strategy, and secret references.",
+    "Preserve the repository's Helm or Kustomize ownership model and require explicit authorization before cluster mutation."
+  ],
+  "capability_widening": false
+}

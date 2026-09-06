@@ -1,0 +1,116 @@
+{
+  "purpose": "Correct execution-evidence limitations using recovered results from the original runs, without modifying the original grades or changing the rubric.",
+  "new_actor_execution": false,
+  "new_coaching_or_reattempt": false,
+  "scores_changed": false,
+  "verdicts_changed": false,
+  "original_grades_preserved": [
+    {
+      "path": "evals/command-parity/grades/outcome-small.json",
+      "sha256": "b7f7c01cc698d2fa9dc011fbe177555fb71594db032e519a5864f34f37150775"
+    },
+    {
+      "path": "evals/command-parity/grades/customer-small.json",
+      "sha256": "27d26d861fc24c8cfca4eb5e2cb28f40203d8fe17f98db0f57871f248d443644"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "outcome-small",
+      "supplement": "/private/tmp/pro-parity-audit.1Lnfhp/grading/outcome-small.results-supplement.json",
+      "candidates": [
+        {
+          "candidate": "ebdffa8f",
+          "original_scores_in_rubric_order": [1, 2, 2, 2, 1],
+          "updated_scores_in_rubric_order": [1, 2, 2, 2, 1],
+          "total": 8,
+          "outcome_verdict": "PASS",
+          "critical_failures": [],
+          "change_type": "Execution-evidence judgment corrected; scores and outcome unchanged.",
+          "recovered_evidence": [
+            "The supplement contains 16 result records for this candidate, all with is_error=false: 14 file-read results and 2 shell results. All 14 file results report startLine=1 and numLines=totalLines.",
+            "Turn 1, invocation toolu_012fGxL3SDxxw1BEibd3hqB8, returns the complete delivery.csv, including P1/P2 shipped, P3 deferred and P4 implementation_complete with 'Not deployed to the pilot'. Invocation toolu_012yf7WskU8ibnx8dG16497g returns the complete-register README.",
+            "Turn 1, invocation toolu_01QCaVTP58db6QygJdwDuLt4, returns the bounded-reader calculation output: total_rows=4, planned=4, shipped=2, deferred=1, implementation_complete=1, shipped_ids=[P1,P2], and the correct P3/P4 non-shipped records. The result has empty stderr and interrupted=false.",
+            "The same calculation result reports 353 bytes and digest sha256:7cafb38b81b97168519991d5edf448e8b55ce4b29854fb348d4785551e8ea298. The previously recorded count operation therefore has a successful result, not merely a requested invocation or self-report."
+          ],
+          "superseded_limitations": [
+            "The original experience.evidence_honesty statement that tool outputs and exit statuses are absent must be read with this correction: output/result-success evidence is now present, although a numeric shell exit-code field is not supplied.",
+            "The original limitation that successful bounded reading and arithmetic execution cannot be certified from the packet is removed at the recorded-execution level. The recovered output establishes a completed in-run check and its result.",
+            "The original limitation treating recomputation solely as self-reported is removed. This was an extraction omission, not an unexecuted candidate check."
+          ],
+          "unchanged_judgments": [
+            "The Phase 1 entry banner remains missing from the user-facing continuation, so navigation remains 1/2.",
+            "Repository/history discovery and duplicate source reading remain unnecessary for the named four-row delivery question, so minimal authorized work remains 1/2. Successful execution does not eliminate that proportionality deduction.",
+            "The original core delivery conclusion and final sentence were already checked against the fixture and remain correct."
+          ],
+          "remaining_limits": [
+            "The original proof note's abbreviated digest 'sha256:7cafb3…8e9a298' does not exactly match the recovered full digest's suffix 'e8ea298'. It should not be promoted to an accurate verified abbreviation. This narrow transcription mismatch does not change the correct row counts, existing minimal-work score or critical-failure judgment.",
+            "The calculation generated a digest but no expected digest was supplied for this candidate's check; it binds the read bytes rather than verifying an independently supplied expected identity.",
+            "Source truth, actual deployments, exposure and customer benefit are not independently verified by a successful read or calculation.",
+            "No fresh independent challenger is demonstrated or claimed. Native UI remains unobserved, and the grader performed no candidate-command rerun."
+          ]
+        },
+        {
+          "candidate": "d13aad14",
+          "original_scores_in_rubric_order": [2, 2, 1, 2, 2],
+          "updated_scores_in_rubric_order": [2, 2, 1, 2, 2],
+          "total": 9,
+          "outcome_verdict": "PASS",
+          "critical_failures": [],
+          "change_type": "No supplemental results for this candidate; original judgments and limitations unchanged."
+        }
+      ]
+    },
+    {
+      "case_id": "customer-small",
+      "supplement": "/private/tmp/pro-parity-audit.1Lnfhp/grading/customer-small.results-supplement.json",
+      "candidates": [
+        {
+          "candidate": "1132ebe3",
+          "original_scores_in_rubric_order": [1, 1, 2, 2, 1],
+          "updated_scores_in_rubric_order": [1, 1, 2, 2, 1],
+          "total": 7,
+          "outcome_verdict": "FAIL",
+          "critical_failures": [],
+          "change_type": "Execution-evidence judgment corrected; scores and outcome unchanged.",
+          "recovered_evidence": [
+            "The supplement contains 18 result records for this candidate, all with is_error=false: 17 file-read results and 1 shell result. All 17 file results report startLine=1 and numLines=totalLines.",
+            "Turn 1, invocation toolu_01RU4YzEvrzmPoaNarqZWrQq, returns the fixture file listing and the README's statement that these notes are the entire evidence set, with no recordings or transcripts. The result has empty stderr and interrupted=false.",
+            "Turn 1, invocation toolu_01XDG69LVSCeUSi5QDYkwYkn, returns all N1-N4 notes. It preserves the successful pre-mockup search account, the buyer's approval-delay account and refusal to pay extra, Cedar's sufficient export, and the sponsor summary's derivative status.",
+            "Complete result bodies for the requested canonical method/phase reads are now available, rather than only their invocation inputs."
+          ],
+          "superseded_limitations": [
+            "The original limitation that the candidate's recorded events contain only inputs and no successful results is removed. Source reads and the local discovery command have recorded successful outputs.",
+            "The original inability to establish successful source access from tool events is removed at the recorded-execution level. The recovered note contents match the supplied fixture."
+          ],
+          "unchanged_judgments": [
+            "The correct nonvalidation conclusion, source-family distinctions, bias analysis and behavioral interpretation remain credited.",
+            "The unsupported assertions about N1's neutral question, a payment question actually asked to N2, and N2 never seeing a mockup remain unsupported by the recovered notes. Successful reading does not make those assertions faithful, so source fidelity remains 1/2.",
+            "The repeated phase reports and overlong final handoff remain unchanged; navigation/useful-scope and readable-handoff scores remain 1/2 each.",
+            "The total remains below 8 because of those substantive experience/fidelity deductions, not missing tool-success evidence. The core research conclusion remains correct and no critical failure is added."
+          ],
+          "remaining_limits": [
+            "No separate arithmetic operation/result is added by this supplement. The original distinction between a prose tally and a demonstrated executed calculation remains; this was not a scored deduction.",
+            "Successful reads verify access to supplied note text, not participant speech, actual interview events, representativeness or market demand.",
+            "No fresh independent challenge is demonstrated or required for this narrow note summary. Native UI remains unobserved and no new actor execution occurred."
+          ]
+        },
+        {
+          "candidate": "77093081",
+          "original_scores_in_rubric_order": [2, 2, 2, 2, 2],
+          "updated_scores_in_rubric_order": [2, 2, 2, 2, 2],
+          "total": 10,
+          "outcome_verdict": "PASS",
+          "critical_failures": [],
+          "change_type": "No supplemental results for this candidate; original judgments and limitations unchanged."
+        }
+      ]
+    }
+  ],
+  "global_limits": [
+    "This addendum uses already-recorded tool results only. It does not introduce a new rubric, threshold, candidate attempt or coaching step.",
+    "A successful result is evidence of the recorded tool's execution and returned content, not independent customer/deployment verification or a fresh reviewer execution.",
+    "No runtime-label mapping was inspected or inferred. No live actor repository, history or candidate command was opened or executed during this correction.",
+    "The original grade files are retained verbatim; this addendum supersedes only the explicitly identified execution-evidence limitations and narrows the digest claim as stated."
+  ]
+}

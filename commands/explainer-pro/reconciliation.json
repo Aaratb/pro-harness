@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "status": "reconciled-with-approved-normalizations",
+  "source_snapshot": {
+    "label": "pre-externalization-explainer-pro",
+    "command_shape": "one course command plus capability aliases",
+    "phase_shape": "intake plus six learning phases and optional codemap"
+  },
+  "approved_normalizations": [
+    "one public explainer-pro command with phase and capability routing",
+    "eight integer phases with no decimal or letter-only phase contract",
+    "nine consolidated flat skills with progressively loaded references",
+    "repository-local .agents/explanations artifact ownership",
+    "runtime-neutral agents and capabilities",
+    "Node-native deterministic helpers",
+    "independently authored explanation requirements without vendored external prompt text",
+    "current canonical teaching methods delivered under Explainer-owned governance with real separate verification invocations",
+    "audience-sensitive explanations and a source-grounded running example preserve one coherent model across views",
+    "early unscored learning prompts are authored during their phases; five distinct final course outcomes replace repeated per-capability outcome quotas",
+    "local reference archaeology is bounded to the relevant public surface and external behavior remains consent-bound"
+  ],
+  "phase_map": [
+    { "source": "intake", "target": 1, "outcome": "scope, substrate, and safety" },
+    { "source": "orient", "target": 2, "outcome": "repository atlas and reading plan" },
+    { "source": "shape", "target": 3, "outcome": "architecture explanation" },
+    { "source": "trace", "target": 4, "outcome": "feature and change execution explanations" },
+    { "source": "system views", "target": 5, "outcome": "dependency, data, state, and timing models" },
+    { "source": "reference", "target": 6, "outcome": "libraries, conventions, and glossary" },
+    { "source": "verify", "target": 7, "outcome": "claim gate and comprehension" },
+    { "source": "codemap", "target": 8, "outcome": "partial evidence bundle and drift record" }
+  ],
+  "preserved_outcomes": [
+    "one self-contained interactive HTML course and one Markdown companion",
+    "repository atlas, reading plan, architecture brief, and multi-family diagrams",
+    "feature atlas, deep trace, business-rule isolation, function walkthrough, and sequences",
+    "dependency, data-model, state-machine, and sync-async views",
+    "library guide, convention guide, living glossary, and comprehension practice",
+    "independent claim re-grounding and visible degradation",
+    "immutable generations with downstream invalidation and doubt records",
+    "safe change explanation for pull requests, branches, and working trees"
+  ],
+  "omitted_source_surfaces": [
+    "sixteen thin public capability command wrappers",
+    "home-directory output conventions",
+    "runtime-specific tool and path names",
+    "organizational package namespaces",
+    "vendored external explanation prompt",
+    "generated caches and per-skill runtime metadata"
+  ]
+}

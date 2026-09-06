@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pro-harness.local/schemas/architecture-pro/common.schema.json",
+  "title": "Architecture Pro shared value contracts",
+  "$defs": {
+    "identifier": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@-]*$" },
+    "slug": { "type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$" },
+    "digest": { "type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$" },
+    "relative_path": { "type": "string", "minLength": 1, "maxLength": 512, "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*\\\\)[^\\u0000-\\u001f\\u007f]+$" },
+    "timestamp": { "type": ["string", "null"], "format": "date-time" },
+    "phase_status": { "enum": ["pending", "in_progress", "passed", "failed", "blocked", "skipped", "waived"] },
+    "evidence_status": { "enum": ["CONFIRMED", "OBSERVED", "MODELED", "INFERRED", "DISPUTED", "REFUTED", "UNVERIFIED"] }
+  }
+}

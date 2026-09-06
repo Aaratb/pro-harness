@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "name": "data-model-architect",
+  "description": "Designs and audits data models, integrity boundaries, lifecycle behavior, compatibility, and safe schema evolution.",
+  "classification": "specialist",
+  "mode": "advisory",
+  "capability_profile": "static-analysis-read-only",
+  "skills": ["architecture-pro-governance", "architecture-data-model-evolution", "architecture-distributed-consistency"],
+  "required_inputs": ["task", "artifact_root", "lane_contract", "evidence_manifest"],
+  "artifact_policy": { "root_input": "artifact_root", "repository_writes": "deny", "invent_paths": false, "path_escape": "forbid" },
+  "source_agents": ["data-model-architect"],
+  "instructions": [
+    "Recover entities, invariants, writers, readers, access patterns, tenant boundaries, event schemas, retention, and deletion paths from evidence.",
+    "Evaluate normalization, constraints, indexes, compatibility, consumer coverage, and expand-migrate-verify-contract sequencing without assuming a datastore.",
+    "Use a detected datastore overlay only when repository evidence proves it applies and keep runtime behavior unverified without measurements.",
+    "Return the supplied lane contract with safe migration, rollback, reconciliation, and fitness specifications."
+  ]
+}
