@@ -1994,6 +1994,81 @@
       "output": "Write browser evidence beneath `artifact_root` with steps, observations, screenshots, and blockers."
     },
     {
+      "name": "gtm-buying-system",
+      "description": "Explain how a customer decides to start, buy, switch, renew or deliberately do nothing from supplied context and evidence. Map real triggers, alternatives, decision rights, value distribution and adoption dependencies without inventing a buying committee or authorizing sales actions.",
+      "sources": [
+        "gtm-buying-system"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Establish the offer, customer situation, decision, intended progress, alternatives and supplied evidence.",
+        "Map actors, authority, value exchange, adoption dependencies and the strongest rival explanation without inventing purchase intent.",
+        "Return an evidence-linked buying mechanism, limits, reversal conditions and the smallest next discriminating proof."
+      ],
+      "output": "Return the buying explanation beneath the caller-supplied `artifact_root` when persistence is authorized; otherwise return it in conversation."
+    },
+    {
+      "name": "gtm-launch-audience",
+      "description": "Translate existing or provisional product fit into advisory initial launch-audience rules from supplied context and evidence. Distinguish fit, adoption readiness, entitlement, eligibility, exposure, permission and capacity without approving commercial targeting, selecting research participants or contacting customers.",
+      "sources": [
+        "gtm-launch-audience"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Establish the offer, customer situation, launch motion, fit assumptions, lifecycle state and practical constraints.",
+        "Separate audience universe, study sample and proposed commercial audience while preserving eligibility, entitlement, reachability and capacity distinctions.",
+        "Return a conditional audience rule, exclusions, rival explanation, reversal conditions and next proof without authorizing customer action."
+      ],
+      "output": "Return advisory audience rules beneath the caller-supplied `artifact_root` when persistence is authorized; otherwise return them in conversation."
+    },
+    {
+      "name": "gtm-mandate",
+      "description": "Define or reconcile a go-to-market mandate for a product, feature, migration or adoption initiative. Turn business intent into a bounded customer-behavior objective, success basis and open decisions without choosing company strategy or authorizing launch.",
+      "sources": [
+        "gtm-mandate"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Locate the intended customer or business change, value mechanism, counterfactual and relevant constraints.",
+        "Define a proportionate success basis with units, exposure, baseline gaps, guardrails and feasibility limits.",
+        "Return a decision-ready mandate, strongest alternative, reversal condition and smallest next evidence or human choice."
+      ],
+      "output": "Return the GTM mandate beneath the caller-supplied `artifact_root` when persistence is authorized; otherwise return it in conversation."
+    },
+    {
+      "name": "gtm-measurement-design",
+      "description": "Define or repair a GTM measurement plan before pilots, launch or adoption work. Specify outcomes, exposure, denominators, baselines, attribution limits and data-quality proof using supplied context; not analytics installation, live querying or outcome certification.",
+      "sources": [
+        "gtm-measurement-design"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Bind the intended outcome to its population, exposure, unit, window, baseline and guardrails.",
+        "Check definitions, joins, retries, missingness, maturity and attribution limits before proposing more instrumentation.",
+        "Return the smallest measurable basis, checked calculations, evidence gaps and bounded verification request without installing analytics."
+      ],
+      "output": "Return the measurement design beneath the caller-supplied `artifact_root` when persistence is authorized; otherwise return it in conversation."
+    },
+    {
+      "name": "gtm-product-truth",
+      "description": "Establish or correct market-facing product claims from supplied evidence, separating versioned capability, availability, entitlement, demonstrated use and customer outcomes. Use for launch, offer or message substantiation and claim-change impact; not technical certification, live product verification or publishing.",
+      "sources": [
+        "gtm-product-truth"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Inventory the product, audience, use case, offer and supplied claims with exact source scope and version context.",
+        "Separate capability, availability, entitlement, demonstrated use and customer outcome while preserving contradictions and historical wording.",
+        "Return usable bounded claims, a claim ledger, affected decisions and the smallest proof or owner choice that could change them."
+      ],
+      "output": "Return the product-truth brief and claim ledger beneath the caller-supplied `artifact_root` when persistence is authorized; otherwise return them in conversation."
+    },
+    {
       "name": "workspace-codemap-context",
       "description": "Load and verify repository or workspace code maps without treating stale generated documentation as authoritative.",
       "sources": [

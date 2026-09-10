@@ -1,0 +1,10 @@
+{
+  "case_id": "LA1",
+  "user_request": "Recommend a bounded first-launch audience for Shiftdeck, including exclusions, reachability, capacity, evidence limits, and the next validation step.",
+  "trusted_context": {"synthetic":true,"authority":"Recommend; do not select accounts or start outreach. Desired learning: whether 20 workspaces can reach repeated value within four weeks. Only 20 onboarding hours are available."},
+  "source_records": [
+    {"id":"LA1-S1","locator":"segment-sheet#enterprise","text":"Ten eligible enterprises are reachable through existing relationships. Onboarding requires six hours each; procurement usually takes eight weeks. Eight of ten enterprise pilot teams returned after concierge assistance."},
+    {"id":"LA1-S2","locator":"segment-sheet#small-teams","text":"Forty-five eligible small teams opted into product research. Onboarding takes one hour each, with no procurement. Nine of fifteen small-team pilots returned without assistance."},
+    {"id":"LA1-S3","locator":"product-note#constraints","text":"Both segments can use current scheduling features. No prospective launch cohort has yet agreed to participate. Pilot recruitment was purposive, and workflows differed."}
+  ]
+}

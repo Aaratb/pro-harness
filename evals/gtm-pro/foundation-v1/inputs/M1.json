@@ -1,0 +1,10 @@
+{
+  "case_id": "M1",
+  "user_request": "Frame a practical launch mandate for Stocknote. Recommend the next decision, success evidence, boundaries, and unresolved owner choices from this packet.",
+  "trusted_context": {"synthetic":true,"authority":"Advice only. Five weeks, $2,800 research budget, and six support hours weekly are available. No launch or commercial commitments are approved."},
+  "source_records": [
+    {"id":"M1-S1","locator":"founder-note#ambition","text":"We want 90 paying workshops at $160 monthly by week five. Stocknote turns manually entered stock counts into reorder suggestions. No payment system exists."},
+    {"id":"M1-S2","locator":"pilot-log#week-two","text":"Three unpaid workshops tried the prototype with assistance. Two returned. One manager said stockouts felt less frequent; no stockout baseline or counterfactual was collected."},
+    {"id":"M1-S3","locator":"operations-note#constraints","text":"Each new workshop currently needs four support hours. Operations wants fewer emergency replenishment trips. Access to historical trip records has not been agreed."}
+  ]
+}

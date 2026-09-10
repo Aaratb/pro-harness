@@ -1,0 +1,10 @@
+{
+  "case_id": "MD1",
+  "user_request": "Design a measurement contract for the next Shared Queue launch wave. Use this snapshot to explain baseline risks, useful metrics, and what attribution would require.",
+  "trusted_context": {"synthetic":true,"authority":"Design only; do not run an outcome assessment or alter tracking. Value means completing a shared queue review, not merely enabling the feature."},
+  "source_records": [
+    {"id":"MD1-S1","locator":"wave-report#exposed","text":"Before: 24 activated of 120 eligible workspaces. After: 54 activated of 180 eligible. Each window is 14 days; activation means at least one completed shared review. After-wave enablement was 108, including all 54 activated workspaces."},
+    {"id":"MD1-S2","locator":"wave-report#comparison","text":"Comparison group: before 18 activated of 90 eligible; after 36 of 90. Group assignment was nonrandom. A staffing intervention affected the comparison group."},
+    {"id":"MD1-S3","locator":"instrumentation-note#changes","text":"The exposed eligible population expanded after launch. Revenue also changed with a price increase. Repeat-use logging is absent. Finance asks whether the launch caused the revenue rise."}
+  ]
+}

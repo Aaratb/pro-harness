@@ -1,0 +1,10 @@
+{
+  "case_id": "BS1",
+  "user_request": "Map the buying and adoption system for Queueboard. Explain the likely decision path, unresolved blockers, and useful next questions before proposing a launch audience.",
+  "trusted_context": {"synthetic":true,"authority":"Read-only analysis. The intended buyer is a multi-site service company; no purchase, pilot, or outreach is approved."},
+  "source_records": [
+    {"id":"BS1-S1","locator":"interview#operations","text":"Operations champion wants a ten-site trial. Frontline supervisors would use the queue daily but cannot approve spending. Two supervisors worry duplicate entry will add work."},
+    {"id":"BS1-S2","locator":"interview#finance-security","text":"Finance controls the budget and requests measured avoided overtime. Security can block data access and disallows shared accounts. No named-account setup has been tested."},
+    {"id":"BS1-S3","locator":"procurement-note#sequence","text":"Purchase-order processing takes 25 business days after approved budget and security review. The champion says everyone is excited; neither approval is recorded. Site managers own training schedules."}
+  ]
+}

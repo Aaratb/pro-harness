@@ -1,0 +1,10 @@
+{
+  "case_id": "MD2",
+  "user_request": "Specify a usable measurement plan for this consumer pilot: value events, cohorts, denominators, instrumentation repairs, owners, and decision timing. Explain what the snapshot can support.",
+  "trusted_context": {"synthetic":true,"authority":"Planning only. Household is the analysis unit. Successful joint use requires two members to complete the same weekly plan; a click is not value."},
+  "source_records": [
+    {"id":"MD2-S1","locator":"pilot-export#day-nine","text":"Thirty households were invited; 21 created accounts; 12 completed a first joint plan. Events total 42 plan_completed rows, including retries; stable event IDs are missing."},
+    {"id":"MD2-S2","locator":"cohort-review#manual","text":"Manual reconciliation verified the 12 unique first completions. Eight households have reached day seven since first completion; three of those completed another joint plan by day seven. Four are not yet mature."},
+    {"id":"MD2-S3","locator":"baseline-note#limits","text":"No pre-pilot coordination-time baseline or comparison group exists. Product owns event semantics; analytics owns reconciliation. A draft calls 42 events proof of weekly retention and time saved."}
+  ]
+}

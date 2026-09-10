@@ -1,0 +1,10 @@
+{
+  "case_id": "BS2",
+  "user_request": "Explain the buying and adoption system for this partner-referred repair marketplace, including where handoffs can fail and what must be established before promises are made.",
+  "trusted_context": {"synthetic":true,"authority":"Analyze only. Do not contact participants, assign jobs, change agreements, or confirm appointments."},
+  "source_records": [
+    {"id":"BS2-S1","locator":"referral-log#batch","text":"A property-management partner forwarded four tenant repair requests. Tenants need repairs but landlords must approve charges. Two landlords have not responded."},
+    {"id":"BS2-S2","locator":"provider-notes#availability","text":"Providers have two available slots. They accept only after seeing job scope and access arrangements. A tenant submitting a request does not reserve a slot."},
+    {"id":"BS2-S3","locator":"partner-agreement#incentives","text":"The partner earns a referral fee only after completed work. Platform support currently coordinates approvals manually. The draft welcome note calls every referral a confirmed booking; no handoff owner is named."}
+  ]
+}

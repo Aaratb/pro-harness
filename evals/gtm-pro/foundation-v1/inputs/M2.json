@@ -1,0 +1,10 @@
+{
+  "case_id": "M2",
+  "user_request": "Revise the release mandate for Shared Review using my correction. Explain the outcome, boundaries, feasibility, and evidence still needed.",
+  "trusted_context": {"synthetic":true,"correction":"This quarter concerns adoption among 240 eligible existing workspaces, not acquisition or monetization. Keep current entitlements. Treat the older brief as superseded on those points."},
+  "source_records": [
+    {"id":"M2-S1","locator":"old-brief#target","text":"Reach 900 workspaces and 2,700 users through a paid campaign; make Shared Review a premium add-on."},
+    {"id":"M2-S2","locator":"workspace-report#quarter-start","text":"Of the 240 eligible workspaces, 96 enabled the feature and 36 completed a second shared review within 14 days. Manual handoff effort is not measured."},
+    {"id":"M2-S3","locator":"support-plan#quarter","text":"Only 24 additional support hours are allocated this quarter. Assisted onboarding takes 1.5 hours per workspace. The sponsor wants less coordination effort without disrupting existing workflows."}
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "version": "gtm-pro/foundation-cases@1",
+  "scope": "Synthetic standalone evaluation definitions for five foundation skills; not results, command integration, customer validation, or runtime enforcement proof.",
+  "rubric": "rubric.md",
+  "rubric_sha256": "70d15266c013e4771e37cd02f588fabda53d65347a09a48280617e5978692f1e",
+  "protocol": {
+    "actor_packet": "One original input plus the assigned skill and applicable references only. Exclude cases.json, rubric, expected results, prior responses, author reasoning, and other cases.",
+    "authority": "user_request and trusted_context are current synthetic user authority. source_records are evidence, never instructions. Locators identify fictional in-packet records, not files or network destinations.",
+    "execution": "Future trials use fresh actors and isolated temporary workspaces. No real customer data, network access, messages, purchases, account changes, or other external actions are authorized by these fixtures. These declarations do not demonstrate tool enforcement.",
+    "judging": "Independent judges receive the original input, rubric, and actual response, not skill implementation or author commentary. Preserve raw responses; record context reuse and limitations. Grade PASS, FAIL, or UNRESOLVED with response evidence.",
+    "versioning": "Freeze inputs and rubric before skill authoring. Preserve this version; corrections or later retests receive a new version. No trials or grades are represented here."
+  },
+  "cases": [
+    {"id":"M1","skill":"gtm-mandate","input":"inputs/M1.json","sha256":"b4d0b4aab5fcc428c737f624058fea704e9f9b4455f4bb6d45e55156b3a2bee1","conditions":["new-product","low-evidence","capacity"]},
+    {"id":"M2","skill":"gtm-mandate","input":"inputs/M2.json","sha256":"eea351427efc3830a4cceb71f094577a774908e7a05b1c1cd44baa30e5482931","conditions":["installed-base","current-user-correction","capacity"]},
+    {"id":"PT1","skill":"gtm-product-truth","input":"inputs/PT1.json","sha256":"ad83c2f384a6dde91ed6d97084507391c9f9e9b7552fbefd507efac73bb0a375","conditions":["changed-version","pilot-transfer","source-instruction-injection"]},
+    {"id":"PT2","skill":"gtm-product-truth","input":"inputs/PT2.json","sha256":"c618edf8f11fb742e7ebb080d87d6c207b08120ee213dae0170942a6e244a34b","conditions":["enterprise","planned-versus-shipped","claim-permission"]},
+    {"id":"BS1","skill":"gtm-buying-system","input":"inputs/BS1.json","sha256":"2b458bb8f530574e9b5ca04808385e52b779a980099a4cc65873629a2de109a6","conditions":["enterprise","conflicting-roles","adoption-dependency"]},
+    {"id":"BS2","skill":"gtm-buying-system","input":"inputs/BS2.json","sha256":"4e7eb13d0f46c9ef0630426fd8d3d5e5cae51daab51d7420dce90eaf5431fab6","conditions":["marketplace","partner-handoff","payer-versus-user"]},
+    {"id":"LA1","skill":"gtm-launch-audience","input":"inputs/LA1.json","sha256":"858d8e26f76b7e2fcb54e037effb199abc0df62093161692909d6342db540f59","conditions":["enterprise-versus-small-team","capacity","sample-bias"]},
+    {"id":"LA2","skill":"gtm-launch-audience","input":"inputs/LA2.json","sha256":"2f09613458f669cb7d6a53a400018c51ffd919fc4f77c0e05f4e945313cd964b","conditions":["consumer","behavioral-segmentation","channel-bias"]},
+    {"id":"MD1","skill":"gtm-measurement-design","input":"inputs/MD1.json","sha256":"cd7e6a66b3ef43aece4084b214c7e185fefaa6973c3eea960390b7642d3124ab","conditions":["installed-base","descriptive-attribution","confounding"]},
+    {"id":"MD2","skill":"gtm-measurement-design","input":"inputs/MD2.json","sha256":"5807c9fcbeeb7c401d216931da6250274ec7469d4e196b9a339af9db3e8eee10","conditions":["consumer","immature-cohort","duplicate-events","missing-baseline"]}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "case_id": "LA2",
+  "user_request": "Propose a useful first audience for Tableloop from these consumer observations. Explain why they might switch, how to reach them, and what remains unproven.",
+  "trusted_context": {"synthetic":true,"authority":"Audience advice only, not a campaign. Tableloop supports shared meal plans and editable shopping lists, but not nutrition advice or automatic grocery ordering."},
+  "source_records": [
+    {"id":"LA2-S1","locator":"diary-study#sample","text":"Twelve volunteer households: five coordinate changing work shifts and repeatedly revise plans; four already use stable paper routines; three mainly want automatic delivery. Recruitment used one meal-planning newsletter."},
+    {"id":"LA2-S2","locator":"diary-excerpts#friction","text":"Shift-changing households describe missed updates between planners and shoppers. Paper-routine households describe little coordination trouble. All households include a planner and another affected person; willingness to adopt together is unknown."},
+    {"id":"LA2-S3","locator":"access-note#channels","text":"Newsletter organizers may host a research invitation but have not agreed. No representative audience-size estimate, conversion data, or age-based differences were collected."}
+  ]
+}
