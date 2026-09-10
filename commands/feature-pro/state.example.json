@@ -93,12 +93,13 @@
     "17": "pending",
     "18": "pending",
     "19": "pending",
-    "20": "pending"
+    "20": "pending",
+    "21": "pending"
   },
   "staff_discipline": {
     "module_map_approved": false,
+    "engineering_requirements_approved": false,
     "module_map_path": null,
-    "max_file_lines": 400,
     "reuse_gate_log": [],
     "compression_pass": {
       "done": false,
@@ -154,5 +155,8 @@
     "staging_url": null,
     "message_posted": false,
     "slack_posted": false
-  }
+  },
+  "scope": "project",
+  "initiative": "<initiative>",
+  "workspace_root": "<workspace-root>"
 }

@@ -15,7 +15,8 @@ test('Review Pro exposes one compact ten-phase command', () => {
   assert.equal(contract.phase_count, 10);
   assert.deepEqual(contract.phases.map(({ number }) => number), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   assert.deepEqual(contract.modes.fast, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-  assert.ok(command.split(/\s+/).length <= 1600);
+  // Raised 1600 -> 1650 on 2026-09-11, same reason as debug-pro: artifact scope is new behavior.
+  assert.ok(command.split(/\s+/).length <= 1650);
   assert.equal(fs.existsSync(path.join(ROOT, 'commands', 'review-pro', 'wrappers')), false);
   assert.match(command, /--phase <1-10>/);
   assert.match(command, /--capability <name>/);

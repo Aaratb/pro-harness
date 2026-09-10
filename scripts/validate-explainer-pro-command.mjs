@@ -49,7 +49,10 @@ try {
     read,
     mainText: main,
     globalTexts: [main, routing, core],
-    mainWordBudget: 1600,
+// Budgets are a derived FLOOR, never a cut: activeWordBudget = global_context (3092) + largest phase (492) + 600 words of working room.
+// Raised 2026-09-10 after a commit tripped three checks at once because every phase sat within a few words of its ceiling.
+// scripts/check-budget-headroom.mjs warns below 300 words; re-derive these if global_context or the largest phase grows.
+    mainWordBudget: 1758,
     mainLineBudget: 220,
     activeWordBudget: 4200,
     phaseHeading: (phase) => `# Phase ${phase.number} — ${phase.name}`,

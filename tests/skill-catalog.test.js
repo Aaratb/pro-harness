@@ -19,7 +19,7 @@ test('canonical skill catalog and Feature Pro routing pass deterministic validat
 
 test('Feature Pro command bundle passes phase, routing, and token-budget validation', () => {
   const output = childProcess.execFileSync(process.execPath, [path.join(HARNESS_ROOT, 'scripts', 'validate-feature-pro-command.mjs')], { encoding: 'utf8' });
-  assert.match(output, /Feature Pro command valid: 20 phases/);
+  assert.match(output, /Feature Pro command valid: 21 phases/);
 });
 
 test('skill folders exactly cover the resolution manifest', () => {

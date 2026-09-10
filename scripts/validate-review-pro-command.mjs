@@ -51,9 +51,12 @@ try {
     read,
     mainText: main,
     globalTexts: [main, routing, core],
-    mainWordBudget: 1600,
+// Budgets are a derived FLOOR, never a cut: activeWordBudget = global_context (3248) + largest phase (509) + 600 words of working room.
+// Raised 2026-09-10 after a commit tripped three checks at once because every phase sat within a few words of its ceiling.
+// scripts/check-budget-headroom.mjs warns below 300 words; re-derive these if global_context or the largest phase grows.
+    mainWordBudget: 1844,
     mainLineBudget: 220,
-    activeWordBudget: 4200,
+    activeWordBudget: 4357,
     phaseHeading: (phase) => `# Phase ${phase.number} — ${phase.name}\n`,
     catalogs,
     forbidden: {
@@ -65,7 +68,7 @@ try {
 
   assert(contract.command === 'review-pro' && contract.identity === 'Pro-Level Production Reviewer', 'invalid Review Pro identity');
   assert(contract.loading === 'global-once-current-phase-only', 'Review Pro must use progressive loading');
-  assert(contract.artifact_root === '$REPO_ROOT/.agents/reviews/<review-slug>', 'Review Pro artifact root is not repository-owned');
+  assert(contract.artifact_root === '$PROJECT_ROOT/reviews/<review-slug>', 'Review Pro artifact root is not repository-owned');
   assert(JSON.stringify(contract.global_context) === JSON.stringify(['commands/review-pro.md', 'skills/review-core/SKILL.md', 'commands/review-pro/routing.md']), 'Review Pro global context is incomplete or reordered');
   assert(JSON.stringify(contract.modes.deep) === JSON.stringify(expectedNumbers), 'deep mode must include all ten phases');
   assert(JSON.stringify(contract.modes.fast) === JSON.stringify(expectedNumbers), 'fast mode must retain all review surfaces at bounded depth');

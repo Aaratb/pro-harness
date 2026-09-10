@@ -24,10 +24,10 @@ Scope is coverage, not a repair allowlist. Debug separately declares exact permi
 
 ```sh
 node "$HARNESS_ROOT/scripts/resolve-review-root.mjs" --repo "$PROJECT_ROOT" --slug local-review --local --create
-node "$HARNESS_ROOT/scripts/review-run.mjs" init --repo-root "$PROJECT_ROOT" --artifact-root "$PROJECT_ROOT/.agents/reviews/local-review" --local --scope '["src","test","package.json"]'
+node "$HARNESS_ROOT/scripts/review-run.mjs" init --repo-root "$PROJECT_ROOT" --artifact-root "$PROJECT_ROOT/reviews/local-review" --local --scope '["src","test","package.json"]'
 
 node "$HARNESS_ROOT/scripts/resolve-debug-root.mjs" --repo "$PROJECT_ROOT" --slug local-repair --local --create
-node "$HARNESS_ROOT/scripts/debug-context.mjs" --repo-root "$PROJECT_ROOT" --artifact-root "$PROJECT_ROOT/.agents/debug/local-repair" --local --scope '["src","test","package.json"]'
+node "$HARNESS_ROOT/scripts/debug-context.mjs" --repo-root "$PROJECT_ROOT" --artifact-root "$PROJECT_ROOT/debug/local-repair" --local --scope '["src","test","package.json"]'
 ```
 
 Review records `comparison: local-directory`; Debug records `diff_mode: local-directory`. Both use null commit fields and the same `local_scope`. Debug retains the existing `initial_snapshot_entries`, `baseline_files` and `pre_fix_snapshot_digest`. Final capture passes that original digest with `--pre-fix-snapshot`, never replacing the historical entries. Review-origin Debug additionally supplies the original validated Review root and handoff; scope, identity, original digest and acceptance criteria must match.

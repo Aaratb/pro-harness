@@ -61,7 +61,7 @@ function repositoryRelative(repository, repositoryInput, input) {
 export function resolutionRoot(repository, repositoryInput, input, kind = 'reviews') {
   assert(['reviews', 'debug'].includes(kind), 'unknown resolution artifact kind');
   const relative = repositoryRelative(repository, repositoryInput, input);
-  assert(new RegExp('^\\.agents/' + kind + '/' + slug + '$').test(relative), `artifact root must be repository-owned .agents/${kind}/<slug>`);
+  assert(new RegExp('^(?:\\.agents/)?' + kind + '/' + slug + '$').test(relative), `artifact root must be ${kind}/<slug>, optionally under .agents/ in repository scope`);
   return { relative, root: containedPath(repository, relative, { expectedType: 'directory' }) };
 }
 const reviewRoot = (repository, repositoryInput, input) => resolutionRoot(repository, repositoryInput, input);
@@ -258,7 +258,7 @@ export function validateResolutionInput(options, { consumer = 'review' } = {}) {
   const active = resolutionRoot(repository, repositoryInput, options['--artifact-root'], consumer === 'debug' ? 'debug' : 'reviews');
   const resolutionRelative = repositoryRelative(repository, repositoryInput, options['--resolution']);
   const debugRelative = resolutionRelative.split('/').slice(0, 3).join('/');
-  assert(new RegExp('^\\.agents/debug/' + slug + '$').test(debugRelative), 'resolution must belong to one repository-owned .agents/debug/<slug> root');
+  assert(new RegExp('^(?:\\.agents/)?debug/' + slug + '$').test(debugRelative), 'resolution must belong to one debug/<slug> root');
   const packet = readJsonNoFollow(repository, resolutionRelative);
   assertJsonSchema(packet, path.join(harnessRoot, 'schemas/review-pro/debug-resolution-input.schema.json'), 'Debug Pro resolution');
   assert(sameDigest(packet.content_digest, contentDigest(packet)), 'resolution content digest does not bind the canonical packet');

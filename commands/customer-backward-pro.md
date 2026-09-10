@@ -1,7 +1,7 @@
 ---
 name: customer-backward-pro
 description: Understand customers through evidence-led research, customer fit, positioning and strategic hypotheses before delivery decisions.
-argument-hint: "<research question or supplied evidence> [--phase <1..8>] [--capability <selector>] [--study-slug <slug>] [--project-root <path>] [--resume]"
+argument-hint: "<research question or supplied evidence> [--phase <1..8>] [--capability <selector>] [--study-slug <slug>] [--initiative <name>] [--project-root <path>] [--resume]"
 status: active
 stage: research
 ---
@@ -59,11 +59,13 @@ Chat-only work can stay inline. When durable output or delegated work is useful,
 
 ```bash
 node "$HARNESS_ROOT/scripts/resolve-customer-research-root.mjs" --repo-root "$REPO_ROOT" --study-slug "$STUDY_SLUG"
-# For an explicitly selected project instead of Git discovery:
+# In a declared workspace, name the initiative when the resolver reports it cannot choose:
+node "$HARNESS_ROOT/scripts/resolve-customer-research-root.mjs" --repo-root "$REPO_ROOT" --study-slug "$STUDY_SLUG" --initiative "$INITIATIVE"
+# For an explicitly selected project instead of any discovery:
 node "$HARNESS_ROOT/scripts/resolve-customer-research-root.mjs" --project-root "$PROJECT_ROOT" --study-slug "$STUDY_SLUG"
 ```
 
-Use the returned physical `project_root` and exact `artifact_root`: `$PROJECT_ROOT/.agents/research/<study-slug>/`. With no owner, remain in chat; ask where to save only when needed. Never save into the harness, home root, shared orphan folder or an invented alternate location. Supply this explicit root to every worker; it grants workers no writing authority.
+Use the returned physical `project_root` and exact `artifact_root`: `$PROJECT_ROOT/research/<study-slug>/`. With no owner, remain in chat; ask where to save only when needed. Never save into the harness, home root, shared orphan folder or an invented alternate location. Supply this explicit root to every worker; it grants workers no writing authority.
 
 The resolver is read-only. The coordinator alone creates a fresh private directory through the shared `ensureContainedDirectory` primitive, rechecks containment before writes, and writes `research.md`. Record study/project identity, purpose, actual phase/method coverage, source references, claim status, corrections and next action in that report. Add only requested instruments or necessary calculation/evidence records beneath the same root. No mandatory per-phase reports, raw-source copies, separate state/resume engine or new ledger. Keep private artifacts out of commits; do not edit ignore rules without normal authority.
 

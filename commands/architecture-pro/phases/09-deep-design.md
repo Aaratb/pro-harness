@@ -25,7 +25,15 @@ Load `architecture-explanation-diagrams` and produce rendered applicable boundar
 
 For triggered lanes include query and access paths, end-to-end latency budgets, capacity and tuning at the approved scale targets, diagnostic ambiguity, dependency-ordered backup and restore, concurrency invariants, operation-level consistency choices, overload and backpressure, degradation, operability paper drill, failure analysis, and observability. Always preserve the minimal threat and data-transfer map, ownership, applicable rollout and rollback, and measurable fitness specifications. Material 1x, 10x, and 100x questions retain their full analysis; do not require all three scales for an unrelated local decision.
 
-Public API or event boundaries require a complete contract with producer and consumer coverage, ownership, service objectives, and validation. AI systems additionally require versioned model, prompt, context, retrieval, tool, schema, safety, evaluation, cost, latency, fallback, monitoring, and drift behavior.
+Public API or event boundaries require a complete contract with producer and consumer coverage, ownership, service objectives, and validation.
+
+Write these beneath `artifact_root` and register each in the Phase 11 handoff:
+
+- `design/design-doc.md` — the consolidated design. Terminal here: Feature Pro consumes it and never rewrites it.
+- `contracts/<contract-id>.json` for every exposed boundary, conforming to `~/.agents/schemas/architecture-pro/contract.schema.json`, plus `contracts/<contract-id>.openapi.yaml` as the publishable form for an HTTP boundary. The JSON record is the source of truth; the OpenAPI is generated from it. Populate `contract_ids` from these filenames so identifiers and bodies agree.
+- `data-model/schema-plan.md` — entities, ownership, integrity rules, compatibility and migration strategy. **Plan only: no DDL and no migration files.** `database-engineer` writes those in Feature Pro against this plan; `data-model-architect` cannot write to the repository, which keeps the split honest.
+
+Load `api-and-interface-design` for the contract pair and `architecture-data-model-evolution` for the schema plan. AI systems additionally require versioned model, prompt, context, retrieval, tool, schema, safety, evaluation, cost, latency, fallback, monitoring, and drift behavior.
 
 Keep proposal and evidence distinct: a specified future test is not observed or measured behavior. A new design needs explicit fitness specifications and feasibility evidence; an audit claim about current behavior needs actual evidence. Neither a diagram nor a green schema check proves a performance, recovery, security, or AI-quality target. Record who will run each missing proof and when it must pass; do not waive certification's required measurements. Show the consolidated architecture and decision-changing specialist objections before certification, reusing earlier views rather than creating duplicate artifacts.
 

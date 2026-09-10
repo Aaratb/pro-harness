@@ -32,7 +32,7 @@ test('design and build resolve the existing browser for representative rendered 
   const browser = registry.contracts.find(entry => entry.name === 'browser');
   const capabilities = readJson(`mcps/${browser.path}`).capabilities;
   const phases = readJson('commands/feature-pro/contract.json').phases;
-  for (const number of [5, 8, 9, 13]) {
+  for (const number of [4, 9, 10, 14]) {
     assert.ok(browser.workflows['feature-pro'].includes(number), `browser route for Phase ${number}`);
     const phase = phases.find(entry => entry.number === number);
     for (const capability of ['browser.navigate', 'browser.inspect', 'browser.capture']) {
@@ -45,7 +45,7 @@ test('design and build resolve the existing browser for representative rendered 
 test('Feature Pro reconciliation snapshot and behavior map pass deterministic validation', () => {
   const verifier = path.join(HARNESS_ROOT, 'scripts', 'verify-feature-pro-reconciliation.mjs');
   const output = childProcess.execFileSync(process.execPath, [verifier], { encoding: 'utf8' });
-  assert.match(output, /Feature Pro reconciliation valid: 20 phases, 26 behavior domains/);
+  assert.match(output, /Feature Pro reconciliation valid: 21 phases, 29 behavior domains/);
 });
 
 test('workspace-codemap-pro uses canonical agents, repository outputs, and diagram capability', () => {

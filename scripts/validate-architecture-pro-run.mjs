@@ -37,9 +37,9 @@ try {
   const repositoryRootInput = valueFor('--repo-root');
   const artifactRelative = valueFor('--artifact-root');
   const requireComplete = args.includes('--require-complete');
-  if (!repositoryRootInput || !artifactRelative) throw new Error('usage: validate-architecture-pro-run.mjs --repo-root <repository> --artifact-root <.agents/architecture/slug> [--require-complete]');
-  const match = artifactRelative.match(/^\.agents\/architecture\/([a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?)$/);
-  if (!match) throw new Error('artifact-root must be .agents/architecture/<slug>');
+  if (!repositoryRootInput || !artifactRelative) throw new Error('usage: validate-architecture-pro-run.mjs --repo-root <repository> --artifact-root <architecture/slug> [--require-complete]');
+  const match = artifactRelative.match(/^(?:\.agents\/)?architecture\/([a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?)$/);
+  if (!match) throw new Error('artifact-root must be architecture/<slug>, optionally under .agents/ in repository scope');
   const repositoryRoot = canonicalRoot(repositoryRootInput);
   const artifactRoot = containedPath(repositoryRoot, artifactRelative, { expectedType: 'directory' });
   const stateRelative = `${artifactRelative}/state.json`;

@@ -32,8 +32,16 @@ Set:
 
 ```text
 REPO_ROOT=<physical active repository>
-ARCHITECTURE_ROOT=$REPO_ROOT/.agents/architecture/<architecture-slug>
+PROJECT_ROOT=<initiative folder, in a declared workspace>
+ARCHITECTURE_ROOT=$PROJECT_ROOT/architecture/<architecture-slug>
 ```
+
+The resolver reports `scope`. On `project`, `ARCHITECTURE_ROOT` sits beside the initiative so
+Feature Pro finds the handoff where it looks for it. On `repository`, no workspace is declared
+and `PROJECT_ROOT` is `$REPO_ROOT`. On `status=needs-initiative`, ask the user which initiative
+this belongs to — offering `available` and a new one — then re-run with `--initiative <name>`.
+Never choose when `matching` lists more than one: a handoff written under the wrong initiative
+is invisible to Feature Pro, not merely misplaced.
 
 Before reading or writing run state:
 

@@ -22,8 +22,8 @@ let repositoryRoot;
 try {
   if (!repositoryRootInput || !handoffRelative) throw new Error('usage: validate-architecture-handoff.mjs --repo-root <repository> --handoff <.agents/architecture/<slug>/handoff.json> [--require-design]');
   repositoryRoot = canonicalRoot(repositoryRootInput);
-  const match = handoffRelative.match(/^\.agents\/architecture\/([a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?)\/handoff\.json$/);
-  if (!match) throw new Error('handoff path must be .agents/architecture/<slug>/handoff.json');
+  const match = handoffRelative.match(/^(?:\.agents\/)?architecture\/([a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?)\/handoff\.json$/);
+  if (!match) throw new Error('handoff path must be architecture/<slug>/handoff.json, optionally under .agents/ in repository scope');
   const handoffPath = containedPath(repositoryRoot, handoffRelative, { expectedType: 'file' });
   handoff = JSON.parse(fs.readFileSync(handoffPath, 'utf8'));
   const schemaPath = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'schemas', 'architecture-handoff', 'handoff.schema.json');

@@ -4,35 +4,250 @@
   "identity": "Pro-Level Customer Researcher",
   "phase_count": 8,
   "loading": "global-once-current-phase-only",
-  "global_context": ["commands/customer-backward-pro.md", "commands/customer-backward-pro/routing.md"],
-  "artifact_root": "$PROJECT_ROOT/.agents/research/<study-slug>",
-  "modes": { "default": [1, 2, 3, 4, 5, 6, 7, 8] },
+  "global_context": [
+    "commands/customer-backward-pro.md",
+    "commands/customer-backward-pro/routing.md"
+  ],
+  "artifact_root": "$PROJECT_ROOT/research/<study-slug>",
+  "modes": {
+    "default": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
   "capability_routes": [
-    {"selector":"framing","skill":"customer-research-framing","agent":"customer-researcher","phase":1},
-    {"selector":"evidence-audit","skill":"customer-evidence-audit","agent":"customer-evidence-analyst","phase":2},
-    {"selector":"access","skill":"customer-research-access","agent":"customer-researcher","phase":2},
-    {"selector":"cohort-design","skill":"customer-cohort-design","agent":"customer-researcher","phase":3},
-    {"selector":"interview-design","skill":"customer-interview-design","agent":"customer-researcher","phase":3},
-    {"selector":"records","skill":"customer-research-records","agent":"customer-researcher","phase":4},
-    {"selector":"quantitative-analysis","skill":"customer-quantitative-analysis","agent":"customer-evidence-analyst","phase":5},
-    {"selector":"behavior","skill":"customer-behavior-synthesis","agent":"customer-researcher","phase":5},
-    {"selector":"insights","skill":"customer-insight-synthesis","agent":"customer-researcher","phase":5},
-    {"selector":"icp","skill":"customer-icp-definition","agent":"customer-researcher","phase":6},
-    {"selector":"market","skill":"customer-market-intelligence","agent":"customer-evidence-analyst","phase":6},
-    {"selector":"economics","skill":"customer-opportunity-economics","agent":"customer-evidence-analyst","phase":6},
-    {"selector":"positioning","skill":"customer-positioning","agent":"customer-researcher","phase":6},
-    {"selector":"strategy","skill":"customer-strategy-synthesis","agent":"customer-researcher","phase":7},
-    {"selector":"validation","skill":"customer-solution-validation","agent":"customer-researcher","phase":7},
-    {"selector":"challenge","skill":"customer-independent-challenge","agent":"customer-evidence-analyst","phase":8}
+    {
+      "selector": "framing",
+      "skill": "customer-research-framing",
+      "agent": "customer-researcher",
+      "phase": 1
+    },
+    {
+      "selector": "evidence-audit",
+      "skill": "customer-evidence-audit",
+      "agent": "customer-evidence-analyst",
+      "phase": 2
+    },
+    {
+      "selector": "access",
+      "skill": "customer-research-access",
+      "agent": "customer-researcher",
+      "phase": 2
+    },
+    {
+      "selector": "cohort-design",
+      "skill": "customer-cohort-design",
+      "agent": "customer-researcher",
+      "phase": 3
+    },
+    {
+      "selector": "interview-design",
+      "skill": "customer-interview-design",
+      "agent": "customer-researcher",
+      "phase": 3
+    },
+    {
+      "selector": "records",
+      "skill": "customer-research-records",
+      "agent": "customer-researcher",
+      "phase": 4
+    },
+    {
+      "selector": "quantitative-analysis",
+      "skill": "customer-quantitative-analysis",
+      "agent": "customer-evidence-analyst",
+      "phase": 5
+    },
+    {
+      "selector": "behavior",
+      "skill": "customer-behavior-synthesis",
+      "agent": "customer-researcher",
+      "phase": 5
+    },
+    {
+      "selector": "insights",
+      "skill": "customer-insight-synthesis",
+      "agent": "customer-researcher",
+      "phase": 5
+    },
+    {
+      "selector": "icp",
+      "skill": "customer-icp-definition",
+      "agent": "customer-researcher",
+      "phase": 6
+    },
+    {
+      "selector": "market",
+      "skill": "customer-market-intelligence",
+      "agent": "customer-evidence-analyst",
+      "phase": 6
+    },
+    {
+      "selector": "economics",
+      "skill": "customer-opportunity-economics",
+      "agent": "customer-evidence-analyst",
+      "phase": 6
+    },
+    {
+      "selector": "positioning",
+      "skill": "customer-positioning",
+      "agent": "customer-researcher",
+      "phase": 6
+    },
+    {
+      "selector": "strategy",
+      "skill": "customer-strategy-synthesis",
+      "agent": "customer-researcher",
+      "phase": 7
+    },
+    {
+      "selector": "validation",
+      "skill": "customer-solution-validation",
+      "agent": "customer-researcher",
+      "phase": 7
+    },
+    {
+      "selector": "challenge",
+      "skill": "customer-independent-challenge",
+      "agent": "customer-evidence-analyst",
+      "phase": 8
+    }
   ],
   "phases": [
-    {"number":1,"name":"Goal & Current Beliefs","file":"phases/01-goal.md","required_skills":["customer-research-framing"],"optional_skills":[],"agents":["customer-researcher"],"capabilities":[]},
-    {"number":2,"name":"Evidence & Access","file":"phases/02-evidence.md","required_skills":["customer-evidence-audit"],"optional_skills":["customer-research-access"],"agents":["customer-researcher","customer-evidence-analyst"],"capabilities":["firecrawl.search","firecrawl.scrape","firecrawl.map","firecrawl.crawl","firecrawl.extract","firecrawl.deep-research","exa.search","exa.fetch","exa.advanced-search"]},
-    {"number":3,"name":"Research Design","file":"phases/03-design.md","required_skills":[],"optional_skills":["customer-cohort-design","customer-interview-design"],"agents":["customer-researcher"],"capabilities":[]},
-    {"number":4,"name":"Research Records","file":"phases/04-records.md","required_skills":["customer-research-records"],"optional_skills":[],"agents":["customer-researcher"],"capabilities":[]},
-    {"number":5,"name":"Behavior & Insights","file":"phases/05-insights.md","required_skills":[],"optional_skills":["customer-quantitative-analysis","customer-behavior-synthesis","customer-insight-synthesis","ab-test-analysis"],"agents":["customer-researcher","customer-evidence-analyst"],"capabilities":[]},
-    {"number":6,"name":"Customer Fit & Value","file":"phases/06-fit.md","required_skills":[],"optional_skills":["customer-icp-definition","customer-market-intelligence","customer-opportunity-economics","customer-positioning"],"agents":["customer-researcher","customer-evidence-analyst"],"capabilities":[]},
-    {"number":7,"name":"Strategy & Validation","file":"phases/07-strategy.md","required_skills":[],"optional_skills":["customer-strategy-synthesis","customer-solution-validation","ab-test-analysis"],"agents":["customer-researcher"],"capabilities":[]},
-    {"number":8,"name":"Challenge & Handoff","file":"phases/08-handoff.md","required_skills":[],"optional_skills":["customer-independent-challenge","customer-evidence-audit"],"agents":["customer-evidence-analyst"],"capabilities":[]}
+    {
+      "number": 1,
+      "name": "Goal & Current Beliefs",
+      "file": "phases/01-goal.md",
+      "required_skills": [
+        "customer-research-framing"
+      ],
+      "optional_skills": [],
+      "agents": [
+        "customer-researcher"
+      ],
+      "capabilities": []
+    },
+    {
+      "number": 2,
+      "name": "Evidence & Access",
+      "file": "phases/02-evidence.md",
+      "required_skills": [
+        "customer-evidence-audit"
+      ],
+      "optional_skills": [
+        "customer-research-access"
+      ],
+      "agents": [
+        "customer-researcher",
+        "customer-evidence-analyst"
+      ],
+      "capabilities": [
+        "firecrawl.search",
+        "firecrawl.scrape",
+        "firecrawl.map",
+        "firecrawl.crawl",
+        "firecrawl.extract",
+        "firecrawl.deep-research",
+        "exa.search",
+        "exa.fetch",
+        "exa.advanced-search"
+      ]
+    },
+    {
+      "number": 3,
+      "name": "Research Design",
+      "file": "phases/03-design.md",
+      "required_skills": [],
+      "optional_skills": [
+        "customer-cohort-design",
+        "customer-interview-design"
+      ],
+      "agents": [
+        "customer-researcher"
+      ],
+      "capabilities": []
+    },
+    {
+      "number": 4,
+      "name": "Research Records",
+      "file": "phases/04-records.md",
+      "required_skills": [
+        "customer-research-records"
+      ],
+      "optional_skills": [],
+      "agents": [
+        "customer-researcher"
+      ],
+      "capabilities": []
+    },
+    {
+      "number": 5,
+      "name": "Behavior & Insights",
+      "file": "phases/05-insights.md",
+      "required_skills": [],
+      "optional_skills": [
+        "customer-quantitative-analysis",
+        "customer-behavior-synthesis",
+        "customer-insight-synthesis",
+        "ab-test-analysis"
+      ],
+      "agents": [
+        "customer-researcher",
+        "customer-evidence-analyst"
+      ],
+      "capabilities": []
+    },
+    {
+      "number": 6,
+      "name": "Customer Fit & Value",
+      "file": "phases/06-fit.md",
+      "required_skills": [],
+      "optional_skills": [
+        "customer-icp-definition",
+        "customer-market-intelligence",
+        "customer-opportunity-economics",
+        "customer-positioning"
+      ],
+      "agents": [
+        "customer-researcher",
+        "customer-evidence-analyst"
+      ],
+      "capabilities": []
+    },
+    {
+      "number": 7,
+      "name": "Strategy & Validation",
+      "file": "phases/07-strategy.md",
+      "required_skills": [],
+      "optional_skills": [
+        "customer-strategy-synthesis",
+        "customer-solution-validation",
+        "ab-test-analysis"
+      ],
+      "agents": [
+        "customer-researcher"
+      ],
+      "capabilities": []
+    },
+    {
+      "number": 8,
+      "name": "Challenge & Handoff",
+      "file": "phases/08-handoff.md",
+      "required_skills": [],
+      "optional_skills": [
+        "customer-independent-challenge",
+        "customer-evidence-audit"
+      ],
+      "agents": [
+        "customer-evidence-analyst"
+      ],
+      "capabilities": []
+    }
   ]
 }

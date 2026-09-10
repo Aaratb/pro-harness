@@ -9,7 +9,7 @@
     "skills/debug-core/SKILL.md",
     "commands/debug-pro/routing.md"
   ],
-  "artifact_root": "$REPO_ROOT/.agents/debug/<debug-slug>",
+  "artifact_root": "$PROJECT_ROOT/debug/<debug-slug>",
   "modes": {
     "adaptive": [
       1,
@@ -142,7 +142,9 @@
       "required_skills": [
         "systematic-debugging"
       ],
-      "optional_skills": ["ai-product-engineering"],
+      "optional_skills": [
+        "ai-product-engineering"
+      ],
       "agents": [],
       "capabilities": []
     },
@@ -153,7 +155,9 @@
       "required_skills": [
         "systematic-debugging"
       ],
-      "optional_skills": ["architecture-diagnostics"],
+      "optional_skills": [
+        "architecture-diagnostics"
+      ],
       "agents": [
         "repository-explorer",
         "system-diagnostics-analyst"
@@ -195,7 +199,9 @@
         "systematic-debugging",
         "architecture-diagnostics"
       ],
-      "agents": ["system-diagnostics-analyst"],
+      "agents": [
+        "system-diagnostics-analyst"
+      ],
       "capabilities": []
     },
     {
@@ -213,7 +219,10 @@
         "implementation-planner",
         "unit-test-engineer"
       ],
-      "capabilities": ["firecrawl.search", "firecrawl.scrape"]
+      "capabilities": [
+        "firecrawl.search",
+        "firecrawl.scrape"
+      ]
     },
     {
       "number": 12,
@@ -229,8 +238,16 @@
         "ai-product-engineering"
       ],
       "agents": [
-        "code-reviewer", "typescript-reviewer", "python-reviewer", "java-reviewer",
-        "kotlin-reviewer", "go-reviewer", "rust-reviewer", "cpp-reviewer", "flutter-reviewer", "security-reviewer"
+        "code-reviewer",
+        "typescript-reviewer",
+        "python-reviewer",
+        "java-reviewer",
+        "kotlin-reviewer",
+        "go-reviewer",
+        "rust-reviewer",
+        "cpp-reviewer",
+        "flutter-reviewer",
+        "security-reviewer"
       ],
       "capabilities": []
     },

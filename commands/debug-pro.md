@@ -78,7 +78,9 @@ node "$HARNESS_ROOT/scripts/resolve-debug-root.mjs" --repo "$REPO_ROOT" --slug "
 
 Use the returned physical project and exact `artifact_root`:
 
-`$REPO_ROOT/.agents/debug/<debug-slug>/`
+`$PROJECT_ROOT/debug/<debug-slug>/`
+
+The resolver reports `scope`: `project` sits beside the initiative, `repository` and `local-project` are unchanged. On `status=needs-initiative`, ask, then re-run with `--initiative <name>`.
 
 All generated artifacts and agent outputs stay there; only eligible, scoped project edits may live outside it. Never invent alternate roots. The harness installation owns artifacts only when explicitly selected as the project.
 

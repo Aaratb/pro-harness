@@ -3,9 +3,10 @@
 import { canonicalRoot, ensureContainedDirectory } from './lib/repository-paths.mjs';
 import { inspectArtifactDirectory, resolveRepositoryArtifactRoot } from './lib/repository-artifacts.mjs';
 import { resolveLocalProjectRoot } from './lib/local-directory.mjs';
+import { decideArtifactScope } from './lib/project-discovery.mjs';
 
 const args = process.argv.slice(2);
-const known = new Set(['--repo', '--slug', '--create', '--local']);
+const known = new Set(['--repo', '--slug', '--create', '--local', '--initiative']);
 const valueFor = (flag) => {
   const index = args.indexOf(flag);
   return index >= 0 ? args[index + 1] : undefined;
@@ -26,17 +27,37 @@ try {
   const local = args.includes('--local');
   if (local && !valueFor('--repo')) throw new Error('--local requires an explicitly selected --repo');
   const start = local ? resolveLocalProjectRoot(valueFor('--repo')) : canonicalRoot(valueFor('--repo') ?? process.cwd());
-  const artifactRelative = `.agents/reviews/${slug}`;
-  const resolved = local ? { repositoryRoot: start, artifactRoot: args.includes('--create') ? ensureContainedDirectory(start, artifactRelative) : inspectArtifactDirectory(start, artifactRelative) }
-    : resolveRepositoryArtifactRoot({ startDirectory: start, artifactRelative, create: args.includes('--create') });
+  const create = args.includes('--create');
+  // `--local` is an explicit selection of a standalone project; discovery must not override it.
+  const scope = local ? { status: 'local' } : decideArtifactScope({
+    startDirectory: start, family: 'reviews', slug, requestedInitiative: valueFor('--initiative') ?? '', create,
+  });
+
+  if (scope.status === 'needs-initiative') {
+    console.log(JSON.stringify({
+      status: 'needs-initiative',
+      summary: scope.ambiguous ? 'this review slug exists under more than one initiative' : 'select the initiative this review belongs to',
+      workspace_root: scope.workspace.workspaceRoot, matching: scope.matching, available: scope.available,
+      next_actions: ['Re-run with --initiative <name>, using an existing initiative or a new one.'],
+    }, null, 2));
+    process.exit(2);
+  }
+
+  const artifactRelative = local ? `.agents/reviews/${slug}` : scope.artifactRelative;
+  const resolved = local ? { repositoryRoot: start, artifactRoot: create ? ensureContainedDirectory(start, artifactRelative) : inspectArtifactDirectory(start, artifactRelative) }
+    : resolveRepositoryArtifactRoot({ startDirectory: start, artifactRelative, create,
+      ...(scope.status === 'project' ? { rootOverride: scope.projectRoot, containmentRoot: scope.workspace.workspaceRoot } : {}) });
+  const ownership = local ? 'local-project' : scope.status === 'project' ? 'project' : 'repository';
   console.log(JSON.stringify({
     status: 'success',
-    summary: `resolved ${local ? 'local-project' : 'repository'}-owned Review Pro root for ${slug}`,
+    scope: ownership,
+    summary: `resolved ${ownership}-owned Review Pro root for ${slug}`,
+    ...(scope.status === 'project' ? { initiative: scope.initiative, workspace_root: scope.workspace.workspaceRoot } : {}),
     repository_root: resolved.repositoryRoot,
     artifact_root: resolved.artifactRoot,
     artifact_relative: artifactRelative,
-    created: args.includes('--create'),
-    artifacts: args.includes('--create') ? [artifactRelative] : [],
+    created: create,
+    artifacts: create ? [artifactRelative] : [],
     next_actions: ['Initialize or resume Review Pro using this exact artifact root.'],
   }, null, 2));
 } catch (error) {

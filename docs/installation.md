@@ -70,8 +70,8 @@ When upgrading the codemap command name, the installer replaces only old runtime
 
 Restart the selected runtime after installation. Then verify:
 
-- Claude or Cursor shows `/architecture-pro`, `/customer-backward-pro`, `/debug-pro`, `/explainer-pro`, `/feature-pro`, `/outcome-pro`, `/review-pro`, and `/workspace-codemap-pro`.
-- Codex discovers `$architecture-pro`, `$customer-backward-pro`, `$debug-pro`, `$explainer-pro`, `$feature-pro`, `$outcome-pro`, `$review-pro`, and `$workspace-codemap-pro`.
+- Claude or Cursor shows `/architecture-pro`, `/customer-backward-pro`, `/debug-pro`, `/explainer-pro`, `/feature-pro`, `/outcome-pro`, `/review-pro`, `/workspace-codemap-pro`, and `/workspace-learning-pro`.
+- Codex discovers `$architecture-pro`, `$customer-backward-pro`, `$debug-pro`, `$explainer-pro`, `$feature-pro`, `$outcome-pro`, `$review-pro`, `$workspace-codemap-pro`, and `$workspace-learning-pro`.
 - A named canonical agent such as `code-reviewer` is discoverable.
 - Invoking Feature Pro writes state below the active repository's `.agents/features/` directory, never beside the harness installation.
 - Invoking Architecture Pro writes state below the active repository's `.agents/architecture/` directory, never beside the harness installation.
@@ -79,6 +79,7 @@ Restart the selected runtime after installation. Then verify:
 - Invoking Review Pro writes evidence below the active repository's `.agents/reviews/` directory while leaving reviewed source and configuration unchanged.
 - Invoking Outcome Pro uses chat for a simple check or a fresh owning repository's `.agents/outcomes/<run-id>/` for saved assessments; it creates no phase-state engine.
 - Invoking Customer Backward Pro uses chat or the selected project's `.agents/research/<study-slug>/`; non-Git projects require explicit selection. Its workers remain read-only. Importing its canonical files alone does not refresh existing runtime discovery; install/update separately when ready.
+- Invoking Workspace Learning Pro resolves the adapter-provided `HARNESS_ROOT`, keeps workspace state under `.workspace-learning/`, and writes repository learning artifacts only below each repository's ignored `.agents/repository-learning/`, `.agents/explanations/`, and `.codemaps/` roots.
 
 ## Installation safety
 

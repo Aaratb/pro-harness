@@ -31,7 +31,7 @@ const sourceIndex = process.argv.indexOf('--source');
 assert(reconciliation.schema_version === 1, 'reconciliation schema_version must be 1');
 assert(reconciliation.status === 'reconciled-with-approved-normalizations', 'reconciliation is not certified');
 assert(reconciliation.phase_map.length === contract.phase_count, 'reconciliation must map every phase');
-assert(reconciliation.phase_map.every((phase, index) => phase.target === index + 1), 'reconciliation phase map must target integers 1-20');
+assert(reconciliation.phase_map.every((phase, index) => phase.target === index + 1), 'reconciliation phase map must target integers 1-21');
 assert(reconciliation.behavior_domains.length >= 20, 'reconciliation must cover at least one behavior domain per phase');
 
 const coveredPhases = new Set(reconciliation.behavior_domains.flatMap(({ phases }) => phases));

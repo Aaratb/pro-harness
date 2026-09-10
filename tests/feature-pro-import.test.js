@@ -28,8 +28,8 @@ test('Feature Pro keeps generated artifacts in the active repository', () => {
   assert.match(command, /\$REPO_ROOT\/\.agents\/features\/<feature-slug>/);
   assert.match(command, /resolve-feature-root\.sh/);
   assert.match(command, /resolver handles worktrees/);
-  assert.match(command, /If no Git repository can be resolved, stop/);
-  assert.match(command, /If a feature spans multiple repositories/);
+  assert.match(command, /If neither a workspace nor a Git repository can be resolved, stop and ask/);
+  assert.match(command, /A feature spanning multiple repositories still has one initiative/);
   assert.match(command, /\.agents\/features\/<slug>\/reviews\/code-review\.md/);
   assert.match(command, /\.agents\/features\/<slug>\/tests\//);
   assert.match(command, /\.agents\/features\/<slug>\/verification\/setup-audit\.md/);
@@ -77,6 +77,7 @@ test('repository resolver selects the nearest Git repository', () => {
 
     assert.equal(output, [
       'status=success',
+      'scope=repository',
       'summary=repository-local Feature Pro root resolved',
       `repo_root=${physicalRepository}`,
       `feature_root=${path.join(physicalRepository, '.agents', 'features', 'new-billing')}`,
@@ -110,6 +111,38 @@ test('repository resolver rejects symlinked and non-directory artifact path comp
     const nonDirectory = childProcess.spawnSync('bash', [resolver, repository, 'new-billing'], { encoding: 'utf8' });
     assert.notEqual(nonDirectory.status, 0);
     assert.match(nonDirectory.stderr, /artifact path component is not a directory: \.agents/);
+  } finally {
+    fs.rmSync(temporaryRoot, { recursive: true, force: true });
+  }
+});
+
+test('a declared workspace routes artifacts beside the initiative, not into the code repository', () => {
+  const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'feature-pro-project-'));
+  const workspaceRoot = path.join(temporaryRoot, 'workspace');
+  const repository = path.join(workspaceRoot, 'service-a');
+  const resolver = path.join(HARNESS_ROOT, 'scripts', 'resolve-feature-root.sh');
+
+  try {
+    fs.mkdirSync(repository, { recursive: true });
+    childProcess.execFileSync('git', ['init', '-q', workspaceRoot]);
+    childProcess.execFileSync('git', ['init', '-q', repository]);
+    fs.writeFileSync(path.join(workspaceRoot, '.pro-harness-projects.json'), '{"schema_version":1,"projects_root":"Product"}\n');
+    fs.mkdirSync(path.join(workspaceRoot, 'Product', 'alpha'), { recursive: true });
+
+    // Without an initiative the resolver reports the choice rather than guessing one.
+    const asked = childProcess.spawnSync('bash', [resolver, repository, 'new-billing'], { encoding: 'utf8' });
+    assert.equal(asked.status, 2);
+    assert.match(asked.stdout, /status=needs-initiative/);
+    assert.match(asked.stdout, /available=alpha/);
+
+    const output = childProcess.execFileSync('bash', [resolver, repository, 'new-billing', '--initiative', 'alpha'], { encoding: 'utf8' });
+    const physicalWorkspace = fs.realpathSync(workspaceRoot);
+    assert.match(output, /^scope=project$/m);
+    assert.match(output, new RegExp(`^initiative=alpha$`, 'm'));
+    assert.match(output, new RegExp(`^feature_root=${path.join(physicalWorkspace, 'Product', 'alpha', 'features', 'new-billing')}$`, 'm'));
+    // The code repository is still reported, because branches, tests and PRs still live there.
+    assert.match(output, new RegExp(`^repo_root=${fs.realpathSync(repository)}$`, 'm'));
+    assert.equal(fs.existsSync(path.join(repository, '.agents')), false, 'nothing may be written into the code repository');
   } finally {
     fs.rmSync(temporaryRoot, { recursive: true, force: true });
   }

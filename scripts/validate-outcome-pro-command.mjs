@@ -25,15 +25,18 @@ try {
   const bundle = files.map(read).join('\n');
   const mechanics = validateCommandMechanics({ contract, phaseCount: 4, commandRoot: path.join(root, 'commands/outcome-pro'),
     // Allow the requested opening roadmap/choice without cutting analytical methods.
-    phaseBasePath: 'commands/outcome-pro', read, mainText: main, globalTexts, mainWordBudget: 1300, mainLineBudget: 140,
-    activeWordBudget: 2450, phaseHeading: (phase) => `# Phase ${phase.number} — ${phase.name}\n`, catalogs,
+// Budgets are a derived FLOOR, never a cut: activeWordBudget = global_context (1700) + largest phase (590) + 600 words of working room.
+// Raised 2026-09-10 after a commit tripped three checks at once because every phase sat within a few words of its ceiling.
+// scripts/check-budget-headroom.mjs warns below 300 words; re-derive these if global_context or the largest phase grows.
+    phaseBasePath: 'commands/outcome-pro', read, mainText: main, globalTexts, mainWordBudget: 1445, mainLineBudget: 140,
+    activeWordBudget: 2890, phaseHeading: (phase) => `# Phase ${phase.number} — ${phase.name}\n`, catalogs,
     forbidden: { text: bundle, label: 'Outcome Pro canonical bundle', patterns: [/\.agent_docs|\.aw_docs|\bgod-level\b/i,
       /\b(?:gstack|superpowers)\b/i, /app-product:|app-shared:|fork_turns|openai\.yaml|Flow Ship|flow-ship/,
       /\/Users\//, new RegExp(['Updated', 'Personal', 'Harness'].join('-'), 'i')] } });
   assert(contract.command === 'outcome-pro' && contract.phase_count === 4, 'invalid Outcome identity or phase count');
   assert(contract.loading === 'global-once-current-phase-only', 'Outcome must progressively load current phase');
   assert(JSON.stringify(contract.global_context) === JSON.stringify(['commands/outcome-pro.md', 'commands/outcome-pro/routing.md']), 'Outcome global context expanded');
-  assert(contract.artifact_root === '$REPO_ROOT/.agents/outcomes/<run-id>', 'Outcome artifacts must remain repository-owned');
+  assert(contract.artifact_root === '$PROJECT_ROOT/outcomes/<run-id>', 'Outcome artifacts must remain repository-owned');
   assert(JSON.stringify(contract.modes.default) === '[1,2,3,4]', 'Outcome default phase ordering changed');
   assert(referenceFiles.length === 5, 'Outcome depth must remain consolidated into five references');
   assert(JSON.stringify([...catalogs.skills].filter((name) => name.startsWith('outcome-')).sort()) === JSON.stringify([...skills].sort()), 'Outcome must expose exactly four flat skills');

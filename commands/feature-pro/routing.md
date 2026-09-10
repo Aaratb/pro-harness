@@ -2,7 +2,7 @@
 
 Route conditionally; never launch every agent. Use canonical names; stack/provider specifics belong in adapters.
 
-For Phases 3, 5 (when applicable), and 6, require independent challenge before approval/freeze; Phase 8 requires `ralph-loop` fresh implementer attempts. Other agent lists are inventories; Phase 2 stays inline.
+For Phases 3, 4 (when applicable), 5, and 7, require independent challenge before approval/freeze; Phase 9 requires `ralph-loop` fresh implementer attempts. Other agent lists are inventories; Phase 2 stays inline.
 
 ### Bounded independent challenge
 
@@ -24,7 +24,7 @@ If a named adapter is unavailable, a fresh general agent may receive the canonic
 
 ### Cross-cutting capability routes
 
-Every run uses `observability-by-design` for execution events; runtime/API/async/external/sensitive/AI work also uses it for product telemetry. New capabilities use `library-first-engineering`. AI evidence activates `ai-product-engineering` and Phase 13's `ai-evaluation-engineer`.
+Every run uses `observability-by-design` for execution events; runtime/API/async/external/sensitive/AI work also uses it for product telemetry. New capabilities use `library-first-engineering`. AI evidence activates `ai-product-engineering` and Phase 14's `ai-evaluation-engineer`.
 
 ### Artifact companions (planning phases)
 
@@ -32,7 +32,7 @@ When useful, requested, or repository-required, run `generate-artifact-companion
 
 Publishing requires user request; never block local progress on it.
 
-### Security review routing (Phases 11 and 16 — conditional, not a blanket blast)
+### Security review routing (Phases 12 and 17 — conditional, not a blanket blast)
 
 **Default wave (always):** `code-reviewer`, `legal-risk-reviewer`, plus one language-specific reviewer selected from the diff.
 
@@ -49,7 +49,7 @@ Publishing requires user request; never block local progress on it.
 
 Use one coordinated security pass alongside code review. `security-reviewer` is the fallback when no specialist lane applies.
 
-### PR & merge gates (Phase 17)
+### PR & merge gates (Phase 18)
 
 Before declaring stacked PRs clean:
 
@@ -57,7 +57,7 @@ Before declaring stacked PRs clean:
 2. Impact / blast-radius / merge-readiness pass on the feature PR URL.
 3. Optional single safe stacked fix PR when blocker triage is requested; never mix with feature commits.
 
-### SDET routing (Phases 13 and 15)
+### SDET routing (Phases 14 and 16)
 
 | When | Agent / approach |
 |---|---|

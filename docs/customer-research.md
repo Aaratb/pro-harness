@@ -36,6 +36,4 @@ Three fresh-context synthetic exercises were run during import, using the actual
 
 Each loaded only its selected method and necessary references, kept the phase number/name visible on entry, and stayed inline without external operations. These are three bounded smoke exercises, not a statistical evaluation of all sixteen methods, all runtimes or full multi-phase research. Independent code review separately checked the local boundaries and integration; it is not customer-research validation.
 
-A subsequent [disciplinary-depth evaluation](../evals/customer-backward-pro/results-2026-09-05.md) audited all sixteen methods, independently graded twenty standalone attempts and exercised a connected study with a fresh challenge and material source correction. It justified three localized method refinements without expanding the main command or runtime machinery. The report preserves minor partial results and version boundaries; passing these synthetic cases does not replace real research or user acceptance.
-
 Import and activation are separate: adding these canonical files does not regenerate the user's existing Claude, Codex or Cursor discovery entries. Update installation only when ready; leave unrelated commands, skills, agents and hooks intact.

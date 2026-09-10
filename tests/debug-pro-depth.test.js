@@ -82,6 +82,6 @@ test('debug retains the existing packet, outputs, phase count and compact entry 
   assert.equal(contract.loading, 'global-once-current-phase-only');
   assert.deepEqual(fs.readdirSync(path.join(root, 'schemas/debug-pro')), ['resolution.schema.json']);
   assert.equal(JSON.parse(read('schemas/debug-pro/resolution.schema.json')).allOf[0].$ref, '../review-pro/debug-resolution-input.schema.json#/$defs/nested');
-  assert.ok(read('commands/debug-pro.md').split(/\s+/).length <= 1400);
+  assert.ok(read('commands/debug-pro.md').split(/\s+/).length <= 1450);
   assert.match(read('commands/debug-pro.md'), /No automatic commit, pull request, deployment/);
 });

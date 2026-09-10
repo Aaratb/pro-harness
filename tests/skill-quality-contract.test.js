@@ -53,7 +53,7 @@ test('quality probes are bounded fixtures, not keyword-based claims of model qua
 });
 
 test('design direction is contextual rather than a fixed palette or typeface quota', () => {
-  const phase = read('commands/feature-pro/phases/05-design.md');
+  const phase = read('commands/feature-pro/phases/04-design.md');
   assert.match(phase, /token plan before any component code/);
   assert.match(phase, /existing brand/);
   assert.doesNotMatch(phase, /4–6 named colors|2\+ typefaces|one signature element/);

@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "command": "workspace-learning-pro",
+  "identity": "Workspace-Wide Repository Learning Coordinator",
+  "phase_count": 8,
+  "loading": "global-once-current-phase-only",
+  "global_context": [
+    "commands/workspace-learning-pro.md",
+    "skills/workspace-learning-core/SKILL.md",
+    "commands/workspace-learning-pro/routing.md"
+  ],
+  "workspace_state_root": "$WORKSPACE_ROOT/.workspace-learning",
+  "artifact_root": "$REPO_ROOT/.agents/repository-learning",
+  "phases": [
+    {
+      "number": 1,
+      "name": "Inventory & Preflight",
+      "file": "phases/01-inventory-preflight.md",
+      "required_skills": ["workspace-learning-core"],
+      "optional_skills": [],
+      "agents": [],
+      "capabilities": [
+        "code-qa.ask",
+        "code-qa.continue_task",
+        "code-qa.get_task",
+        "code-qa.get_task_logs",
+        "code-qa.cancel_task",
+        "code-qa.health",
+        "code-qa.list_conversations"
+      ]
+    },
+    {
+      "number": 2,
+      "name": "Local Study",
+      "file": "phases/02-local-study.md",
+      "required_skills": ["workspace-learning-core", "codebase-onboarding"],
+      "optional_skills": ["workspace-codemap-context"],
+      "agents": ["repository-explorer"],
+      "capabilities": []
+    },
+    {
+      "number": 3,
+      "name": "CodeQA Interrogation",
+      "file": "phases/03-external-interrogation.md",
+      "required_skills": ["workspace-learning-core"],
+      "optional_skills": [],
+      "agents": ["repository-explorer"],
+      "capabilities": [
+        "code-qa.ask",
+        "code-qa.continue_task",
+        "code-qa.get_task",
+        "code-qa.get_task_logs",
+        "code-qa.cancel_task",
+        "code-qa.health",
+        "code-qa.list_conversations"
+      ]
+    },
+    {
+      "number": 4,
+      "name": "Convergence",
+      "file": "phases/04-convergence.md",
+      "required_skills": ["workspace-learning-core", "codebase-onboarding"],
+      "optional_skills": ["workspace-codemap-context"],
+      "agents": ["repository-explorer", "system-architect", "data-model-architect"],
+      "capabilities": []
+    },
+    {
+      "number": 5,
+      "name": "Explainer Course",
+      "file": "phases/05-explainer-course.md",
+      "required_skills": ["workspace-learning-core", "explainer-pro"],
+      "optional_skills": [],
+      "agents": [],
+      "capabilities": []
+    },
+    {
+      "number": 6,
+      "name": "Course Publication",
+      "file": "phases/06-course-publication.md",
+      "required_skills": ["workspace-learning-core"],
+      "optional_skills": [],
+      "agents": [],
+      "capabilities": []
+    },
+    {
+      "number": 7,
+      "name": "Repository Codemap",
+      "file": "phases/07-repository-codemap.md",
+      "required_skills": ["workspace-learning-core"],
+      "optional_skills": ["workspace-codemap-context"],
+      "agents": [],
+      "capabilities": []
+    },
+    {
+      "number": 8,
+      "name": "Verification & Advance",
+      "file": "phases/08-verification-advance.md",
+      "required_skills": ["workspace-learning-core", "verification-before-completion"],
+      "optional_skills": [],
+      "agents": [],
+      "capabilities": []
+    }
+  ],
+  "global_gates": [
+    "No target source or configuration mutation is authorized.",
+    "Native CodeQA MCP is the sole transport for new tasks, continuations, and recoveries; all seven operations, including `list_conversations`, must be exposed and overall_health must succeed, runtime identity requires no desktop auth token or user ID, and a present-but-unhealthy or incomplete MCP blocks Phase 3 while preserving state. A provider that cannot be reached for the repository at all is a different case: an absent MCP surface (mcp-surface-absent) or a healthy surface that cannot reach this repository (repository-not-accessible) may be attested once through codeqa-unavailable, after which Phase 3 completes on the local-source model and the repository completes under the ordinary gates. That attestation is immutable, is refused whenever any task or round is recorded or a dispatch intent is unresolved, and never applies to a failed, cancelled, refused, or empty result from a reachable provider.",
+    "Every external start, continuation, or recovery has exact final prompt bytes containing a unique intent ID, a SHA-256-bound persisted codeqa-reserve record before dispatch, and an immediate intent-bound task checkpoint after the provider returns or exact lookup discovers the task.",
+    "An unbound dispatch intent blocks another dispatch, convergence, and Phase 3 completion; resume uses list_my_conversations plus get_task and get_task_execution_logs to bind exactly one matching task, while missing or ambiguous identity fails closed and only provider-proven absence plus explicit user authorization may archive the intent as no-task-created.",
+    "The reservation contract provides at-most-one automatic dispatch per unresolved intent, not exactly-once provider execution.",
+    "Every CodeQA task persists its ID, transport, latest status, and result/round checkpoint; resume inspects the task and any dispatch intent before external state change, and creation is allowed only without an active task ID or after explicit recovery into a fresh generation.",
+    "PENDING is poll-by-default and status or elapsed time alone never authorizes cancellation; only get_task plus get_task_execution_logs evidence of a recursive/delegated-work stall and explicit user authorization permit native-MCP cancellation, which must be confirmed and checkpointed as CANCELLED before an explicit intent-reserved recovery whose prompt forbids recursive agent delegation and requires self-investigation by the CodeQA agent.",
+    "A pre-existing legacy CLI task may be observed read-only under its original identity only until terminal; CLI is forbidden for task creation, continuation, resume, cancellation, and recovery, and subsequent work explicitly switches to a fresh native-MCP generation.",
+    "Every material operation has its own authority, dispatch, fallback, state, idempotency, completion, and recovery evidence; mutating and asynchronous flows require state/side-effect timelines and failure matrices with bounded negative searches.",
+    "Generated repository artifacts must be untracked and ignored through exact local Git exclude entries.",
+    "Convergence requires full coverage disposition, claim tiers, contradiction closure, all four named core rounds, and two consecutive terminal-successful rounds that have persisted results, are locally reconciled under distinct lenses, and pass the no-material-novelty gate (represented-only items must be verified locally).",
+    "Explainer Pro and Workspace Codemap Pro retain their canonical evidence, rendering, publication, and integrity gates.",
+    "Repository completion requires publisher readback and a final Git-status digest matching the baseline.",
+    "Blocked or unavailable repositories remain explicit in workspace completion."
+  ]
+}

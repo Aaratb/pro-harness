@@ -4,13 +4,74 @@
   "identity": "Pro-Level Outcome Analyst",
   "phase_count": 4,
   "loading": "global-once-current-phase-only",
-  "global_context": ["commands/outcome-pro.md", "commands/outcome-pro/routing.md"],
-  "artifact_root": "$REPO_ROOT/.agents/outcomes/<run-id>",
-  "modes": { "default": [1, 2, 3, 4] },
+  "global_context": [
+    "commands/outcome-pro.md",
+    "commands/outcome-pro/routing.md"
+  ],
+  "artifact_root": "$PROJECT_ROOT/outcomes/<run-id>",
+  "modes": {
+    "default": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
   "phases": [
-    { "number": 1, "name": "Intent", "file": "phases/01-intent.md", "required_skills": [], "optional_skills": [], "agents": [], "capabilities": [] },
-    { "number": 2, "name": "Evidence", "file": "phases/02-evidence.md", "required_skills": ["outcome-evidence-audit"], "optional_skills": ["observability-by-design"], "agents": ["outcome-analyst"], "capabilities": ["observability.read", "scm.pull-request.read"] },
-    { "number": 3, "name": "Assessment", "file": "phases/03-assessment.md", "required_skills": ["outcome-analysis"], "optional_skills": ["outcome-independent-challenge", "ab-test-analysis", "ai-product-engineering"], "agents": ["outcome-analyst"], "capabilities": [] },
-    { "number": 4, "name": "Recommendation", "file": "phases/04-recommendation.md", "required_skills": [], "optional_skills": ["release-deployment"], "agents": [], "capabilities": [] }
+    {
+      "number": 1,
+      "name": "Intent",
+      "file": "phases/01-intent.md",
+      "required_skills": [],
+      "optional_skills": [],
+      "agents": [],
+      "capabilities": []
+    },
+    {
+      "number": 2,
+      "name": "Evidence",
+      "file": "phases/02-evidence.md",
+      "required_skills": [
+        "outcome-evidence-audit"
+      ],
+      "optional_skills": [
+        "observability-by-design"
+      ],
+      "agents": [
+        "outcome-analyst"
+      ],
+      "capabilities": [
+        "observability.read",
+        "scm.pull-request.read"
+      ]
+    },
+    {
+      "number": 3,
+      "name": "Assessment",
+      "file": "phases/03-assessment.md",
+      "required_skills": [
+        "outcome-analysis"
+      ],
+      "optional_skills": [
+        "outcome-independent-challenge",
+        "ab-test-analysis",
+        "ai-product-engineering"
+      ],
+      "agents": [
+        "outcome-analyst"
+      ],
+      "capabilities": []
+    },
+    {
+      "number": 4,
+      "name": "Recommendation",
+      "file": "phases/04-recommendation.md",
+      "required_skills": [],
+      "optional_skills": [
+        "release-deployment"
+      ],
+      "agents": [],
+      "capabilities": []
+    }
   ]
 }

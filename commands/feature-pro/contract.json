@@ -2,209 +2,559 @@
   "schema_version": 1,
   "command": "feature-pro",
   "identity": "Pro-Level Feature Developer",
-  "phase_count": 20,
+  "phase_count": 21,
   "loading": "global-once-current-phase-only",
   "global_context": [
     "commands/feature-pro.md",
     "commands/feature-pro/governance.md",
     "commands/feature-pro/routing.md"
   ],
-  "artifact_root": "$REPO_ROOT/.agents/features/<feature-slug>",
+  "artifact_root": "$PROJECT_ROOT/features/<feature-slug>",
   "phases": [
     {
       "number": 1,
       "name": "Repo Setup",
       "file": "phases/01-repo-setup.md",
-      "required_skills": ["repository-health", "codebase-onboarding"],
-      "optional_skills": ["workspace-codemap-context"],
+      "required_skills": [
+        "repository-health",
+        "codebase-onboarding"
+      ],
+      "optional_skills": [
+        "workspace-codemap-context"
+      ],
       "agents": [],
       "capabilities": []
     },
     {
       "number": 2,
-      "name": "Requirements & Framing",
+      "name": "Problem Framing",
       "file": "phases/02-requirements.md",
-      "required_skills": ["product-discovery", "grill-with-docs"],
-      "optional_skills": ["user-personas", "customer-journey-map", "stochastic-multi-agent-consensus", "observability-by-design", "ai-product-engineering"],
-      "agents": ["product-manager", "repository-explorer"],
-      "capabilities": []
+      "required_skills": [
+        "product-discovery",
+        "grill-with-docs",
+        "competitive-research"
+      ],
+      "optional_skills": [
+        "user-personas",
+        "customer-journey-map",
+        "stochastic-multi-agent-consensus",
+        "observability-by-design",
+        "ai-product-engineering"
+      ],
+      "agents": [
+        "product-manager",
+        "repository-explorer"
+      ],
+      "capabilities": [
+        "firecrawl.search",
+        "firecrawl.scrape",
+        "firecrawl.crawl",
+        "firecrawl.extract"
+      ]
     },
     {
       "number": 3,
       "name": "PRD",
       "file": "phases/03-prd.md",
-      "required_skills": ["create-prd", "write-user-stories"],
-      "optional_skills": ["ab-test-analysis", "multi-model-debate-room", "observability-by-design", "ai-product-engineering"],
-      "agents": ["product-manager", "product-owner"],
+      "required_skills": [
+        "create-prd",
+        "write-user-stories"
+      ],
+      "optional_skills": [
+        "ab-test-analysis",
+        "multi-model-debate-room",
+        "observability-by-design",
+        "ai-product-engineering"
+      ],
+      "agents": [
+        "product-manager",
+        "product-owner"
+      ],
       "capabilities": []
     },
     {
       "number": 4,
-      "name": "Competitive Research",
-      "file": "phases/04-competitive-research.md",
-      "required_skills": ["competitive-research"],
-      "optional_skills": ["stochastic-multi-agent-consensus"],
-      "agents": [],
-      "capabilities": ["firecrawl.search", "firecrawl.scrape", "firecrawl.crawl", "firecrawl.extract"]
+      "name": "Design / Options",
+      "file": "phases/04-design.md",
+      "required_skills": [
+        "design-options",
+        "design-system"
+      ],
+      "optional_skills": [
+        "interface-experience-review",
+        "multi-model-debate-room",
+        "stochastic-multi-agent-consensus"
+      ],
+      "agents": [
+        "prototype-designer",
+        "ux-researcher"
+      ],
+      "capabilities": [
+        "prototype.generate",
+        "browser.navigate",
+        "browser.inspect",
+        "browser.capture"
+      ]
     },
     {
       "number": 5,
-      "name": "Design / Options",
-      "file": "phases/05-design.md",
-      "required_skills": ["design-options", "design-system"],
-      "optional_skills": ["interface-experience-review", "multi-model-debate-room", "stochastic-multi-agent-consensus"],
-      "agents": ["prototype-designer", "ux-researcher"],
-      "capabilities": ["prototype.generate", "browser.navigate", "browser.inspect", "browser.capture"]
+      "name": "Solution Hardening & Approval",
+      "file": "phases/05-solution-approval.md",
+      "required_skills": [
+        "plan-product-review",
+        "grill-with-docs"
+      ],
+      "optional_skills": [
+        "stochastic-multi-agent-consensus",
+        "ab-test-analysis",
+        "multi-model-debate-room",
+        "ai-product-engineering"
+      ],
+      "agents": [
+        "product-owner",
+        "product-manager"
+      ],
+      "capabilities": []
     },
     {
       "number": 6,
-      "name": "Plan + API Impact",
-      "file": "phases/06-plan.md",
-      "required_skills": ["plan-review-orchestrator", "implementation-planning", "specification-writing", "library-first-engineering"],
-      "optional_skills": ["api-and-interface-design", "architecture-decision-records", "incremental-delivery", "multi-model-debate-room", "stochastic-multi-agent-consensus", "observability-by-design", "ai-product-engineering"],
-      "agents": ["system-architect", "implementation-planner", "database-engineer"],
+      "name": "Engineering Requirements",
+      "file": "phases/06-eng-requirements.md",
+      "required_skills": [
+        "specification-writing",
+        "right-sized-engineering",
+        "grill-with-docs"
+      ],
+      "optional_skills": [
+        "zoom-out",
+        "observability-by-design",
+        "ai-product-engineering",
+        "workspace-codemap-context"
+      ],
+      "agents": [
+        "product-owner",
+        "system-architect"
+      ],
       "capabilities": []
     },
     {
       "number": 7,
-      "name": "Engineering Requirements & Impact Map",
-      "file": "phases/07-impact-map.md",
-      "required_skills": ["zoom-out"],
-      "optional_skills": ["workspace-codemap-context", "api-and-interface-design", "architecture-decision-records", "improve-codebase-architecture", "mongodb-performance", "firestore-performance", "postgres-patterns", "clickhouse-modeling", "observability-by-design", "ai-product-engineering"],
-      "agents": ["repository-explorer", "system-architect", "database-engineer"],
-      "capabilities": ["diagram.render"]
+      "name": "Tech Spec & Data Model",
+      "file": "phases/07-tech-spec.md",
+      "required_skills": [
+        "implementation-planning",
+        "plan-review-orchestrator",
+        "library-first-engineering",
+        "architecture-data-model-evolution",
+        "right-sized-engineering",
+        "zoom-out"
+      ],
+      "optional_skills": [
+        "architecture-decision-records",
+        "improve-codebase-architecture",
+        "api-and-interface-design",
+        "multi-model-debate-room",
+        "stochastic-multi-agent-consensus",
+        "workspace-codemap-context",
+        "mongodb-performance",
+        "firestore-performance",
+        "postgres-patterns",
+        "clickhouse-modeling",
+        "observability-by-design",
+        "ai-product-engineering"
+      ],
+      "agents": [
+        "system-architect",
+        "database-engineer",
+        "repository-explorer"
+      ],
+      "capabilities": [
+        "diagram.render"
+      ]
     },
     {
       "number": 8,
-      "name": "Build",
-      "file": "phases/08-build.md",
-      "required_skills": ["incremental-delivery", "test-driven-development", "search-first", "task-wave-execution", "library-first-engineering", "ralph-loop"],
-      "optional_skills": ["prepare-change-for-review", "observability-by-design", "ai-product-engineering"],
-      "agents": ["frontend-developer", "backend-developer", "database-engineer", "platform-engineer"],
-      "capabilities": ["browser.navigate", "browser.inspect", "browser.capture"]
+      "name": "Implementation Specs",
+      "file": "phases/08-impl-spec.md",
+      "required_skills": [
+        "api-and-interface-design",
+        "specification-writing",
+        "incremental-delivery",
+        "right-sized-engineering"
+      ],
+      "optional_skills": [
+        "plan-review-orchestrator",
+        "mongodb-performance",
+        "firestore-performance",
+        "postgres-patterns",
+        "clickhouse-modeling",
+        "observability-by-design",
+        "ai-product-engineering",
+        "workspace-codemap-context"
+      ],
+      "agents": [
+        "implementation-planner",
+        "database-engineer",
+        "repository-explorer",
+        "system-architect"
+      ],
+      "capabilities": [
+        "diagram.render"
+      ]
     },
     {
       "number": 9,
-      "name": "Local Runtime Gate",
-      "file": "phases/09-local-runtime.md",
-      "required_skills": ["browser-exploration", "browser-qa", "webapp-testing"],
-      "optional_skills": ["workspace-codemap-context", "browser-session-setup", "observability-by-design", "ai-product-engineering"],
-      "agents": ["visual-tester", "end-to-end-tester", "platform-engineer", "ci-automation-engineer"],
-      "capabilities": ["browser.navigate", "browser.inspect", "browser.capture"]
+      "name": "Build",
+      "file": "phases/09-build.md",
+      "required_skills": [
+        "incremental-delivery",
+        "test-driven-development",
+        "search-first",
+        "task-wave-execution",
+        "library-first-engineering",
+        "ralph-loop"
+      ],
+      "optional_skills": [
+        "prepare-change-for-review",
+        "observability-by-design",
+        "ai-product-engineering",
+        "create-pull-request"
+      ],
+      "agents": [
+        "frontend-developer",
+        "backend-developer",
+        "database-engineer",
+        "platform-engineer"
+      ],
+      "capabilities": [
+        "browser.navigate",
+        "browser.inspect",
+        "browser.capture",
+        "scm.pull-request.write",
+        "scm.pull-request.read"
+      ]
     },
     {
       "number": 10,
-      "name": "Compression",
-      "file": "phases/10-compression.md",
-      "required_skills": ["code-simplification", "behavior-preserving-code-simplification"],
-      "optional_skills": ["session-checkpoint", "library-first-engineering"],
-      "agents": ["dead-code-refactor-cleaner", "refactor-cleaner", "code-reviewer"],
-      "capabilities": []
+      "name": "Local Runtime Gate",
+      "file": "phases/10-local-runtime.md",
+      "required_skills": [
+        "browser-exploration",
+        "browser-qa",
+        "webapp-testing"
+      ],
+      "optional_skills": [
+        "workspace-codemap-context",
+        "browser-session-setup",
+        "observability-by-design",
+        "ai-product-engineering"
+      ],
+      "agents": [
+        "visual-tester",
+        "end-to-end-tester",
+        "platform-engineer",
+        "ci-automation-engineer"
+      ],
+      "capabilities": [
+        "browser.navigate",
+        "browser.inspect",
+        "browser.capture"
+      ]
     },
     {
       "number": 11,
-      "name": "Review + Legal",
-      "file": "phases/11-review.md",
-      "required_skills": ["pre-merge-review", "general-coding-standards", "security-review"],
-      "optional_skills": ["multi-model-debate-room", "stochastic-multi-agent-consensus", "library-first-engineering", "observability-by-design", "ai-product-engineering"],
-      "agents": ["code-reviewer", "legal-risk-reviewer", "security-reviewer", "database-reviewer", "typescript-reviewer", "python-reviewer", "go-reviewer", "rust-reviewer", "java-reviewer", "kotlin-reviewer", "cpp-reviewer", "flutter-reviewer"],
+      "name": "Compression",
+      "file": "phases/11-compression.md",
+      "required_skills": [
+        "code-simplification",
+        "behavior-preserving-code-simplification"
+      ],
+      "optional_skills": [
+        "session-checkpoint",
+        "library-first-engineering"
+      ],
+      "agents": [
+        "dead-code-refactor-cleaner",
+        "refactor-cleaner",
+        "code-reviewer"
+      ],
       "capabilities": []
     },
     {
       "number": 12,
-      "name": "Debug / Fixes",
-      "file": "phases/12-debug.md",
-      "required_skills": ["systematic-debugging", "test-driven-development"],
-      "optional_skills": ["incremental-delivery", "observability-by-design", "ai-product-engineering"],
-      "agents": ["backend-developer", "frontend-developer", "database-engineer", "platform-engineer", "typescript-build-resolver", "go-build-resolver", "rust-build-resolver", "kotlin-build-resolver", "java-build-resolver", "cpp-build-resolver", "pytorch-runtime-resolver"],
+      "name": "Review + Legal",
+      "file": "phases/12-review.md",
+      "required_skills": [
+        "pre-merge-review",
+        "general-coding-standards",
+        "security-review"
+      ],
+      "optional_skills": [
+        "multi-model-debate-room",
+        "stochastic-multi-agent-consensus",
+        "library-first-engineering",
+        "observability-by-design",
+        "ai-product-engineering"
+      ],
+      "agents": [
+        "code-reviewer",
+        "legal-risk-reviewer",
+        "security-reviewer",
+        "database-reviewer",
+        "typescript-reviewer",
+        "python-reviewer",
+        "go-reviewer",
+        "rust-reviewer",
+        "java-reviewer",
+        "kotlin-reviewer",
+        "cpp-reviewer",
+        "flutter-reviewer"
+      ],
       "capabilities": []
     },
     {
       "number": 13,
-      "name": "Test + QA",
-      "file": "phases/13-test-qa.md",
-      "required_skills": ["test-driven-development", "e2e-testing", "browser-qa"],
-      "optional_skills": ["webapp-testing", "observability-by-design", "ai-product-engineering"],
-      "agents": ["tdd-coach", "unit-test-engineer", "api-test-engineer", "end-to-end-tester", "mutation-test-engineer", "visual-tester", "performance-benchmarker", "security-reviewer", "ai-evaluation-engineer"],
-      "capabilities": ["browser.navigate", "browser.inspect", "browser.capture"]
+      "name": "Debug / Fixes",
+      "file": "phases/13-debug.md",
+      "required_skills": [
+        "systematic-debugging",
+        "test-driven-development"
+      ],
+      "optional_skills": [
+        "incremental-delivery",
+        "observability-by-design",
+        "ai-product-engineering"
+      ],
+      "agents": [
+        "backend-developer",
+        "frontend-developer",
+        "database-engineer",
+        "platform-engineer",
+        "typescript-build-resolver",
+        "go-build-resolver",
+        "rust-build-resolver",
+        "kotlin-build-resolver",
+        "java-build-resolver",
+        "cpp-build-resolver",
+        "pytorch-runtime-resolver"
+      ],
+      "capabilities": []
     },
     {
       "number": 14,
-      "name": "Docs + i18n",
-      "file": "phases/14-docs-i18n.md",
-      "required_skills": ["documentation-maintenance", "architecture-decision-records"],
-      "optional_skills": ["workspace-codemap-context", "changelog-generator", "observability-by-design", "ai-product-engineering"],
-      "agents": ["documentation-updater", "i18n-reviewer"],
-      "capabilities": ["diagram.render"]
+      "name": "Test + QA",
+      "file": "phases/14-test-qa.md",
+      "required_skills": [
+        "test-driven-development",
+        "e2e-testing",
+        "browser-qa"
+      ],
+      "optional_skills": [
+        "webapp-testing",
+        "observability-by-design",
+        "ai-product-engineering"
+      ],
+      "agents": [
+        "tdd-coach",
+        "unit-test-engineer",
+        "api-test-engineer",
+        "end-to-end-tester",
+        "mutation-test-engineer",
+        "visual-tester",
+        "performance-benchmarker",
+        "security-reviewer",
+        "ai-evaluation-engineer"
+      ],
+      "capabilities": [
+        "browser.navigate",
+        "browser.inspect",
+        "browser.capture"
+      ]
     },
     {
       "number": 15,
+      "name": "Docs + i18n",
+      "file": "phases/15-docs-i18n.md",
+      "required_skills": [
+        "documentation-maintenance",
+        "architecture-decision-records"
+      ],
+      "optional_skills": [
+        "workspace-codemap-context",
+        "changelog-generator",
+        "observability-by-design",
+        "ai-product-engineering"
+      ],
+      "agents": [
+        "documentation-updater",
+        "i18n-reviewer"
+      ],
+      "capabilities": [
+        "diagram.render"
+      ]
+    },
+    {
+      "number": 16,
       "name": "Setup Audit",
-      "file": "phases/15-setup-audit.md",
-      "required_skills": ["verification-before-completion", "repository-health"],
-      "optional_skills": ["observability-by-design", "ai-product-engineering"],
+      "file": "phases/16-setup-audit.md",
+      "required_skills": [
+        "verification-before-completion",
+        "repository-health"
+      ],
+      "optional_skills": [
+        "observability-by-design",
+        "ai-product-engineering"
+      ],
       "agents": [],
       "capabilities": [],
       "hard_gate": true
     },
     {
-      "number": 16,
+      "number": 17,
       "name": "Platform Specialists",
-      "file": "phases/16-specialist-review.md",
-      "required_skills": ["pre-merge-review", "security-review"],
-      "optional_skills": ["multi-model-debate-room", "stochastic-multi-agent-consensus", "observability-by-design", "ai-product-engineering"],
-      "agents": ["code-reviewer", "security-reviewer", "database-reviewer", "i18n-reviewer", "accessibility-reviewer", "ci-automation-engineer", "unit-test-engineer", "api-test-engineer", "visual-tester", "ai-evaluation-engineer"],
+      "file": "phases/17-specialist-review.md",
+      "required_skills": [
+        "pre-merge-review",
+        "security-review"
+      ],
+      "optional_skills": [
+        "multi-model-debate-room",
+        "stochastic-multi-agent-consensus",
+        "observability-by-design",
+        "ai-product-engineering"
+      ],
+      "agents": [
+        "code-reviewer",
+        "security-reviewer",
+        "database-reviewer",
+        "i18n-reviewer",
+        "accessibility-reviewer",
+        "ci-automation-engineer",
+        "unit-test-engineer",
+        "api-test-engineer",
+        "visual-tester",
+        "ai-evaluation-engineer"
+      ],
       "capabilities": []
     },
     {
-      "number": 17,
+      "number": 18,
       "name": "PR & CI",
-      "file": "phases/17-pr-ci.md",
-      "required_skills": ["prepare-change-for-review", "create-pull-request", "split-large-pull-request", "review-pull-request", "check-merge-readiness", "score-change-risk"],
+      "file": "phases/18-pr-ci.md",
+      "required_skills": [
+        "prepare-change-for-review",
+        "create-pull-request",
+        "split-large-pull-request",
+        "review-pull-request",
+        "check-merge-readiness",
+        "score-change-risk"
+      ],
       "optional_skills": [],
-      "agents": ["code-reviewer", "ci-monitor", "ci-automation-engineer", "typescript-build-resolver", "go-build-resolver", "rust-build-resolver", "kotlin-build-resolver", "java-build-resolver", "cpp-build-resolver"],
-      "capabilities": ["scm.pull-request.read", "scm.pull-request.write", "ci.read"],
+      "agents": [
+        "code-reviewer",
+        "ci-monitor",
+        "ci-automation-engineer",
+        "typescript-build-resolver",
+        "go-build-resolver",
+        "rust-build-resolver",
+        "kotlin-build-resolver",
+        "java-build-resolver",
+        "cpp-build-resolver"
+      ],
+      "capabilities": [
+        "scm.pull-request.read",
+        "scm.pull-request.write",
+        "ci.read"
+      ],
       "hard_gate": true
     },
     {
-      "number": 18,
-      "name": "Staging",
-      "file": "phases/18-staging.md",
-      "required_skills": ["release-deployment", "production-readiness"],
-      "optional_skills": ["observability-by-design", "ai-product-engineering"],
-      "agents": ["release-engineer", "ci-automation-engineer", "ci-monitor"],
-      "capabilities": ["deployment.execute", "deployment.inspect", "ci.read", "scm.pull-request.read"]
-    },
-    {
       "number": 19,
-      "name": "Deployment",
-      "file": "phases/19-deployment.md",
-      "required_skills": ["release-deployment", "production-readiness"],
-      "optional_skills": ["observability-by-design", "ai-product-engineering"],
-      "agents": ["release-engineer", "platform-engineer", "ci-automation-engineer", "site-reliability-engineer"],
-      "capabilities": ["deployment.execute", "deployment.inspect", "deployment.rollback", "observability.read"]
+      "name": "Staging",
+      "file": "phases/19-staging.md",
+      "required_skills": [
+        "release-deployment",
+        "production-readiness"
+      ],
+      "optional_skills": [
+        "observability-by-design",
+        "ai-product-engineering"
+      ],
+      "agents": [
+        "release-engineer",
+        "ci-automation-engineer",
+        "ci-monitor"
+      ],
+      "capabilities": [
+        "deployment.execute",
+        "deployment.inspect",
+        "ci.read",
+        "scm.pull-request.read"
+      ]
     },
     {
       "number": 20,
+      "name": "Deployment",
+      "file": "phases/20-deployment.md",
+      "required_skills": [
+        "release-deployment",
+        "production-readiness"
+      ],
+      "optional_skills": [
+        "observability-by-design",
+        "ai-product-engineering"
+      ],
+      "agents": [
+        "release-engineer",
+        "platform-engineer",
+        "ci-automation-engineer",
+        "site-reliability-engineer"
+      ],
+      "capabilities": [
+        "deployment.execute",
+        "deployment.inspect",
+        "deployment.rollback",
+        "observability.read"
+      ]
+    },
+    {
+      "number": 21,
       "name": "Handoff & Reviewer Pack",
-      "file": "phases/20-handoff.md",
-      "required_skills": ["internal-comms", "documentation-maintenance"],
-      "optional_skills": ["review-pull-request", "workspace-codemap-context", "changelog-generator", "delivery-retrospective", "session-checkpoint", "observability-by-design"],
-      "agents": ["technical-writer", "documentation-updater"],
-      "capabilities": ["messaging.send"],
+      "file": "phases/21-handoff.md",
+      "required_skills": [
+        "internal-comms",
+        "documentation-maintenance"
+      ],
+      "optional_skills": [
+        "review-pull-request",
+        "workspace-codemap-context",
+        "changelog-generator",
+        "delivery-retrospective",
+        "session-checkpoint",
+        "observability-by-design"
+      ],
+      "agents": [
+        "technical-writer",
+        "documentation-updater"
+      ],
+      "capabilities": [
+        "messaging.send"
+      ],
       "external_write_requires_confirmation": true
     }
   ],
   "global_gates": [
     "Phase 2 requires an approved measurable business goal and owner before Phase 3.",
-    "Phase 3 requires explicit approval of the product solution after alternatives and do-nothing are compared.",
-    "Phase 6 module map requires user approval before Phase 7.",
-    "Phase 6 must resolve implementation-critical reuse choices and the API verification contract; verified local reuse requires no package research.",
-    "Phase 7 must resolve line-budget violations before Phase 8.",
-    "Phase 10 is mandatory for code changes unless explicitly waived.",
-    "Phase 15 cannot be skipped and validates the append-only harness execution trace.",
-    "AI product work requires deterministic tests plus probabilistic evaluation, safety, fallback, cost, latency, monitoring, and rollback evidence.",
-    "Phase 17 cannot be skipped when a pull request is in scope.",
-    "Phase 19 production writes require explicit user authorization."
+    "Phase 5 requires explicit approval of the product solution, its rejected alternatives, and the reconciliation of competitive research and prototypes against the PRD.",
+    "Phase 6 engineering requirements require user approval before Phase 7.",
+    "Phase 7 module map requires user approval before Phase 8, and every open question in erd.md carries a named owner.",
+    "Phase 8 must resolve implementation-critical reuse choices and freeze the API verification contract before Phase 9.",
+    "Phases 6, 7 and 8 each record a right-sizing judgement naming the problem's complexity, the solution size it warrants, and what was deliberately not built.",
+    "Phase 11 is mandatory for code changes unless explicitly waived.",
+    "Phase 16 cannot be skipped and validates the append-only harness execution trace.",
+    "AI-bearing work requires versioned model, prompt, context, retrieval, tool, and safety contracts with evaluation thresholds before implementation.",
+    "Phase 18 cannot be skipped when a pull request is in scope.",
+    "Phase 20 production writes require explicit user authorization.",
+    "Architecture chain visibility: at Phases 6, 7 and 8, state whether a certified architecture handoff is in force and which decisions it binds."
   ]
 }

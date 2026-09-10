@@ -1,175 +1,482 @@
 {
   "schema_version": 1,
   "capabilities": {
+    "code-qa.ask": {
+      "claude": [
+        "CallMcpTool:ask_slash"
+      ],
+      "codex": [
+        "mcp-tool:ask_slash"
+      ],
+      "cursor": [
+        "MCP:ask_slash"
+      ]
+    },
+    "code-qa.continue_task": {
+      "claude": [
+        "CallMcpTool:continue_slash_task"
+      ],
+      "codex": [
+        "mcp-tool:continue_slash_task"
+      ],
+      "cursor": [
+        "MCP:continue_slash_task"
+      ]
+    },
+    "code-qa.get_task": {
+      "claude": [
+        "CallMcpTool:get_task"
+      ],
+      "codex": [
+        "mcp-tool:get_task"
+      ],
+      "cursor": [
+        "MCP:get_task"
+      ]
+    },
+    "code-qa.get_task_logs": {
+      "claude": [
+        "CallMcpTool:get_task_execution_logs"
+      ],
+      "codex": [
+        "mcp-tool:get_task_execution_logs"
+      ],
+      "cursor": [
+        "MCP:get_task_execution_logs"
+      ]
+    },
+    "code-qa.cancel_task": {
+      "claude": [
+        "CallMcpTool:cancel_slash_task"
+      ],
+      "codex": [
+        "mcp-tool:cancel_slash_task"
+      ],
+      "cursor": [
+        "MCP:cancel_slash_task"
+      ]
+    },
+    "code-qa.health": {
+      "claude": [
+        "CallMcpTool:overall_health"
+      ],
+      "codex": [
+        "mcp-tool:overall_health"
+      ],
+      "cursor": [
+        "MCP:overall_health"
+      ]
+    },
+    "code-qa.list_conversations": {
+      "claude": [
+        "CallMcpTool:list_my_conversations"
+      ],
+      "codex": [
+        "mcp-tool:list_my_conversations"
+      ],
+      "cursor": [
+        "MCP:list_my_conversations"
+      ]
+    },
     "exa.search": {
-      "claude": ["mcp__exa__web_search_exa"],
-      "codex": ["mcp-tool:exa.search"],
-      "cursor": ["MCP:web_search_exa"]
+      "claude": [
+        "mcp__exa__web_search_exa"
+      ],
+      "codex": [
+        "mcp-tool:exa.search"
+      ],
+      "cursor": [
+        "MCP:web_search_exa"
+      ]
     },
     "exa.fetch": {
-      "claude": ["mcp__exa__web_fetch_exa"],
-      "codex": ["mcp-tool:exa.fetch"],
-      "cursor": ["MCP:web_fetch_exa"]
+      "claude": [
+        "mcp__exa__web_fetch_exa"
+      ],
+      "codex": [
+        "mcp-tool:exa.fetch"
+      ],
+      "cursor": [
+        "MCP:web_fetch_exa"
+      ]
     },
     "exa.advanced-search": {
-      "claude": ["mcp__exa__web_search_advanced_exa"],
-      "codex": ["mcp-tool:exa.advanced-search"],
-      "cursor": ["MCP:web_search_advanced_exa"]
+      "claude": [
+        "mcp__exa__web_search_advanced_exa"
+      ],
+      "codex": [
+        "mcp-tool:exa.advanced-search"
+      ],
+      "cursor": [
+        "MCP:web_search_advanced_exa"
+      ]
     },
     "filesystem.read": {
-      "claude": ["Read"],
-      "codex": ["filesystem-read", "exec_command"],
-      "cursor": ["Read"]
+      "claude": [
+        "Read"
+      ],
+      "codex": [
+        "filesystem-read",
+        "exec_command"
+      ],
+      "cursor": [
+        "Read"
+      ]
     },
     "workspace.search": {
-      "claude": ["Grep", "Glob"],
-      "codex": ["exec_command:rg", "exec_command:rg --files"],
-      "cursor": ["Grep", "Glob"]
+      "claude": [
+        "Grep",
+        "Glob"
+      ],
+      "codex": [
+        "exec_command:rg",
+        "exec_command:rg --files"
+      ],
+      "cursor": [
+        "Grep",
+        "Glob"
+      ]
     },
     "terminal.inspect": {
-      "claude": ["Bash:read-only-policy"],
-      "codex": ["exec_command:read-only-policy"],
-      "cursor": ["Bash:read-only-policy"]
+      "claude": [
+        "Bash:read-only-policy"
+      ],
+      "codex": [
+        "exec_command:read-only-policy"
+      ],
+      "cursor": [
+        "Bash:read-only-policy"
+      ]
     },
     "terminal.execute": {
-      "claude": ["Bash"],
-      "codex": ["exec_command"],
-      "cursor": ["Bash"]
+      "claude": [
+        "Bash"
+      ],
+      "codex": [
+        "exec_command"
+      ],
+      "cursor": [
+        "Bash"
+      ]
     },
     "repository.write": {
-      "claude": ["Write", "Edit"],
-      "codex": ["apply_patch"],
-      "cursor": ["Write", "Edit"]
+      "claude": [
+        "Write",
+        "Edit"
+      ],
+      "codex": [
+        "apply_patch"
+      ],
+      "cursor": [
+        "Write",
+        "Edit"
+      ]
     },
     "artifact.write": {
-      "claude": ["Write", "Edit"],
-      "codex": ["apply_patch"],
-      "cursor": ["Write", "Edit"]
+      "claude": [
+        "Write",
+        "Edit"
+      ],
+      "codex": [
+        "apply_patch"
+      ],
+      "cursor": [
+        "Write",
+        "Edit"
+      ]
     },
     "mcp.invoke": {
-      "claude": ["CallMcpTool"],
-      "codex": ["mcp-tool"],
-      "cursor": ["MCP"]
+      "claude": [
+        "CallMcpTool"
+      ],
+      "codex": [
+        "mcp-tool"
+      ],
+      "cursor": [
+        "MCP"
+      ]
     },
     "browser.automate": {
-      "claude": ["CallMcpTool:browser"],
-      "codex": ["mcp-tool:browser"],
-      "cursor": ["MCP:browser"]
+      "claude": [
+        "CallMcpTool:browser"
+      ],
+      "codex": [
+        "mcp-tool:browser"
+      ],
+      "cursor": [
+        "MCP:browser"
+      ]
     },
     "ci.read": {
-      "claude": ["CallMcpTool:ci", "Bash:ci-read-only"],
-      "codex": ["mcp-tool:ci", "exec_command:ci-read-only"],
-      "cursor": ["MCP:ci", "Bash:ci-read-only"]
+      "claude": [
+        "CallMcpTool:ci",
+        "Bash:ci-read-only"
+      ],
+      "codex": [
+        "mcp-tool:ci",
+        "exec_command:ci-read-only"
+      ],
+      "cursor": [
+        "MCP:ci",
+        "Bash:ci-read-only"
+      ]
     },
     "ci.write": {
-      "claude": ["CallMcpTool:ci-write", "Bash:ci-write-with-approval"],
-      "codex": ["mcp-tool:ci-write", "exec_command:ci-write-with-approval"],
-      "cursor": ["MCP:ci-write", "Bash:ci-write-with-approval"]
+      "claude": [
+        "CallMcpTool:ci-write",
+        "Bash:ci-write-with-approval"
+      ],
+      "codex": [
+        "mcp-tool:ci-write",
+        "exec_command:ci-write-with-approval"
+      ],
+      "cursor": [
+        "MCP:ci-write",
+        "Bash:ci-write-with-approval"
+      ]
     },
     "deployment.execute": {
-      "claude": ["CallMcpTool:deployment-with-approval", "Bash:deployment-with-approval"],
-      "codex": ["mcp-tool:deployment-with-approval", "exec_command:deployment-with-approval"],
-      "cursor": ["MCP:deployment-with-approval", "Bash:deployment-with-approval"]
+      "claude": [
+        "CallMcpTool:deployment-with-approval",
+        "Bash:deployment-with-approval"
+      ],
+      "codex": [
+        "mcp-tool:deployment-with-approval",
+        "exec_command:deployment-with-approval"
+      ],
+      "cursor": [
+        "MCP:deployment-with-approval",
+        "Bash:deployment-with-approval"
+      ]
     },
     "observability.read": {
-      "claude": ["CallMcpTool:observability-read-only", "Bash:observability-read-only"],
-      "codex": ["mcp-tool:observability-read-only", "exec_command:observability-read-only"],
-      "cursor": ["MCP:observability-read-only", "Bash:observability-read-only"]
+      "claude": [
+        "CallMcpTool:observability-read-only",
+        "Bash:observability-read-only"
+      ],
+      "codex": [
+        "mcp-tool:observability-read-only",
+        "exec_command:observability-read-only"
+      ],
+      "cursor": [
+        "MCP:observability-read-only",
+        "Bash:observability-read-only"
+      ]
     },
     "diagram.render": {
-      "claude": ["CallMcpTool:diagram-render"],
-      "codex": ["mcp-tool:diagram.render"],
-      "cursor": ["MCP:diagram-render"]
+      "claude": [
+        "CallMcpTool:diagram-render"
+      ],
+      "codex": [
+        "mcp-tool:diagram.render"
+      ],
+      "cursor": [
+        "MCP:diagram-render"
+      ]
     },
     "browser.navigate": {
-      "claude": ["CallMcpTool:browser-navigate"],
-      "codex": ["mcp-tool:browser.navigate"],
-      "cursor": ["MCP:browser-navigate"]
+      "claude": [
+        "CallMcpTool:browser-navigate"
+      ],
+      "codex": [
+        "mcp-tool:browser.navigate"
+      ],
+      "cursor": [
+        "MCP:browser-navigate"
+      ]
     },
     "browser.inspect": {
-      "claude": ["CallMcpTool:browser-inspect"],
-      "codex": ["mcp-tool:browser.inspect"],
-      "cursor": ["MCP:browser-inspect"]
+      "claude": [
+        "CallMcpTool:browser-inspect"
+      ],
+      "codex": [
+        "mcp-tool:browser.inspect"
+      ],
+      "cursor": [
+        "MCP:browser-inspect"
+      ]
     },
     "browser.interact": {
-      "claude": ["CallMcpTool:browser-interact"],
-      "codex": ["mcp-tool:browser.interact"],
-      "cursor": ["MCP:browser-interact"]
+      "claude": [
+        "CallMcpTool:browser-interact"
+      ],
+      "codex": [
+        "mcp-tool:browser.interact"
+      ],
+      "cursor": [
+        "MCP:browser-interact"
+      ]
     },
     "browser.capture": {
-      "claude": ["CallMcpTool:browser-capture"],
-      "codex": ["mcp-tool:browser.capture"],
-      "cursor": ["MCP:browser-capture"]
+      "claude": [
+        "CallMcpTool:browser-capture"
+      ],
+      "codex": [
+        "mcp-tool:browser.capture"
+      ],
+      "cursor": [
+        "MCP:browser-capture"
+      ]
     },
     "scm.pull-request.read": {
-      "claude": ["CallMcpTool:pull-request-read", "Bash:gh-read-only"],
-      "codex": ["mcp-tool:scm.pull-request.read", "exec_command:gh-read-only"],
-      "cursor": ["MCP:pull-request-read", "Bash:gh-read-only"]
+      "claude": [
+        "CallMcpTool:pull-request-read",
+        "Bash:gh-read-only"
+      ],
+      "codex": [
+        "mcp-tool:scm.pull-request.read",
+        "exec_command:gh-read-only"
+      ],
+      "cursor": [
+        "MCP:pull-request-read",
+        "Bash:gh-read-only"
+      ]
     },
     "scm.pull-request.write": {
-      "claude": ["CallMcpTool:pull-request-write-with-approval", "Bash:gh-write-with-approval"],
-      "codex": ["mcp-tool:scm.pull-request.write", "exec_command:gh-write-with-approval"],
-      "cursor": ["MCP:pull-request-write-with-approval", "Bash:gh-write-with-approval"]
+      "claude": [
+        "CallMcpTool:pull-request-write-with-approval",
+        "Bash:gh-write-with-approval"
+      ],
+      "codex": [
+        "mcp-tool:scm.pull-request.write",
+        "exec_command:gh-write-with-approval"
+      ],
+      "cursor": [
+        "MCP:pull-request-write-with-approval",
+        "Bash:gh-write-with-approval"
+      ]
     },
     "prototype.generate": {
-      "claude": ["CallMcpTool:prototype-generate"],
-      "codex": ["mcp-tool:prototype.generate"],
-      "cursor": ["MCP:prototype-generate"]
+      "claude": [
+        "CallMcpTool:prototype-generate"
+      ],
+      "codex": [
+        "mcp-tool:prototype.generate"
+      ],
+      "cursor": [
+        "MCP:prototype-generate"
+      ]
     },
     "prototype.inspect": {
-      "claude": ["CallMcpTool:prototype-inspect"],
-      "codex": ["mcp-tool:prototype.inspect"],
-      "cursor": ["MCP:prototype-inspect"]
+      "claude": [
+        "CallMcpTool:prototype-inspect"
+      ],
+      "codex": [
+        "mcp-tool:prototype.inspect"
+      ],
+      "cursor": [
+        "MCP:prototype-inspect"
+      ]
     },
     "deployment.inspect": {
-      "claude": ["CallMcpTool:deployment-read-only"],
-      "codex": ["mcp-tool:deployment.inspect"],
-      "cursor": ["MCP:deployment-read-only"]
+      "claude": [
+        "CallMcpTool:deployment-read-only"
+      ],
+      "codex": [
+        "mcp-tool:deployment.inspect"
+      ],
+      "cursor": [
+        "MCP:deployment-read-only"
+      ]
     },
     "deployment.rollback": {
-      "claude": ["CallMcpTool:deployment-rollback-with-approval"],
-      "codex": ["mcp-tool:deployment.rollback-with-approval"],
-      "cursor": ["MCP:deployment-rollback-with-approval"]
+      "claude": [
+        "CallMcpTool:deployment-rollback-with-approval"
+      ],
+      "codex": [
+        "mcp-tool:deployment.rollback-with-approval"
+      ],
+      "cursor": [
+        "MCP:deployment-rollback-with-approval"
+      ]
     },
     "messaging.channel.resolve": {
-      "claude": ["CallMcpTool:messaging-channel-resolve"],
-      "codex": ["mcp-tool:messaging.channel.resolve"],
-      "cursor": ["MCP:messaging-channel-resolve"]
+      "claude": [
+        "CallMcpTool:messaging-channel-resolve"
+      ],
+      "codex": [
+        "mcp-tool:messaging.channel.resolve"
+      ],
+      "cursor": [
+        "MCP:messaging-channel-resolve"
+      ]
     },
     "messaging.send": {
-      "claude": ["CallMcpTool:messaging-send-with-confirmation"],
-      "codex": ["mcp-tool:messaging.send-with-confirmation"],
-      "cursor": ["MCP:messaging-send-with-confirmation"]
+      "claude": [
+        "CallMcpTool:messaging-send-with-confirmation"
+      ],
+      "codex": [
+        "mcp-tool:messaging.send-with-confirmation"
+      ],
+      "cursor": [
+        "MCP:messaging-send-with-confirmation"
+      ]
     },
     "firecrawl.search": {
-      "claude": ["mcp__firecrawl__firecrawl_search"],
-      "codex": ["mcp-tool:firecrawl.search"],
-      "cursor": ["MCP:firecrawl_search"]
+      "claude": [
+        "mcp__firecrawl__firecrawl_search"
+      ],
+      "codex": [
+        "mcp-tool:firecrawl.search"
+      ],
+      "cursor": [
+        "MCP:firecrawl_search"
+      ]
     },
     "firecrawl.scrape": {
-      "claude": ["mcp__firecrawl__firecrawl_scrape"],
-      "codex": ["mcp-tool:firecrawl.scrape"],
-      "cursor": ["MCP:firecrawl_scrape"]
+      "claude": [
+        "mcp__firecrawl__firecrawl_scrape"
+      ],
+      "codex": [
+        "mcp-tool:firecrawl.scrape"
+      ],
+      "cursor": [
+        "MCP:firecrawl_scrape"
+      ]
     },
     "firecrawl.crawl": {
-      "claude": ["mcp__firecrawl__firecrawl_crawl"],
-      "codex": ["mcp-tool:firecrawl.crawl"],
-      "cursor": ["MCP:firecrawl_crawl"]
+      "claude": [
+        "mcp__firecrawl__firecrawl_crawl"
+      ],
+      "codex": [
+        "mcp-tool:firecrawl.crawl"
+      ],
+      "cursor": [
+        "MCP:firecrawl_crawl"
+      ]
     },
     "firecrawl.extract": {
-      "claude": ["mcp__firecrawl__firecrawl_extract"],
-      "codex": ["mcp-tool:firecrawl.extract"],
-      "cursor": ["MCP:firecrawl_extract"]
+      "claude": [
+        "mcp__firecrawl__firecrawl_extract"
+      ],
+      "codex": [
+        "mcp-tool:firecrawl.extract"
+      ],
+      "cursor": [
+        "MCP:firecrawl_extract"
+      ]
     },
     "firecrawl.map": {
-      "claude": ["mcp__firecrawl__firecrawl_map"],
-      "codex": ["mcp-tool:firecrawl.map"],
-      "cursor": ["MCP:firecrawl_map"]
+      "claude": [
+        "mcp__firecrawl__firecrawl_map"
+      ],
+      "codex": [
+        "mcp-tool:firecrawl.map"
+      ],
+      "cursor": [
+        "MCP:firecrawl_map"
+      ]
     },
     "firecrawl.deep-research": {
-      "claude": ["mcp__firecrawl__firecrawl_deep_research"],
-      "codex": ["mcp-tool:firecrawl.deep-research"],
-      "cursor": ["MCP:firecrawl_deep_research"]
+      "claude": [
+        "mcp__firecrawl__firecrawl_deep_research"
+      ],
+      "codex": [
+        "mcp-tool:firecrawl.deep-research"
+      ],
+      "cursor": [
+        "MCP:firecrawl_deep_research"
+      ]
     }
   }
 }

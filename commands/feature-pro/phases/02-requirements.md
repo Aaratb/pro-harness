@@ -1,8 +1,9 @@
-# Phase 2: Requirements & Framing
+# Phase 2: Problem Framing
 
 > Load this file only when this phase is selected or resumed.
 
-- **Skills**: `product-discovery`, `grill-with-docs`, with `user-personas` and `customer-journey-map` when the feature changes user journeys; add `observability-by-design` for measurable runtime outcomes and `ai-product-engineering` only when the AI overlay activates
+- **Skills**: `product-discovery`, `grill-with-docs`, `competitive-research`, with `user-personas` and `customer-journey-map` when the feature changes user journeys; add `observability-by-design` for measurable runtime outcomes and `ai-product-engineering` only when the AI overlay activates
+- **Capabilities**: resolve `firecrawl.search`, `firecrawl.scrape`, `firecrawl.crawl`, and `firecrawl.extract` through the MCP registry before the research lane begins.
 - Apply `product-discovery` and `grill-with-docs` inline as one integrated pass using the user's existing goal, answers, and Phase 1 context. Save a single `requirements.md`, not separate discovery and grill reports. Do not repeat questions already resolved.
 - **Agents — default: no agents.** This is a conversation with the user. Use `product-manager` only for a concrete independent assessment that cannot be completed well inline, not because a routing table lists it.
 - **Run this as a staff PM, not an engineer.** Do **not** jump to a solution. Address the checklist proportionately with evidence, an explicit owned assumption, or justified N/A. It is a coverage check, not a ten-round interview. Ask the next material missing question promptly before unnecessary tool or agent work; do not investigate facts unrelated to asking it.
@@ -21,7 +22,7 @@
 
   **Goal-first rule:** when intake has no credible business requirement or measurable goal, stop solution discussion and establish the desired behavior change, business outcome, metric, target, measurement window, and accountable owner. Record user approval in `state.json` → `business_requirement`. Phase 3 may not begin before this boundary is approved.
 
-  **Engineering Impact Lens (coarse, product-grade — shift-left feasibility):** before locking scope, make a brief feasibility note from available Phase 1 evidence or relevant source. In greenfield work, label anticipated systems as planned assumptions; a codemap is unnecessary. This is **not** the ERD (no file-by-file scan, no schema design — that is Phase 7, after Plan).
+  **Engineering Impact Lens (coarse, product-grade — shift-left feasibility):** before locking scope, make a brief feasibility note from available Phase 1 evidence or relevant source. In greenfield work, label anticipated systems as planned assumptions; a codemap is unnecessary. This is **not** the ERD (no file-by-file scan, no schema design — that is the Phase 7 ERD, after engineering requirements).
   - **T-shirt size** — XS / S / M / L / XL, with the one-line reason.
   - **Systems touched** — which apps / services / data stores / external providers are *likely* in scope (module-level, not file-level).
   - **Top dependencies & unknowns** — the 1-3 things that could blow up the estimate (migration, cross-team API, new infra, third-party limits).
@@ -30,10 +31,18 @@
   - **Conditional AI necessity** — if AI is proposed, why uncertainty is useful here, what deterministic approach was rejected, and which quality, safety, latency, cost, privacy, fallback, and human-control outcomes matter.
   - **Feasibility flag** — green / yellow / red, surfaced to the user if the cost looks disproportionate to the framed impact.
   Inspect a bounded relevant source slice inline only when needed; use `repository-explorer` only for a justified substantial unknown. Do **not** spin up architects or write a design. Raise material feasibility risk immediately.
+- **Competitive / alternative research lane (runs alongside the checklist, not after the PRD):** treat research as problem evidence. Separate observed competitor facts from inference, and do not select implementation architecture here.
+  - **Skip this lane** — announce it — for a backend-only change, an internal tool, no external market, or when `competitive-research.md` already exists. Skipping the lane never skips the phase.
+  - **Landscape scan** — the 8-12 competitors that matter: feature set, pricing, target user, positioning, gaps. Record source URLs and retrieval time.
+  - **Alternatives scan** — what users do instead today, including doing nothing, a spreadsheet, or a competitor's workaround. This feeds checklist item 5.
+  - **Methodology scan** — the vocabulary, frameworks and benchmarks the market has converged on, or deliberately has not. Name the terms-of-art to adopt or reject.
+  - **Escalation**: if the scans surface 3 or more viable wedge opportunities, load `stochastic-multi-agent-consensus` (N=5) to rank them by defensibility x reachable-market x build-cost.
+  - **Output**: `.agents/features/<slug>/competitive-research.md` — feature/pricing matrix, vocabulary glossary, 3-5 wedge opportunities with rationale. It is an input to Phase 3, never a correction to it.
+  - **Cost note**: roughly 5-10 minutes of delegated research and network access. If network is unavailable, mark the lane `blocked` and tell the user; the rest of the phase continues.
 - Within the same pass, use `grill-with-docs` as the **Decision Confidence Gate**, classifying intake as `clear`, `confirm`, or `grill`. Clear intake goes directly to the approval summary; uncertain high-impact decisions get one question at a time. Do not run a second grill or create an extra approval between discovery and framing.
 - **Escalation:** only for materially contested framing that remains unresolved after a concise comparison, consider `stochastic-multi-agent-consensus`; explain the benefit before additional delegation. No fixed five-agent panel for ordinary intake.
-- **Exit criterion:** do not advance until items 1, 3, 4, and 8 (problem, reach/impact, users, success metrics) are each answered with evidence or an owned assumption, and the measurable business requirement has an owner plus explicit user approval.
-- **Output**: `.agents/features/<slug>/requirements.md` plus validated `requirements.html` when an artifact companion adds review value, structured by the 10-point checklist plus the Engineering Impact Lens summary, with every item either evidenced or labeled `ASSUMPTION (owner: <who>)`.
+- **Exit criterion:** do not advance until items 1, 3, 4, and 8 (problem, reach/impact, users, success metrics) are each answered with evidence or an owned assumption, the research lane has run or been explicitly skipped, and the measurable business requirement has an owner plus explicit user approval.
+- **Output**: `.agents/features/<slug>/requirements.md` plus validated `requirements.html` when an artifact companion adds review value, structured by the 10-point checklist plus the Engineering Impact Lens summary, alongside `competitive-research.md` when the lane ran, with every item either evidenced or labeled `ASSUMPTION (owner: <who>)`.
 
 ## Additional phase requirements
 

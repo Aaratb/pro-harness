@@ -21,7 +21,7 @@ test('Outcome Pro has four progressive phases and a compact public command', () 
   assert.equal(contract.phase_count, 4);
   assert.equal(contract.loading, 'global-once-current-phase-only');
   assert.deepEqual(contract.phases.map(({ number, name }) => [number, name]), [[1, 'Intent'], [2, 'Evidence'], [3, 'Assessment'], [4, 'Recommendation']]);
-  assert.equal(contract.artifact_root, '$REPO_ROOT/.agents/outcomes/<run-id>');
+  assert.equal(contract.artifact_root, '$PROJECT_ROOT/outcomes/<run-id>');
   assert.ok(read('commands/outcome-pro.md').trim().split(/\s+/).length <= 1300);
   assert.match(read('commands/outcome-pro.md'), /only the selected phase/);
   assert.match(read('commands/outcome-pro.md'), /missing or duplicate/);

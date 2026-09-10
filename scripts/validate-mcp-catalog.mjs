@@ -22,7 +22,7 @@ assert(providersDocument.schema_version === 1, 'MCP providers must use schema_ve
 
 const contractNames = new Set();
 const capabilityOwners = new Map();
-const workflowLimits = { 'architecture-pro': 13, 'customer-backward-pro': 8, 'debug-pro': 13, 'explainer-pro': 8, 'feature-pro': 20, 'review-pro': 10 };
+const workflowLimits = { 'architecture-pro': 13, 'customer-backward-pro': 8, 'debug-pro': 13, 'explainer-pro': 8, 'feature-pro': 21, 'review-pro': 10, 'workspace-learning-pro': 8 };
 for (const entry of registry.contracts) {
   assert(!contractNames.has(entry.name), `duplicate MCP contract ${entry.name}`);
   contractNames.add(entry.name);

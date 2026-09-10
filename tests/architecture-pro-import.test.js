@@ -50,14 +50,14 @@ test('Architecture Pro exposes a compact 13-phase repository-owned command', () 
   assert.equal(contract.command, 'architecture-pro');
   assert.equal(contract.identity, 'Pro-Level System Architect');
   assert.equal(contract.phase_count, 13);
-  assert.equal(contract.artifact_root, '$REPO_ROOT/.agents/architecture/<architecture-slug>');
+  assert.equal(contract.artifact_root, '$PROJECT_ROOT/architecture/<architecture-slug>');
   assert.deepEqual(contract.phases.map(({ number }) => number), Array.from({ length: 13 }, (_, index) => index + 1));
   for (const phase of contract.phases) {
     assert.ok(fs.existsSync(path.join(root, 'commands', 'architecture-pro', phase.file)), phase.file);
   }
 
   assert.match(command, /Pro-Level System Architect/);
-  assert.match(command, /\.agents\/architecture\/<architecture-slug>/);
+  assert.match(command, /architecture\/<architecture-slug>/);
   assert.match(command, /resolve-architecture-root\.mjs/);
   assert.doesNotMatch(command, new RegExp(`\\.agent_docs|God-level|gstack|superpowers|${['Updated', 'Personal', 'Harness'].join('-')}`, 'i'));
   assert.ok(command.trim().split(/\s+/).length <= 1600, 'main command must stay within its progressive-loading budget');

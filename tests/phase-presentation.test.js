@@ -9,9 +9,10 @@ const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const rule = '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━';
 const workflows = {
-  'feature-pro': 20, 'architecture-pro': 13, 'review-pro': 10,
+  'feature-pro': 21, 'architecture-pro': 13, 'review-pro': 10,
   'debug-pro': 13, 'explainer-pro': 8, 'outcome-pro': 4,
   'customer-backward-pro': 8, 'roadmap-pro': 7,
+  'workspace-learning-pro': 8,
 };
 const publicCommands = [...Object.keys(workflows), 'workspace-codemap-pro'].sort();
 
@@ -77,7 +78,7 @@ for (const name of publicCommands) {
 for (const [name, total] of Object.entries(workflows)) {
   test(`${name} skill defers to the canonical opening before loading the workflow`, () => {
     const skill = read(`skills/${name}/SKILL.md`);
-    const commandRead = skill.match(new RegExp('\\bread\\s+`(?:~\\/\\.agents\\/)?commands\\/' + name + '\\.md`\\s+completely', 'i'));
+    const commandRead = skill.match(new RegExp('\\bread\\s+`(?:~\\/\\.agents\\/|\\$HARNESS_ROOT\\/)?commands\\/' + name + '\\.md`\\s+completely', 'i'));
     assert.ok(commandRead, 'The skill must read its own canonical command completely');
     const openingIndex = skill.indexOf('opening roadmap');
     const choiceIndex = skill.indexOf('entry choice');
@@ -139,7 +140,7 @@ test('Ralph hands presentation back without introducing banners per worker attem
   assert.match(loop, /same uninterrupted phase.*no new banner/);
   assert.match(loop, /resume.*compaction/);
   assert.match(loop, /next phase.*banner/);
-  const build = read('commands/feature-pro/phases/08-build.md');
+  const build = read('commands/feature-pro/phases/09-build.md');
   assert.match(build, /task\/budget announcement does not replace the phase banner/);
   assert.match(read('commands/feature-pro/governance.md'), /preview is not phase entry/);
 });

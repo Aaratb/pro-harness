@@ -46,7 +46,7 @@ For durable output resolve the active repository, or the explicitly selected own
 node "$HARNESS_ROOT/scripts/resolve-outcome-root.mjs" --repo-root "$REPO_ROOT" --run-id "$RUN_ID"
 ```
 
-Use the returned physical `repository_root` and exact `artifact_root`: `$REPO_ROOT/.agents/outcomes/<run-id>/`. The resolver does not create directories. The coordinator creates that fresh non-overwriting run only when saving is needed; never write into the harness installation or invent an alternate folder. With no owner repository, stay in chat and ask where to save only if saving is needed. The coordinator supplies the explicit artifact root to every worker; workers never write. A chat-only check stays inline when a worker's required root cannot be supplied.
+Use the returned exact `artifact_root`. On `scope=project` it sits beside the initiative, at `$PROJECT_ROOT/outcomes/<run-id>/`; on `scope=repository` no workspace is declared and it is `$REPO_ROOT/.agents/outcomes/<run-id>/` as before. On `status=needs-initiative`, ask which initiative this outcome belongs to, offering `available` and a new one, then re-run with `--initiative <name>`. The resolver does not create the run directory. The coordinator creates that fresh non-overwriting run only when saving is needed; never write into the harness installation or invent an alternate folder. With no owner repository, stay in chat and ask where to save only if saving is needed. The coordinator supplies the explicit artifact root to every worker; workers never write. A chat-only check stays inline when a worker's required root cannot be supplied.
 
 ## Phase navigation
 

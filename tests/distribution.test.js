@@ -5,6 +5,7 @@ const childProcess = require('node:child_process');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
+const zlib = require('node:zlib');
 const test = require('node:test');
 
 const HARNESS_ROOT = path.resolve(__dirname, '..');
@@ -43,7 +44,7 @@ test('npm adapter shortcut generates and regenerates only the managed output', (
     for (let attempt = 0; attempt < 2; attempt += 1) {
       const result = childProcess.spawnSync('npm', ['run', 'adapters:generate'], { cwd: bundle, encoding: 'utf8' });
       assert.equal(result.status, 0, result.stderr);
-      assert.match(result.stdout, /status=success agents=61 commands=9/);
+      assert.match(result.stdout, /status=success agents=61 commands=10/);
     }
     assert.ok(fs.existsSync(path.join(bundle, 'adapters', 'generated', '.pro-harness-generated.json')));
     assert.equal(fs.existsSync(path.join(bundle, '.runtime-adapters')), false);
@@ -81,7 +82,7 @@ for (const mode of ['copy', 'link']) {
           assert.ok(customer.includes(target) && customer.includes(profile) && customer.includes('research_mode'), `${runtime}/${name}`);
           assert.ok(customer.includes('non-Git'), `${runtime}/${name}: selected-project boundary must survive generation`);
         }
-        for (const name of ['feature-pro', 'architecture-pro', 'explainer-pro', 'review-pro', 'debug-pro', 'outcome-pro', 'customer-backward-pro', 'roadmap-pro', 'roadmap-backlog-structuring', 'roadmap-product-note', 'customer-research-framing', 'workspace-codemap-context', 'ralph-loop']) {
+        for (const name of ['feature-pro', 'architecture-pro', 'explainer-pro', 'review-pro', 'debug-pro', 'outcome-pro', 'customer-backward-pro', 'roadmap-pro', 'workspace-learning-pro', 'workspace-learning-core', 'roadmap-backlog-structuring', 'roadmap-product-note', 'customer-research-framing', 'workspace-codemap-context', 'ralph-loop']) {
           const skill = fs.readFileSync(path.join(runtimeRoot, 'skills', name, 'SKILL.md'), 'utf8');
           assert.ok(skill.includes(path.join(target, 'skills', name, 'SKILL.md')), `${runtime}/${name}`);
           assert.match(skill, /including nested references and shell examples/);
@@ -241,7 +242,7 @@ test('runtime adapter generator emits native definitions without polluting canon
       path.join(HARNESS_ROOT, 'scripts', 'generate-runtime-adapters.mjs'),
       '--output-root', output,
     ], { encoding: 'utf8' });
-    assert.match(result, /status=success agents=61 commands=9/);
+    assert.match(result, /status=success agents=61 commands=10/);
     assert.match(fs.readFileSync(path.join(output, 'claude', 'agents', 'code-reviewer.md'), 'utf8'), /^name: code-reviewer$/m);
     assert.match(fs.readFileSync(path.join(output, 'cursor', 'commands', 'feature-pro.md'), 'utf8'), /~\/.agents\/commands\/feature-pro\.md/);
     assert.match(fs.readFileSync(path.join(output, 'cursor', 'commands', 'architecture-pro.md'), 'utf8'), /~\/.agents\/commands\/architecture-pro\.md/);
@@ -251,6 +252,7 @@ test('runtime adapter generator emits native definitions without polluting canon
     assert.ok(fs.existsSync(path.join(output, 'codex', 'skills', 'debug-pro', 'agents', 'openai.yaml')));
     assert.match(fs.readFileSync(path.join(output, 'codex', 'agents', 'code-reviewer.toml'), 'utf8'), /^developer_instructions = /m);
     assert.ok(fs.existsSync(path.join(output, 'codex', 'skills', 'workspace-codemap-pro', 'SKILL.md')));
+    assert.ok(fs.existsSync(path.join(output, 'codex', 'skills', 'workspace-learning-pro', 'SKILL.md')));
     for (const runtime of ['claude', 'cursor']) {
       assert.ok(fs.existsSync(path.join(output, runtime, 'commands', 'workspace-codemap-pro.md')));
       assert.equal(fs.existsSync(path.join(output, runtime, 'commands', 'workspace-codemap.md')), false);
@@ -302,7 +304,7 @@ test('installer creates a canonical hub and non-destructive per-runtime links', 
       path.join(HARNESS_ROOT, 'scripts', 'install.mjs'), '--home', home, '--target', target,
       '--runtimes', 'claude,codex,cursor', '--mcp-providers', 'playwright,mermaid'
     ], { encoding: 'utf8' });
-    assert.match(installed, /61 agents and 9 commands/);
+    assert.match(installed, /61 agents and 10 commands/);
     assert.ok(fs.existsSync(path.join(target, '.pro-harness-install.json')));
     assert.ok(fs.lstatSync(path.join(home, '.claude', 'commands', 'feature-pro.md')).isSymbolicLink());
     assert.ok(fs.lstatSync(path.join(home, '.claude', 'commands', 'architecture-pro.md')).isSymbolicLink());
@@ -311,6 +313,7 @@ test('installer creates a canonical hub and non-destructive per-runtime links', 
     assert.ok(fs.lstatSync(path.join(home, '.claude', 'commands', 'debug-pro.md')).isSymbolicLink());
     assert.ok(fs.lstatSync(path.join(home, '.cursor', 'agents', 'code-reviewer.md')).isSymbolicLink());
     assert.ok(fs.lstatSync(path.join(home, '.codex', 'skills', 'workspace-codemap-pro')).isSymbolicLink());
+    assert.ok(fs.lstatSync(path.join(home, '.codex', 'skills', 'workspace-learning-pro')).isSymbolicLink());
     assert.ok(fs.lstatSync(path.join(home, '.codex', 'agents', 'code-reviewer.toml')).isSymbolicLink());
     assert.deepEqual(Object.keys(JSON.parse(fs.readFileSync(path.join(home, '.claude.json'), 'utf8')).mcpServers), ['playwright', 'mermaid']);
     assert.match(fs.readFileSync(path.join(home, '.codex', 'config.toml'), 'utf8'), /# BEGIN PRO HARNESS MCP/);
@@ -381,10 +384,47 @@ test('MCP preflight prevents partial writes when any runtime has a provider conf
   }
 });
 
+const FORBIDDEN_IN_DISTRIBUTION = /Updated-Personal-Harness|Personal-Setup-Harness|Workspace Personal|\/Users\/aarat/;
+
+// Scans what actually ships. Two earlier gaps this closes:
+//
+//  1. The old version walked the filesystem, which included `.git` -- 418 object files read as
+//     utf8 for nothing -- while what gets published is the tracked set. `git ls-files` is the
+//     distribution surface.
+//  2. Every file was read with `readFileSync(file, 'utf8')`. A gzip stream decodes to mojibake,
+//     so the regex could never match inside an archive, and the largest leak this repo ever had
+//     -- a username across 466 members of a tracked tarball -- sat behind a guard that reported
+//     green. Compressed files are now decompressed and scanned; any other binary FAILS rather
+//     than being skipped, because an unscannable file in a published tree is a defect, not an
+//     exemption.
+function distributionText() {
+  let tracked;
+  try {
+    tracked = childProcess.execFileSync('git', ['-C', HARNESS_ROOT, 'ls-files', '-z'], { encoding: 'utf8' })
+      .split('\0').filter(Boolean);
+  } catch {
+    return null; // not a git checkout; the caller falls back to the filesystem walk
+  }
+  const chunks = [];
+  for (const relative of tracked) {
+    const file = path.join(HARNESS_ROOT, relative);
+    if (file === __filename || !fs.existsSync(file)) continue;
+    const bytes = fs.readFileSync(file);
+    if (bytes[0] === 0x1f && bytes[1] === 0x8b) {
+      chunks.push(zlib.gunzipSync(bytes).toString('latin1'));
+      continue;
+    }
+    assert.equal(bytes.includes(0), false, `${relative}: unscannable binary must not ship in the distribution`);
+    chunks.push(bytes.toString('utf8'));
+  }
+  return chunks.join('\n');
+}
+
 test('distribution tree contains no machine metadata or migration-only workspace paths', () => {
   const files = [];
   const walk = (directory) => {
     for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      if (entry.name === '.git' || entry.name === 'node_modules') continue;
       const file = path.join(directory, entry.name);
       if (entry.isDirectory()) walk(file);
       else files.push(file);
@@ -392,6 +432,18 @@ test('distribution tree contains no machine metadata or migration-only workspace
   };
   walk(HARNESS_ROOT);
   assert.equal(files.some((file) => path.basename(file) === '.DS_Store'), false);
-  const text = files.filter((file) => file !== __filename).map((file) => fs.readFileSync(file, 'utf8')).join('\n');
-  assert.doesNotMatch(text, /Updated-Personal-Harness|Personal-Setup-Harness|Workspace Personal|\/Users\/aarat/);
+
+  const tracked = distributionText();
+  const text = tracked ?? files.filter((file) => file !== __filename).map((file) => fs.readFileSync(file, 'utf8')).join('\n');
+  assert.doesNotMatch(text, FORBIDDEN_IN_DISTRIBUTION);
+});
+
+test('the distribution guard reads inside compressed files rather than past them', () => {
+  // Regression for the gap above: a gzip whose plaintext contains a forbidden path must be
+  // caught. Reading it as utf8 -- what the guard used to do -- matches nothing.
+  // Uses a forbidden token that is not a username, so the fixture does not itself publish
+  // the thing the guard exists to catch.
+  const archive = zlib.gzipSync(Buffer.from('harmless\nUpdated-Personal-Harness\n'));
+  assert.doesNotMatch(archive.toString('utf8'), FORBIDDEN_IN_DISTRIBUTION, 'utf8 read must be the broken path');
+  assert.match(zlib.gunzipSync(archive).toString('latin1'), FORBIDDEN_IN_DISTRIBUTION, 'decompressed read must catch it');
 });

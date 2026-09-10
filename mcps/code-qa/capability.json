@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "name": "code-qa",
+  "transport": "adapter-resolved",
+  "launch": {
+    "mode": "adapter-resolved",
+    "provider_candidates": [
+      "runtime-native-code-qa-mcp"
+    ],
+    "selection": "Use runtime-native-code-qa-mcp only when all seven required tools are exposed and overall_health succeeds. Otherwise preserve state and block Workspace Learning Pro Phase 3; exact-ref uncertainty does not authorize another transport."
+  },
+  "authentication": {
+    "required": true,
+    "primary_identity": "runtime-authenticated",
+    "secret_storage": "runtime-managed",
+    "may_print_secret": false,
+    "forbidden_mcp_inputs": [
+      "a desktop auth token",
+      "user ID",
+      "email",
+      "any CLI config credential"
+    ],
+    "missing_behavior": "Preserve state and block Workspace Learning Pro Phase 3. Never request or inject desktop or CLI credentials and never select a CLI fallback."
+  },
+  "capabilities": {
+    "code-qa.ask": {
+      "purpose": "Start a fresh CodeQA task using a prompt that carries repository, requested branch, and expected SHA because the MCP operation has no branch field.",
+      "tool_candidates": [
+        "ask_slash"
+      ]
+    },
+    "code-qa.continue_task": {
+      "purpose": "Continue a successful MCP-started CodeQA conversation without changing its bound transport.",
+      "tool_candidates": [
+        "continue_slash_task"
+      ]
+    },
+    "code-qa.get_task": {
+      "purpose": "Read task status and structured result for lifecycle polling and continuity.",
+      "tool_candidates": [
+        "get_task"
+      ]
+    },
+    "code-qa.get_task_logs": {
+      "purpose": "Read bounded task execution logs for result retrieval and failure diagnosis.",
+      "tool_candidates": [
+        "get_task_execution_logs"
+      ]
+    },
+    "code-qa.cancel_task": {
+      "purpose": "Cancel an exact live MCP-started task only when cancellation is explicitly authorized; a PENDING task additionally requires task and execution-log evidence that recursive/delegated work caused the stall, never status or elapsed time alone.",
+      "tool_candidates": [
+        "cancel_slash_task"
+      ]
+    },
+    "code-qa.health": {
+      "purpose": "Verify CodeQA MCP health before selecting it as the conversation transport.",
+      "tool_candidates": [
+        "overall_health"
+      ]
+    },
+    "code-qa.list_conversations": {
+      "purpose": "Reconcile a reserved but unbound dispatch intent against the runtime-authenticated user's conversations before any further dispatch.",
+      "tool_candidates": [
+        "list_my_conversations"
+      ]
+    }
+  },
+  "data_policy": {
+    "network_authorization": "required-by-active-task",
+    "artifact_root_required": true,
+    "allowed_inputs": [
+      "repository identity",
+      "requested branch",
+      "expected commit SHA",
+      "bounded source-grounded questions",
+      "dispatch intent ID",
+      "prompt SHA-256",
+      "task ID"
+    ],
+    "forbidden_inputs": [
+      "credentials",
+      "a desktop auth token",
+      "user ID",
+      "private payloads",
+      "hidden reasoning",
+      "unbounded raw transcripts"
+    ],
+    "external_mutation": "CodeQA task lifecycle only; cancellation requires explicit authorization, and cancelling a PENDING task requires task-plus-log evidence of a recursive/delegated-work stall.",
+    "transport_continuity": "Every new task, continuation, and recovery uses native MCP and a persisted pre-dispatch intent. A pre-existing legacy CLI task may be observed read-only only until terminal; it cannot be created, continued, resumed, cancelled, or recovered through CLI.",
+    "dispatch_guarantee": "Fail closed with at most one automatic dispatch per unresolved intent; this does not claim exactly-once provider execution."
+  }
+}

@@ -14,10 +14,13 @@ test('Debug Pro preserves thirteen ordered stages with a compact progressive com
   assert.equal(contract.phase_count, 13);
   assert.equal(contract.loading, 'global-once-current-phase-only');
   assert.deepEqual(contract.phases.map(({ number }) => number), Array.from({ length: 13 }, (_, i) => i + 1));
-  assert.ok(main.split(/\s+/).length <= 1400);
+  // Raised 1400 -> 1450 on 2026-09-11: the resolver gained a project/repository/local scope
+  // report, which the command has to explain. A compact entry budget is a derived floor, not a
+  // reason to compress a real behavior into an unreadable fragment.
+  assert.ok(main.split(/\s+/).length <= 1450);
   assert.match(main, /--phase <1-13>/);
   assert.match(main, /--capability <name>/);
-  assert.equal(contract.artifact_root, '$REPO_ROOT/.agents/debug/<debug-slug>');
+  assert.equal(contract.artifact_root, '$PROJECT_ROOT/debug/<debug-slug>');
 });
 
 test('Debug reuses the catalog and resolution schema without new agents, providers or historical machinery', () => {

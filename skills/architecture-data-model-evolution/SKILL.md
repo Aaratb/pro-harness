@@ -23,3 +23,22 @@ Carry that invariant across expand, migrate, verify, and contract. Show what old
 Name the rollback boundary: after destructive transformation or incompatible writes, rolling back code may not restore data semantics. Distinguish reversible rollout, compensating repair, and restore/replay; state which data and versions each preserves. Return the decisive example and checks in the existing model or migration section, not a separate artifact per concern. Remain static-only: specify checks and migrations without executing them.
 
 Keep runtime behavior unverified without measurements. Return the model decision, evolution sequence, rollback, and fitness checks beneath the caller-supplied `artifact_root`.
+
+## The schema plan, and where the line falls
+
+Architecture Pro produces `data-model/schema-plan.md` beneath `artifact_root`. It is a plan.
+It contains no DDL, no migration file, and no index statement.
+
+Cover: entities and their ownership; the integrity rules that must hold through the change;
+the compatibility window for every consumer of the data; and the migration strategy —
+expand/contract or dual-write, backfill shape, and how a partially-migrated state behaves.
+Name what would make the migration unsafe to run twice.
+
+Feature Pro details this into entities, fields and indexes, then `database-engineer` writes
+the actual migrations against it. That split is enforced by capability, not by convention:
+`data-model-architect` has no repository write access, so a plan cannot silently become an
+implementation.
+
+State explicitly which entities are exposed to other services. A schema another team reads is
+a contract in everything but name, and changing it needs the same compatibility discipline as
+an API.

@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { canonicalRoot, containedPath } from './repository-paths.mjs';
 import { inspectArtifactDirectory, resolveRepositoryArtifactRoot } from './repository-artifacts.mjs';
+import { decideArtifactScope } from './project-discovery.mjs';
 
 function assertControlFree(value) {
   if (/[\u0000-\u001f\u007f-\u009f]/u.test(value)) throw new Error('target path or argument contains control characters');
@@ -15,7 +16,7 @@ function parseArguments(args, slugName) {
   for (let index = 0; index < args.length; index += 1) {
     const flag = args[index];
     assertControlFree(flag);
-    if (![slugFlag, '--repo-root', '--project-root', '--resume'].includes(flag)) throw new Error('unknown argument');
+    if (![slugFlag, '--repo-root', '--project-root', '--resume', '--initiative'].includes(flag)) throw new Error('unknown argument');
     if (values.has(flag)) throw new Error(`duplicate ${flag}`);
     if (flag === '--resume') { values.set(flag, true); continue; }
     const value = args[++index];
@@ -106,12 +107,29 @@ export function resolveProjectArtifactRoot(args, { slugName, artifactDirectory, 
   const resume = values.has('--resume');
   const start = selectedDirectory(values.get('--project-root') ?? values.get('--repo-root') ?? process.cwd());
   assertProjectBoundary(start, kind);
-  const artifactRelative = `.agents/${artifactDirectory}/${slug}`;
-  const projectRoot = values.has('--project-root') ? start : resolveRepositoryArtifactRoot({
-    startDirectory: start,
-    artifactRelative,
-    gitFailureMessage: 'Choose an owning Git repository, or explicitly select a non-Git folder with --project-root.',
-  }).repositoryRoot;
+  let artifactRelative = `.agents/${artifactDirectory}/${slug}`;
+  // An explicit --project-root is the caller's decision and is never second-guessed. Otherwise
+  // a declared workspace resolves the initiative, so --project-root no longer has to be typed
+  // by hand on every invocation -- which is what kept these two commands manual.
+  let projectRoot;
+  if (values.has('--project-root')) {
+    projectRoot = start;
+  } else {
+    const scope = decideArtifactScope({
+      startDirectory: start, family: artifactDirectory, slug,
+      requestedInitiative: values.get('--initiative') ?? '', create: true,
+    });
+    if (scope.status === 'needs-initiative') {
+      const detail = scope.ambiguous ? 'this slug exists under more than one initiative' : 'no initiative selected';
+      throw new Error(`${detail}; re-run with --initiative <name> (available: ${scope.available.join(', ') || 'none yet'})`);
+    }
+    artifactRelative = scope.artifactRelative;
+    projectRoot = scope.status === 'project' ? scope.projectRoot : resolveRepositoryArtifactRoot({
+      startDirectory: start,
+      artifactRelative,
+      gitFailureMessage: 'Choose an owning Git repository, or explicitly select a non-Git folder with --project-root.',
+    }).repositoryRoot;
+  }
   assertProjectBoundary(projectRoot, kind);
   const artifactRoot = inspectArtifactDirectory(projectRoot, artifactRelative);
   const exists = fs.existsSync(artifactRoot);

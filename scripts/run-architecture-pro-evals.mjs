@@ -59,7 +59,7 @@ const checks = {
     pass(routing.mode === 'detect-then-load', 'overlays are not evidence gated');
     pass(policy.security_routes.every(({ agent }) => agent === testCase.expected.security_agent), 'security routing is fragmented');
   },
-  'path-containment': () => pass(contract.artifact_root === '$REPO_ROOT/.agents/architecture/<architecture-slug>', 'artifact root differs'),
+  'path-containment': () => pass(contract.artifact_root === '$PROJECT_ROOT/architecture/<architecture-slug>', 'artifact root differs'),
 };
 
 const results = [];

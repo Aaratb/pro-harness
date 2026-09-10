@@ -58,9 +58,9 @@ Read approved supplied/local evidence only. No acquisition, production queries, 
 
 ## Project-owned output
 
-Chat-only work stays inline. Before saving or delegating, use `scripts/resolve-roadmap-root.mjs --roadmap-slug <slug>` from the target repository, optionally with `--repo-root <path>`; an explicitly chosen non-Git project uses `--project-root <path>`. Add `--resume` only for an existing run.
+Chat-only work stays inline. Before saving or delegating, use `scripts/resolve-roadmap-root.mjs --roadmap-slug <slug>` from the target repository, optionally with `--repo-root <path>`. In a declared workspace the initiative is resolved automatically; supply `--initiative <name>` when the resolver reports it cannot choose, and never choose for the user when the slug exists under more than one. An explicitly chosen non-Git project still uses `--project-root <path>`. Add `--resume` only for an existing run.
 
-Use the returned physical project root and exact `$PROJECT_ROOT/.agents/roadmaps/<roadmap-slug>/` artifact root. The resolver is read-only; the coordinator uses shared `ensureContainedDirectory` and rechecks containment before writes. Every worker receives this root but returns without writes. With no owner, stay in chat and ask where to save only when needed. Never invent a global, orphan or harness output folder.
+Use the returned physical project root and exact `$PROJECT_ROOT/roadmaps/<roadmap-slug>/` artifact root. The resolver is read-only; the coordinator uses shared `ensureContainedDirectory` and rechecks containment before writes. Every worker receives this root but returns without writes. With no owner, stay in chat and ask where to save only when needed. Never invent a global, orphan or harness output folder.
 
 Default durable output is `roadmap.md`: preserve context, source references, actual phase coverage, advice, human decisions, current feature/note coverage, corrections, execution assumptions and next action. Use sections in this one report rather than per-phase files or another state/ledger schema. Preserve original input sheets; do not copy private source templates into the harness. On resume verify identity and current premises; only affected reasoning needs rework.
 

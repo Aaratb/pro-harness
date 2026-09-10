@@ -19,10 +19,10 @@ function assertControlFreePath(value, label) {
   if (/[\u0000-\u001f\u007f]/u.test(value)) throw new Error(`${label} contains control characters`);
 }
 
-function assertContains(root, candidate) {
+function assertContains(root, candidate, label = 'resolved Git repository') {
   const relative = path.relative(root, candidate);
   if (relative === '' || (!path.isAbsolute(relative) && relative !== '..' && !relative.startsWith(`..${path.sep}`))) return;
-  throw new Error('resolved Git repository does not contain the target path');
+  throw new Error(`${label} does not contain the target path`);
 }
 
 export function inspectArtifactDirectory(root, relativePath) {
@@ -51,9 +51,38 @@ export function resolveRepositoryArtifactRoot({
   artifactRelative,
   create = false,
   gitFailureMessage,
+  // Optional project-owned override. `rootOverride` is the directory artifacts are composed
+  // beneath; `containmentRoot` is the declared workspace both it and the start directory must
+  // sit inside. The pair is what keeps the security property intact: the artifact tree is
+  // legitimately a sibling of the working directory, so requiring `start` to be INSIDE the
+  // artifact root -- correct for repository-owned output -- is the wrong invariant here.
+  // Containment is asserted against the workspace instead, never dropped.
+  rootOverride = null,
+  containmentRoot = null,
 }) {
   const start = canonicalRoot(startDirectory);
   assertControlFreePath(start, 'target path');
+
+  if (rootOverride) {
+    if (!containmentRoot) throw new Error('rootOverride requires a containmentRoot');
+    const workspaceRoot = canonicalRoot(containmentRoot);
+    const overriddenRoot = canonicalRoot(rootOverride);
+    assertControlFreePath(workspaceRoot, 'workspace path');
+    assertControlFreePath(overriddenRoot, 'project path');
+    assertContains(workspaceRoot, overriddenRoot, 'declared workspace');
+    assertContains(workspaceRoot, start, 'declared workspace');
+    const overriddenArtifactRoot = create
+      ? ensureContainedDirectory(overriddenRoot, artifactRelative)
+      : inspectArtifactDirectory(overriddenRoot, artifactRelative);
+    return {
+      repositoryRoot: overriddenRoot,
+      artifactRoot: overriddenArtifactRoot,
+      artifactRelative,
+      created: create,
+      workspaceRoot,
+    };
+  }
+
   let reportedRoot;
   try {
     reportedRoot = stripTerminalLineEnding(execFileSync(

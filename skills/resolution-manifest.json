@@ -3,124 +3,540 @@
   "artifact_root_input": "artifact_root",
   "skills": [
     {
-      "name": "roadmap-pro",
-      "description": "Coordinate evidence-linked backlog shaping, priority advice, human selection, Product Notes and provisional execution planning through focused methods.",
+      "name": "ab-test-analysis",
+      "description": "Design or analyze an experiment using explicit hypotheses, guardrails, sample assumptions, and decision thresholds.",
       "sources": [
-        "roadmap-pro"
+        "app-product-ab-test-analysis"
       ],
       "dependencies": [],
       "capabilities": [],
       "workflow": [
-        "Select the assigned method and read only its relevant references and approved source material.",
-        "Preserve source identity, substantive product reasoning, human decisions and explicit evidence limits.",
-        "Return useful advice, exact coverage and next decisions without authorizing delivery or external actions."
+        "Define the hypothesis, primary metric, guardrails, unit of randomization, and exposure rules.",
+        "Check sample, duration, novelty, interference, peeking, and segmentation risks.",
+        "State the decision rule and distinguish observed effects from causal claims."
       ],
-      "output": "Use chat or the exact caller-supplied artifact_root beneath the owning repository or explicitly selected project; narrower workers return without writes."
+      "output": "Return an experiment plan or analysis with assumptions, calculations, and decision status."
     },
     {
-      "name": "roadmap-backlog-structuring",
-      "description": "Turn supplied customer insights, problems and candidate ideas into a broad, evidence-linked backlog with distinct mechanisms and clear feature boundaries. Use before human prioritization or to reconcile changed inputs; does not rank or select the roadmap.",
+      "name": "ai-product-engineering",
+      "description": "Design and deliver AI or LLM product features across product fit, model and prompt contracts, tools, grounding, evaluations, safety, privacy, cost, latency, fallback, observability, and release monitoring. Use when a feature calls models, embeds or retrieves content, uses agents/tools, changes system prompts, or makes probabilistic behavior user-visible.",
       "sources": [
-        "roadmap-backlog-structuring"
+        "canonical-ai-product-contract"
       ],
       "dependencies": [
-        "customer-insight-synthesis",
-        "customer-strategy-synthesis",
-        "customer-solution-validation"
+        "observability-by-design"
       ],
       "capabilities": [],
       "workflow": [
-        "Select the assigned method and read only its relevant references and approved source material.",
-        "Preserve source identity, substantive product reasoning, human decisions and explicit evidence limits.",
-        "Return useful advice, exact coverage and next decisions without authorizing delivery or external actions."
+        "Prove why probabilistic behavior is appropriate and freeze user outcomes, unacceptable failures, and release thresholds.",
+        "Version model, prompt, context, retrieval, tool, schema, safety, and fallback contracts.",
+        "Run deterministic, statistical, adversarial, and human-calibrated evaluations before a bounded rollout with quality, cost, latency, and drift monitoring."
       ],
-      "output": "Use chat or the exact caller-supplied artifact_root beneath the owning repository or explicitly selected project; narrower workers return without writes."
+      "output": "Write the AI delivery contract, evaluation plan, security boundaries, operational budgets, rollout, and rollback evidence beneath `artifact_root`."
     },
     {
-      "name": "roadmap-priority-advisory",
-      "description": "Compare backlog options or proposed feature sets against supplied customer strategy, value, constraints and uncertainty. Use to advise a human on trade-offs and what would change the recommendation; never adopt roadmap priority or selection.",
+      "name": "api-and-interface-design",
+      "description": "Design stable APIs, CLIs, events, schemas, and agent interfaces with clear contracts, errors, compatibility, and migration behavior.",
       "sources": [
-        "roadmap-priority-advisory"
+        "api-and-interface-design"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Identify consumers, trust boundaries, lifecycle, versioning, and compatibility constraints.",
+        "Specify names, inputs, outputs, errors, idempotency, pagination, retries, and authorization where applicable.",
+        "Compare alternatives and define contract tests and migration requirements."
+      ],
+      "output": "Return the interface contract and decision rationale ready for the technical specification."
+    },
+    {
+      "name": "architecture-capacity-and-tuning",
+      "description": "Quantify capacity ceilings, demand, headroom, tuning envelopes, cost steps, and 1x, 10x, and 100x breakpoints.",
+      "sources": [
+        "capacity-and-tuning-architecture"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Inventory hard and soft ceilings across compute, storage, pools, queues, quotas, and operations.",
+        "Show demand, headroom, first break, sensitivity, and cost arithmetic at 1x, 10x, and 100x.",
+        "Define safe tuning ranges, structural steps, lead times, owners, and verification."
+      ],
+      "output": "Write the capacity ledger and tuning plan beneath the caller-supplied `artifact_root`."
+    },
+    {
+      "name": "architecture-concurrency-and-overload",
+      "description": "Design and audit concurrency, ordering, idempotency, admission control, backpressure, retry budgets, and overload behavior.",
+      "sources": [
+        "concurrency-and-overload-analysis"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Map synchronous and asynchronous boundaries, actors, invariants, queueing, timeouts, cancellation, and late success.",
+        "Analyze races, retries, ordering, deduplication, idempotency, and pressure amplification.",
+        "Define bounded admission, shedding, degradation, recovery, and verification behavior."
+      ],
+      "output": "Write the concurrency and overload contract beneath the caller-supplied `artifact_root`."
+    },
+    {
+      "name": "architecture-data-model-evolution",
+      "description": "Design and audit data models, integrity placement, compatibility, lifecycle behavior, and safe expand-contract evolution.",
+      "sources": [
+        "data-model-architecture"
       ],
       "dependencies": [
-        "customer-opportunity-economics",
-        "customer-strategy-synthesis",
-        "customer-evidence-audit"
+        "architecture-distributed-consistency"
       ],
       "capabilities": [],
       "workflow": [
-        "Select the assigned method and read only its relevant references and approved source material.",
-        "Preserve source identity, substantive product reasoning, human decisions and explicit evidence limits.",
-        "Return useful advice, exact coverage and next decisions without authorizing delivery or external actions."
+        "Inventory entities, invariants, writers, readers, access patterns, tenant boundaries, lifecycle, and consumers.",
+        "Evaluate normalization, integrity placement, compatibility, indexes, and datastore-specific risks only when detected.",
+        "Define expand, migrate, verify, contract, rollback, and reconciliation steps."
       ],
-      "output": "Use chat or the exact caller-supplied artifact_root beneath the owning repository or explicitly selected project; narrower workers return without writes."
+      "output": "Write the data-model decision and evolution plan beneath the caller-supplied `artifact_root`."
     },
     {
-      "name": "roadmap-human-review",
-      "description": "Reconcile human feedback on a product backlog or roadmap, explaining edits, conflicting revisions, decision scope and note impacts while preserving the human's choices. Use for supplied comments, reviewed rows or feedback exports; does not authenticate approvals or persist accepted state.",
+      "name": "architecture-data-recovery",
+      "description": "Audit backup, restore, replay, reconciliation, and disaster recovery against dependency-aware recovery objectives.",
       "sources": [
-        "roadmap-human-review"
-      ],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": [
-        "Select the assigned method and read only its relevant references and approved source material.",
-        "Preserve source identity, substantive product reasoning, human decisions and explicit evidence limits.",
-        "Return useful advice, exact coverage and next decisions without authorizing delivery or external actions."
-      ],
-      "output": "Use chat or the exact caller-supplied artifact_root beneath the owning repository or explicitly selected project; narrower workers return without writes."
-    },
-    {
-      "name": "roadmap-product-note",
-      "description": "Draft or review simple Product Notes explaining what each backlog feature means, who it serves, the problem and intent. Use for human-reviewed backlog items or explicitly provisional drafts; preserve all-feature coverage and leave full PRDs to Feature Pro.",
-      "sources": [
-        "roadmap-product-note"
-      ],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": [
-        "Select the assigned method and read only its relevant references and approved source material.",
-        "Preserve source identity, substantive product reasoning, human decisions and explicit evidence limits.",
-        "Return useful advice, exact coverage and next decisions without authorizing delivery or external actions."
-      ],
-      "output": "Use chat or the exact caller-supplied artifact_root beneath the owning repository or explicitly selected project; narrower workers return without writes."
-    },
-    {
-      "name": "roadmap-execution-planning",
-      "description": "Form or challenge a provisional cross-functional execution view for a human-selected feature set using supplied notes, dependencies and capacity. Use before delivery commitments or when assumptions change; does not select the roadmap, write a PRD or decompose engineering tasks.",
-      "sources": [
-        "roadmap-execution-planning"
-      ],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": [
-        "Select the assigned method and read only its relevant references and approved source material.",
-        "Preserve source identity, substantive product reasoning, human decisions and explicit evidence limits.",
-        "Return useful advice, exact coverage and next decisions without authorizing delivery or external actions."
-      ],
-      "output": "Use chat or the exact caller-supplied artifact_root beneath the owning repository or explicitly selected project; narrower workers return without writes."
-    },
-    {
-      "name": "roadmap-independent-challenge",
-      "description": "Challenge roadmap candidates, proposed feature sets, Product Notes or execution views against original approved evidence and human decisions. Use for consequential reasoning, fidelity or feasibility questions; return supported objections or a bounded no-objection result without choosing priorities or changing the roadmap.",
-      "sources": [
-        "roadmap-independent-challenge"
+        "data-recovery-architecture"
       ],
       "dependencies": [
-        "customer-independent-challenge"
+        "architecture-distributed-consistency"
       ],
       "capabilities": [],
       "workflow": [
-        "Select the assigned method and read only its relevant references and approved source material.",
-        "Preserve source identity, substantive product reasoning, human decisions and explicit evidence limits.",
-        "Return useful advice, exact coverage and next decisions without authorizing delivery or external actions."
+        "Inventory authoritative and derived state plus every dependency required for restoration.",
+        "Define business recovery objectives and a dependency-ordered restore, replay, reconciliation, and verification graph.",
+        "Separate configured backup from exercised restore evidence and define a bounded drill."
       ],
-      "output": "Use chat or the exact caller-supplied artifact_root beneath the owning repository or explicitly selected project; narrower workers return without writes."
+      "output": "Write the recovery graph, drill specification, and residual risk beneath the caller-supplied `artifact_root`."
+    },
+    {
+      "name": "architecture-decision-records",
+      "description": "Capture durable architecture decisions with context, alternatives, consequences, uncertainty, falsifiers, and revisit conditions.",
+      "sources": [
+        "architecture-decision-records",
+        "documentation-and-adrs"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "State the decision context, constraints, owner, and decision date.",
+        "Describe viable alternatives and why they were rejected using evidence rather than preference.",
+        "Record consequences, risks, validity envelope, falsifiers, migration, rollback, and revisit triggers."
+      ],
+      "output": "Write the ADR beneath `artifact_root` using the repository's established format when one exists."
+    },
+    {
+      "name": "architecture-diagnostics",
+      "description": "Assess whether system telemetry and playbooks can distinguish, localize, and safely test material failure hypotheses.",
+      "sources": [
+        "system-diagnostic-analysis"
+      ],
+      "dependencies": [
+        "observability-by-design"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Map components, symptoms, telemetry, correlation, ownership, alerts, dashboards, and runbooks.",
+        "Enumerate plausible causes and determine whether available signals distinguish them.",
+        "Record ambiguity and the smallest safe evidence or instrumentation needed to falsify each hypothesis."
+      ],
+      "output": "Write the diagnostic signal graph and ambiguity register beneath the caller-supplied `artifact_root`."
+    },
+    {
+      "name": "architecture-distributed-consistency",
+      "description": "Design consistency, partition, latency, conflict, and reconciliation behavior per invariant or operation rather than by global labels.",
+      "sources": [
+        "distributed-consistency-analysis"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Identify each invariant, authority, writer, transaction, and partition boundary.",
+        "Choose normal and partition behavior with bounded staleness, ordering, conflict, and user outcomes.",
+        "Define reconciliation, recovery, observability, ownership, and approval needs."
+      ],
+      "output": "Write the operation-level consistency ledger beneath the caller-supplied `artifact_root`."
+    },
+    {
+      "name": "architecture-edge-case-economics",
+      "description": "Prioritize credible architecture edge cases using risk scoring, explicit complexity budgets, and a defensible stopping rule.",
+      "sources": [
+        "architecture-edge-case-analysis"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Define probability, impact, and detectability anchors.",
+        "Score credible scenarios and compare risk reduction with architectural complexity.",
+        "Record accepted risk, ownership, revisit conditions, and the stopping-rule proof."
+      ],
+      "output": "Write the risk and complexity ledger beneath the caller-supplied `artifact_root`."
+    },
+    {
+      "name": "architecture-explanation-diagrams",
+      "description": "Deliver source-backed rendered architecture views that make existing behavior, proposed changes, contracts, and consequential paths clear.",
+      "sources": [
+        "architecture-explanation"
+      ],
+      "dependencies": [
+        "architecture-decision-records"
+      ],
+      "capabilities": [
+        "diagram.render"
+      ],
+      "workflow": [
+        "Reuse one evidence-linked inventory and rendered views at context, options, deep-design, and walkthrough checkpoints, including applicable ADR-only phases.",
+        "Distinguish existing, new/proposed, changed, and proposed-removal nodes and relationships with stable identifiers, a visible text legend, and separate evidence confidence.",
+        "Cover material success, alternative, rejection, timeout, retry, asynchronous, overload, partition, race, recovery, and unknown paths; explain decisions, trade-offs, costs, reuse, and residual risks.",
+        "Use the existing bounded local companion renderer and distinguish source correctness, rendering, direct inspection, and user acceptance; disclose incomplete visual delivery."
+      ],
+      "output": "Return phase-appropriate diagram content; the orchestrator writes the existing phase Markdown and rendered HTML companion beneath `artifact_root`, with `EXPLAIN.md` and `EXPLAIN.html` at the walkthrough."
+    },
+    {
+      "name": "architecture-pro",
+      "description": "Run the complete Architecture Pro design, audit, mixed, or decision-record workflow through its canonical progressive-loading command.",
+      "sources": [
+        "architecture-pro"
+      ],
+      "dependencies": [
+        "architecture-pro-governance"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Resolve the installed harness root and active repository without assuming a runtime-specific path.",
+        "Load the canonical command, governance, routing, and only the active phase.",
+        "Validate the run state and certified handoff before completion."
+      ],
+      "output": "Keep all workflow artifacts beneath the caller-supplied `artifact_root` and return the current phase, evidence, blockers, and next action."
+    },
+    {
+      "name": "architecture-pro-governance",
+      "description": "Govern Architecture Pro scope, evidence, state, consent, decisions, budgets, certification, and digest-bound handoffs.",
+      "sources": [
+        "architecture-governance"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Freeze approved roots, authority, budgets, state, and evidence contracts before analysis.",
+        "Enforce typed claims, explicit consent, legal transitions, decision governance, and independent verification.",
+        "Block certification when material evidence, lanes, digests, approvals, or targets are incomplete."
+      ],
+      "output": "Return governance status and persist only approved workflow state beneath the caller-supplied `artifact_root`."
+    },
+    {
+      "name": "architecture-query-performance",
+      "description": "Evaluate query latency, plan stability, locking, indexing, pagination, and connection pressure using datastore-aware evidence.",
+      "sources": [
+        "query-performance-architecture"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Inventory material query shapes, callers, data growth, indexes, locks, transactions, pagination, and pools.",
+        "Separate static structure from measured execution and load only a proven datastore overlay.",
+        "Rank findings and define the smallest safe plan or measurement needed for proof."
+      ],
+      "output": "Write query findings and verification specifications beneath the caller-supplied `artifact_root`."
+    },
+    {
+      "name": "architecture-review-readiness",
+      "description": "Turn certified architecture evidence into a concise decision memo, uncertainty register, failure defense, and review rehearsal.",
+      "sources": [
+        "architecture-review-preparation"
+      ],
+      "dependencies": [
+        "architecture-explanation-diagrams"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Write a concise decision memo with alternatives, choice costs, uncertainty, decision request, and falsifiers.",
+        "Build an evidence-linked engineering fitness matrix across every material quality attribute.",
+        "Run a teach-back, incorporate corrections, and record explicit author approval."
+      ],
+      "output": "Write `ARCHITECT_REVIEW.md` beneath the caller-supplied `artifact_root`."
+    },
+    {
+      "name": "architecture-security-review",
+      "description": "Run one coordinated architecture security review with triggered API, identity, privacy, AI-tool, and infrastructure focus packets.",
+      "sources": [
+        "architecture-security-analysis"
+      ],
+      "dependencies": [
+        "security-review",
+        "api-and-interface-design",
+        "ai-product-engineering",
+        "production-readiness"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Always build a minimal asset, actor, trust-boundary, authority, data-transfer, and abuse-case map.",
+        "Load only evidence-triggered API, identity, privacy, AI-tool, and infrastructure focus packets.",
+        "Deduplicate root causes, redact sensitive values, and specify bounded verification for runtime claims."
+      ],
+      "output": "Write the coordinated threat and transfer map plus focused findings beneath the caller-supplied `artifact_root`."
+    },
+    {
+      "name": "architecture-system-performance",
+      "description": "Decompose end-to-end performance targets into measurable budgets, arithmetic-backed hypotheses, and bounded verification specifications.",
+      "sources": [
+        "system-performance-architecture"
+      ],
+      "dependencies": [
+        "architecture-capacity-and-tuning"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Freeze user-facing latency, throughput, saturation, or cost targets.",
+        "Allocate per-hop budgets and analyze fan-out, caches, pools, queues, retries, and allocation with visible arithmetic.",
+        "Rank hypotheses and define representative, bounded, falsifying measurements."
+      ],
+      "output": "Write performance budgets and measurement specifications beneath the caller-supplied `artifact_root`."
+    },
+    {
+      "name": "behavior-preserving-code-simplification",
+      "description": "Compress an implementation through characterization-first transformations that mechanically preserve externally observable behavior.",
+      "sources": [
+        "behavior-preserving-code-simplification"
+      ],
+      "dependencies": [
+        "test-driven-development",
+        "code-simplification"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Capture current behavior for every refactored seam before editing.",
+        "Remove duplication, indirection, dead branches, and excess surface in small reversible steps.",
+        "Rerun the same proof after each material transformation and stop on behavioral uncertainty."
+      ],
+      "output": "Write the compression ledger beneath `artifact_root` with line changes and verification evidence."
+    },
+    {
+      "name": "browser-exploration",
+      "description": "Explore an approved web surface quickly to understand navigation, states, controls, and likely test paths before systematic QA.",
+      "sources": [
+        "browse"
+      ],
+      "dependencies": [
+        "browser-session-setup"
+      ],
+      "capabilities": [
+        "browser.automate"
+      ],
+      "workflow": [
+        "Confirm the approved origin and exploration goal.",
+        "Map routes, primary controls, state changes, and obvious failures without editing application state beyond the requested flow.",
+        "Record candidate QA journeys and evidence gaps."
+      ],
+      "output": "Return the explored surface map and repository-local screenshots when useful."
+    },
+    {
+      "name": "browser-qa",
+      "description": "Run systematic browser QA in report-only or approved-fix mode across critical journeys, edge states, and visible regressions.",
+      "sources": [
+        "qa",
+        "qa-only"
+      ],
+      "dependencies": [
+        "browser-exploration",
+        "webapp-testing"
+      ],
+      "capabilities": [
+        "browser.automate"
+      ],
+      "workflow": [
+        "Select `report-only` by default or `fix` only when repository edits are explicitly authorized.",
+        "Test critical journeys, permissions, responsive states, errors, refresh, navigation, console, and network behavior.",
+        "For fixes, reproduce first, apply one scoped fix, and rerun the exact journey."
+      ],
+      "output": "Write the QA report, evidence, and any verified fixes beneath `artifact_root`."
+    },
+    {
+      "name": "browser-session-setup",
+      "description": "Prepare an approved browser automation session, authentication state, cookies, and profile without exposing credentials.",
+      "sources": [
+        "setup-browser-cookies"
+      ],
+      "dependencies": [],
+      "capabilities": [
+        "browser.automate"
+      ],
+      "workflow": [
+        "Confirm the target origin, authentication requirement, approved browser profile, and credential source.",
+        "Use existing authenticated state or an explicit user-completed login flow; never print secrets or cookie values.",
+        "Verify the session only against the approved origin and report expiration or access blockers."
+      ],
+      "output": "Return session readiness and the approved origin without credential material."
+    },
+    {
+      "name": "change-explanation",
+      "description": "Explain a pull request, branch, or working-tree change through surrounding context, core intent, conceptual code groups, consequences, and comprehension practice.",
+      "sources": [
+        "change-explanation"
+      ],
+      "dependencies": [
+        "explainer-core",
+        "explainer-orientation"
+      ],
+      "capabilities": [
+        "scm.pull-request.read"
+      ],
+      "workflow": [
+        "Resolve the comparison base safely and collect eligible local change evidence.",
+        "Explore surrounding code and distinguish evidenced behavior from inferred intent.",
+        "Explain prior context, conceptual changes, consequences, and comprehension without grading or executing the target."
+      ],
+      "output": "Write the change-explanation section beneath `artifact_root`."
+    },
+    {
+      "name": "changelog-generator",
+      "description": "Generate user-appropriate changelog entries from verified diffs, commits, pull requests, and release evidence.",
+      "sources": [
+        "changelog-generator"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Determine audience, release boundary, repository changelog convention, and included revisions.",
+        "Group meaningful additions, changes, fixes, removals, migrations, and known limitations.",
+        "Exclude internal implementation noise and verify every claim against the diff or release artifacts."
+      ],
+      "output": "Return or write the changelog entry to the repository-defined path or beneath `artifact_root`."
+    },
+    {
+      "name": "check-merge-readiness",
+      "description": "Synthesize review, CI, risk, compatibility, migration, and approval evidence into a clear merge-readiness decision.",
+      "sources": [
+        "review-pr-merge-readiness"
+      ],
+      "dependencies": [
+        "score-change-risk",
+        "verification-before-completion"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Load the exact revision, findings, check status, approvals, migration, rollout, and rollback evidence.",
+        "Apply an explicit readiness rubric and distinguish blockers, conditions, and follow-up work.",
+        "Return a decision with confidence and evidence gaps rather than treating absence of findings as approval."
+      ],
+      "output": "Write the merge-readiness verdict beneath `artifact_root`."
+    },
+    {
+      "name": "clickhouse-modeling",
+      "description": "Design ClickHouse tables and queries around measured ingestion, retention, aggregation, ordering, partition, and mutation requirements.",
+      "sources": [
+        "data-clickhouse-modeling"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Identify event shape, query patterns, ingestion rate, retention, update semantics, and cardinality.",
+        "Select engines, ordering, partitioning, projections, materialized views, and codecs from those requirements.",
+        "Define migration, backfill, and query-plan verification."
+      ],
+      "output": "Return the ClickHouse model and verification plan."
+    },
+    {
+      "name": "code-simplification",
+      "description": "Simplify code structure and remove unnecessary complexity while preserving behavior and repository conventions.",
+      "sources": [
+        "code-simplification"
+      ],
+      "dependencies": [
+        "test-driven-development"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Identify complexity supported by concrete duplication, branching, coupling, or comprehension evidence.",
+        "Establish behavioral proof and make the smallest simplifying transformation.",
+        "Rerun focused verification and report structural improvement without claiming subjective elegance as proof."
+      ],
+      "output": "Return the simplified paths, before-and-after evidence, and verification result."
+    },
+    {
+      "name": "codebase-onboarding",
+      "description": "Build a concise evidence-backed map of an unfamiliar repository before planning or implementation.",
+      "sources": [
+        "codebase-onboarding"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Read repository instructions, manifests, entry points, tests, and architecture documentation.",
+        "Map modules, runtime boundaries, commands, ownership, and likely change surfaces with file evidence.",
+        "Record unknowns and avoid inferring behavior that was not inspected."
+      ],
+      "output": "Write the onboarding map beneath `artifact_root` and return its path with the evidence opened."
+    },
+    {
+      "name": "competitive-research",
+      "description": "Research competitors and adjacent solutions through Firecrawl capabilities with transparent methodology and direct citations.",
+      "sources": [
+        "market-research",
+        "deep-research",
+        "competitive-ads-extractor"
+      ],
+      "dependencies": [],
+      "capabilities": [
+        "firecrawl.search",
+        "firecrawl.scrape",
+        "firecrawl.crawl",
+        "firecrawl.extract"
+      ],
+      "workflow": [
+        "Define the comparison question, inclusion criteria, geography, date boundary, and evidence fields before searching.",
+        "Use Firecrawl to discover and extract primary product, pricing, documentation, and positioning evidence.",
+        "Separate observed facts from inference, record unavailable sources, and compare competitors on consistent dimensions."
+      ],
+      "output": "Write a cited competitive-research report beneath `artifact_root`, including methodology and evidence gaps."
+    },
+    {
+      "name": "create-prd",
+      "description": "Turn approved discovery into a repository-local product requirements document with measurable acceptance criteria.",
+      "sources": [
+        "to-prd",
+        "flow-to-prd",
+        "app-product-create-prd"
+      ],
+      "dependencies": [
+        "write-user-stories",
+        "user-personas"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Consume approved discovery rather than restarting ideation.",
+        "Define goal, users, scope, non-goals, requirements, metrics, constraints, dependencies, and risks.",
+        "Trace acceptance criteria to requirements and label every unresolved assumption."
+      ],
+      "output": "Write `prd.md` beneath `artifact_root` or the caller-specified filename inside that root."
+    },
+    {
+      "name": "create-pull-request",
+      "description": "Create or update a focused pull request with accurate scope, verification, risks, rollout, rollback, and reviewer guidance.",
+      "sources": [
+        "core-pr-creator"
+      ],
+      "dependencies": [
+        "verification-before-completion"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Confirm the branch, base, commit set, diff scope, repository instructions, and authorization to publish.",
+        "Draft a concise title and body from verified artifacts, including tests, risks, rollout, rollback, and review focus.",
+        "Create or update the pull request only with explicit outward-action authority and verify the resulting URL."
+      ],
+      "output": "Return the pull-request URL and exact published metadata, or a ready-to-paste draft when publication is not authorized."
     },
     {
       "name": "customer-backward-pro",
       "description": "Coordinate evidence-led customer research, customer fit, positioning and strategic hypotheses through focused methods before delivery decisions.",
-      "sources": ["customer-backward-pro"],
+      "sources": [
+        "customer-backward-pro"
+      ],
       "dependencies": [],
       "capabilities": [],
       "workflow": [
@@ -131,10 +547,25 @@
       "output": "Use chat or the exact caller-supplied `artifact_root` beneath the owning repository or explicitly selected project."
     },
     {
-      "name": "customer-research-framing",
-      "description": "Frame a customer-discovery decision from business context, current beliefs and supplied evidence; identify competing explanations and the next useful investigation before recruiting or selecting solutions. Use to start or reframe research, including when no customer evidence exists yet.",
+      "name": "customer-behavior-synthesis",
+      "description": "Reconstruct customer jobs, actor relationships, workarounds and situational personas from supplied research or behavioral evidence. Use to understand how customers actually get work done across and outside a product, without inventing biographies or choosing solutions.",
       "sources": [
-        "customer-research-framing"
+        "customer-behavior-synthesis"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Select only the assigned research method and inspect approved evidence with its actual source and authority limits.",
+        "Preserve the method's source-to-claim reasoning, rival explanations, corrections and explicit unknowns.",
+        "Return the strongest supported learning and next discriminating evidence without authorizing delivery or expanding access."
+      ],
+      "output": "Return in chat or to the coordinator; only authorized saving uses the exact caller-supplied `artifact_root`. Narrower workers never write."
+    },
+    {
+      "name": "customer-cohort-design",
+      "description": "Design customer research cohorts and learning-value recruitment batches from a research question and supplied evidence. Validate proxies, distinguish contrast sampling from prevalence studies, expose missing voices and specify reproducible selection without contacting customers.",
+      "sources": [
+        "customer-cohort-design"
       ],
       "dependencies": [],
       "capabilities": [],
@@ -161,10 +592,10 @@
       "output": "Return in chat or to the coordinator; only authorized saving uses the exact caller-supplied `artifact_root`. Narrower workers never write."
     },
     {
-      "name": "customer-research-access",
-      "description": "Establish source-specific authority and acquire bounded customer-research evidence through an existing approved connector, CLI or export. Use for warehouse, research-repository or fieldwork access planning and authorized acquisition, not for interpreting findings or treating configured tools as permission.",
+      "name": "customer-icp-definition",
+      "description": "Define or revise a provisional ideal customer profile from product context and supplied customer evidence. Explain who can receive value, under which conditions, and what could disprove the fit thesis; use even before research exists, without approving commercial targeting or restricting discovery.",
       "sources": [
-        "customer-research-access"
+        "customer-icp-definition"
       ],
       "dependencies": [],
       "capabilities": [],
@@ -176,72 +607,10 @@
       "output": "Return in chat or to the coordinator; only authorized saving uses the exact caller-supplied `artifact_root`. Narrower workers never write."
     },
     {
-      "name": "customer-quantitative-analysis",
-      "description": "Discover customer behavior and problem patterns in approved quantitative data, validate metric meaning and produce reproducible findings and discriminating research questions. Use before, during or after interviews with supplied exports or query results; does not grant database access or infer motives from metrics.",
+      "name": "customer-independent-challenge",
+      "description": "Independently challenge load-bearing customer-research claims, insights, strategy or solution hypotheses against original approved evidence. Use for consequential conclusions or conflicting interpretations; return supported findings, counterarguments and next proof without manufacturing objections or selecting delivery priorities.",
       "sources": [
-        "customer-quantitative-analysis"
-      ],
-      "dependencies": [
-        "ab-test-analysis"
-      ],
-      "capabilities": [],
-      "workflow": [
-        "Select only the assigned research method and inspect approved evidence with its actual source and authority limits.",
-        "Preserve the method's source-to-claim reasoning, rival explanations, corrections and explicit unknowns.",
-        "Return the strongest supported learning and next discriminating evidence without authorizing delivery or expanding access."
-      ],
-      "output": "Return in chat or to the coordinator; only authorized saving uses the exact caller-supplied `artifact_root`. Narrower workers never write."
-    },
-    {
-      "name": "customer-cohort-design",
-      "description": "Design customer research cohorts and learning-value recruitment batches from a research question and supplied evidence. Validate proxies, distinguish contrast sampling from prevalence studies, expose missing voices and specify reproducible selection without contacting customers.",
-      "sources": [
-        "customer-cohort-design"
-      ],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": [
-        "Select only the assigned research method and inspect approved evidence with its actual source and authority limits.",
-        "Preserve the method's source-to-claim reasoning, rival explanations, corrections and explicit unknowns.",
-        "Return the strongest supported learning and next discriminating evidence without authorizing delivery or expanding access."
-      ],
-      "output": "Return in chat or to the coordinator; only authorized saving uses the exact caller-supplied `artifact_root`. Narrower workers never write."
-    },
-    {
-      "name": "customer-interview-design",
-      "description": "Develop and improve customer research instruments, including golden scripts, screeners, modular call plans and research-ID call cards. Link questions to decisions and evolve versions from supplied pilot evidence; does not contact participants or perform recording.",
-      "sources": [
-        "customer-interview-design"
-      ],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": [
-        "Select only the assigned research method and inspect approved evidence with its actual source and authority limits.",
-        "Preserve the method's source-to-claim reasoning, rival explanations, corrections and explicit unknowns.",
-        "Return the strongest supported learning and next discriminating evidence without authorizing delivery or expanding access."
-      ],
-      "output": "Return in chat or to the coordinator; only authorized saving uses the exact caller-supplied `artifact_root`. Narrower workers never write."
-    },
-    {
-      "name": "customer-research-records",
-      "description": "Turn supplied customer fieldwork material into faithful source-linked research records, including actual attempts, permission evidence, instrument coverage, usable-response denominators and correction impact. Preserve original meaning and lineage without inventing calls, consent or completed follow-ups.",
-      "sources": [
-        "customer-research-records"
-      ],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": [
-        "Select only the assigned research method and inspect approved evidence with its actual source and authority limits.",
-        "Preserve the method's source-to-claim reasoning, rival explanations, corrections and explicit unknowns.",
-        "Return the strongest supported learning and next discriminating evidence without authorizing delivery or expanding access."
-      ],
-      "output": "Return in chat or to the coordinator; only authorized saving uses the exact caller-supplied `artifact_root`. Narrower workers never write."
-    },
-    {
-      "name": "customer-behavior-synthesis",
-      "description": "Reconstruct customer jobs, actor relationships, workarounds and situational personas from supplied research or behavioral evidence. Use to understand how customers actually get work done across and outside a product, without inventing biographies or choosing solutions.",
-      "sources": [
-        "customer-behavior-synthesis"
+        "customer-independent-challenge"
       ],
       "dependencies": [],
       "capabilities": [],
@@ -268,10 +637,10 @@
       "output": "Return in chat or to the coordinator; only authorized saving uses the exact caller-supplied `artifact_root`. Narrower workers never write."
     },
     {
-      "name": "customer-icp-definition",
-      "description": "Define or revise a provisional ideal customer profile from product context and supplied customer evidence. Explain who can receive value, under which conditions, and what could disprove the fit thesis; use even before research exists, without approving commercial targeting or restricting discovery.",
+      "name": "customer-interview-design",
+      "description": "Develop and improve customer research instruments, including golden scripts, screeners, modular call plans and research-ID call cards. Link questions to decisions and evolve versions from supplied pilot evidence; does not contact participants or perform recording.",
       "sources": [
-        "customer-icp-definition"
+        "customer-interview-design"
       ],
       "dependencies": [],
       "capabilities": [],
@@ -281,6 +650,23 @@
         "Return the strongest supported learning and next discriminating evidence without authorizing delivery or expanding access."
       ],
       "output": "Return in chat or to the coordinator; only authorized saving uses the exact caller-supplied `artifact_root`. Narrower workers never write."
+    },
+    {
+      "name": "customer-journey-map",
+      "description": "Map an evidence-backed customer journey across goals, touchpoints, decisions, friction, emotions, and recovery paths.",
+      "sources": [
+        "app-product-customer-journey-map"
+      ],
+      "dependencies": [
+        "user-personas"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Define the user goal and journey boundaries.",
+        "Map actions, touchpoints, decisions, friction, failure recovery, and evidence at each stage.",
+        "Highlight opportunity areas without fabricating research or analytics."
+      ],
+      "output": "Write or return a journey map with evidence and research gaps."
     },
     {
       "name": "customer-market-intelligence",
@@ -328,10 +714,57 @@
       "output": "Return in chat or to the coordinator; only authorized saving uses the exact caller-supplied `artifact_root`. Narrower workers never write."
     },
     {
-      "name": "customer-strategy-synthesis",
-      "description": "Synthesize supplied customer, market and economic evidence into a proposed strategy with a right to exist, win and sustain, explicit trade-offs and falsifiers. Use before roadmap consideration; does not select portfolio priority, resources or implementation.",
+      "name": "customer-quantitative-analysis",
+      "description": "Discover customer behavior and problem patterns in approved quantitative data, validate metric meaning and produce reproducible findings and discriminating research questions. Use before, during or after interviews with supplied exports or query results; does not grant database access or infer motives from metrics.",
       "sources": [
-        "customer-strategy-synthesis"
+        "customer-quantitative-analysis"
+      ],
+      "dependencies": [
+        "ab-test-analysis"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Select only the assigned research method and inspect approved evidence with its actual source and authority limits.",
+        "Preserve the method's source-to-claim reasoning, rival explanations, corrections and explicit unknowns.",
+        "Return the strongest supported learning and next discriminating evidence without authorizing delivery or expanding access."
+      ],
+      "output": "Return in chat or to the coordinator; only authorized saving uses the exact caller-supplied `artifact_root`. Narrower workers never write."
+    },
+    {
+      "name": "customer-research-access",
+      "description": "Establish source-specific authority and acquire bounded customer-research evidence through an existing approved connector, CLI or export. Use for warehouse, research-repository or fieldwork access planning and authorized acquisition, not for interpreting findings or treating configured tools as permission.",
+      "sources": [
+        "customer-research-access"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Select only the assigned research method and inspect approved evidence with its actual source and authority limits.",
+        "Preserve the method's source-to-claim reasoning, rival explanations, corrections and explicit unknowns.",
+        "Return the strongest supported learning and next discriminating evidence without authorizing delivery or expanding access."
+      ],
+      "output": "Return in chat or to the coordinator; only authorized saving uses the exact caller-supplied `artifact_root`. Narrower workers never write."
+    },
+    {
+      "name": "customer-research-framing",
+      "description": "Frame a customer-discovery decision from business context, current beliefs and supplied evidence; identify competing explanations and the next useful investigation before recruiting or selecting solutions. Use to start or reframe research, including when no customer evidence exists yet.",
+      "sources": [
+        "customer-research-framing"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Select only the assigned research method and inspect approved evidence with its actual source and authority limits.",
+        "Preserve the method's source-to-claim reasoning, rival explanations, corrections and explicit unknowns.",
+        "Return the strongest supported learning and next discriminating evidence without authorizing delivery or expanding access."
+      ],
+      "output": "Return in chat or to the coordinator; only authorized saving uses the exact caller-supplied `artifact_root`. Narrower workers never write."
+    },
+    {
+      "name": "customer-research-records",
+      "description": "Turn supplied customer fieldwork material into faithful source-linked research records, including actual attempts, permission evidence, instrument coverage, usable-response denominators and correction impact. Preserve original meaning and lineage without inventing calls, consent or completed follow-ups.",
+      "sources": [
+        "customer-research-records"
       ],
       "dependencies": [],
       "capabilities": [],
@@ -358,10 +791,10 @@
       "output": "Return in chat or to the coordinator; only authorized saving uses the exact caller-supplied `artifact_root`. Narrower workers never write."
     },
     {
-      "name": "customer-independent-challenge",
-      "description": "Independently challenge load-bearing customer-research claims, insights, strategy or solution hypotheses against original approved evidence. Use for consequential conclusions or conflicting interpretations; return supported findings, counterarguments and next proof without manufacturing objections or selecting delivery priorities.",
+      "name": "customer-strategy-synthesis",
+      "description": "Synthesize supplied customer, market and economic evidence into a proposed strategy with a right to exist, win and sustain, explicit trade-offs and falsifiers. Use before roadmap consideration; does not select portfolio priority, resources or implementation.",
       "sources": [
-        "customer-independent-challenge"
+        "customer-strategy-synthesis"
       ],
       "dependencies": [],
       "capabilities": [],
@@ -373,877 +806,1295 @@
       "output": "Return in chat or to the coordinator; only authorized saving uses the exact caller-supplied `artifact_root`. Narrower workers never write."
     },
     {
-      "name": "outcome-pro",
-      "description": "Assess whether an initiative achieved its intended business, product or explicitly scoped domain outcome using the canonical four-phase Outcome Pro workflow.",
-      "sources": ["outcome-pro"],
-      "dependencies": ["outcome-analysis", "outcome-evidence-audit", "outcome-independent-challenge"],
+      "name": "debug-core",
+      "description": "Apply Debug Pro's adaptive evidence, repository-local artifacts, untrusted-input boundary, causal discipline, bounded repair gates, and honest resolution reporting.",
+      "sources": [
+        "debug-evidence-and-repair-contract"
+      ],
+      "dependencies": [
+        "systematic-debugging",
+        "verification-before-completion",
+        "test-driven-development"
+      ],
       "capabilities": [],
-      "workflow": ["Load the canonical four-phase command and preserve the original question and authority.", "Use proportionate evidence, assessment and recommendation with on-demand depth.", "Validate comparative reports and distinguish arithmetic proof from causal claims."],
-      "output": "Return a decision-first assessment in chat or beneath the caller-supplied repository-local `artifact_root`."
+      "workflow": [
+        "Bind the exact symptom and source baseline to one repository-local artifact root.",
+        "Load evidence and causal investigation guidance only when needed.",
+        "Require RED before scoped production edits and fresh verification before a resolved claim."
+      ],
+      "output": "Write DEBUG_REPORT.md, shared run events, and a nested resolution packet for every repair attempt beneath `artifact_root`."
     },
     {
-      "name": "outcome-analysis",
-      "description": "Analyze original aggregate evidence with question-fit outcome methods and return checked claims, uncertainty, and decision options for coordinator validation.",
-      "sources": ["outcome-analysis"],
-      "dependencies": ["ab-test-analysis"],
+      "name": "debug-pro",
+      "description": "Run the canonical adaptive Debug Pro workflow for direct defects or Review Pro handoffs, preserving exact reproduction, bounded repair, and independent re-verification.",
+      "sources": [
+        "debug-pro-command"
+      ],
+      "dependencies": [
+        "debug-core"
+      ],
       "capabilities": [],
-      "workflow": ["Preserve original intent, targets and complete authorized sources.", "Apply question-fit methods and checked arithmetic to minimized aggregates.", "Return supported claims, uncertainty and credible decision alternatives without writes."],
-      "output": "Return bounded findings to the coordinator; only the coordinator writes beneath `artifact_root`."
+      "workflow": [
+        "Read commands/debug-pro.md and follow its current-phase load contract.",
+        "Preserve caller arguments, adaptive depth, authority and repair gates.",
+        "Validate repository-owned repair artifacts before recommending independent Review Pro."
+      ],
+      "output": "Return the report, actual validation and next owner beneath `artifact_root`."
     },
     {
-      "name": "outcome-evidence-audit",
-      "description": "Audit supplied Outcome evidence for source quality, target provenance, comparable measurements, observation maturity and source-to-claim gaps before analysis; no outcome verdict or data acquisition.",
-      "sources": ["outcome-evidence-audit"],
+      "name": "delivery-retrospective",
+      "description": "Run an evidence-based delivery retrospective across outcomes, decisions, lead time, rework, review, incidents, and follow-up ownership.",
+      "sources": [
+        "retro"
+      ],
       "dependencies": [],
       "capabilities": [],
-      "workflow": ["Inspect the complete approved evidence packet in a fresh assignment.", "Check provenance, comparability, maturity, policy and material gaps.", "Return evidence fitness without collecting data or judging success."],
-      "output": "Return evidence fitness to the coordinator; do not write or invent an alternate `artifact_root`."
-    },
-    {
-      "name": "outcome-independent-challenge",
-      "description": "Independently challenge material Outcome claims from original intent and complete sources in a fresh context, returning supported, disputed or unverified findings without author rationale or final verdict authority.",
-      "sources": ["outcome-independent-challenge"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Require a fresh uncontaminated packet with original sources and proposed claims.", "Independently inspect consequential claims and calculation assumptions.", "Return supported, disputed or unverified findings without final verdict authority."],
-      "output": "Return an independent challenge to the coordinator; do not write beneath or outside `artifact_root`."
-    },
-    {
-      "name": "codebase-onboarding",
-      "description": "Build a concise evidence-backed map of an unfamiliar repository before planning or implementation.",
-      "sources": ["codebase-onboarding"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Read repository instructions, manifests, entry points, tests, and architecture documentation.", "Map modules, runtime boundaries, commands, ownership, and likely change surfaces with file evidence.", "Record unknowns and avoid inferring behavior that was not inspected."],
-      "output": "Write the onboarding map beneath `artifact_root` and return its path with the evidence opened."
-    },
-    {
-      "name": "workspace-codemap-context",
-      "description": "Load and verify repository or workspace code maps without treating stale generated documentation as authoritative.",
-      "sources": ["workspace-codemap-context"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Locate repository-local code maps and determine their covered revision or freshness signal.", "Verify material boundaries against current source and configuration.", "Extract only the sections relevant to the active task and mark stale claims."],
-      "output": "Return the verified context summary and cite every code map or source file used."
-    },
-    {
-      "name": "product-discovery",
-      "description": "Interrogate a product opportunity and produce evidence-grounded requirements before solution design begins.",
-      "sources": ["office-hours", "spec"],
-      "dependencies": ["user-personas", "customer-journey-map"],
-      "capabilities": [],
-      "workflow": ["Establish the user, problem, current workaround, desired outcome, constraints, and decision owner.", "Require at least one repository or stakeholder evidence item for claims about current behavior.", "Separate confirmed requirements, assumptions, open questions, non-goals, and measurable success."],
-      "output": "Write an evidence-backed discovery brief beneath `artifact_root`."
-    },
-    {
-      "name": "grill-with-docs",
-      "description": "Stress-test a coding decision against repository evidence, shared terminology, edge cases, and durable architectural consequences.",
-      "sources": ["source-command-grill-with-docs"],
-      "dependencies": ["workspace-codemap-context"],
-      "capabilities": [],
-      "workflow": ["Load the proposed decision and the smallest relevant repository evidence packet.", "Challenge ambiguous terms, unsupported assumptions, failure behavior, compatibility, ownership, and alternatives one question at a time.", "Classify the result as clear, confirmation-needed, or deeper review-needed and capture ADR-worthy decisions."],
-      "output": "Update the decision artifact beneath `artifact_root` with resolved language, evidence, assumptions, and open decisions."
-    },
-    {
-      "name": "create-prd",
-      "description": "Turn approved discovery into a repository-local product requirements document with measurable acceptance criteria.",
-      "sources": ["to-prd", "flow-to-prd", "app-product-create-prd"],
-      "dependencies": ["write-user-stories", "user-personas"],
-      "capabilities": [],
-      "workflow": ["Consume approved discovery rather than restarting ideation.", "Define goal, users, scope, non-goals, requirements, metrics, constraints, dependencies, and risks.", "Trace acceptance criteria to requirements and label every unresolved assumption."],
-      "output": "Write `prd.md` beneath `artifact_root` or the caller-specified filename inside that root."
-    },
-    {
-      "name": "write-user-stories",
-      "description": "Write user stories and acceptance criteria that describe observable value without prescribing hidden implementation details.",
-      "sources": ["app-product-user-stories"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Identify the actor, context, desired outcome, and value for each story.", "Write testable acceptance criteria covering success, permissions, empty, error, and boundary states where applicable.", "Remove duplicate stories and implementation-only language unless it is an explicit constraint."],
-      "output": "Return stories and acceptance criteria ready to embed in the active product artifact."
-    },
-    {
-      "name": "customer-journey-map",
-      "description": "Map an evidence-backed customer journey across goals, touchpoints, decisions, friction, emotions, and recovery paths.",
-      "sources": ["app-product-customer-journey-map"],
-      "dependencies": ["user-personas"],
-      "capabilities": [],
-      "workflow": ["Define the user goal and journey boundaries.", "Map actions, touchpoints, decisions, friction, failure recovery, and evidence at each stage.", "Highlight opportunity areas without fabricating research or analytics."],
-      "output": "Write or return a journey map with evidence and research gaps."
-    },
-    {
-      "name": "ab-test-analysis",
-      "description": "Design or analyze an experiment using explicit hypotheses, guardrails, sample assumptions, and decision thresholds.",
-      "sources": ["app-product-ab-test-analysis"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Define the hypothesis, primary metric, guardrails, unit of randomization, and exposure rules.", "Check sample, duration, novelty, interference, peeking, and segmentation risks.", "State the decision rule and distinguish observed effects from causal claims."],
-      "output": "Return an experiment plan or analysis with assumptions, calculations, and decision status."
-    },
-    {
-      "name": "user-personas",
-      "description": "Create lightweight evidence-based personas for product decisions without inventing demographic or behavioral certainty.",
-      "sources": ["app-shared-user-personas"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Identify meaningful behavioral segments from supplied evidence.", "Describe goals, context, constraints, workflows, and decision-relevant differences.", "Mark hypotheses and missing research rather than presenting fictional users as facts."],
-      "output": "Return concise personas tied to evidence and product decisions."
-    },
-    {
-      "name": "competitive-research",
-      "description": "Research competitors and adjacent solutions through Firecrawl capabilities with transparent methodology and direct citations.",
-      "sources": ["market-research", "deep-research", "competitive-ads-extractor"],
-      "dependencies": [],
-      "capabilities": ["firecrawl.search", "firecrawl.scrape", "firecrawl.crawl", "firecrawl.extract"],
-      "workflow": ["Define the comparison question, inclusion criteria, geography, date boundary, and evidence fields before searching.", "Use Firecrawl to discover and extract primary product, pricing, documentation, and positioning evidence.", "Separate observed facts from inference, record unavailable sources, and compare competitors on consistent dimensions."],
-      "output": "Write a cited competitive-research report beneath `artifact_root`, including methodology and evidence gaps."
+      "workflow": [
+        "Collect the feature timeline, commits, reviews, incidents, artifacts, and outcome evidence.",
+        "Identify what accelerated or delayed value, where rework originated, and which controls helped or failed.",
+        "Create a small number of owner-tagged experiments rather than generic lessons."
+      ],
+      "output": "Write the retrospective beneath `artifact_root` with evidence and follow-up owners."
     },
     {
       "name": "design-options",
       "description": "Develop product-grounded visual and interaction directions from approved requirements, and compare representative options where they resolve a material choice.",
-      "sources": ["flow-design"],
-      "dependencies": ["design-system"],
+      "sources": [
+        "flow-design"
+      ],
+      "dependencies": [
+        "design-system"
+      ],
       "capabilities": [],
-      "workflow": ["Load approved requirements, user journeys, real product content, repository design conventions, supplied visual references, and accessibility constraints.", "Establish a coherent art direction and use meaningfully different representative options to resolve material visual or interaction choices, with relevant states, responsive behavior, and trade-offs.", "Recommend a direction using explicit criteria and record the inspected evidence, defining decisions, and rejected alternatives in the existing design artifacts."],
+      "workflow": [
+        "Load approved requirements, user journeys, real product content, repository design conventions, supplied visual references, and accessibility constraints.",
+        "Establish a coherent art direction and use meaningfully different representative options to resolve material visual or interaction choices, with relevant states, responsive behavior, and trade-offs.",
+        "Recommend a direction using explicit criteria and record the inspected evidence, defining decisions, and rejected alternatives in the existing design artifacts."
+      ],
       "output": "Write design options and the decision memo beneath `artifact_root`. Keep the selected rendered reference and its location, defining composition/type/density/imagery/interaction decisions, content assumptions, and any unverified claims together so fresh implementation workers can inspect and carry the same direction forward."
     },
     {
       "name": "design-system",
       "description": "Inspect, extend, or audit a repository design system using existing tokens, components, interaction states, and accessibility rules.",
-      "sources": ["design-system", "frontend-design"],
+      "sources": [
+        "design-system",
+        "frontend-design"
+      ],
       "dependencies": [],
       "capabilities": [],
-      "workflow": ["Detect existing tokens, components, typography, spacing, themes, icons, and accessibility conventions; for visual work, load and inspect the approved visual artifacts and defining decisions when accessible.", "Prefer reuse and extension over parallel components or new literals, while checking that the existing system supports the approved direction.", "Document missing states, inconsistencies, and any proposed token or component addition."],
+      "workflow": [
+        "Detect existing tokens, components, typography, spacing, themes, icons, and accessibility conventions; for visual work, load and inspect the approved visual artifacts and defining decisions when accessible.",
+        "Prefer reuse and extension over parallel components or new literals, while checking that the existing system supports the approved direction.",
+        "Document missing states, inconsistencies, and any proposed token or component addition."
+      ],
       "output": "Return a design-system decision or audit with exact repository evidence."
-    },
-    {
-      "name": "multi-model-debate-room",
-      "description": "Run a structured multi-perspective debate when a small number of materially different options remain genuinely contested.",
-      "sources": ["multi-model-debate-room"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["State the contested decision, evidence packet, constraints, and decision criteria.", "Assign distinct perspectives and run bounded argument, rebuttal, and synthesis rounds without inventing new facts.", "Resolve or narrow the disagreement and preserve dissent, uncertainty, and the decision owner."],
-      "output": "Return a decision record with arguments, evidence, verdict, confidence, and unresolved dissent."
-    },
-    {
-      "name": "stochastic-multi-agent-consensus",
-      "description": "Rank several independent options through bounded parallel scoring with explicit criteria, uncertainty, and disagreement reporting.",
-      "sources": ["stochastic-multi-agent-consensus"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Define independent options, weighted criteria, evidence, and a fixed number of scoring passes.", "Collect scores independently before synthesis to reduce anchoring.", "Report the distribution, sensitivity to weights, consensus, and meaningful disagreement."],
-      "output": "Return the ranked decision matrix and uncertainty summary."
-    },
-    {
-      "name": "plan-product-review",
-      "description": "Review a plan for user value, scope discipline, strategic coherence, success measures, and unnecessary product complexity.",
-      "sources": ["plan-ceo-review"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Restate the user outcome and the smallest valuable scope.", "Challenge weak demand evidence, vanity requirements, premature generalization, and missing counter-metrics.", "Classify decisions as mechanical, reversible, strategic, or user-owned."],
-      "output": "Return product-plan findings, recommended scope changes, and decisions requiring the user."
-    },
-    {
-      "name": "plan-engineering-review",
-      "description": "Review an implementation plan for boundaries, dependencies, sequencing, failure modes, verification, migration, and rollback.",
-      "sources": ["plan-eng-review"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Trace every planned slice to interfaces, files, dependencies, and acceptance evidence.", "Challenge hidden coupling, unsafe sequencing, unclear ownership, missing migrations, and rollback gaps.", "Require executable verification targets and explicit blockers."],
-      "output": "Return engineering-plan findings and concrete amendments."
-    },
-    {
-      "name": "plan-design-review",
-      "description": "Review a design plan for usability, fidelity to approved direction, visual judgment, state completeness, accessibility, and responsive behavior.",
-      "sources": ["plan-design-review"],
-      "dependencies": ["design-system"],
-      "capabilities": [],
-      "workflow": ["Map planned user flows and all loading, empty, error, permission, success, and recovery states.", "Inspect supplied visual references and representative rendered work when accessible; check accessibility, responsive behavior, copy, hierarchy, and component reuse against the approved direction.", "Identify design decisions that must be resolved before implementation."],
-      "output": "Return design-plan findings, missing states, and required amendments, keeping usability, fidelity, and taste judgments distinguishable and naming the evidence and unverified limits for each."
-    },
-    {
-      "name": "interface-experience-review",
-      "description": "Review developer-facing interfaces for discoverability, consistency, error quality, compatibility, and time to first success.",
-      "sources": ["plan-devex-review"],
-      "dependencies": ["api-and-interface-design"],
-      "capabilities": [],
-      "workflow": ["Identify each API, CLI, SDK, configuration, or agent-facing interaction and its target user.", "Estimate time to first success and inspect naming, defaults, examples, errors, migration, and backward compatibility.", "Raise each friction point as an independent decision or acceptance checkpoint."],
-      "output": "Return the interface-experience gap analysis and measurable improvements."
-    },
-    {
-      "name": "plan-review-orchestrator",
-      "description": "Run the approved product, engineering, design, and interface plan reviews in order and synthesize one decision-ready plan.",
-      "sources": ["autoplan"],
-      "dependencies": ["plan-product-review", "plan-engineering-review", "plan-design-review", "interface-experience-review"],
-      "capabilities": [],
-      "workflow": ["Freeze the plan revision and evidence packet before review.", "Run product, engineering, design, and applicable interface reviews against the same revision.", "Auto-resolve only mechanical changes, surface user-owned decisions, then update the plan once and record the review ledger."],
-      "output": "Write the synthesized plan review and updated plan beneath `artifact_root`."
-    },
-    {
-      "name": "implementation-planning",
-      "description": "Turn approved requirements and architecture into small dependency-ordered implementation slices with explicit verification and ownership.",
-      "sources": ["writing-plans", "flow-plan"],
-      "dependencies": ["incremental-delivery"],
-      "capabilities": [],
-      "workflow": ["Identify interfaces, files, dependencies, migrations, risks, and decisions that remain unresolved.", "Slice work vertically in dependency order with disjoint parallel scopes where safe.", "Give every slice a pre-change proof, implementation steps, verification command, rollback note, and completion evidence."],
-      "output": "Write `spec.md` and `tasks.md` beneath `artifact_root` when requested by the caller."
-    },
-    {
-      "name": "specification-writing",
-      "description": "Write precise technical or product specifications with explicit contracts, invariants, failure behavior, and testable acceptance criteria.",
-      "sources": ["core-spec-writing"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["State the goal, scope, non-goals, assumptions, constraints, and owners.", "Define interfaces, data shapes, behavior, failure modes, compatibility, and invariants.", "Add measurable acceptance criteria and verification targets with no placeholders."],
-      "output": "Write or refine the requested specification beneath `artifact_root`."
-    },
-    {
-      "name": "api-and-interface-design",
-      "description": "Design stable APIs, CLIs, events, schemas, and agent interfaces with clear contracts, errors, compatibility, and migration behavior.",
-      "sources": ["api-and-interface-design"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Identify consumers, trust boundaries, lifecycle, versioning, and compatibility constraints.", "Specify names, inputs, outputs, errors, idempotency, pagination, retries, and authorization where applicable.", "Compare alternatives and define contract tests and migration requirements."],
-      "output": "Return the interface contract and decision rationale ready for the technical specification."
-    },
-    {
-      "name": "architecture-decision-records",
-      "description": "Capture durable architecture decisions with context, alternatives, consequences, uncertainty, falsifiers, and revisit conditions.",
-      "sources": ["architecture-decision-records", "documentation-and-adrs"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["State the decision context, constraints, owner, and decision date.", "Describe viable alternatives and why they were rejected using evidence rather than preference.", "Record consequences, risks, validity envelope, falsifiers, migration, rollback, and revisit triggers."],
-      "output": "Write the ADR beneath `artifact_root` using the repository's established format when one exists."
-    },
-    {
-      "name": "incremental-delivery",
-      "description": "Decompose changes into small independently reviewable and reversible delivery slices with safe dependency ordering.",
-      "sources": ["core-incremental-delivery", "incremental-implementation"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Map contracts and dependencies before slicing.", "Prefer thin vertical outcomes that can be verified and rolled back independently.", "Define save points, flags or compatibility bridges, and safe parallel ownership."],
-      "output": "Return an ordered slice plan with acceptance and rollback evidence for each slice."
-    },
-    {
-      "name": "zoom-out",
-      "description": "Reassess a local change from the surrounding system, repository, dependency, and operational boundaries before committing to a design.",
-      "sources": ["zoom-out"],
-      "dependencies": ["workspace-codemap-context"],
-      "capabilities": [],
-      "workflow": ["Locate upstream producers, downstream consumers, shared contracts, runtime boundaries, and operational owners.", "Identify second-order effects, hidden coupling, and alternatives at a more appropriate boundary.", "Return to the local decision with system-level constraints made explicit."],
-      "output": "Return the boundary map and any required plan changes."
-    },
-    {
-      "name": "improve-codebase-architecture",
-      "description": "Identify and plan evidence-backed architecture improvements without expanding a feature into an unbounded rewrite.",
-      "sources": ["improve-codebase-architecture"],
-      "dependencies": ["zoom-out"],
-      "capabilities": [],
-      "workflow": ["Identify the concrete architecture pain and its measured or observed impact.", "Compare the boring baseline, incremental repair, and larger redesign.", "Recommend the smallest improvement that fixes the active constraint with migration and rollback."],
-      "output": "Return an architecture improvement decision and bounded execution slices."
-    },
-    {
-      "name": "mongodb-performance",
-      "description": "Review or design MongoDB access patterns, indexes, document models, aggregation, and operational behavior using repository evidence.",
-      "sources": ["data-mongodb-performance"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Identify query shapes, cardinality, selectivity, document growth, write patterns, and consistency requirements.", "Evaluate indexes, projections, aggregation, pagination, tenancy, and migration impact.", "Require explain-plan or measured evidence for performance claims when available."],
-      "output": "Return MongoDB findings or a data-model decision with verification targets."
-    },
-    {
-      "name": "firestore-performance",
-      "description": "Review or design Firestore document, index, query, hotspot, transaction, and cost behavior using repository evidence.",
-      "sources": ["data-firestore-performance"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Identify read, write, transaction, document-growth, and tenancy patterns.", "Evaluate document IDs, indexes, fan-out, hotspotting, query limits, and cost implications.", "Define measurement and migration evidence rather than assuming production scale."],
-      "output": "Return Firestore findings or design decisions with verification targets."
-    },
-    {
-      "name": "postgres-patterns",
-      "description": "Review or design PostgreSQL schemas, queries, indexes, constraints, migrations, tenancy, and transaction behavior.",
-      "sources": ["postgres-patterns"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Identify access paths, cardinality, consistency, concurrency, and lifecycle requirements.", "Evaluate schema normalization, constraints, indexes, locking, query plans, tenancy, and migration sequencing.", "Require explain or measured evidence for performance claims when available."],
-      "output": "Return PostgreSQL findings or design decisions with migration and verification targets."
-    },
-    {
-      "name": "clickhouse-modeling",
-      "description": "Design ClickHouse tables and queries around measured ingestion, retention, aggregation, ordering, partition, and mutation requirements.",
-      "sources": ["data-clickhouse-modeling"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Identify event shape, query patterns, ingestion rate, retention, update semantics, and cardinality.", "Select engines, ordering, partitioning, projections, materialized views, and codecs from those requirements.", "Define migration, backfill, and query-plan verification."],
-      "output": "Return the ClickHouse model and verification plan."
-    },
-    {
-      "name": "test-driven-development",
-      "description": "Drive behavior changes through observed failing proof, minimal implementation, green verification, and behavior-preserving refactoring.",
-      "sources": ["test-driven-development", "tdd-workflow"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Define one observable behavior and write the smallest meaningful failing test or equivalent proof.", "Run it and confirm the failure is caused by the missing behavior, then implement the minimum change.", "Rerun to green, refactor without weakening assertions, and retain exact evidence."],
-      "output": "Return RED, GREEN, and REFACTOR evidence with changed test and source paths."
-    },
-    {
-      "name": "search-first",
-      "description": "Search for existing implementations, utilities, contracts, tests, and conventions before adding a new abstraction or dependency.",
-      "sources": ["search-first"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Search exact names, neighboring concepts, imports, exports, tests, configuration, and generated code.", "Compare reuse, extension, and new implementation options against repository conventions.", "Record the reuse decision and evidence before writing new code."],
-      "output": "Return the search evidence and explicit reuse, extend, or create decision."
-    },
-    {
-      "name": "webapp-testing",
-      "description": "Test a local or approved web application through browser automation with stable assertions and repository-local evidence.",
-      "sources": ["platform-webapp-testing", "sdet-webapp-testing"],
-      "dependencies": ["browser-session-setup"],
-      "capabilities": ["browser.automate"],
-      "workflow": ["Confirm the approved URL, environment, authentication state, and target journey.", "Exercise the smallest relevant flow and inspect visible state, network, console, and accessibility signals as supported.", "Capture reproducible evidence and stop after two repeated automation failures requiring user intervention."],
-      "output": "Write browser evidence beneath `artifact_root` with steps, observations, screenshots, and blockers."
-    },
-    {
-      "name": "browser-exploration",
-      "description": "Explore an approved web surface quickly to understand navigation, states, controls, and likely test paths before systematic QA.",
-      "sources": ["browse"],
-      "dependencies": ["browser-session-setup"],
-      "capabilities": ["browser.automate"],
-      "workflow": ["Confirm the approved origin and exploration goal.", "Map routes, primary controls, state changes, and obvious failures without editing application state beyond the requested flow.", "Record candidate QA journeys and evidence gaps."],
-      "output": "Return the explored surface map and repository-local screenshots when useful."
-    },
-    {
-      "name": "browser-qa",
-      "description": "Run systematic browser QA in report-only or approved-fix mode across critical journeys, edge states, and visible regressions.",
-      "sources": ["qa", "qa-only"],
-      "dependencies": ["browser-exploration", "webapp-testing"],
-      "capabilities": ["browser.automate"],
-      "workflow": ["Select `report-only` by default or `fix` only when repository edits are explicitly authorized.", "Test critical journeys, permissions, responsive states, errors, refresh, navigation, console, and network behavior.", "For fixes, reproduce first, apply one scoped fix, and rerun the exact journey."],
-      "output": "Write the QA report, evidence, and any verified fixes beneath `artifact_root`."
-    },
-    {
-      "name": "browser-session-setup",
-      "description": "Prepare an approved browser automation session, authentication state, cookies, and profile without exposing credentials.",
-      "sources": ["setup-browser-cookies"],
-      "dependencies": [],
-      "capabilities": ["browser.automate"],
-      "workflow": ["Confirm the target origin, authentication requirement, approved browser profile, and credential source.", "Use existing authenticated state or an explicit user-completed login flow; never print secrets or cookie values.", "Verify the session only against the approved origin and report expiration or access blockers."],
-      "output": "Return session readiness and the approved origin without credential material."
-    },
-    {
-      "name": "code-simplification",
-      "description": "Simplify code structure and remove unnecessary complexity while preserving behavior and repository conventions.",
-      "sources": ["code-simplification"],
-      "dependencies": ["test-driven-development"],
-      "capabilities": [],
-      "workflow": ["Identify complexity supported by concrete duplication, branching, coupling, or comprehension evidence.", "Establish behavioral proof and make the smallest simplifying transformation.", "Rerun focused verification and report structural improvement without claiming subjective elegance as proof."],
-      "output": "Return the simplified paths, before-and-after evidence, and verification result."
-    },
-    {
-      "name": "behavior-preserving-code-simplification",
-      "description": "Compress an implementation through characterization-first transformations that mechanically preserve externally observable behavior.",
-      "sources": ["behavior-preserving-code-simplification"],
-      "dependencies": ["test-driven-development", "code-simplification"],
-      "capabilities": [],
-      "workflow": ["Capture current behavior for every refactored seam before editing.", "Remove duplication, indirection, dead branches, and excess surface in small reversible steps.", "Rerun the same proof after each material transformation and stop on behavioral uncertainty."],
-      "output": "Write the compression ledger beneath `artifact_root` with line changes and verification evidence."
-    },
-    {
-      "name": "pre-merge-review",
-      "description": "Run a structured pre-merge review over the complete diff, tests, architecture, risks, and release implications before specialist synthesis.",
-      "sources": ["review"],
-      "dependencies": ["general-coding-standards", "security-review"],
-      "capabilities": [],
-      "workflow": ["Freeze the diff revision and load surrounding code, contracts, tests, and repository rules.", "Review correctness, maintainability, reliability, security indicators, performance, compatibility, and evidence gaps.", "Separate findings from preferences, assign severity, and avoid applying fixes in review-only mode."],
-      "output": "Write a severity-sorted pre-merge report beneath `artifact_root`."
-    },
-    {
-      "name": "general-coding-standards",
-      "description": "Apply repository-native correctness and maintainability standards without imposing an unrelated language, framework, or style guide.",
-      "sources": ["general-coding-standards"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Read repository instructions, linters, formatters, compiler settings, and adjacent patterns.", "Identify correctness or maintainability rules that are actually enforced or consistently established.", "Report deviations with repository evidence and avoid preference-only findings."],
-      "output": "Return applicable standards and evidence-backed deviations."
-    },
-    {
-      "name": "security-review",
-      "description": "Review a change through the applicable access-control, API, privacy, AI-tool, infrastructure, secret, and tenant-isolation lenses.",
-      "sources": ["security-review"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Map actors, assets, trust boundaries, entry points, sensitive data, external calls, and privilege transitions.", "Select only the security lenses triggered by the change and trace exploitable paths with evidence.", "Report severity, preconditions, impact, remediation direction, and validation boundaries without live exploitation."],
-      "output": "Write the coordinated security findings beneath `artifact_root`."
-    },
-    {
-      "name": "systematic-debugging",
-      "description": "Diagnose failures through reproducible evidence, causal tracing, hypothesis testing, and bounded fixes rather than patch iteration.",
-      "sources": ["investigate", "systematic-debugging"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Reproduce the exact symptom and preserve logs, inputs, environment, and the first causal failure.", "Trace backward through state and boundaries, rank hypotheses, and run the smallest discriminating test.", "Apply one causal fix, verify the original reproduction, and stop after three failed fixes on the same symptom to question the design."],
-      "output": "Write the reproduction, causal chain, hypotheses, fix, and regression evidence beneath `artifact_root`."
-    },
-    {
-      "name": "e2e-testing",
-      "description": "Design and verify end-to-end test coverage for critical user journeys using repository-native tools and stable observable assertions.",
-      "sources": ["e2e-testing"],
-      "dependencies": ["test-driven-development", "webapp-testing"],
-      "capabilities": [],
-      "workflow": ["Identify critical journeys, trust boundaries, test data, environment, and existing conventions.", "Author stable tests around user-visible behavior with page abstractions and deterministic setup.", "Run focused tests, capture exact failure artifacts, and separate application defects from environment blockers."],
-      "output": "Return test paths, execution evidence, coverage gaps, and artifact locations."
     },
     {
       "name": "documentation-maintenance",
       "description": "Generate or update technical documentation from verified implementation and tests using repository-native locations and structures.",
-      "sources": ["document-release", "document-generate", "documentation-and-adrs"],
-      "dependencies": ["architecture-decision-records"],
+      "sources": [
+        "document-release",
+        "document-generate",
+        "documentation-and-adrs"
+      ],
+      "dependencies": [
+        "architecture-decision-records"
+      ],
       "capabilities": [],
-      "workflow": ["Select `generate` for a missing documented surface or `update` for behavior changed by the active diff.", "Read implementation and tests before writing conceptual, how-to, tutorial, or reference material.", "Check links, examples, diagrams, version claims, and drift against current source."],
+      "workflow": [
+        "Select `generate` for a missing documented surface or `update` for behavior changed by the active diff.",
+        "Read implementation and tests before writing conceptual, how-to, tutorial, or reference material.",
+        "Check links, examples, diagrams, version claims, and drift against current source."
+      ],
       "output": "Write documentation only to repository-defined paths or beneath `artifact_root`, then return changed paths and evidence."
     },
     {
-      "name": "verification-before-completion",
-      "description": "Require fresh direct evidence for every completion claim and prevent passing one check from standing in for another.",
-      "sources": ["verification-before-completion", "verification-loop"],
-      "dependencies": [],
+      "name": "e2e-testing",
+      "description": "Design and verify end-to-end test coverage for critical user journeys using repository-native tools and stable observable assertions.",
+      "sources": [
+        "e2e-testing"
+      ],
+      "dependencies": [
+        "test-driven-development",
+        "webapp-testing"
+      ],
       "capabilities": [],
-      "workflow": ["Translate each claim into the exact command, artifact, or observation that could prove it.", "Run fresh verification against the final revision and record commands, exit status, and relevant output.", "Report failed, blocked, skipped, and inferred evidence separately; never call the task complete while required proof is absent."],
-      "output": "Write a claim-to-evidence table beneath `artifact_root` and return the verified status."
-    },
-    {
-      "name": "create-pull-request",
-      "description": "Create or update a focused pull request with accurate scope, verification, risks, rollout, rollback, and reviewer guidance.",
-      "sources": ["core-pr-creator"],
-      "dependencies": ["verification-before-completion"],
-      "capabilities": [],
-      "workflow": ["Confirm the branch, base, commit set, diff scope, repository instructions, and authorization to publish.", "Draft a concise title and body from verified artifacts, including tests, risks, rollout, rollback, and review focus.", "Create or update the pull request only with explicit outward-action authority and verify the resulting URL."],
-      "output": "Return the pull-request URL and exact published metadata, or a ready-to-paste draft when publication is not authorized."
-    },
-    {
-      "name": "split-large-pull-request",
-      "description": "Split an oversized change into dependency-ordered reviewable pull requests with preserved behavior and explicit stacking.",
-      "sources": ["core-large-pr-splitter"],
-      "dependencies": ["incremental-delivery"],
-      "capabilities": [],
-      "workflow": ["Map changed files, interfaces, imports, migrations, tests, and dependency edges.", "Partition at reviewer boundaries into independently coherent slices and identify compatibility bridges.", "Define branch and base order, verification per slice, and safe recovery if a split fails."],
-      "output": "Write the stacked pull-request plan beneath `artifact_root`; do not publish branches without explicit authority."
-    },
-    {
-      "name": "review-pull-request",
-      "description": "Review a pull request from its complete diff and repository context with actionable evidence-backed findings.",
-      "sources": ["core-pr-review", "platform-core-pr-review"],
-      "dependencies": ["pre-merge-review"],
-      "capabilities": [],
-      "workflow": ["Resolve the exact repository, pull request, base, head, and current revision.", "Inspect the complete diff, surrounding code, tests, checks, and instructions.", "Report actionable findings with severity and evidence; post comments only when explicitly authorized."],
-      "output": "Write the review report beneath `artifact_root` and return comment drafts or published links."
-    },
-    {
-      "name": "check-merge-readiness",
-      "description": "Synthesize review, CI, risk, compatibility, migration, and approval evidence into a clear merge-readiness decision.",
-      "sources": ["review-pr-merge-readiness"],
-      "dependencies": ["score-change-risk", "verification-before-completion"],
-      "capabilities": [],
-      "workflow": ["Load the exact revision, findings, check status, approvals, migration, rollout, and rollback evidence.", "Apply an explicit readiness rubric and distinguish blockers, conditions, and follow-up work.", "Return a decision with confidence and evidence gaps rather than treating absence of findings as approval."],
-      "output": "Write the merge-readiness verdict beneath `artifact_root`."
-    },
-    {
-      "name": "score-change-risk",
-      "description": "Score change risk from blast radius, data flow, production impact, reversibility, verification quality, and operational readiness.",
-      "sources": ["review-pr-risk-scoring"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Identify affected users, systems, data, contracts, environments, and irreversible operations.", "Score likelihood, impact, detectability, reversibility, and evidence quality using stated anchors.", "Expose assumptions and sensitivity instead of presenting an unexplained aggregate score."],
-      "output": "Return the risk ledger, blockers, score inputs, and ranked mitigations."
-    },
-    {
-      "name": "task-wave-execution",
-      "description": "Execute independent implementation tasks in bounded parallel waves with explicit ownership, written handoffs, and integration gates.",
-      "sources": ["subagent-driven-development"],
-      "dependencies": ["implementation-planning", "verification-before-completion"],
-      "capabilities": [],
-      "workflow": ["Select only dependency-ready tasks with disjoint write scopes and assign one owner per file or module.", "Give each worker a written task brief, required evidence, stop conditions, and artifact path.", "Integrate one wave, review actual diffs and reports, verify shared contracts, then release the next wave."],
-      "output": "Maintain the task ledger and wave reports beneath `artifact_root`."
-    },
-    {
-      "name": "ralph-loop",
-      "description": "Execute approved tasks with fresh worker context, durable progress, bounded retries, and verified completion using the existing task scheduler.",
-      "sources": ["core-ralph-loop"],
-      "dependencies": ["task-wave-execution", "test-driven-development", "verification-before-completion"],
-      "capabilities": [],
-      "workflow": ["Read the approved tasks and existing work ledger, reconcile current evidence, and reserve a finite task attempt.", "Use the existing task-wave scheduler to dispatch a fresh canonical implementer for each bounded task attempt.", "Inspect the actual diff and required proof before recording completion, retrying within budget, or stopping with a blocker."],
-      "output": "Update the existing work ledger and reports beneath `artifact_root`; return verified task progress, attempt counts, and unresolved work."
-    },
-    {
-      "name": "prepare-change-for-review",
-      "description": "Prepare a completed change for review by checking scope, tests, documentation, changelog, branch state, and pull-request readiness.",
-      "sources": ["ship"],
-      "dependencies": ["verification-before-completion", "create-pull-request"],
-      "capabilities": [],
-      "workflow": ["Inspect the final diff, branch, commits, generated files, tests, documentation, and release notes.", "Repair only authorized mechanical issues and rerun required proof.", "Prepare or create the pull request after slice and outward-action gates are satisfied."],
-      "output": "Write the review-preparation report beneath `artifact_root` and return the pull-request handoff."
-    },
-    {
-      "name": "release-deployment",
-      "description": "Prepare and execute an authorized staged release with readiness, staleness, rollout, observation, and named rollback gates.",
-      "sources": ["land-and-deploy", "flow-ship"],
-      "dependencies": ["production-readiness", "verification-before-completion"],
-      "capabilities": [],
-      "workflow": ["Resolve the exact revision, environment, deploy mechanism, approvals, configuration, migration, and rollback path.", "Check review staleness and readiness before staging or production action.", "Execute only the authorized stage, capture live evidence, observe health, and stop on rollback criteria."],
-      "output": "Write the deployment record beneath `artifact_root` with revision, commands or links, evidence, and rollback status."
-    },
-    {
-      "name": "production-readiness",
-      "description": "Assess production readiness across correctness, security, data, reliability, performance, observability, rollout, and rollback with human gates.",
-      "sources": ["infra-production-readiness"],
-      "dependencies": ["verification-before-completion", "score-change-risk"],
-      "capabilities": [],
-      "workflow": ["Identify the production surface, owners, SLOs, data impact, dependencies, rollout stages, and rollback conditions.", "Evaluate code, tests, security, capacity, observability, alerts, migrations, support, and failure recovery.", "Record blockers and require explicit human approval for production mutation."],
-      "output": "Write the production-readiness checklist and sign-off state beneath `artifact_root`."
-    },
-    {
-      "name": "repository-health",
-      "description": "Measure a repository's current build, type, lint, test, dead-code, dependency, and documentation posture as a reproducible baseline.",
-      "sources": ["health"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Detect only tools and commands configured by the repository.", "Run bounded non-destructive checks independently and preserve exact status and timing.", "Score only observed dimensions, redistribute absent-tool weight, and distinguish baseline failures from change regressions."],
-      "output": "Write the repository-health baseline beneath `artifact_root`."
-    },
-    {
-      "name": "delivery-retrospective",
-      "description": "Run an evidence-based delivery retrospective across outcomes, decisions, lead time, rework, review, incidents, and follow-up ownership.",
-      "sources": ["retro"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Collect the feature timeline, commits, reviews, incidents, artifacts, and outcome evidence.", "Identify what accelerated or delayed value, where rework originated, and which controls helped or failed.", "Create a small number of owner-tagged experiments rather than generic lessons."],
-      "output": "Write the retrospective beneath `artifact_root` with evidence and follow-up owners."
-    },
-    {
-      "name": "session-checkpoint",
-      "description": "Save a compact repository-local checkpoint of current state, decisions, evidence, blockers, and exact next actions for reliable continuation.",
-      "sources": ["context-save"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Read current state and existing artifacts rather than reconstructing progress from conversation alone.", "Capture completed work, decisions, changed paths, verification, blockers, remaining tasks, and next command.", "Use a deterministic filename inside `artifact_root` and never write session state to a home-directory store."],
-      "output": "Write the checkpoint beneath `artifact_root` and return its path."
-    },
-    {
-      "name": "internal-comms",
-      "description": "Draft concise stakeholder communication from verified delivery artifacts without sending messages or inventing status.",
-      "sources": ["internal-comms"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Identify the audience, purpose, requested channel, and decisions or actions needed.", "Use verified scope, tests, risks, links, dates, and owners from repository-local artifacts.", "Draft only; send externally only after explicit confirmation."],
-      "output": "Write the communication draft beneath `artifact_root` and return ready-to-paste text."
-    },
-    {
-      "name": "changelog-generator",
-      "description": "Generate user-appropriate changelog entries from verified diffs, commits, pull requests, and release evidence.",
-      "sources": ["changelog-generator"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Determine audience, release boundary, repository changelog convention, and included revisions.", "Group meaningful additions, changes, fixes, removals, migrations, and known limitations.", "Exclude internal implementation noise and verify every claim against the diff or release artifacts."],
-      "output": "Return or write the changelog entry to the repository-defined path or beneath `artifact_root`."
-    },
-    {
-      "name": "observability-by-design",
-      "description": "Design, implement, review, and verify product logging, distributed tracing, metrics, SLOs, and privacy-safe harness execution traces. Use for features crossing runtime boundaries, APIs, queues, external services, production operations, or evidence-gated agent workflows.",
-      "sources": ["canonical-observability-contract"],
-      "dependencies": [],
-      "capabilities": ["observability.read"],
-      "workflow": ["Map user-visible outcomes and system boundaries before choosing telemetry.", "Define structured logs, correlated spans, bounded metrics, SLOs, alerts, redaction, sampling, retention, and ownership.", "Verify a success and material failure path and record privacy-safe workflow events through the deterministic event writer."],
-      "output": "Return the product observability plan, workflow trace evidence, verification, and remaining blind spots beneath `artifact_root`."
-    },
-    {
-      "name": "ai-product-engineering",
-      "description": "Design and deliver AI or LLM product features across product fit, model and prompt contracts, tools, grounding, evaluations, safety, privacy, cost, latency, fallback, observability, and release monitoring. Use when a feature calls models, embeds or retrieves content, uses agents/tools, changes system prompts, or makes probabilistic behavior user-visible.",
-      "sources": ["canonical-ai-product-contract"],
-      "dependencies": ["observability-by-design"],
-      "capabilities": [],
-      "workflow": ["Prove why probabilistic behavior is appropriate and freeze user outcomes, unacceptable failures, and release thresholds.", "Version model, prompt, context, retrieval, tool, schema, safety, and fallback contracts.", "Run deterministic, statistical, adversarial, and human-calibrated evaluations before a bounded rollout with quality, cost, latency, and drift monitoring."],
-      "output": "Write the AI delivery contract, evaluation plan, security boundaries, operational budgets, rollout, and rollback evidence beneath `artifact_root`."
-    },
-    {
-      "name": "library-first-engineering",
-      "description": "Select and reuse existing repository code, language standard-library functions, installed dependencies, and mature libraries before authoring custom implementations. Use during implementation planning, dependency selection, coding, refactoring, compression, and code review.",
-      "sources": ["canonical-library-selection-contract"],
-      "dependencies": ["search-first"],
-      "capabilities": [],
-      "workflow": ["Search repository code, standard libraries, and installed dependencies before proposing custom code or a new package.", "Verify candidate APIs against current primary documentation and the repository's pinned versions.", "Record the selected API, evidence, rejected options, risks, and custom-code justification before implementation."],
-      "output": "Return the reuse decision, exact function or library API, compatibility evidence, verification, and custom-code justification beneath `artifact_root`."
-    },
-    {
-      "name": "architecture-pro",
-      "description": "Run the complete Architecture Pro design, audit, mixed, or decision-record workflow through its canonical progressive-loading command.",
-      "sources": ["architecture-pro"],
-      "dependencies": ["architecture-pro-governance"],
-      "capabilities": [],
-      "workflow": ["Resolve the installed harness root and active repository without assuming a runtime-specific path.", "Load the canonical command, governance, routing, and only the active phase.", "Validate the run state and certified handoff before completion."],
-      "output": "Keep all workflow artifacts beneath the caller-supplied `artifact_root` and return the current phase, evidence, blockers, and next action."
-    },
-    {
-      "name": "architecture-pro-governance",
-      "description": "Govern Architecture Pro scope, evidence, state, consent, decisions, budgets, certification, and digest-bound handoffs.",
-      "sources": ["architecture-governance"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Freeze approved roots, authority, budgets, state, and evidence contracts before analysis.", "Enforce typed claims, explicit consent, legal transitions, decision governance, and independent verification.", "Block certification when material evidence, lanes, digests, approvals, or targets are incomplete."],
-      "output": "Return governance status and persist only approved workflow state beneath the caller-supplied `artifact_root`."
-    },
-    {
-      "name": "architecture-edge-case-economics",
-      "description": "Prioritize credible architecture edge cases using risk scoring, explicit complexity budgets, and a defensible stopping rule.",
-      "sources": ["architecture-edge-case-analysis"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Define probability, impact, and detectability anchors.", "Score credible scenarios and compare risk reduction with architectural complexity.", "Record accepted risk, ownership, revisit conditions, and the stopping-rule proof."],
-      "output": "Write the risk and complexity ledger beneath the caller-supplied `artifact_root`."
-    },
-    {
-      "name": "architecture-distributed-consistency",
-      "description": "Design consistency, partition, latency, conflict, and reconciliation behavior per invariant or operation rather than by global labels.",
-      "sources": ["distributed-consistency-analysis"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Identify each invariant, authority, writer, transaction, and partition boundary.", "Choose normal and partition behavior with bounded staleness, ordering, conflict, and user outcomes.", "Define reconciliation, recovery, observability, ownership, and approval needs."],
-      "output": "Write the operation-level consistency ledger beneath the caller-supplied `artifact_root`."
-    },
-    {
-      "name": "architecture-data-model-evolution",
-      "description": "Design and audit data models, integrity placement, compatibility, lifecycle behavior, and safe expand-contract evolution.",
-      "sources": ["data-model-architecture"],
-      "dependencies": ["architecture-distributed-consistency"],
-      "capabilities": [],
-      "workflow": ["Inventory entities, invariants, writers, readers, access patterns, tenant boundaries, lifecycle, and consumers.", "Evaluate normalization, integrity placement, compatibility, indexes, and datastore-specific risks only when detected.", "Define expand, migrate, verify, contract, rollback, and reconciliation steps."],
-      "output": "Write the data-model decision and evolution plan beneath the caller-supplied `artifact_root`."
-    },
-    {
-      "name": "architecture-system-performance",
-      "description": "Decompose end-to-end performance targets into measurable budgets, arithmetic-backed hypotheses, and bounded verification specifications.",
-      "sources": ["system-performance-architecture"],
-      "dependencies": ["architecture-capacity-and-tuning"],
-      "capabilities": [],
-      "workflow": ["Freeze user-facing latency, throughput, saturation, or cost targets.", "Allocate per-hop budgets and analyze fan-out, caches, pools, queues, retries, and allocation with visible arithmetic.", "Rank hypotheses and define representative, bounded, falsifying measurements."],
-      "output": "Write performance budgets and measurement specifications beneath the caller-supplied `artifact_root`."
-    },
-    {
-      "name": "architecture-query-performance",
-      "description": "Evaluate query latency, plan stability, locking, indexing, pagination, and connection pressure using datastore-aware evidence.",
-      "sources": ["query-performance-architecture"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Inventory material query shapes, callers, data growth, indexes, locks, transactions, pagination, and pools.", "Separate static structure from measured execution and load only a proven datastore overlay.", "Rank findings and define the smallest safe plan or measurement needed for proof."],
-      "output": "Write query findings and verification specifications beneath the caller-supplied `artifact_root`."
-    },
-    {
-      "name": "architecture-concurrency-and-overload",
-      "description": "Design and audit concurrency, ordering, idempotency, admission control, backpressure, retry budgets, and overload behavior.",
-      "sources": ["concurrency-and-overload-analysis"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Map synchronous and asynchronous boundaries, actors, invariants, queueing, timeouts, cancellation, and late success.", "Analyze races, retries, ordering, deduplication, idempotency, and pressure amplification.", "Define bounded admission, shedding, degradation, recovery, and verification behavior."],
-      "output": "Write the concurrency and overload contract beneath the caller-supplied `artifact_root`."
-    },
-    {
-      "name": "architecture-diagnostics",
-      "description": "Assess whether system telemetry and playbooks can distinguish, localize, and safely test material failure hypotheses.",
-      "sources": ["system-diagnostic-analysis"],
-      "dependencies": ["observability-by-design"],
-      "capabilities": [],
-      "workflow": ["Map components, symptoms, telemetry, correlation, ownership, alerts, dashboards, and runbooks.", "Enumerate plausible causes and determine whether available signals distinguish them.", "Record ambiguity and the smallest safe evidence or instrumentation needed to falsify each hypothesis."],
-      "output": "Write the diagnostic signal graph and ambiguity register beneath the caller-supplied `artifact_root`."
-    },
-    {
-      "name": "architecture-data-recovery",
-      "description": "Audit backup, restore, replay, reconciliation, and disaster recovery against dependency-aware recovery objectives.",
-      "sources": ["data-recovery-architecture"],
-      "dependencies": ["architecture-distributed-consistency"],
-      "capabilities": [],
-      "workflow": ["Inventory authoritative and derived state plus every dependency required for restoration.", "Define business recovery objectives and a dependency-ordered restore, replay, reconciliation, and verification graph.", "Separate configured backup from exercised restore evidence and define a bounded drill."],
-      "output": "Write the recovery graph, drill specification, and residual risk beneath the caller-supplied `artifact_root`."
-    },
-    {
-      "name": "architecture-capacity-and-tuning",
-      "description": "Quantify capacity ceilings, demand, headroom, tuning envelopes, cost steps, and 1x, 10x, and 100x breakpoints.",
-      "sources": ["capacity-and-tuning-architecture"],
-      "dependencies": [],
-      "capabilities": [],
-      "workflow": ["Inventory hard and soft ceilings across compute, storage, pools, queues, quotas, and operations.", "Show demand, headroom, first break, sensitivity, and cost arithmetic at 1x, 10x, and 100x.", "Define safe tuning ranges, structural steps, lead times, owners, and verification."],
-      "output": "Write the capacity ledger and tuning plan beneath the caller-supplied `artifact_root`."
-    },
-    {
-      "name": "architecture-security-review",
-      "description": "Run one coordinated architecture security review with triggered API, identity, privacy, AI-tool, and infrastructure focus packets.",
-      "sources": ["architecture-security-analysis"],
-      "dependencies": ["security-review", "api-and-interface-design", "ai-product-engineering", "production-readiness"],
-      "capabilities": [],
-      "workflow": ["Always build a minimal asset, actor, trust-boundary, authority, data-transfer, and abuse-case map.", "Load only evidence-triggered API, identity, privacy, AI-tool, and infrastructure focus packets.", "Deduplicate root causes, redact sensitive values, and specify bounded verification for runtime claims."],
-      "output": "Write the coordinated threat and transfer map plus focused findings beneath the caller-supplied `artifact_root`."
-    },
-    {
-      "name": "architecture-explanation-diagrams",
-      "description": "Deliver source-backed rendered architecture views that make existing behavior, proposed changes, contracts, and consequential paths clear.",
-      "sources": ["architecture-explanation"],
-      "dependencies": ["architecture-decision-records"],
-      "capabilities": ["diagram.render"],
-      "workflow": ["Reuse one evidence-linked inventory and rendered views at context, options, deep-design, and walkthrough checkpoints, including applicable ADR-only phases.", "Distinguish existing, new/proposed, changed, and proposed-removal nodes and relationships with stable identifiers, a visible text legend, and separate evidence confidence.", "Cover material success, alternative, rejection, timeout, retry, asynchronous, overload, partition, race, recovery, and unknown paths; explain decisions, trade-offs, costs, reuse, and residual risks.", "Use the existing bounded local companion renderer and distinguish source correctness, rendering, direct inspection, and user acceptance; disclose incomplete visual delivery."],
-      "output": "Return phase-appropriate diagram content; the orchestrator writes the existing phase Markdown and rendered HTML companion beneath `artifact_root`, with `EXPLAIN.md` and `EXPLAIN.html` at the walkthrough."
-    },
-    {
-      "name": "architecture-review-readiness",
-      "description": "Turn certified architecture evidence into a concise decision memo, uncertainty register, failure defense, and review rehearsal.",
-      "sources": ["architecture-review-preparation"],
-      "dependencies": ["architecture-explanation-diagrams"],
-      "capabilities": [],
-      "workflow": ["Write a concise decision memo with alternatives, choice costs, uncertainty, decision request, and falsifiers.", "Build an evidence-linked engineering fitness matrix across every material quality attribute.", "Run a teach-back, incorporate corrections, and record explicit author approval."],
-      "output": "Write `ARCHITECT_REVIEW.md` beneath the caller-supplied `artifact_root`."
-    },
-    {
-      "name": "explainer-pro",
-      "description": "Run the complete Explainer Pro repository-learning or change-explanation workflow through its canonical progressive-loading command.",
-      "sources": ["explainer-pro"],
-      "dependencies": ["explainer-core"],
-      "capabilities": [],
-      "workflow": ["Load the canonical command and preserve the user's complete invocation.", "Resolve the repository-owned explanation root and load only the active phase contract.", "Run the applicable command, course, state, trace, and lifecycle validators before completion."],
-      "output": "Write every course artifact beneath the caller-supplied repository-local `artifact_root`."
-    },
-    {
-      "name": "explainer-core",
-      "description": "Apply the shared evidence, teaching, security, diagram, generation, and publication contracts used by every Explainer Pro phase.",
-      "sources": ["repository-learning-core"],
-      "dependencies": [],
-      "capabilities": ["diagram.render"],
-      "workflow": ["Establish the repository-local artifact boundary and untrusted-input policy.", "Store typed claims and independently re-ground material conclusions against current source.", "Publish immutable, self-contained course generations with visible degradation and redacted tracing."],
-      "output": "Return typed evidence and publish validated generations beneath `artifact_root`."
-    },
-    {
-      "name": "explainer-orientation",
-      "description": "Build an evidence-backed repository atlas, learner-focused file classification, local-run guide, and dependency-aware reading plan.",
-      "sources": ["repository-orientation"],
-      "dependencies": ["explainer-core"],
-      "capabilities": [],
-      "workflow": ["Map repository purpose, boundaries, entry points, and learner-facing file roles from evidence.", "Rank a start-here shortlist and describe the cited intended run path without executing it.", "Derive a dependency-aware reading sequence and seed the living glossary."],
-      "output": "Write the repository atlas and reading-plan sections beneath `artifact_root`."
+      "workflow": [
+        "Identify critical journeys, trust boundaries, test data, environment, and existing conventions.",
+        "Author stable tests around user-visible behavior with page abstractions and deterministic setup.",
+        "Run focused tests, capture exact failure artifacts, and separate application defects from environment blockers."
+      ],
+      "output": "Return test paths, execution evidence, coverage gaps, and artifact locations."
     },
     {
       "name": "explainer-architecture",
       "description": "Explain an existing repository architecture in plain language and map its actual responsibilities to evidence-backed components and diagrams.",
-      "sources": ["repository-architecture-explanation"],
-      "dependencies": ["explainer-core", "explainer-orientation"],
-      "capabilities": ["diagram.render"],
-      "workflow": ["Detect the system shape without forcing stack-specific roles.", "Map each material responsibility to real files and symbols and explain it through the four-layer teaching ramp.", "Produce evidence-linked component, static, and sequence views."],
+      "sources": [
+        "repository-architecture-explanation"
+      ],
+      "dependencies": [
+        "explainer-core",
+        "explainer-orientation"
+      ],
+      "capabilities": [
+        "diagram.render"
+      ],
+      "workflow": [
+        "Detect the system shape without forcing stack-specific roles.",
+        "Map each material responsibility to real files and symbols and explain it through the four-layer teaching ramp.",
+        "Produce evidence-linked component, static, and sequence views."
+      ],
       "output": "Write the architecture brief and diagram artifacts beneath `artifact_root`."
-    },
-    {
-      "name": "explainer-feature-tracing",
-      "description": "Map customer outcomes to source entry points, trace execution, isolate rule owners, explain functions, and render evidence-bounded sequences.",
-      "sources": ["feature-execution-explanation"],
-      "dependencies": ["explainer-core", "explainer-orientation", "explainer-architecture"],
-      "capabilities": ["diagram.render"],
-      "workflow": ["Build a coverage-labeled feature outcome atlas and select the scoped deep trace.", "Trace calls, decisions, effects, branches, and exits with stable identifiers and evidence.", "Render simple flows and bounded sequences without inventing dynamic or external paths."],
-      "output": "Write feature, rule, code-execution, and sequence sections beneath `artifact_root`."
-    },
-    {
-      "name": "explainer-system-views",
-      "description": "Explain module dependencies, reverse dependents, data relationships, lifecycle transitions, and synchronous or deferred execution from source evidence.",
-      "sources": ["system-view-explanation"],
-      "dependencies": ["explainer-core", "explainer-feature-tracing"],
-      "capabilities": ["diagram.render"],
-      "workflow": ["Build cited dependency and reverse-dependency views from the static substrate.", "Reconstruct relevant data relationships and state transitions from authoritative definitions and writers.", "Classify blocking and deferred work from actual mechanisms and visible limitations."],
-      "output": "Write dependency, data, state, and execution-timing sections beneath `artifact_root`."
-    },
-    {
-      "name": "explainer-reference",
-      "description": "Build repository-specific library, convention, and glossary reference material from implementations, tests, manifests, and repeated evidence.",
-      "sources": ["repository-reference-explanation"],
-      "dependencies": ["explainer-core"],
-      "capabilities": ["firecrawl.search", "firecrawl.scrape"],
-      "workflow": ["Read relevant implementations and tests before documenting public surfaces.", "Join dependencies to local call sites and confirm external behavior only through approved current documentation.", "Finalize repeated conventions and the living glossary without turning description into review."],
-      "output": "Write library, conventions, and glossary sections beneath `artifact_root`."
     },
     {
       "name": "explainer-comprehension",
       "description": "Verify the taught claim pool and create prediction prompts, interleaved practice, cumulative quizzes, and actionable learner summaries.",
-      "sources": ["repository-comprehension-practice"],
-      "dependencies": ["explainer-core", "verification-before-completion"],
-      "capabilities": ["browser.inspect", "browser.capture"],
-      "workflow": ["Freeze and independently re-ground the candidate claim pool.", "Create predictions, interleaved practice, and cumulative questions only from confirmed taught claims.", "Validate the self-contained course and distinguish reader comprehension from repository quality."],
+      "sources": [
+        "repository-comprehension-practice"
+      ],
+      "dependencies": [
+        "explainer-core",
+        "verification-before-completion"
+      ],
+      "capabilities": [
+        "browser.inspect",
+        "browser.capture"
+      ],
+      "workflow": [
+        "Freeze and independently re-ground the candidate claim pool.",
+        "Create predictions, interleaved practice, and cumulative questions only from confirmed taught claims.",
+        "Validate the self-contained course and distinguish reader comprehension from repository quality."
+      ],
       "output": "Write comprehension state and publish the validated course beneath `artifact_root`."
     },
     {
-      "name": "change-explanation",
-      "description": "Explain a pull request, branch, or working-tree change through surrounding context, core intent, conceptual code groups, consequences, and comprehension practice.",
-      "sources": ["change-explanation"],
-      "dependencies": ["explainer-core", "explainer-orientation"],
-      "capabilities": ["scm.pull-request.read"],
-      "workflow": ["Resolve the comparison base safely and collect eligible local change evidence.", "Explore surrounding code and distinguish evidenced behavior from inferred intent.", "Explain prior context, conceptual changes, consequences, and comprehension without grading or executing the target."],
-      "output": "Write the change-explanation section beneath `artifact_root`."
+      "name": "explainer-core",
+      "description": "Apply the shared evidence, teaching, security, diagram, generation, and publication contracts used by every Explainer Pro phase.",
+      "sources": [
+        "repository-learning-core"
+      ],
+      "dependencies": [],
+      "capabilities": [
+        "diagram.render"
+      ],
+      "workflow": [
+        "Establish the repository-local artifact boundary and untrusted-input policy.",
+        "Store typed claims and independently re-ground material conclusions against current source.",
+        "Publish immutable, self-contained course generations with visible degradation and redacted tracing."
+      ],
+      "output": "Return typed evidence and publish validated generations beneath `artifact_root`."
     },
     {
-      "name": "review-pro",
-      "description": "Run the canonical Review Pro production-readiness workflow for pull requests, branches, working trees, or Debug Pro resolution re-verification. Use when the user invokes /review-pro, names $review-pro, or requests its evidence-gated review.",
-      "sources": ["review-pro"],
-      "dependencies": ["review-core"],
+      "name": "explainer-feature-tracing",
+      "description": "Map customer outcomes to source entry points, trace execution, isolate rule owners, explain functions, and render evidence-bounded sequences.",
+      "sources": [
+        "feature-execution-explanation"
+      ],
+      "dependencies": [
+        "explainer-core",
+        "explainer-orientation",
+        "explainer-architecture"
+      ],
+      "capabilities": [
+        "diagram.render"
+      ],
+      "workflow": [
+        "Build a coverage-labeled feature outcome atlas and select the scoped deep trace.",
+        "Trace calls, decisions, effects, branches, and exits with stable identifiers and evidence.",
+        "Render simple flows and bounded sequences without inventing dynamic or external paths."
+      ],
+      "output": "Write feature, rule, code-execution, and sequence sections beneath `artifact_root`."
+    },
+    {
+      "name": "explainer-orientation",
+      "description": "Build an evidence-backed repository atlas, learner-focused file classification, local-run guide, and dependency-aware reading plan.",
+      "sources": [
+        "repository-orientation"
+      ],
+      "dependencies": [
+        "explainer-core"
+      ],
       "capabilities": [],
-      "workflow": ["Load the canonical command while preserving the complete invocation.", "Resolve the repository-owned review root and keep reviewed source read-only.", "Run command, run, handoff, trace, and lifecycle validation before completion."],
-      "output": "Write every review artifact beneath the caller-supplied repository-local `artifact_root`."
+      "workflow": [
+        "Map repository purpose, boundaries, entry points, and learner-facing file roles from evidence.",
+        "Rank a start-here shortlist and describe the cited intended run path without executing it.",
+        "Derive a dependency-aware reading sequence and seed the living glossary."
+      ],
+      "output": "Write the repository atlas and reading-plan sections beneath `artifact_root`."
+    },
+    {
+      "name": "explainer-pro",
+      "description": "Run the complete Explainer Pro repository-learning or change-explanation workflow through its canonical progressive-loading command.",
+      "sources": [
+        "explainer-pro"
+      ],
+      "dependencies": [
+        "explainer-core"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Load the canonical command and preserve the user's complete invocation.",
+        "Resolve the repository-owned explanation root and load only the active phase contract.",
+        "Run the applicable command, course, state, trace, and lifecycle validators before completion."
+      ],
+      "output": "Write every course artifact beneath the caller-supplied repository-local `artifact_root`."
+    },
+    {
+      "name": "explainer-reference",
+      "description": "Build repository-specific library, convention, and glossary reference material from implementations, tests, manifests, and repeated evidence.",
+      "sources": [
+        "repository-reference-explanation"
+      ],
+      "dependencies": [
+        "explainer-core"
+      ],
+      "capabilities": [
+        "firecrawl.search",
+        "firecrawl.scrape"
+      ],
+      "workflow": [
+        "Read relevant implementations and tests before documenting public surfaces.",
+        "Join dependencies to local call sites and confirm external behavior only through approved current documentation.",
+        "Finalize repeated conventions and the living glossary without turning description into review."
+      ],
+      "output": "Write library, conventions, and glossary sections beneath `artifact_root`."
+    },
+    {
+      "name": "explainer-system-views",
+      "description": "Explain module dependencies, reverse dependents, data relationships, lifecycle transitions, and synchronous or deferred execution from source evidence.",
+      "sources": [
+        "system-view-explanation"
+      ],
+      "dependencies": [
+        "explainer-core",
+        "explainer-feature-tracing"
+      ],
+      "capabilities": [
+        "diagram.render"
+      ],
+      "workflow": [
+        "Build cited dependency and reverse-dependency views from the static substrate.",
+        "Reconstruct relevant data relationships and state transitions from authoritative definitions and writers.",
+        "Classify blocking and deferred work from actual mechanisms and visible limitations."
+      ],
+      "output": "Write dependency, data, state, and execution-timing sections beneath `artifact_root`."
+    },
+    {
+      "name": "firestore-performance",
+      "description": "Review or design Firestore document, index, query, hotspot, transaction, and cost behavior using repository evidence.",
+      "sources": [
+        "data-firestore-performance"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Identify read, write, transaction, document-growth, and tenancy patterns.",
+        "Evaluate document IDs, indexes, fan-out, hotspotting, query limits, and cost implications.",
+        "Define measurement and migration evidence rather than assuming production scale."
+      ],
+      "output": "Return Firestore findings or design decisions with verification targets."
+    },
+    {
+      "name": "general-coding-standards",
+      "description": "Apply repository-native correctness and maintainability standards without imposing an unrelated language, framework, or style guide.",
+      "sources": [
+        "general-coding-standards"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Read repository instructions, linters, formatters, compiler settings, and adjacent patterns.",
+        "Identify correctness or maintainability rules that are actually enforced or consistently established.",
+        "Report deviations with repository evidence and avoid preference-only findings."
+      ],
+      "output": "Return applicable standards and evidence-backed deviations."
+    },
+    {
+      "name": "grill-with-docs",
+      "description": "Stress-test a coding decision against repository evidence, shared terminology, edge cases, and durable architectural consequences.",
+      "sources": [
+        "source-command-grill-with-docs"
+      ],
+      "dependencies": [
+        "workspace-codemap-context"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Load the proposed decision and the smallest relevant repository evidence packet.",
+        "Challenge ambiguous terms, unsupported assumptions, failure behavior, compatibility, ownership, and alternatives one question at a time.",
+        "Classify the result as clear, confirmation-needed, or deeper review-needed and capture ADR-worthy decisions."
+      ],
+      "output": "Update the decision artifact beneath `artifact_root` with resolved language, evidence, assumptions, and open decisions."
+    },
+    {
+      "name": "implementation-planning",
+      "description": "Turn approved requirements and architecture into small dependency-ordered implementation slices with explicit verification and ownership.",
+      "sources": [
+        "writing-plans",
+        "flow-plan"
+      ],
+      "dependencies": [
+        "incremental-delivery"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Identify interfaces, files, dependencies, migrations, risks, and decisions that remain unresolved.",
+        "Slice work vertically in dependency order with disjoint parallel scopes where safe.",
+        "Give every slice a pre-change proof, implementation steps, verification command, rollback note, and completion evidence."
+      ],
+      "output": "Write `spec.md` and `tasks.md` beneath `artifact_root` when requested by the caller."
+    },
+    {
+      "name": "improve-codebase-architecture",
+      "description": "Identify and plan evidence-backed architecture improvements without expanding a feature into an unbounded rewrite.",
+      "sources": [
+        "improve-codebase-architecture"
+      ],
+      "dependencies": [
+        "zoom-out"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Identify the concrete architecture pain and its measured or observed impact.",
+        "Compare the boring baseline, incremental repair, and larger redesign.",
+        "Recommend the smallest improvement that fixes the active constraint with migration and rollback."
+      ],
+      "output": "Return an architecture improvement decision and bounded execution slices."
+    },
+    {
+      "name": "incremental-delivery",
+      "description": "Decompose changes into small independently reviewable and reversible delivery slices with safe dependency ordering.",
+      "sources": [
+        "core-incremental-delivery",
+        "incremental-implementation"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Map contracts and dependencies before slicing.",
+        "Prefer thin vertical outcomes that can be verified and rolled back independently.",
+        "Define save points, flags or compatibility bridges, and safe parallel ownership."
+      ],
+      "output": "Return an ordered slice plan with acceptance and rollback evidence for each slice."
+    },
+    {
+      "name": "interface-experience-review",
+      "description": "Review developer-facing interfaces for discoverability, consistency, error quality, compatibility, and time to first success.",
+      "sources": [
+        "plan-devex-review"
+      ],
+      "dependencies": [
+        "api-and-interface-design"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Identify each API, CLI, SDK, configuration, or agent-facing interaction and its target user.",
+        "Estimate time to first success and inspect naming, defaults, examples, errors, migration, and backward compatibility.",
+        "Raise each friction point as an independent decision or acceptance checkpoint."
+      ],
+      "output": "Return the interface-experience gap analysis and measurable improvements."
+    },
+    {
+      "name": "internal-comms",
+      "description": "Draft concise stakeholder communication from verified delivery artifacts without sending messages or inventing status.",
+      "sources": [
+        "internal-comms"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Identify the audience, purpose, requested channel, and decisions or actions needed.",
+        "Use verified scope, tests, risks, links, dates, and owners from repository-local artifacts.",
+        "Draft only; send externally only after explicit confirmation."
+      ],
+      "output": "Write the communication draft beneath `artifact_root` and return ready-to-paste text."
+    },
+    {
+      "name": "library-first-engineering",
+      "description": "Select and reuse existing repository code, language standard-library functions, installed dependencies, and mature libraries before authoring custom implementations. Use during implementation planning, dependency selection, coding, refactoring, compression, and code review.",
+      "sources": [
+        "canonical-library-selection-contract"
+      ],
+      "dependencies": [
+        "search-first"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Search repository code, standard libraries, and installed dependencies before proposing custom code or a new package.",
+        "Verify candidate APIs against current primary documentation and the repository's pinned versions.",
+        "Record the selected API, evidence, rejected options, risks, and custom-code justification before implementation."
+      ],
+      "output": "Return the reuse decision, exact function or library API, compatibility evidence, verification, and custom-code justification beneath `artifact_root`."
+    },
+    {
+      "name": "mongodb-performance",
+      "description": "Review or design MongoDB access patterns, indexes, document models, aggregation, and operational behavior using repository evidence.",
+      "sources": [
+        "data-mongodb-performance"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Identify query shapes, cardinality, selectivity, document growth, write patterns, and consistency requirements.",
+        "Evaluate indexes, projections, aggregation, pagination, tenancy, and migration impact.",
+        "Require explain-plan or measured evidence for performance claims when available."
+      ],
+      "output": "Return MongoDB findings or a data-model decision with verification targets."
+    },
+    {
+      "name": "multi-model-debate-room",
+      "description": "Run a structured multi-perspective debate when a small number of materially different options remain genuinely contested.",
+      "sources": [
+        "multi-model-debate-room"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "State the contested decision, evidence packet, constraints, and decision criteria.",
+        "Assign distinct perspectives and run bounded argument, rebuttal, and synthesis rounds without inventing new facts.",
+        "Resolve or narrow the disagreement and preserve dissent, uncertainty, and the decision owner."
+      ],
+      "output": "Return a decision record with arguments, evidence, verdict, confidence, and unresolved dissent."
+    },
+    {
+      "name": "observability-by-design",
+      "description": "Design, implement, review, and verify product logging, distributed tracing, metrics, SLOs, and privacy-safe harness execution traces. Use for features crossing runtime boundaries, APIs, queues, external services, production operations, or evidence-gated agent workflows.",
+      "sources": [
+        "canonical-observability-contract"
+      ],
+      "dependencies": [],
+      "capabilities": [
+        "observability.read"
+      ],
+      "workflow": [
+        "Map user-visible outcomes and system boundaries before choosing telemetry.",
+        "Define structured logs, correlated spans, bounded metrics, SLOs, alerts, redaction, sampling, retention, and ownership.",
+        "Verify a success and material failure path and record privacy-safe workflow events through the deterministic event writer."
+      ],
+      "output": "Return the product observability plan, workflow trace evidence, verification, and remaining blind spots beneath `artifact_root`."
+    },
+    {
+      "name": "outcome-analysis",
+      "description": "Analyze original aggregate evidence with question-fit outcome methods and return checked claims, uncertainty, and decision options for coordinator validation.",
+      "sources": [
+        "outcome-analysis"
+      ],
+      "dependencies": [
+        "ab-test-analysis"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Preserve original intent, targets and complete authorized sources.",
+        "Apply question-fit methods and checked arithmetic to minimized aggregates.",
+        "Return supported claims, uncertainty and credible decision alternatives without writes."
+      ],
+      "output": "Return bounded findings to the coordinator; only the coordinator writes beneath `artifact_root`."
+    },
+    {
+      "name": "outcome-evidence-audit",
+      "description": "Audit supplied Outcome evidence for source quality, target provenance, comparable measurements, observation maturity and source-to-claim gaps before analysis; no outcome verdict or data acquisition.",
+      "sources": [
+        "outcome-evidence-audit"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Inspect the complete approved evidence packet in a fresh assignment.",
+        "Check provenance, comparability, maturity, policy and material gaps.",
+        "Return evidence fitness without collecting data or judging success."
+      ],
+      "output": "Return evidence fitness to the coordinator; do not write or invent an alternate `artifact_root`."
+    },
+    {
+      "name": "outcome-independent-challenge",
+      "description": "Independently challenge material Outcome claims from original intent and complete sources in a fresh context, returning supported, disputed or unverified findings without author rationale or final verdict authority.",
+      "sources": [
+        "outcome-independent-challenge"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Require a fresh uncontaminated packet with original sources and proposed claims.",
+        "Independently inspect consequential claims and calculation assumptions.",
+        "Return supported, disputed or unverified findings without final verdict authority."
+      ],
+      "output": "Return an independent challenge to the coordinator; do not write beneath or outside `artifact_root`."
+    },
+    {
+      "name": "outcome-pro",
+      "description": "Assess whether an initiative achieved its intended business, product or explicitly scoped domain outcome using the canonical four-phase Outcome Pro workflow.",
+      "sources": [
+        "outcome-pro"
+      ],
+      "dependencies": [
+        "outcome-analysis",
+        "outcome-evidence-audit",
+        "outcome-independent-challenge"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Load the canonical four-phase command and preserve the original question and authority.",
+        "Use proportionate evidence, assessment and recommendation with on-demand depth.",
+        "Validate comparative reports and distinguish arithmetic proof from causal claims."
+      ],
+      "output": "Return a decision-first assessment in chat or beneath the caller-supplied repository-local `artifact_root`."
+    },
+    {
+      "name": "plan-design-review",
+      "description": "Review a design plan for usability, fidelity to approved direction, visual judgment, state completeness, accessibility, and responsive behavior.",
+      "sources": [
+        "plan-design-review"
+      ],
+      "dependencies": [
+        "design-system"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Map planned user flows and all loading, empty, error, permission, success, and recovery states.",
+        "Inspect supplied visual references and representative rendered work when accessible; check accessibility, responsive behavior, copy, hierarchy, and component reuse against the approved direction.",
+        "Identify design decisions that must be resolved before implementation."
+      ],
+      "output": "Return design-plan findings, missing states, and required amendments, keeping usability, fidelity, and taste judgments distinguishable and naming the evidence and unverified limits for each."
+    },
+    {
+      "name": "plan-engineering-review",
+      "description": "Review an implementation plan for boundaries, dependencies, sequencing, failure modes, verification, migration, and rollback.",
+      "sources": [
+        "plan-eng-review"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Trace every planned slice to interfaces, files, dependencies, and acceptance evidence.",
+        "Challenge hidden coupling, unsafe sequencing, unclear ownership, missing migrations, and rollback gaps.",
+        "Require executable verification targets and explicit blockers."
+      ],
+      "output": "Return engineering-plan findings and concrete amendments."
+    },
+    {
+      "name": "plan-product-review",
+      "description": "Review a plan for user value, scope discipline, strategic coherence, success measures, and unnecessary product complexity.",
+      "sources": [
+        "plan-ceo-review"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Restate the user outcome and the smallest valuable scope.",
+        "Challenge weak demand evidence, vanity requirements, premature generalization, and missing counter-metrics.",
+        "Classify decisions as mechanical, reversible, strategic, or user-owned."
+      ],
+      "output": "Return product-plan findings, recommended scope changes, and decisions requiring the user."
+    },
+    {
+      "name": "plan-review-orchestrator",
+      "description": "Run the approved product, engineering, design, and interface plan reviews in order and synthesize one decision-ready plan.",
+      "sources": [
+        "autoplan"
+      ],
+      "dependencies": [
+        "plan-product-review",
+        "plan-engineering-review",
+        "plan-design-review",
+        "interface-experience-review"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Freeze the plan revision and evidence packet before review.",
+        "Run product, engineering, design, and applicable interface reviews against the same revision.",
+        "Auto-resolve only mechanical changes, surface user-owned decisions, then update the plan once and record the review ledger."
+      ],
+      "output": "Write the synthesized plan review and updated plan beneath `artifact_root`."
+    },
+    {
+      "name": "postgres-patterns",
+      "description": "Review or design PostgreSQL schemas, queries, indexes, constraints, migrations, tenancy, and transaction behavior.",
+      "sources": [
+        "postgres-patterns"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Identify access paths, cardinality, consistency, concurrency, and lifecycle requirements.",
+        "Evaluate schema normalization, constraints, indexes, locking, query plans, tenancy, and migration sequencing.",
+        "Require explain or measured evidence for performance claims when available."
+      ],
+      "output": "Return PostgreSQL findings or design decisions with migration and verification targets."
+    },
+    {
+      "name": "pre-merge-review",
+      "description": "Run a structured pre-merge review over the complete diff, tests, architecture, risks, and release implications before specialist synthesis.",
+      "sources": [
+        "review"
+      ],
+      "dependencies": [
+        "general-coding-standards",
+        "security-review"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Freeze the diff revision and load surrounding code, contracts, tests, and repository rules.",
+        "Review correctness, maintainability, reliability, security indicators, performance, compatibility, and evidence gaps.",
+        "Separate findings from preferences, assign severity, and avoid applying fixes in review-only mode."
+      ],
+      "output": "Write a severity-sorted pre-merge report beneath `artifact_root`."
+    },
+    {
+      "name": "prepare-change-for-review",
+      "description": "Prepare a completed change for review by checking scope, tests, documentation, changelog, branch state, and pull-request readiness.",
+      "sources": [
+        "ship"
+      ],
+      "dependencies": [
+        "verification-before-completion",
+        "create-pull-request"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Inspect the final diff, branch, commits, generated files, tests, documentation, and release notes.",
+        "Repair only authorized mechanical issues and rerun required proof.",
+        "Prepare or create the pull request after slice and outward-action gates are satisfied."
+      ],
+      "output": "Write the review-preparation report beneath `artifact_root` and return the pull-request handoff."
+    },
+    {
+      "name": "product-discovery",
+      "description": "Interrogate a product opportunity and produce evidence-grounded requirements before solution design begins.",
+      "sources": [
+        "office-hours",
+        "spec"
+      ],
+      "dependencies": [
+        "user-personas",
+        "customer-journey-map"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Establish the user, problem, current workaround, desired outcome, constraints, and decision owner.",
+        "Require at least one repository or stakeholder evidence item for claims about current behavior.",
+        "Separate confirmed requirements, assumptions, open questions, non-goals, and measurable success."
+      ],
+      "output": "Write an evidence-backed discovery brief beneath `artifact_root`."
+    },
+    {
+      "name": "production-readiness",
+      "description": "Assess production readiness across correctness, security, data, reliability, performance, observability, rollout, and rollback with human gates.",
+      "sources": [
+        "infra-production-readiness"
+      ],
+      "dependencies": [
+        "verification-before-completion",
+        "score-change-risk"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Identify the production surface, owners, SLOs, data impact, dependencies, rollout stages, and rollback conditions.",
+        "Evaluate code, tests, security, capacity, observability, alerts, migrations, support, and failure recovery.",
+        "Record blockers and require explicit human approval for production mutation."
+      ],
+      "output": "Write the production-readiness checklist and sign-off state beneath `artifact_root`."
+    },
+    {
+      "name": "ralph-loop",
+      "description": "Execute approved tasks with fresh worker context, durable progress, bounded retries, and verified completion using the existing task scheduler.",
+      "sources": [
+        "core-ralph-loop"
+      ],
+      "dependencies": [
+        "task-wave-execution",
+        "test-driven-development",
+        "verification-before-completion"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Read the approved tasks and existing work ledger, reconcile current evidence, and reserve a finite task attempt.",
+        "Use the existing task-wave scheduler to dispatch a fresh canonical implementer for each bounded task attempt.",
+        "Inspect the actual diff and required proof before recording completion, retrying within budget, or stopping with a blocker."
+      ],
+      "output": "Update the existing work ledger and reports beneath `artifact_root`; return verified task progress, attempt counts, and unresolved work."
+    },
+    {
+      "name": "release-deployment",
+      "description": "Prepare and execute an authorized staged release with readiness, staleness, rollout, observation, and named rollback gates.",
+      "sources": [
+        "land-and-deploy",
+        "flow-ship"
+      ],
+      "dependencies": [
+        "production-readiness",
+        "verification-before-completion"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Resolve the exact revision, environment, deploy mechanism, approvals, configuration, migration, and rollback path.",
+        "Check review staleness and readiness before staging or production action.",
+        "Execute only the authorized stage, capture live evidence, observe health, and stop on rollback criteria."
+      ],
+      "output": "Write the deployment record beneath `artifact_root` with revision, commands or links, evidence, and rollback status."
+    },
+    {
+      "name": "repository-health",
+      "description": "Measure a repository's current build, type, lint, test, dead-code, dependency, and documentation posture as a reproducible baseline.",
+      "sources": [
+        "health"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Detect only tools and commands configured by the repository.",
+        "Run bounded non-destructive checks independently and preserve exact status and timing.",
+        "Score only observed dimensions, redistribute absent-tool weight, and distinguish baseline failures from change regressions."
+      ],
+      "output": "Write the repository-health baseline beneath `artifact_root`."
     },
     {
       "name": "review-core",
       "description": "Apply Review Pro’s source-read-only authority, repository-local artifact boundary, progressive loading, state, evidence caps, and completion rules.",
-      "sources": ["review-pro-core"],
+      "sources": [
+        "review-pro-core"
+      ],
       "dependencies": [],
       "capabilities": [],
-      "workflow": ["Enforce the exact repository-local write enclave and source-read-only boundary.", "Load only the active phase and evidence-triggered lanes.", "Bind state to repository, revision, diff, contract, and privacy-safe workflow events."],
+      "workflow": [
+        "Enforce the exact repository-local write enclave and source-read-only boundary.",
+        "Load only the active phase and evidence-triggered lanes.",
+        "Bind state to repository, revision, diff, contract, and privacy-safe workflow events."
+      ],
       "output": "Return bounded review state and evidence beneath `artifact_root`."
     },
     {
       "name": "review-evidence-integrity",
       "description": "Authenticate Review Pro intake, evidence, findings, independent verification, digests, lineage, and untrusted-content boundaries.",
-      "sources": ["review-pro-evidence-gates"],
-      "dependencies": ["review-core"],
+      "sources": [
+        "review-pro-evidence-gates"
+      ],
+      "dependencies": [
+        "review-core"
+      ],
       "capabilities": [],
-      "workflow": ["Bind evidence to repository, revision, diff, location, method, and digest.", "Reject path escapes, symlinks, secrets, personal data, and directive-shaped prose.", "Require blinded independent verification before material confirmation."],
+      "workflow": [
+        "Bind evidence to repository, revision, diff, location, method, and digest.",
+        "Reject path escapes, symlinks, secrets, personal data, and directive-shaped prose.",
+        "Require blinded independent verification before material confirmation."
+      ],
       "output": "Write authenticated evidence, findings, and verification decisions beneath `artifact_root`."
-    },
-    {
-      "name": "review-production-challenge",
-      "description": "Apply Review Pro’s edge-case, failure-story, security, scalability, observability, hygiene, README, and Top 5 production-risk matrices.",
-      "sources": ["review-pro-production-readiness"],
-      "dependencies": ["review-core", "score-change-risk", "production-readiness"],
-      "capabilities": ["observability.read"],
-      "workflow": ["Complete evidence-backed applicability and four-part failure matrices.", "Separate modeled scale risk from representative measurement and inspect operability.", "Produce exactly five authenticated production-risk slots without filler."],
-      "output": "Write readiness matrices and production risks beneath `artifact_root`."
     },
     {
       "name": "review-handoff",
       "description": "Validate and emit Review Pro reports, Debug Pro handoffs, optional pull-request comments, and independent resolution re-verification without applying fixes.",
-      "sources": ["review-pro-debug-boundary"],
-      "dependencies": ["review-evidence-integrity", "check-merge-readiness"],
-      "capabilities": ["scm.pull-request.write"],
-      "workflow": ["Emit handoffs only for independently confirmed correction-eligible findings.", "Bind packets to identity, revisions, evidence, acceptance, and a structured route.", "Independently validate Debug Pro resolution lineage and evidence before clearing findings."],
+      "sources": [
+        "review-pro-debug-boundary"
+      ],
+      "dependencies": [
+        "review-evidence-integrity",
+        "check-merge-readiness"
+      ],
+      "capabilities": [
+        "scm.pull-request.write"
+      ],
+      "workflow": [
+        "Emit handoffs only for independently confirmed correction-eligible findings.",
+        "Bind packets to identity, revisions, evidence, acceptance, and a structured route.",
+        "Independently validate Debug Pro resolution lineage and evidence before clearing findings."
+      ],
       "output": "Write validated handoffs and re-verification evidence beneath `artifact_root`."
     },
     {
-      "name": "debug-pro",
-      "description": "Run the canonical adaptive Debug Pro workflow for direct defects or Review Pro handoffs, preserving exact reproduction, bounded repair, and independent re-verification.",
-      "sources": ["debug-pro-command"],
-      "dependencies": ["debug-core"],
+      "name": "review-pro",
+      "description": "Run the canonical Review Pro production-readiness workflow for pull requests, branches, working trees, or Debug Pro resolution re-verification. Use when the user invokes /review-pro, names $review-pro, or requests its evidence-gated review.",
+      "sources": [
+        "review-pro"
+      ],
+      "dependencies": [
+        "review-core"
+      ],
       "capabilities": [],
-      "workflow": ["Read commands/debug-pro.md and follow its current-phase load contract.", "Preserve caller arguments, adaptive depth, authority and repair gates.", "Validate repository-owned repair artifacts before recommending independent Review Pro."],
-      "output": "Return the report, actual validation and next owner beneath `artifact_root`."
+      "workflow": [
+        "Load the canonical command while preserving the complete invocation.",
+        "Resolve the repository-owned review root and keep reviewed source read-only.",
+        "Run command, run, handoff, trace, and lifecycle validation before completion."
+      ],
+      "output": "Write every review artifact beneath the caller-supplied repository-local `artifact_root`."
     },
     {
-      "name": "debug-core",
-      "description": "Apply Debug Pro's adaptive evidence, repository-local artifacts, untrusted-input boundary, causal discipline, bounded repair gates, and honest resolution reporting.",
-      "sources": ["debug-evidence-and-repair-contract"],
-      "dependencies": ["systematic-debugging", "verification-before-completion", "test-driven-development"],
+      "name": "review-production-challenge",
+      "description": "Apply Review Pro’s edge-case, failure-story, security, scalability, observability, hygiene, README, and Top 5 production-risk matrices.",
+      "sources": [
+        "review-pro-production-readiness"
+      ],
+      "dependencies": [
+        "review-core",
+        "score-change-risk",
+        "production-readiness"
+      ],
+      "capabilities": [
+        "observability.read"
+      ],
+      "workflow": [
+        "Complete evidence-backed applicability and four-part failure matrices.",
+        "Separate modeled scale risk from representative measurement and inspect operability.",
+        "Produce exactly five authenticated production-risk slots without filler."
+      ],
+      "output": "Write readiness matrices and production risks beneath `artifact_root`."
+    },
+    {
+      "name": "review-pull-request",
+      "description": "Review a pull request from its complete diff and repository context with actionable evidence-backed findings.",
+      "sources": [
+        "core-pr-review",
+        "platform-core-pr-review"
+      ],
+      "dependencies": [
+        "pre-merge-review"
+      ],
       "capabilities": [],
-      "workflow": ["Bind the exact symptom and source baseline to one repository-local artifact root.", "Load evidence and causal investigation guidance only when needed.", "Require RED before scoped production edits and fresh verification before a resolved claim."],
-      "output": "Write DEBUG_REPORT.md, shared run events, and a nested resolution packet for every repair attempt beneath `artifact_root`."
+      "workflow": [
+        "Resolve the exact repository, pull request, base, head, and current revision.",
+        "Inspect the complete diff, surrounding code, tests, checks, and instructions.",
+        "Report actionable findings with severity and evidence; post comments only when explicitly authorized."
+      ],
+      "output": "Write the review report beneath `artifact_root` and return comment drafts or published links."
+    },
+    {
+      "name": "right-sized-engineering",
+      "description": "Judge whether a proposed solution matches the actual complexity of the problem, refusing both over-engineering and under-engineering.",
+      "sources": [
+        "canonical-right-sizing-contract"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "State the problem's actual complexity — invariants, failure modes, scale, lifetime, and the cost of being wrong — before proposing a solution.",
+        "Size the solution to that reading and record the judgement in one line: the complexity, the size it warrants, and what was deliberately not built.",
+        "Reject generality with no requirement behind it, and reject apparent simplicity that defers a correctness, integrity, or rollback failure."
+      ],
+      "output": "Return the right-sizing judgement, the forcing requirement or constraint behind each decision, and what was deliberately excluded."
+    },
+    {
+      "name": "roadmap-backlog-structuring",
+      "description": "Turn supplied customer insights, problems and candidate ideas into a broad, evidence-linked backlog with distinct mechanisms and clear feature boundaries. Use before human prioritization or to reconcile changed inputs; does not rank or select the roadmap.",
+      "sources": [
+        "roadmap-backlog-structuring"
+      ],
+      "dependencies": [
+        "customer-insight-synthesis",
+        "customer-strategy-synthesis",
+        "customer-solution-validation"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Select the assigned method and read only its relevant references and approved source material.",
+        "Preserve source identity, substantive product reasoning, human decisions and explicit evidence limits.",
+        "Return useful advice, exact coverage and next decisions without authorizing delivery or external actions."
+      ],
+      "output": "Use chat or the exact caller-supplied artifact_root beneath the owning repository or explicitly selected project; narrower workers return without writes."
+    },
+    {
+      "name": "roadmap-execution-planning",
+      "description": "Form or challenge a provisional cross-functional execution view for a human-selected feature set using supplied notes, dependencies and capacity. Use before delivery commitments or when assumptions change; does not select the roadmap, write a PRD or decompose engineering tasks.",
+      "sources": [
+        "roadmap-execution-planning"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Select the assigned method and read only its relevant references and approved source material.",
+        "Preserve source identity, substantive product reasoning, human decisions and explicit evidence limits.",
+        "Return useful advice, exact coverage and next decisions without authorizing delivery or external actions."
+      ],
+      "output": "Use chat or the exact caller-supplied artifact_root beneath the owning repository or explicitly selected project; narrower workers return without writes."
+    },
+    {
+      "name": "roadmap-human-review",
+      "description": "Reconcile human feedback on a product backlog or roadmap, explaining edits, conflicting revisions, decision scope and note impacts while preserving the human's choices. Use for supplied comments, reviewed rows or feedback exports; does not authenticate approvals or persist accepted state.",
+      "sources": [
+        "roadmap-human-review"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Select the assigned method and read only its relevant references and approved source material.",
+        "Preserve source identity, substantive product reasoning, human decisions and explicit evidence limits.",
+        "Return useful advice, exact coverage and next decisions without authorizing delivery or external actions."
+      ],
+      "output": "Use chat or the exact caller-supplied artifact_root beneath the owning repository or explicitly selected project; narrower workers return without writes."
+    },
+    {
+      "name": "roadmap-independent-challenge",
+      "description": "Challenge roadmap candidates, proposed feature sets, Product Notes or execution views against original approved evidence and human decisions. Use for consequential reasoning, fidelity or feasibility questions; return supported objections or a bounded no-objection result without choosing priorities or changing the roadmap.",
+      "sources": [
+        "roadmap-independent-challenge"
+      ],
+      "dependencies": [
+        "customer-independent-challenge"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Select the assigned method and read only its relevant references and approved source material.",
+        "Preserve source identity, substantive product reasoning, human decisions and explicit evidence limits.",
+        "Return useful advice, exact coverage and next decisions without authorizing delivery or external actions."
+      ],
+      "output": "Use chat or the exact caller-supplied artifact_root beneath the owning repository or explicitly selected project; narrower workers return without writes."
+    },
+    {
+      "name": "roadmap-priority-advisory",
+      "description": "Compare backlog options or proposed feature sets against supplied customer strategy, value, constraints and uncertainty. Use to advise a human on trade-offs and what would change the recommendation; never adopt roadmap priority or selection.",
+      "sources": [
+        "roadmap-priority-advisory"
+      ],
+      "dependencies": [
+        "customer-opportunity-economics",
+        "customer-strategy-synthesis",
+        "customer-evidence-audit"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Select the assigned method and read only its relevant references and approved source material.",
+        "Preserve source identity, substantive product reasoning, human decisions and explicit evidence limits.",
+        "Return useful advice, exact coverage and next decisions without authorizing delivery or external actions."
+      ],
+      "output": "Use chat or the exact caller-supplied artifact_root beneath the owning repository or explicitly selected project; narrower workers return without writes."
+    },
+    {
+      "name": "roadmap-pro",
+      "description": "Coordinate evidence-linked backlog shaping, priority advice, human selection, Product Notes and provisional execution planning through focused methods.",
+      "sources": [
+        "roadmap-pro"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Select the assigned method and read only its relevant references and approved source material.",
+        "Preserve source identity, substantive product reasoning, human decisions and explicit evidence limits.",
+        "Return useful advice, exact coverage and next decisions without authorizing delivery or external actions."
+      ],
+      "output": "Use chat or the exact caller-supplied artifact_root beneath the owning repository or explicitly selected project; narrower workers return without writes."
+    },
+    {
+      "name": "roadmap-product-note",
+      "description": "Draft or review simple Product Notes explaining what each backlog feature means, who it serves, the problem and intent. Use for human-reviewed backlog items or explicitly provisional drafts; preserve all-feature coverage and leave full PRDs to Feature Pro.",
+      "sources": [
+        "roadmap-product-note"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Select the assigned method and read only its relevant references and approved source material.",
+        "Preserve source identity, substantive product reasoning, human decisions and explicit evidence limits.",
+        "Return useful advice, exact coverage and next decisions without authorizing delivery or external actions."
+      ],
+      "output": "Use chat or the exact caller-supplied artifact_root beneath the owning repository or explicitly selected project; narrower workers return without writes."
+    },
+    {
+      "name": "score-change-risk",
+      "description": "Score change risk from blast radius, data flow, production impact, reversibility, verification quality, and operational readiness.",
+      "sources": [
+        "review-pr-risk-scoring"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Identify affected users, systems, data, contracts, environments, and irreversible operations.",
+        "Score likelihood, impact, detectability, reversibility, and evidence quality using stated anchors.",
+        "Expose assumptions and sensitivity instead of presenting an unexplained aggregate score."
+      ],
+      "output": "Return the risk ledger, blockers, score inputs, and ranked mitigations."
+    },
+    {
+      "name": "search-first",
+      "description": "Search for existing implementations, utilities, contracts, tests, and conventions before adding a new abstraction or dependency.",
+      "sources": [
+        "search-first"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Search exact names, neighboring concepts, imports, exports, tests, configuration, and generated code.",
+        "Compare reuse, extension, and new implementation options against repository conventions.",
+        "Record the reuse decision and evidence before writing new code."
+      ],
+      "output": "Return the search evidence and explicit reuse, extend, or create decision."
+    },
+    {
+      "name": "security-review",
+      "description": "Review a change through the applicable access-control, API, privacy, AI-tool, infrastructure, secret, and tenant-isolation lenses.",
+      "sources": [
+        "security-review"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Map actors, assets, trust boundaries, entry points, sensitive data, external calls, and privilege transitions.",
+        "Select only the security lenses triggered by the change and trace exploitable paths with evidence.",
+        "Report severity, preconditions, impact, remediation direction, and validation boundaries without live exploitation."
+      ],
+      "output": "Write the coordinated security findings beneath `artifact_root`."
+    },
+    {
+      "name": "session-checkpoint",
+      "description": "Save a compact repository-local checkpoint of current state, decisions, evidence, blockers, and exact next actions for reliable continuation.",
+      "sources": [
+        "context-save"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Read current state and existing artifacts rather than reconstructing progress from conversation alone.",
+        "Capture completed work, decisions, changed paths, verification, blockers, remaining tasks, and next command.",
+        "Use a deterministic filename inside `artifact_root` and never write session state to a home-directory store."
+      ],
+      "output": "Write the checkpoint beneath `artifact_root` and return its path."
+    },
+    {
+      "name": "specification-writing",
+      "description": "Write precise technical or product specifications with explicit contracts, invariants, failure behavior, and testable acceptance criteria.",
+      "sources": [
+        "core-spec-writing"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "State the goal, scope, non-goals, assumptions, constraints, and owners.",
+        "Define interfaces, data shapes, behavior, failure modes, compatibility, and invariants.",
+        "Add measurable acceptance criteria and verification targets with no placeholders."
+      ],
+      "output": "Write or refine the requested specification beneath `artifact_root`."
+    },
+    {
+      "name": "split-large-pull-request",
+      "description": "Split an oversized change into dependency-ordered reviewable pull requests with preserved behavior and explicit stacking.",
+      "sources": [
+        "core-large-pr-splitter"
+      ],
+      "dependencies": [
+        "incremental-delivery"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Map changed files, interfaces, imports, migrations, tests, and dependency edges.",
+        "Partition at reviewer boundaries into independently coherent slices and identify compatibility bridges.",
+        "Define branch and base order, verification per slice, and safe recovery if a split fails."
+      ],
+      "output": "Write the stacked pull-request plan beneath `artifact_root`; do not publish branches without explicit authority."
+    },
+    {
+      "name": "stochastic-multi-agent-consensus",
+      "description": "Rank several independent options through bounded parallel scoring with explicit criteria, uncertainty, and disagreement reporting.",
+      "sources": [
+        "stochastic-multi-agent-consensus"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Define independent options, weighted criteria, evidence, and a fixed number of scoring passes.",
+        "Collect scores independently before synthesis to reduce anchoring.",
+        "Report the distribution, sensitivity to weights, consensus, and meaningful disagreement."
+      ],
+      "output": "Return the ranked decision matrix and uncertainty summary."
+    },
+    {
+      "name": "systematic-debugging",
+      "description": "Diagnose failures through reproducible evidence, causal tracing, hypothesis testing, and bounded fixes rather than patch iteration.",
+      "sources": [
+        "investigate",
+        "systematic-debugging"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Reproduce the exact symptom and preserve logs, inputs, environment, and the first causal failure.",
+        "Trace backward through state and boundaries, rank hypotheses, and run the smallest discriminating test.",
+        "Apply one causal fix, verify the original reproduction, and stop after three failed fixes on the same symptom to question the design."
+      ],
+      "output": "Write the reproduction, causal chain, hypotheses, fix, and regression evidence beneath `artifact_root`."
+    },
+    {
+      "name": "task-wave-execution",
+      "description": "Execute independent implementation tasks in bounded parallel waves with explicit ownership, written handoffs, and integration gates.",
+      "sources": [
+        "subagent-driven-development"
+      ],
+      "dependencies": [
+        "implementation-planning",
+        "verification-before-completion"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Select only dependency-ready tasks with disjoint write scopes and assign one owner per file or module.",
+        "Give each worker a written task brief, required evidence, stop conditions, and artifact path.",
+        "Integrate one wave, review actual diffs and reports, verify shared contracts, then release the next wave."
+      ],
+      "output": "Maintain the task ledger and wave reports beneath `artifact_root`."
+    },
+    {
+      "name": "test-driven-development",
+      "description": "Drive behavior changes through observed failing proof, minimal implementation, green verification, and behavior-preserving refactoring.",
+      "sources": [
+        "test-driven-development",
+        "tdd-workflow"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Define one observable behavior and write the smallest meaningful failing test or equivalent proof.",
+        "Run it and confirm the failure is caused by the missing behavior, then implement the minimum change.",
+        "Rerun to green, refactor without weakening assertions, and retain exact evidence."
+      ],
+      "output": "Return RED, GREEN, and REFACTOR evidence with changed test and source paths."
+    },
+    {
+      "name": "user-personas",
+      "description": "Create lightweight evidence-based personas for product decisions without inventing demographic or behavioral certainty.",
+      "sources": [
+        "app-shared-user-personas"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Identify meaningful behavioral segments from supplied evidence.",
+        "Describe goals, context, constraints, workflows, and decision-relevant differences.",
+        "Mark hypotheses and missing research rather than presenting fictional users as facts."
+      ],
+      "output": "Return concise personas tied to evidence and product decisions."
+    },
+    {
+      "name": "verification-before-completion",
+      "description": "Require fresh direct evidence for every completion claim and prevent passing one check from standing in for another.",
+      "sources": [
+        "verification-before-completion",
+        "verification-loop"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Translate each claim into the exact command, artifact, or observation that could prove it.",
+        "Run fresh verification against the final revision and record commands, exit status, and relevant output.",
+        "Report failed, blocked, skipped, and inferred evidence separately; never call the task complete while required proof is absent."
+      ],
+      "output": "Write a claim-to-evidence table beneath `artifact_root` and return the verified status."
+    },
+    {
+      "name": "webapp-testing",
+      "description": "Test a local or approved web application through browser automation with stable assertions and repository-local evidence.",
+      "sources": [
+        "platform-webapp-testing",
+        "sdet-webapp-testing"
+      ],
+      "dependencies": [
+        "browser-session-setup"
+      ],
+      "capabilities": [
+        "browser.automate"
+      ],
+      "workflow": [
+        "Confirm the approved URL, environment, authentication state, and target journey.",
+        "Exercise the smallest relevant flow and inspect visible state, network, console, and accessibility signals as supported.",
+        "Capture reproducible evidence and stop after two repeated automation failures requiring user intervention."
+      ],
+      "output": "Write browser evidence beneath `artifact_root` with steps, observations, screenshots, and blockers."
+    },
+    {
+      "name": "workspace-codemap-context",
+      "description": "Load and verify repository or workspace code maps without treating stale generated documentation as authoritative.",
+      "sources": [
+        "workspace-codemap-context"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Locate repository-local code maps and determine their covered revision or freshness signal.",
+        "Verify material boundaries against current source and configuration.",
+        "Extract only the sections relevant to the active task and mark stale claims."
+      ],
+      "output": "Return the verified context summary and cite every code map or source file used."
+    },
+    {
+      "name": "workspace-learning-core",
+      "description": "Apply the shared source-integrity, local-only artifact, queue, interrogation, convergence, publication, and handoff rules for Workspace Learning Pro.",
+      "sources": [
+        "workspace-learning-core"
+      ],
+      "dependencies": [
+        "codebase-onboarding",
+        "explainer-pro",
+        "workspace-codemap-context",
+        "verification-before-completion"
+      ],
+      "capabilities": [
+        "code-qa.ask",
+        "code-qa.continue_task",
+        "code-qa.get_task",
+        "code-qa.get_task_logs",
+        "code-qa.cancel_task",
+        "code-qa.health",
+        "code-qa.list_conversations"
+      ],
+      "workflow": [
+        "Establish exact workspace and repository artifact roots with local-only Git exclusions and preserved baselines.",
+        "Maintain claim tiers, source identity, CodeQA task continuity, contradiction records, and evidence-based convergence.",
+        "Keep downstream course, publication, codemap, and final verification contracts distinct and resumable."
+      ],
+      "output": "Return bounded lane results to the coordinator under the exact caller-supplied `artifact_root`; narrower workers do not write elsewhere."
+    },
+    {
+      "name": "workspace-learning-pro",
+      "description": "Run the complete workspace-wide repository learning workflow through its canonical progressive-loading command.",
+      "sources": [
+        "workspace-learning-pro"
+      ],
+      "dependencies": [
+        "workspace-learning-core",
+        "explainer-pro",
+        "workspace-codemap-context",
+        "verification-before-completion"
+      ],
+      "capabilities": [
+        "code-qa.ask",
+        "code-qa.continue_task",
+        "code-qa.get_task",
+        "code-qa.get_task_logs",
+        "code-qa.cancel_task",
+        "code-qa.health",
+        "code-qa.list_conversations"
+      ],
+      "workflow": [
+        "Open with the canonical roadmap, resolve the explicit entry choice, and load only the active phase.",
+        "Study each repository locally, interrogate CodeQA to convergence, and reconcile every material claim against current evidence.",
+        "Create and verify the Explainer course, course publication, codemap, and zero-source-delta handoff before advancing."
+      ],
+      "output": "Use command-owned workspace state and the exact caller-supplied `artifact_root` for each repository lane."
+    },
+    {
+      "name": "write-user-stories",
+      "description": "Write user stories and acceptance criteria that describe observable value without prescribing hidden implementation details.",
+      "sources": [
+        "app-product-user-stories"
+      ],
+      "dependencies": [],
+      "capabilities": [],
+      "workflow": [
+        "Identify the actor, context, desired outcome, and value for each story.",
+        "Write testable acceptance criteria covering success, permissions, empty, error, and boundary states where applicable.",
+        "Remove duplicate stories and implementation-only language unless it is an explicit constraint."
+      ],
+      "output": "Return stories and acceptance criteria ready to embed in the active product artifact."
+    },
+    {
+      "name": "zoom-out",
+      "description": "Reassess a local change from the surrounding system, repository, dependency, and operational boundaries before committing to a design.",
+      "sources": [
+        "zoom-out"
+      ],
+      "dependencies": [
+        "workspace-codemap-context"
+      ],
+      "capabilities": [],
+      "workflow": [
+        "Locate upstream producers, downstream consumers, shared contracts, runtime boundaries, and operational owners.",
+        "Identify second-order effects, hidden coupling, and alternatives at a more appropriate boundary.",
+        "Return to the local decision with system-level constraints made explicit."
+      ],
+      "output": "Return the boundary map and any required plan changes."
     }
   ]
 }

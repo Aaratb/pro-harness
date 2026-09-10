@@ -11,7 +11,7 @@ This is a native, in-session execution protocol: a coordinator gives a fresh wor
 
 ## Inputs and continuity
 
-Reuse the approved `tasks.md`, relevant specification/contracts, repository instructions, and existing `work/` briefs and reports. In Feature Pro, use `$FEATURE_ROOT`, `spec.md`, and the relevant `erd.md` rows; preserve every Phase 8 gate.
+Reuse the approved `tasks.md`, relevant specification/contracts, repository instructions, and existing `work/` briefs and reports. In Feature Pro, use `$FEATURE_ROOT`, `impl-spec.md`, and the relevant `erd.md` rows; preserve every Phase 9 gate.
 
 For visual work, the brief carries the selected design artifact/reference, defining visual decisions, relevant tokens/components, realistic content/states and visual acceptance criteria. Workers inspect supplied references; missing material direction returns to the coordinator, not a fresh redesign. The coordinator retains design continuity across fresh contexts and owns browser comparison when workers lack that capability; provide captures without widening worker permissions. Keep a coherent screen or interaction in one task where practical, not separate styling tasks per widget. Establish the first representative render before visually dependent tasks when introducing a visual language; record the inspected reference, state/viewport, concrete differences and disposition in the existing report. Unrelated nonvisual tasks need no design exercise. Neither functional tests nor worker confidence prove visual acceptance; missing rendering follows the caller's explicit waiver/stop policy, not a silent pass. A caller may allow unaffected, dependency-ready nonvisual work while visual rendering is unavailable; this does not bypass that work's own prerequisites, authority or scheduling.
 
@@ -32,6 +32,6 @@ The coordinator retains the caller's phase presentation when defined; never inve
 
 On resume, reconcile the ledger with current files and required checks; invalidate stale proof without discarding consumed attempts. An interrupted attempt remains incomplete until its writes and evidence are checked. Preserve partial work; do not reset, overwrite, or auto-commit it. Missing or inconsistent progress is an explicit reconciliation issue, not permission to invent completion or silently restart a budget.
 
-Return completed tasks, remaining tasks, attempt counts, evidence paths, and any blocker in the existing report/ledger. This is task execution, not the completion of Feature Pro. Phase 8 still owns its seam checkpoint and exit decision; do not bypass later runtime, compression, review, QA, audit, or release gates.
+Return completed tasks, remaining tasks, attempt counts, evidence paths, and any blocker in the existing report/ledger. This is task execution, not the completion of Feature Pro. Phase 9 still owns its seam checkpoint and exit decision; do not bypass later runtime, compression, review, QA, audit, or release gates.
 
 No automatic staging, commits, pushes, PRs, deployments, dependency installation, or external writes are authorized by this skill. No background loop, shell runner, stop hook, or provider-specific CLI is required. Any such action needs the caller's normal explicit authority.

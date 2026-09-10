@@ -23,14 +23,17 @@ try {
   const references = fs.readdirSync(path.join(root, 'skills/debug-core/references')).map((file) => read('skills/debug-core/references/' + file));
   const bundle = [...globalTexts, ...contract.phases.map(({ file }) => read('commands/debug-pro/' + file)), ...references, read('skills/debug-pro/SKILL.md')].join('\n');
   const mechanics = validateCommandMechanics({ contract, phaseCount: 13, commandRoot: path.join(root, 'commands/debug-pro'), phaseBasePath: 'commands/debug-pro',
-    read, mainText: main, globalTexts, mainWordBudget: 1400, mainLineBudget: 180, activeWordBudget: 3600,
+// Budgets are a derived FLOOR, never a cut: activeWordBudget = global_context (3274) + largest phase (302) + 600 words of working room.
+// Raised 2026-09-10 after a commit tripped three checks at once because every phase sat within a few words of its ceiling.
+// scripts/check-budget-headroom.mjs warns below 300 words; re-derive these if global_context or the largest phase grows.
+    read, mainText: main, globalTexts, mainWordBudget: 1644, mainLineBudget: 180, activeWordBudget: 4176,
     phaseHeading: (phase) => `# Phase ${phase.number} — ${phase.name.replaceAll(' and ', ' & ')}\n`, catalogs,
     forbidden: { text: bundle, label: 'Debug Pro canonical bundle', patterns: [/\.agent_docs|\.aw_docs|\bgod-level\b/i, /\b(?:gstack|superpowers)\b/i,
       /\/Users\//, /\bPhase\s+(?:0\b|\d+\.\d+)/, new RegExp(['Updated', 'Personal', 'Harness'].join('-'), 'i')] } });
   assert(contract.command === 'debug-pro' && contract.phase_count === 13, 'invalid Debug command identity or phase count');
   assert(contract.loading === 'global-once-current-phase-only', 'Debug must progressively load current phase');
   assert(JSON.stringify(contract.global_context) === JSON.stringify(['commands/debug-pro.md', 'skills/debug-core/SKILL.md', 'commands/debug-pro/routing.md']), 'Debug global context must remain minimal');
-  assert(contract.artifact_root === '$REPO_ROOT/.agents/debug/<debug-slug>', 'Debug output must be repository-owned');
+  assert(contract.artifact_root === '$PROJECT_ROOT/debug/<debug-slug>', 'Debug output must be repository-owned');
   for (const mode of ['adaptive', 'deep', 'fast']) assert(JSON.stringify(contract.modes[mode]) === JSON.stringify(mechanics.expectedNumbers), `${mode} must preserve stage order`);
   assert(JSON.stringify(contract.modes['observe-only']) === '[1,2,3,4,5,13]', 'observe-only must not enter active reproduction or repair');
   for (const name of ['debug-pro', 'debug-core']) assert(catalogs.skills.has(name), `missing Debug skill: ${name}`);

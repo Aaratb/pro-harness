@@ -24,9 +24,11 @@ Then offer `next` (Phase 1 for a new run) or `phase <N>` and wait for the user's
 
 The reviewed repository is source-read-only. Review Pro may read source, configuration, documentation, Git history, diffs, CI, and explicitly authorized runtime evidence. It may run existing non-mutating validation. `--mutation`, `--load`, and `--comment` each require their named flag plus normal runtime authorization. Network reads and protected telemetry require explicit bounded consent and normal runtime authorization; they are not enabled merely by starting a review.
 
-The only repository write enclave is:
+The only write enclave is the resolved `artifact_root`:
 
-`$REPO_ROOT/.agents/reviews/<review-slug>/`
+`$PROJECT_ROOT/reviews/<review-slug>/`
+
+The resolver reports `scope`: `project` sits beside the initiative, `repository` and `local-project` are unchanged. On `status=needs-initiative`, ask, then re-run with `--initiative <name>`.
 
 All state, evidence, reports, and handoffs stay below that exact `artifact_root`. The root resolver rejects traversal and symlink escapes. Diff and cleanliness evidence exclude only the active review root so the workflow cannot review its own artifacts. Any write outside it is a terminal authority violation.
 

@@ -9,27 +9,346 @@
     "skills/architecture-pro-governance/SKILL.md",
     "commands/architecture-pro/routing.md"
   ],
-  "artifact_root": "$REPO_ROOT/.agents/architecture/<architecture-slug>",
+  "artifact_root": "$PROJECT_ROOT/architecture/<architecture-slug>",
   "modes": {
-    "audit": [1, 2, 3, 4, 5, 6, 11, 12, 13],
-    "design": [1, 2, 7, 8, 9, 10, 11, 12, 13],
-    "mixed": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-    "adr-only": [1, 2, 7, 8, 9, 10]
+    "audit": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      11,
+      12,
+      13
+    ],
+    "design": [
+      1,
+      2,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "mixed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "adr-only": [
+      1,
+      2,
+      7,
+      8,
+      9,
+      10
+    ]
   },
   "phases": [
-    { "number": 1, "name": "Intake and Safety Preflight", "file": "phases/01-intake.md", "required_skills": ["architecture-pro-governance"], "optional_skills": ["workspace-codemap-context", "grill-with-docs"], "agents": [], "capabilities": [] },
-    { "number": 2, "name": "Context and As-Built Recovery", "file": "phases/02-context.md", "required_skills": ["codebase-onboarding", "architecture-security-review", "architecture-explanation-diagrams"], "optional_skills": ["workspace-codemap-context", "architecture-diagnostics", "architecture-capacity-and-tuning", "architecture-data-recovery", "architecture-query-performance", "grill-with-docs"], "agents": ["system-architect", "architecture-conformance-reviewer", "security-reviewer", "data-model-architect", "performance-architect", "query-performance-architect", "system-diagnostics-analyst", "operability-reviewer", "resilience-analyst", "capacity-planner"], "capabilities": ["diagram.render"] },
-    { "number": 3, "name": "Architecture Findings", "file": "phases/03-findings.md", "required_skills": ["architecture-pro-governance"], "optional_skills": ["architecture-security-review", "architecture-data-model-evolution", "architecture-system-performance", "architecture-query-performance", "architecture-diagnostics", "architecture-data-recovery", "architecture-concurrency-and-overload", "architecture-capacity-and-tuning"], "agents": ["architecture-conformance-reviewer", "security-reviewer", "data-model-architect", "performance-architect", "query-performance-architect", "system-diagnostics-analyst", "operability-reviewer", "resilience-analyst", "capacity-planner"], "capabilities": [] },
-    { "number": 4, "name": "Independent Verification", "file": "phases/04-verification.md", "required_skills": ["architecture-pro-governance"], "optional_skills": ["architecture-security-review", "architecture-edge-case-economics"], "agents": ["architecture-conformance-reviewer", "security-reviewer", "data-model-architect", "performance-architect", "query-performance-architect", "system-diagnostics-analyst", "operability-reviewer", "resilience-analyst", "capacity-planner"], "capabilities": [] },
-    { "number": 5, "name": "Audit Synthesis", "file": "phases/05-audit-synthesis.md", "required_skills": ["architecture-pro-governance", "architecture-edge-case-economics"], "optional_skills": ["architecture-decision-records", "grill-with-docs"], "agents": ["system-architect", "architecture-conformance-reviewer"], "capabilities": [] },
-    { "number": 6, "name": "Audit Certification", "file": "phases/06-audit-certification.md", "required_skills": ["architecture-pro-governance", "verification-before-completion"], "optional_skills": [], "agents": ["architecture-conformance-reviewer"], "capabilities": [], "hard_gate": true },
-    { "number": 7, "name": "Requirements and Architecture Options", "file": "phases/07-options.md", "required_skills": ["architecture-pro-governance", "architecture-edge-case-economics", "plan-engineering-review", "architecture-explanation-diagrams"], "optional_skills": ["api-and-interface-design", "architecture-data-model-evolution", "architecture-distributed-consistency", "architecture-system-performance", "architecture-security-review", "interface-experience-review", "ai-product-engineering", "library-first-engineering", "grill-with-docs"], "agents": ["system-architect", "architecture-conformance-reviewer", "security-reviewer"], "capabilities": ["diagram.render"] },
-    { "number": 8, "name": "Architecture Decision", "file": "phases/08-decision.md", "required_skills": ["architecture-pro-governance", "architecture-decision-records"], "optional_skills": ["multi-model-debate-room", "stochastic-multi-agent-consensus", "grill-with-docs"], "agents": ["system-architect", "architecture-conformance-reviewer"], "capabilities": [] },
-    { "number": 9, "name": "Deep Design", "file": "phases/09-deep-design.md", "required_skills": ["architecture-pro-governance", "plan-engineering-review", "architecture-explanation-diagrams"], "optional_skills": ["architecture-distributed-consistency", "architecture-concurrency-and-overload", "architecture-data-recovery", "architecture-capacity-and-tuning", "architecture-data-model-evolution", "architecture-system-performance", "architecture-query-performance", "architecture-diagnostics", "architecture-security-review", "production-readiness", "observability-by-design", "ai-product-engineering", "grill-with-docs"], "agents": ["system-architect", "architecture-conformance-reviewer", "security-reviewer", "data-model-architect", "performance-architect", "query-performance-architect", "system-diagnostics-analyst", "operability-reviewer", "resilience-analyst", "capacity-planner", "legal-risk-reviewer"], "capabilities": ["diagram.render"] },
-    { "number": 10, "name": "Design Certification", "file": "phases/10-design-certification.md", "required_skills": ["architecture-pro-governance", "verification-before-completion"], "optional_skills": [], "agents": ["system-architect", "architecture-conformance-reviewer"], "capabilities": [], "hard_gate": true },
-    { "number": 11, "name": "Handoff Assembly", "file": "phases/11-handoff.md", "required_skills": ["implementation-planning", "incremental-delivery"], "optional_skills": ["architecture-decision-records"], "agents": ["implementation-planner", "architecture-conformance-reviewer"], "capabilities": [] },
-    { "number": 12, "name": "Technical Walkthrough", "file": "phases/12-walkthrough.md", "required_skills": ["architecture-explanation-diagrams"], "optional_skills": ["grill-with-docs"], "agents": ["system-architect"], "capabilities": ["diagram.render"] },
-    { "number": 13, "name": "Architect Review and Final Seal", "file": "phases/13-architect-review.md", "required_skills": ["architecture-review-readiness", "verification-before-completion"], "optional_skills": [], "agents": ["system-architect", "architecture-conformance-reviewer"], "capabilities": [], "hard_gate": true }
+    {
+      "number": 1,
+      "name": "Intake and Safety Preflight",
+      "file": "phases/01-intake.md",
+      "required_skills": [
+        "architecture-pro-governance"
+      ],
+      "optional_skills": [
+        "workspace-codemap-context",
+        "grill-with-docs"
+      ],
+      "agents": [],
+      "capabilities": []
+    },
+    {
+      "number": 2,
+      "name": "Context and As-Built Recovery",
+      "file": "phases/02-context.md",
+      "required_skills": [
+        "codebase-onboarding",
+        "architecture-security-review",
+        "architecture-explanation-diagrams"
+      ],
+      "optional_skills": [
+        "workspace-codemap-context",
+        "architecture-diagnostics",
+        "architecture-capacity-and-tuning",
+        "architecture-data-recovery",
+        "architecture-query-performance",
+        "grill-with-docs"
+      ],
+      "agents": [
+        "system-architect",
+        "architecture-conformance-reviewer",
+        "security-reviewer",
+        "data-model-architect",
+        "performance-architect",
+        "query-performance-architect",
+        "system-diagnostics-analyst",
+        "operability-reviewer",
+        "resilience-analyst",
+        "capacity-planner"
+      ],
+      "capabilities": [
+        "diagram.render"
+      ]
+    },
+    {
+      "number": 3,
+      "name": "Architecture Findings",
+      "file": "phases/03-findings.md",
+      "required_skills": [
+        "architecture-pro-governance"
+      ],
+      "optional_skills": [
+        "architecture-security-review",
+        "architecture-data-model-evolution",
+        "architecture-system-performance",
+        "architecture-query-performance",
+        "architecture-diagnostics",
+        "architecture-data-recovery",
+        "architecture-concurrency-and-overload",
+        "architecture-capacity-and-tuning"
+      ],
+      "agents": [
+        "architecture-conformance-reviewer",
+        "security-reviewer",
+        "data-model-architect",
+        "performance-architect",
+        "query-performance-architect",
+        "system-diagnostics-analyst",
+        "operability-reviewer",
+        "resilience-analyst",
+        "capacity-planner"
+      ],
+      "capabilities": []
+    },
+    {
+      "number": 4,
+      "name": "Independent Verification",
+      "file": "phases/04-verification.md",
+      "required_skills": [
+        "architecture-pro-governance"
+      ],
+      "optional_skills": [
+        "architecture-security-review",
+        "architecture-edge-case-economics"
+      ],
+      "agents": [
+        "architecture-conformance-reviewer",
+        "security-reviewer",
+        "data-model-architect",
+        "performance-architect",
+        "query-performance-architect",
+        "system-diagnostics-analyst",
+        "operability-reviewer",
+        "resilience-analyst",
+        "capacity-planner"
+      ],
+      "capabilities": []
+    },
+    {
+      "number": 5,
+      "name": "Audit Synthesis",
+      "file": "phases/05-audit-synthesis.md",
+      "required_skills": [
+        "architecture-pro-governance",
+        "architecture-edge-case-economics"
+      ],
+      "optional_skills": [
+        "architecture-decision-records",
+        "grill-with-docs"
+      ],
+      "agents": [
+        "system-architect",
+        "architecture-conformance-reviewer"
+      ],
+      "capabilities": []
+    },
+    {
+      "number": 6,
+      "name": "Audit Certification",
+      "file": "phases/06-audit-certification.md",
+      "required_skills": [
+        "architecture-pro-governance",
+        "verification-before-completion"
+      ],
+      "optional_skills": [],
+      "agents": [
+        "architecture-conformance-reviewer"
+      ],
+      "capabilities": [],
+      "hard_gate": true
+    },
+    {
+      "number": 7,
+      "name": "Requirements and Architecture Options",
+      "file": "phases/07-options.md",
+      "required_skills": [
+        "architecture-pro-governance",
+        "architecture-edge-case-economics",
+        "plan-engineering-review",
+        "architecture-explanation-diagrams"
+      ],
+      "optional_skills": [
+        "api-and-interface-design",
+        "architecture-data-model-evolution",
+        "architecture-distributed-consistency",
+        "architecture-system-performance",
+        "architecture-security-review",
+        "interface-experience-review",
+        "ai-product-engineering",
+        "library-first-engineering",
+        "grill-with-docs"
+      ],
+      "agents": [
+        "system-architect",
+        "architecture-conformance-reviewer",
+        "security-reviewer"
+      ],
+      "capabilities": [
+        "diagram.render"
+      ]
+    },
+    {
+      "number": 8,
+      "name": "Architecture Decision",
+      "file": "phases/08-decision.md",
+      "required_skills": [
+        "architecture-pro-governance",
+        "architecture-decision-records"
+      ],
+      "optional_skills": [
+        "multi-model-debate-room",
+        "stochastic-multi-agent-consensus",
+        "grill-with-docs"
+      ],
+      "agents": [
+        "system-architect",
+        "architecture-conformance-reviewer"
+      ],
+      "capabilities": []
+    },
+    {
+      "number": 9,
+      "name": "Deep Design",
+      "file": "phases/09-deep-design.md",
+      "required_skills": [
+        "architecture-pro-governance",
+        "plan-engineering-review",
+        "architecture-explanation-diagrams",
+        "api-and-interface-design",
+        "architecture-data-model-evolution"
+      ],
+      "optional_skills": [
+        "architecture-distributed-consistency",
+        "architecture-concurrency-and-overload",
+        "architecture-data-recovery",
+        "architecture-capacity-and-tuning",
+        "architecture-system-performance",
+        "architecture-query-performance",
+        "architecture-diagnostics",
+        "architecture-security-review",
+        "production-readiness",
+        "observability-by-design",
+        "ai-product-engineering",
+        "grill-with-docs"
+      ],
+      "agents": [
+        "system-architect",
+        "architecture-conformance-reviewer",
+        "security-reviewer",
+        "data-model-architect",
+        "performance-architect",
+        "query-performance-architect",
+        "system-diagnostics-analyst",
+        "operability-reviewer",
+        "resilience-analyst",
+        "capacity-planner",
+        "legal-risk-reviewer"
+      ],
+      "capabilities": [
+        "diagram.render"
+      ]
+    },
+    {
+      "number": 10,
+      "name": "Design Certification",
+      "file": "phases/10-design-certification.md",
+      "required_skills": [
+        "architecture-pro-governance",
+        "verification-before-completion"
+      ],
+      "optional_skills": [],
+      "agents": [
+        "system-architect",
+        "architecture-conformance-reviewer"
+      ],
+      "capabilities": [],
+      "hard_gate": true
+    },
+    {
+      "number": 11,
+      "name": "Handoff Assembly",
+      "file": "phases/11-handoff.md",
+      "required_skills": [
+        "implementation-planning",
+        "incremental-delivery"
+      ],
+      "optional_skills": [
+        "architecture-decision-records"
+      ],
+      "agents": [
+        "implementation-planner",
+        "architecture-conformance-reviewer"
+      ],
+      "capabilities": []
+    },
+    {
+      "number": 12,
+      "name": "Technical Walkthrough",
+      "file": "phases/12-walkthrough.md",
+      "required_skills": [
+        "architecture-explanation-diagrams"
+      ],
+      "optional_skills": [
+        "grill-with-docs"
+      ],
+      "agents": [
+        "system-architect"
+      ],
+      "capabilities": [
+        "diagram.render"
+      ]
+    },
+    {
+      "number": 13,
+      "name": "Architect Review and Final Seal",
+      "file": "phases/13-architect-review.md",
+      "required_skills": [
+        "architecture-review-readiness",
+        "verification-before-completion"
+      ],
+      "optional_skills": [],
+      "agents": [
+        "system-architect",
+        "architecture-conformance-reviewer"
+      ],
+      "capabilities": [],
+      "hard_gate": true
+    }
   ],
   "global_gates": [
     "Phase 1 requires explicit scope, measurable targets, constraints, authority, risk appetite, and complexity budget.",

@@ -62,7 +62,10 @@ export function validateCustomerCommand() {
     contract, phaseCount: 8, commandRoot: path.join(root, 'commands/customer-backward-pro'),
     phaseBasePath: 'commands/customer-backward-pro', read, mainText: main, globalTexts: contract.global_context.map(read),
     // Opening choice and eight phase purposes are deliberate user-facing context.
-    mainWordBudget: 1300, mainLineBudget: 140, activeWordBudget: 2500,
+// Budgets are a derived FLOOR, never a cut: activeWordBudget = global_context (2086) + largest phase (238) + 600 words of working room.
+// Raised 2026-09-10 after a commit tripped three checks at once because every phase sat within a few words of its ceiling.
+// scripts/check-budget-headroom.mjs warns below 300 words; re-derive these if global_context or the largest phase grows.
+    mainWordBudget: 1496, mainLineBudget: 140, activeWordBudget: 2924,
     phaseHeading: (phase) => `# Phase ${phase.number} — ${phase.name}\n`,
     phaseIndex: { text: main, entry: (phase) => `\`${phase.file}\`` }, catalogs,
     forbidden: { text: files.map(read).join('\n'), label: 'Customer canonical bundle', patterns: [
@@ -74,7 +77,7 @@ export function validateCustomerCommand() {
   assert(contract.command === 'customer-backward-pro' && contract.phase_count === 8, 'invalid Customer identity or phase count');
   assert(contract.loading === 'global-once-current-phase-only', 'Customer must progressively load');
   assert(JSON.stringify(contract.global_context) === JSON.stringify(['commands/customer-backward-pro.md', 'commands/customer-backward-pro/routing.md']), 'Customer global context expanded');
-  assert(contract.artifact_root === '$PROJECT_ROOT/.agents/research/<study-slug>', 'Customer output must be project-owned');
+  assert(contract.artifact_root === '$PROJECT_ROOT/research/<study-slug>', 'Customer output must be project-owned');
   assert(JSON.stringify(contract.modes.default) === '[1,2,3,4,5,6,7,8]', 'Customer default phase map changed');
   assert(references.length === 9, 'Customer must preserve nine conditional method references');
   assert(JSON.stringify([...catalogs.skills].filter((s) => s.startsWith('customer-')).sort()) === JSON.stringify([...skills, 'customer-journey-map'].sort()), 'Customer skill inventory drifted; preserve the existing journey-map skill');

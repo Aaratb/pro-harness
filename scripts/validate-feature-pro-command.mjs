@@ -49,7 +49,7 @@ const parityText = `${bundleText}\n${JSON.stringify(contract)}`;
 assert(contract.schema_version === 1, 'contract schema_version must be 1');
 assert(contract.command === 'feature-pro', 'contract command must be feature-pro');
 assert(contract.identity === 'Pro-Level Feature Developer', 'Feature Pro identity is not canonical');
-assert(contract.phase_count === 20, 'Feature Pro must declare 20 phases');
+assert(contract.phase_count === 21, 'Feature Pro must declare 21 phases');
 assert(contract.loading === 'global-once-current-phase-only', 'Feature Pro must load global contracts once and only the current phase thereafter');
 assert(JSON.stringify(contract.global_context) === JSON.stringify([
   'commands/feature-pro.md',
@@ -62,21 +62,27 @@ assert(/^# \/feature-pro — Pro-Level Feature Developer$/m.test(main), 'main co
 
 const catalogs = buildCommandCatalogs({ harnessRoot, skillManifest, mcpRegistry });
 for (const { registryEntry } of catalogs.mcpContracts) {
-  assert((registryEntry.workflows?.['feature-pro'] ?? []).every((phase) => Number.isInteger(phase) && phase >= 1 && phase <= 20), `${registryEntry.name}: MCP Feature Pro routes must use whole-number phases 1-20`);
+  assert((registryEntry.workflows?.['feature-pro'] ?? []).every((phase) => Number.isInteger(phase) && phase >= 1 && phase <= 21), `${registryEntry.name}: MCP Feature Pro routes must use whole-number phases 1-21`);
 }
 
+const ACTIVE_WORD_BUDGET = 7103;
 const { expectedNumbers, mainWords, mainLines } = validateCommandMechanics({
   contract,
-  phaseCount: 20,
+  phaseCount: 21,
   commandRoot,
   phaseBasePath: 'commands/feature-pro',
   read,
   mainText: main,
   globalTexts: contract.global_context.map((file) => read(file)),
+// Budgets are a derived FLOOR, never a cut: activeWordBudget = global_context (5158) + largest phase (1345, Ph7 Tech Spec & Data Model) + 600 words of working room.
+// Raised 2026-09-10 after a commit tripped three checks at once because every phase sat within a few words of its ceiling.
+// Re-derived 2026-09-11 for the 21-phase restructure, then again for project-owned artifact
+// routing: governance gained the FEATURE_ROOT anchoring paragraph.
+// scripts/check-budget-headroom.mjs warns below 300 words; re-derive these if global_context or the largest phase grows.
   mainWordBudget: 2500,
   mainLineBudget: 300,
-  // Includes the requested opening choice and all 20 phase purposes; depth is unchanged.
-  activeWordBudget: 5900,
+  // Includes the requested opening choice and all 21 phase purposes; depth is unchanged.
+  activeWordBudget: ACTIVE_WORD_BUDGET,
   phaseHeading: (phase) => `# Phase ${phase.number}: ${phase.name}\n`,
   catalogs,
   phaseIndex: { text: main, entry: (phase) => `feature-pro/${phase.file}` },
@@ -98,8 +104,8 @@ const { expectedNumbers, mainWords, mainLines } = validateCommandMechanics({
 });
 
 const stateNumbers = Object.keys(stateExample.phases).map(Number);
-assert(JSON.stringify(stateNumbers) === JSON.stringify(expectedNumbers), 'state example must contain exactly phases 1 through 20');
-assert(Number.isInteger(stateExample.current_phase) && stateExample.current_phase >= 1 && stateExample.current_phase <= 20, 'state example current_phase is invalid');
+assert(JSON.stringify(stateNumbers) === JSON.stringify(expectedNumbers), 'state example must contain exactly phases 1 through 21');
+assert(Number.isInteger(stateExample.current_phase) && stateExample.current_phase >= 1 && stateExample.current_phase <= 21, 'state example current_phase is invalid');
 assert(Object.hasOwn(stateExample, 'architecture_handoff_intake'), 'state example must use architecture_handoff_intake');
 assert(!Object.hasOwn(stateExample, 'architecture_pro_intake'), 'state example retains obsolete architecture_pro_intake');
 for (const field of ['business_requirement', 'product_solution', 'verification_contract', 'product_observability', 'ai_delivery', 'workflow_trace']) {
@@ -122,5 +128,5 @@ for (const requiredText of [
   'slack-handoff.md',
 ]) assert(parityText.includes(requiredText), `Feature Pro bundle lost required contract ${requiredText}`);
 
-assert(bundleFiles.length === 23, `expected 23 Markdown files in Feature Pro bundle, found ${bundleFiles.length}`);
-console.log(`Feature Pro command valid: 20 phases, ${catalogs.agents.size} agent routes, ${catalogs.skills.size} resolvable skills, ${catalogs.capabilities.size} MCP capabilities; main ${mainWords} words/${mainLines} lines, active context <=5900 words`);
+assert(bundleFiles.length === 24, `expected 24 Markdown files in Feature Pro bundle, found ${bundleFiles.length}`);
+console.log(`Feature Pro command valid: 21 phases, ${catalogs.agents.size} agent routes, ${catalogs.skills.size} resolvable skills, ${catalogs.capabilities.size} MCP capabilities; main ${mainWords} words/${mainLines} lines, active context <=${ACTIVE_WORD_BUDGET} words`);
