@@ -41,6 +41,8 @@ Customer Backward Pro works backward from customer evidence through eight adapti
 
 Roadmap Pro connects supplied goals and evidence to backlog choices, priority advice, independent challenge, human selection, concise Product Notes and a provisional execution view. Seven phases route six deep methods through two read-only agents; existing Customer methods are reused only for a consequential upstream question. Product Notes cover the full current reviewed scope, including nonselected features. Chat-only work requires no setup; saves belong to `<selected-project>/.agents/roadmaps/<roadmap-slug>/roadmap.md` with shared tracing and an optional static HTML companion. No separate approval store, state engine, review application, new provider or automatic downstream execution is included. Human decisions remain distinct from advice and saved reports.
 
+The reusable GTM foundation currently ships as five standalone skills: mandate, product truth, buying system, launch audience, and measurement design. They work from supplied context and evidence, preserve customer and business uncertainty, and do not authorize targeting, outreach, analytics installation, product changes or launch activity. Their ten frozen synthetic cases and rubric live under `evals/gtm-pro/foundation-v1/`; these are regression fixtures, not customer research or runtime-parity proof. A public GTM Pro command is not exposed yet.
+
 ## Requirements
 
 - macOS or Linux
