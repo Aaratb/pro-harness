@@ -114,8 +114,8 @@
         "skills/plan-design-review/SKILL.md",
         "agents/definitions/frontend-developer.json",
         "mcps/registry.json",
-        "tests/feature-pro-support.test.js",
-        "tests/skill-quality-contract.test.js"
+        "harness-test-cases/feature-pro-support.test.js",
+        "harness-test-cases/skill-quality-contract.test.js"
       ]
     },
     {
@@ -128,7 +128,7 @@
         "commands/feature-pro/governance.md",
         "skills/ralph-loop/SKILL.md",
         "skills/resolution-manifest.json",
-        "tests/feature-pro-ralph-loop.test.js"
+        "harness-test-cases/feature-pro-ralph-loop.test.js"
       ]
     },
     {
@@ -139,7 +139,7 @@
         "commands/feature-pro/phases/04-design.md",
         "commands/feature-pro/phases/06-eng-requirements.md",
         "commands/feature-pro/state.example.json",
-        "tests/feature-pro-feedback.test.js"
+        "harness-test-cases/feature-pro-feedback.test.js"
       ]
     },
     {
@@ -151,7 +151,7 @@
         "commands/feature-pro/phases/03-prd.md",
         "commands/feature-pro/phases/04-design.md",
         "commands/feature-pro/phases/06-eng-requirements.md",
-        "tests/feature-pro-feedback.test.js"
+        "harness-test-cases/feature-pro-feedback.test.js"
       ]
     },
     {
@@ -164,7 +164,7 @@
         "commands/feature-pro/phases/01-repo-setup.md",
         "commands/feature-pro/phases/02-requirements.md",
         "skills/library-first-engineering/SKILL.md",
-        "tests/feature-pro-feedback.test.js"
+        "harness-test-cases/feature-pro-feedback.test.js"
       ]
     },
     {
@@ -597,7 +597,7 @@
   ],
   "validation": {
     "structural": "scripts/validate-feature-pro-command.mjs",
-    "semantic_scenarios": "tests/feature-pro-behavior.test.js",
+    "semantic_scenarios": "harness-test-cases/feature-pro-behavior.test.js",
     "source_snapshot_check": "scripts/verify-feature-pro-reconciliation.mjs"
   }
 }

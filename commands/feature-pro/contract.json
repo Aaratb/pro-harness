@@ -90,6 +90,7 @@
         "ux-researcher"
       ],
       "capabilities": [
+        "diagram.render",
         "prototype.generate",
         "browser.navigate",
         "browser.inspect",

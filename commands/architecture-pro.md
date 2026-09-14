@@ -26,7 +26,7 @@ Then offer `next` (Phase 1 for a new run) or `phase <N>` and wait for the user's
 
 ## Repository-owned artifact root
 
-The installed harness and the work product have different homes. Once target, mode, and authority are established, run `node ~/.agents/scripts/resolve-architecture-root.mjs --repo <target-path> --slug <architecture-slug>` to validate the future path and resolve the physical Git root. Add `--create` only for an authorized run; a clear invocation to perform this workflow supplies ordinary initialization authority, not expanded access.
+The installed harness and the work product have different homes. Once target, mode, and authority are established, resolve the Git root with `node ~/.agents/scripts/resolve-architecture-root.mjs --repo <target-path> --slug <architecture-slug>`. Then create run state with `node ~/.agents/scripts/architecture-run.mjs initialize --repo <target-path> --slug <architecture-slug> --mode DESIGN|AUDIT|MIXED|ADR_ONLY`. Never hand-write `state.json`. An occupied slug needs a new slug; reverify old artifacts as evidence. See `docs/architecture-pro-lifecycle.md`.
 
 Set:
 
@@ -116,7 +116,7 @@ Skipped phases are recorded explicitly. A material correction returns through a 
 - External documentation lookup, external rendering, and live probes use a two-step digest-bound consent flow. `--yolo` never authorizes them.
 - Human approval is mandatory for architecture selection, material residual risk, and final sealing.
 
-Append redacted workflow events to `ARCHITECTURE_ROOT/run-events.jsonl` using the existing workflow-event writer. Keep resumable state in `state.json`. Never record credentials, personal values, raw prompts, hidden reasoning, or raw tool payloads. A tracing failure is surfaced and marked degraded; it does not silently erase architecture evidence.
+Append redacted workflow events to `ARCHITECTURE_ROOT/run-events.jsonl` using the existing workflow-event writer. Keep resumable state in `state.json` created only by `architecture-run.mjs initialize`. Never record credentials, personal values, raw prompts, hidden reasoning, or raw tool payloads. A tracing failure is surfaced and marked degraded; it does not silently erase architecture evidence.
 
 On trace failure, load `~/.agents/skills/observability-by-design/references/workflow-tracing.md` and use only its supported append-only recovery path. A validated recovery preserves historical gaps and degraded state rather than claiming a clean trace. It satisfies only the trace portion of a gate; architecture evidence, human approvals, and certification controls still apply. Schema, privacy, identity, and authority failures remain blocking.
 

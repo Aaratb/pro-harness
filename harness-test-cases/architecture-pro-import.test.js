@@ -125,7 +125,10 @@ test('Architecture Pro validation and reconciliation stay first-class', () => {
   assert.equal(reconciliation.source_snapshot.label, 'pre-externalization-architecture-pro');
   assert.ok(fs.existsSync(path.join(root, 'scripts/validate-architecture-pro-command.mjs')));
   assert.ok(fs.existsSync(path.join(root, 'scripts/validate-architecture-pro-run.mjs')));
+  assert.ok(fs.existsSync(path.join(root, 'scripts/architecture-run.mjs')));
+  assert.ok(fs.existsSync(path.join(root, 'scripts/architecture-source.mjs')));
   assert.match(skill, /node ~\/\.agents\/scripts\/resolve-architecture-root\.mjs/);
+  assert.match(skill, /architecture-run\.mjs initialize/);
   for (const canonicalPath of [
     '~/.agents/commands/architecture-pro.md',
     '~/.agents/commands/architecture-pro/contract.json',

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "suite": "feature-pro",
+  "accepted_run": "wf_5993b252-c06",
+  "rubric_version": 1,
+  "accepted_at": "2026-09-11T05:00:32",
+  "criteria": {
+    "product/ai-triage-assistant/bounded-experiment-with-a-kill-signal": 1,
+    "product/ai-triage-assistant/considers-the-non-ai-alternative": 1,
+    "product/ai-triage-assistant/evidence-over-enthusiasm": 1,
+    "product/ai-triage-assistant/finds-the-real-bottleneck": 1,
+    "product/ai-triage-assistant/outcome-not-usage-metrics": 1
+  }
+}

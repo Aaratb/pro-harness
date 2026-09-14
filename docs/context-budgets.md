@@ -46,7 +46,7 @@ phases 7–8 and `design` never runs phase 4.
 It does not survive inspection:
 
 - **Every one of the 22 global files is read by name** by some validator or test, so a
-  relocation is only safe block by block. `tests/architecture-pro-efficiency.test.js:74-79`
+  relocation is only safe block by block. `harness-test-cases/architecture-pro-efficiency.test.js:74-79`
   reads `commands/architecture-pro/routing.md` and asserts four phrases live *in that file*.
 - **The candidate blocks are not phase-local.** `## Core ownership` mentions phases 7–8 but
   its routing table reads "Every certifiable run" and "Material persisted or event data".

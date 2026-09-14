@@ -128,7 +128,7 @@
         "commands/architecture-pro.md",
         "commands/architecture-pro/routing.md",
         "schemas/architecture-pro/decision.schema.json",
-        "tests/architecture-pro-efficiency.test.js"
+        "harness-test-cases/architecture-pro-efficiency.test.js"
       ]
     },
     {
@@ -139,7 +139,7 @@
         "commands/architecture-pro/phases/07-options.md",
         "commands/architecture-pro/phases/09-deep-design.md",
         "docs/disciplinary-quality.md",
-        "tests/architecture-pro-depth.test.js"
+        "harness-test-cases/architecture-pro-depth.test.js"
       ]
     }
   ],
@@ -256,6 +256,6 @@
   "validation": {
     "structural": "scripts/validate-architecture-pro-command.mjs",
     "run_packet": "scripts/validate-architecture-pro-run.mjs",
-    "semantic_scenarios": "tests/architecture-pro-behavior.test.js"
+    "semantic_scenarios": "harness-test-cases/architecture-pro-behavior.test.js"
   }
 }

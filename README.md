@@ -96,6 +96,15 @@ npm test
 
 The suite validates the pro workflows, architecture and Review/Debug handoff integrity, Explainer Pro generation atomicity and HTML safety, agent and skill resolution, workflow trace privacy and sequence integrity, MCP contracts, generated adapters, secret handling, and clean installation into an isolated temporary home. See [Workflow efficiency](docs/workflow-efficiency.md) for progressive loading, trace-only recovery, and measurement boundaries.
 
+These checks ask whether an instruction says what it is meant to say. They cannot tell you the instruction is *wrong*. Output quality is measured separately under `evals/`, where a fixture is answered by one model and graded by a different one against a frozen rubric, with verdicts appended to a ledger and a gate that blocks per-criterion regression:
+
+```bash
+npm run eval:report -- <suite>
+npm run eval:gate   -- <suite>
+```
+
+Evals are deliberately outside `npm test`: they cost money, need two models, and vary run to run. See [Evaluating the harness](docs/evaluating-the-harness.md) for the method, the rules that make a ledger accumulate rather than drift, and the findings so far — including one case where the harness scored *below* its own no-harness control, which no conformance check could have caught.
+
 ## Repository map
 
 ```text
@@ -107,7 +116,8 @@ schemas/     Cross-workflow artifact schemas
 scripts/     Installer, generators, resolvers, and validators
 hooks/       Runtime-neutral lifecycle gates and their registry
 adapters/    Runtime manifest, adapter source, and generated-install destination
-tests/       Deterministic and scenario-level regression tests
+harness-test-cases/  Deterministic and scenario-level conformance tests
+evals/       Output-quality fixtures, frozen rubrics, verdict ledger, and baselines
 docs/        Installation and operation documentation
 ```
 

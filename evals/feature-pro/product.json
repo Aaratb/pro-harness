@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "suite": "feature-pro",
+  "discipline": "product",
+  "rubric_version": 1,
+  "producer": {
+    "phases": [
+      2,
+      3,
+      5
+    ],
+    "skills": [
+      "product-discovery",
+      "plan-product-review"
+    ],
+    "instruction": "Answer as the coordinator would at this phase. Do not ask a long questionnaire."
+  },
+  "cases": [
+    {
+      "id": "ai-triage-assistant",
+      "task": "Advise whether to build the proposed AI assignment assistant and define the smallest next decision. A six-person support team says 'we need AI to sort our inbox.' Twelve of fifteen interviewees like the mockup; nobody has used it. In a sample of 30 late tickets, 21 were waiting for another team's acceptance, 6 had incorrect labels, and 3 had no recorded cause. Median initial sorting takes 40 seconds. The lead proposes success = 80% assistant usage. The existing tool supports labels and assignment but no acceptance acknowledgement. The sponsor permits a two-week local experiment, not a platform rebuild. Give your recommendation, strongest alternative, uncertainty, decision-changing evidence, and one measurable experiment. Do not ask a long questionnaire.",
+      "criteria": [
+        {
+          "id": "evidence-over-enthusiasm",
+          "met": "Separates what people said they want from what the ticket data shows, and says which the recommendation rests on.",
+          "not_met": "Treats twelve-of-fifteen liking the mockup as demand evidence, or cites it without noting nobody has used it."
+        },
+        {
+          "id": "finds-the-real-bottleneck",
+          "met": "Identifies handoff acceptance (21 of 30 late tickets) as the dominant observed cause, above initial sorting at a 40-second median.",
+          "not_met": "Accepts the team's framing that sorting is the problem, or treats the three causes as comparable."
+        },
+        {
+          "id": "considers-the-non-ai-alternative",
+          "met": "Puts a change to the existing tool or process against the AI build, using the fact that the tool has labels and assignment but no acceptance acknowledgement.",
+          "not_met": "Goes straight to building the assistant, or names an alternative without weighing it."
+        },
+        {
+          "id": "outcome-not-usage-metrics",
+          "met": "Proposes an outcome measure with a guardrail, and rejects or qualifies the lead's 80%-usage target as a measure of activity rather than result.",
+          "not_met": "Adopts 80% usage as success, or offers metrics with no guardrail."
+        },
+        {
+          "id": "bounded-experiment-with-a-kill-signal",
+          "met": "Specifies an experiment that fits the sponsor's two-week local limit and names the evidence that would change the recommendation.",
+          "not_met": "Proposes a platform rebuild, an unbounded pilot, or an experiment with no stated disconfirming evidence."
+        }
+      ]
+    }
+  ]
+}
