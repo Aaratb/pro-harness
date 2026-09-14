@@ -4,7 +4,7 @@ These Node helper calls do no source I/O, acquisition, dispatch or artifact writ
 
 ## Evidence packets
 
-Import `prepareResearchPacket` from `scripts/lib/customer-research-packet.mjs` using the canonical `HARNESS_ROOT`. It accepts `(request, context)`. Read the module's exported contract and a minimal fixture in `tests/customer-research-packet.test.js` when constructing a packet; do not infer missing source content or grants from an example.
+Import `prepareResearchPacket` from `scripts/lib/customer-research-packet.mjs` using the canonical `HARNESS_ROOT`. It accepts `(request, context)`. Read the module's exported contract and a minimal fixture in `harness-test-cases/customer-research-packet.test.js` when constructing a packet; do not infer missing source content or grants from an example.
 
 The request uses `customer-backward-pro/packet-request@2`, canonical `role`, exact `skill` and `research_mode` from `contract.json` → `capability_routes`. Context binds separately reviewed sources, company/study scope, allowed roles and `allowed_research_modes`, byte/count limits and available lineage/corrections. A broad analyst role alone does not authorize all modes. The returned worker packet uses version `customer-backward-pro/worker-packet@2`. Historical request/output versions are not silently accepted.
 

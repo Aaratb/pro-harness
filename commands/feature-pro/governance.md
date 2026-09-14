@@ -59,6 +59,7 @@ Preserve these engineering checks while scaling their execution to the change. E
 
 **Approval gates (do not skip silently):**
 - Phase 2 → 3: business requirement and measurable goal approved.
+- Phase 4 (in-phase): the end-to-end user flow is validated by the user before any mockup, prototype, or art-direction work begins (`staff_discipline.user_flow_validated: true`, or an explicit `user_flow_waived`).
 - Phase 5 → 6: selected product solution approved after alternatives are compared, research reconciled, and prototypes seen.
 - Phase 6 → 7: `eng-requirements.md` approved by user (`state.json` → `staff_discipline.engineering_requirements_approved: true`).
 - Phase 7 → 8: `module-map.md` approved by user (`staff_discipline.module_map_approved: true`); every `erd.md` open question has a named owner.

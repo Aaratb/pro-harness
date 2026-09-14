@@ -8,6 +8,7 @@
   "workflow_trace": {
     "schema": "workflow-event@1",
     "path": "run-events.jsonl",
+    "initializer": "scripts/architecture-run.mjs",
     "writer": "scripts/record-workflow-event.mjs",
     "validator": "scripts/validate-workflow-trace.mjs"
   },

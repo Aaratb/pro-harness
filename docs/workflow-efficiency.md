@@ -78,7 +78,7 @@ is 5,900 (previously 5,500). Outcome and Customer main-command ceilings are
 including its work outline. These are bounded instruction-word checks, not
 model-token measurements or a latency claim.
 
-`tests/phase-presentation.test.js` checks all public command entries, exact
+`harness-test-cases/phase-presentation.test.js` checks all public command entries, exact
 phase-map agreement with their contracts, useful purposes, selection rules,
 pre-selection boundaries and retained banners. Text-generation exercises can
 check sample responses; neither proves that every model will always render the

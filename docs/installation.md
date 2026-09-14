@@ -74,7 +74,7 @@ Restart the selected runtime after installation. Then verify:
 - Codex discovers `$architecture-pro`, `$customer-backward-pro`, `$debug-pro`, `$explainer-pro`, `$feature-pro`, `$outcome-pro`, `$review-pro`, `$workspace-codemap-pro`, and `$workspace-learning-pro`.
 - A named canonical agent such as `code-reviewer` is discoverable.
 - Invoking Feature Pro writes state below the active repository's `.agents/features/` directory, never beside the harness installation.
-- Invoking Architecture Pro writes state below the active repository's `.agents/architecture/` directory, never beside the harness installation.
+- Invoking Architecture Pro writes state below the active repository's `.agents/architecture/` directory, never beside the harness installation. Fresh runs use `scripts/architecture-run.mjs initialize`; see `docs/architecture-pro-lifecycle.md`.
 - Invoking Explainer Pro writes state below the active repository's `.agents/explanations/` directory, never beside the harness installation.
 - Invoking Review Pro writes evidence below the active repository's `.agents/reviews/` directory while leaving reviewed source and configuration unchanged.
 - Invoking Outcome Pro uses chat for a simple check or a fresh owning repository's `.agents/outcomes/<run-id>/` for saved assessments; it creates no phase-state engine.

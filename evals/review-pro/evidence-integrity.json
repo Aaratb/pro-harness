@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "suite": "review-pro",
+  "discipline": "evidence-integrity",
+  "rubric_version": 1,
+  "producer": {
+    "phases": [
+      7
+    ],
+    "skills": [
+      "review-evidence-integrity"
+    ],
+    "harness_arm_reads": "skills/review-evidence-integrity/SKILL.md",
+    "instruction": "Decide whether this review may be handed off. Cite the source lines you rely on."
+  },
+  "cases": [
+    {
+      "id": "miscited-refund-review",
+      "task": "You are reviewing a colleague's draft review before it is handed to the author.\n\nOnly the source below is available to you; there is no repository to open.\n\n--- src/payments/refund.go (lines 80-96) ---\n80  func (s *Service) Refund(ctx context.Context, id string, amount int64) error {\n81      order, err := s.orders.Get(ctx, id)\n82      if err != nil {\n83          return fmt.Errorf(\"load order: %w\", err)\n84      }\n85      if amount > order.Total {\n86          return ErrRefundExceedsTotal\n87      }\n88      s.metrics.Inc(\"refund.attempt\")\n89      if err := s.ledger.Debit(ctx, order.AccountID, amount); err != nil {\n90          return fmt.Errorf(\"debit: %w\", err)\n91      }\n92      return s.orders.MarkRefunded(ctx, id)\n93  }\n--- end of file: src/payments/refund.go has 93 lines ---\n\n--- src/payments/ledger.go (lines 40-52) ---\n40  func (l *Ledger) Debit(ctx context.Context, account string, amount int64) error {\n41      tx, err := l.db.BeginTx(ctx, nil)\n42      if err != nil {\n43          return err\n44      }\n45      defer tx.Rollback()\n46      if _, err := tx.ExecContext(ctx, debitStmt, account, amount); err != nil {\n47          return err\n48      }\n49      return tx.Commit()\n50  }\n\nDRAFT REVIEW — refund path\nF1 [HIGH] Refund is not idempotent: a retried request debits twice.\n        src/payments/refund.go:92\nF2 [HIGH] Refund amount is unvalidated, so a caller can refund more than the order total.\n        src/payments/refund.go:88\nF3 [MED]  Ledger debit and order state change are not in one transaction, so a crash between\n        them leaves the money moved and the order un-refunded.\n        src/payments/ledger.go:49\nF4 [LOW]  Refund emits no structured audit event for compliance.\n        src/payments/refund.go:104\n\nDecide whether this draft may be handed off as-is. For each finding say whether it stands, and if not, exactly what is wrong with it. Then give the handoff decision.",
+      "criteria": [
+        {
+          "id": "rejects-the-contradicted-finding",
+          "met": "Identifies F2 as wrong on the source: lines 85-87 already return ErrRefundExceedsTotal when amount exceeds the order total, so the finding is false rather than merely miscited.",
+          "not_met": "Repeats F2 as a real defect, or treats it only as a citation error while leaving the finding standing."
+        },
+        {
+          "id": "catches-the-unverifiable-citation",
+          "met": "Identifies F4's citation as pointing past the end of a 93-line file, so the claim cannot be verified from the evidence supplied.",
+          "not_met": "Accepts F4, or silently drops it without saying the citation cannot resolve."
+        },
+        {
+          "id": "separates-a-bad-citation-from-a-bad-finding",
+          "met": "Treats a wrong citation and a wrong finding as different defects with different remedies -- one is corrected in place, the other must be withdrawn.",
+          "not_met": "Collapses both into one category, or withdraws a finding merely because a line number is off."
+        },
+        {
+          "id": "does-not-invent-defects",
+          "met": "Leaves F1 and F3 standing. Both are supported by the excerpts, and no additional defect is asserted that the supplied source does not show.",
+          "not_met": "Flags F1 or F3 as unsupported, or adds a new finding the excerpts cannot substantiate."
+        },
+        {
+          "id": "blocks-the-handoff",
+          "met": "Declines to approve the review for handoff while a contradicted finding and an unresolvable citation remain, and says what must change first.",
+          "not_met": "Approves the handoff, or defers the decision without stating the blocking condition."
+        }
+      ]
+    }
+  ]
+}

@@ -64,5 +64,5 @@ test('Ralph preserves Phase 9 quality and later gates and has an auditable norma
   const normalization = reconciliation.approved_normalizations.find(({ id }) => id === 'phase-eight-bounded-ralph-loop');
   assert.equal(normalization?.classification, 'approved');
   assert.ok(normalization.evidence.includes('skills/ralph-loop/SKILL.md'));
-  assert.ok(normalization.evidence.includes('tests/feature-pro-ralph-loop.test.js'));
+  assert.ok(normalization.evidence.includes('harness-test-cases/feature-pro-ralph-loop.test.js'));
 });

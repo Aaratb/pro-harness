@@ -48,7 +48,7 @@ The Architecture Pro audit found a narrower problem: most specialist agents alre
 
 Eight existing Architecture skills were strengthened. Existing `plan-engineering-review` is explicitly routed in options and deep design; `grill-with-docs` remains conditional in intake and decision phases. No new agent, skill, phase, provider, runtime adapter, schema, or mandatory output file was added. The 13-phase mode paths, static lane profile, source containment, independent verification, human decisions, trace handling, and certification gates remain in force.
 
-`tests/architecture-pro-depth.test.js` checks instruction and activation regressions, not output quality. Existing behavior tests exercise resolvers, hooks, handoffs, and legal transitions. A fresh independent scenario exercise can expose contradictory guidance but is not an end-to-end run or a measured quality/latency improvement. The next user exercise remains the practical acceptance test.
+`harness-test-cases/architecture-pro-depth.test.js` checks instruction and activation regressions, not output quality. Existing behavior tests exercise resolvers, hooks, handoffs, and legal transitions. A fresh independent scenario exercise can expose contradictory guidance but is not an end-to-end run or a measured quality/latency improvement. The next user exercise remains the practical acceptance test.
 
 This update changes canonical sources only. Current command wrappers load those sources; dispatch now explicitly supplies current role and skill instructions. It does not regenerate installed agent snapshots, rewrite active project runs, or relax a runtime's permission limits. Static lane restrictions remain binding even where the host exposes broader tools; instruction-only controls must not be described as a technical sandbox. Missing native per-agent filtering is not a new blanket gate. If approved scope requires host-enforced isolation, missing enforcement blocks that lane; missing independent execution still blocks mandatory challenge.
 
@@ -65,7 +65,7 @@ Four existing methods were strengthened: `pre-merge-review`, `review-production-
 
 Review remains source-read-only and does not diagnose root causes, write tests, apply patches, or dispatch Debug repairs. Existing checks require side-effect inspection; browser observation does not authorize a mutating journey. Static specialists return content for orchestrator persistence. The ten phases, fast-mode cap, required report envelopes, five risk slots, source/digest authentication, trace recovery, and origin-aware Debug handoffs remain unchanged. No new agent, skill, provider, schema, runtime machinery, or mandatory artifact was added.
 
-`tests/review-pro-depth.test.js` checks instruction and activation contracts; the existing Review/Debug tests exercise authenticated packets and boundaries. Independent synthetic review exercises can expose missed-state, false-positive, or mock-coverage problems, but do not establish a production review's recall, precision, latency, or safety. Real changed-repository exercises remain the acceptance test. Canonical sources are updated; installed adapter snapshots and historical runs are not rewritten.
+`harness-test-cases/review-pro-depth.test.js` checks instruction and activation contracts; the existing Review/Debug tests exercise authenticated packets and boundaries. Independent synthetic review exercises can expose missed-state, false-positive, or mock-coverage problems, but do not establish a production review's recall, precision, latency, or safety. Real changed-repository exercises remain the acceptance test. Canonical sources are updated; installed adapter snapshots and historical runs are not rewritten.
 
 ## Debug Pro: causal judgment and trustworthy repair
 
@@ -81,7 +81,7 @@ The existing `systematic-debugging` skill now explains invariant ownership, affe
 
 The thirteen phases, modes, minimal outputs, trusted baseline, pre-edit eligibility, RED-before-production rule, four failure stories, data-repair authority, teardown and independent Review return remain intact. No new agent, skill, provider, schema or mandatory report was added. Only canonical sources changed; active project artifacts, historical sources and installed adapter snapshots were not rewritten.
 
-`tests/debug-pro-depth.test.js` checks instruction/activation regressions, while existing behavior tests exercise source identity, real Git/digest evidence and packet acceptance/rejection. Neither passing validators nor synthetic scenario reasoning proves a model found the true cause, performed a fresh review, or improved latency. Real defect exercises remain the outcome-quality test.
+`harness-test-cases/debug-pro-depth.test.js` checks instruction/activation regressions, while existing behavior tests exercise source identity, real Git/digest evidence and packet acceptance/rejection. Neither passing validators nor synthetic scenario reasoning proves a model found the true cause, performed a fresh review, or improved latency. Real defect exercises remain the outcome-quality test.
 
 ## Explainer Pro: a model the reader can use
 
@@ -96,7 +96,7 @@ Explainer already had grounded claims, a four-layer teaching structure and immut
 
 All eight phases, nine skills, three existing agent roles, capability routes, four teaching layers, independent material-claim gate, non-material sampling, source fingerprinting, evidence reuse, immutable generations, transitive invalidation, local HTML safety and completion hooks remain. No new agent, provider, schema, runtime adapter or required artifact was added. Canonical Pro-harness sources are updated; historical sources, installed agent snapshots and active project artifacts are not rewritten.
 
-`tests/explainer-pro-depth.test.js` checks instruction and activation regressions. Existing behavior tests validate containment, source drift, independent flags, batch publication, diagrams, quiz dependencies and trace handling; they do not prove that a separate model read source or that a reader understood the explanation. Synthetic exercises can expose contradictory instruction or unsupported simplification, but a real course and learner feedback remain the quality acceptance test.
+`harness-test-cases/explainer-pro-depth.test.js` checks instruction and activation regressions. Existing behavior tests validate containment, source drift, independent flags, batch publication, diagrams, quiz dependencies and trace handling; they do not prove that a separate model read source or that a reader understood the explanation. Synthetic exercises can expose contradictory instruction or unsupported simplification, but a real course and learner feedback remain the quality acceptance test.
 
 Select the broad audience with `--audience fsb`. The existing initializer normalizes it to `FSB`; policy, state and generation schemas accept it, and generated Markdown/HTML retain the audience label. Existing audiences and the PM default are unchanged. This is an additional audience value and teaching emphasis, not a new agent or workflow. Existing saved courses are not rewritten.
 
@@ -123,7 +123,7 @@ The utility had a useful output contract but generic discovery guidance, four de
 
 The utility remains unphased with the same selectors, repository-owned `.codemaps/` paths, required artifact family, owner-workspace index and public runtime entries. Feature's scoped refresh and Review/Explainer's read-only consumption remain separate. No new agent, skill, provider, schema, phase engine, mandatory artifact, installer change or live configuration change was introduced. Generated agent snapshots are not refreshed by this source-only change.
 
-`tests/workspace-codemap-depth.test.js` checks instruction and integration regressions, while existing tests cover companion generation, containment, greenfield fallback and distribution. These do not prove graph completeness, safe concurrent multi-file publication or actual comprehension. Scenario checks can expose misleading mappings; real repository maps and user feedback remain the quality acceptance test.
+`harness-test-cases/workspace-codemap-depth.test.js` checks instruction and integration regressions, while existing tests cover companion generation, containment, greenfield fallback and distribution. These do not prove graph completeness, safe concurrent multi-file publication or actual comprehension. Scenario checks can expose misleading mappings; real repository maps and user feedback remain the quality acceptance test.
 
 ## Customer Backward Pro: disciplinary audit and decision-quality trials
 
@@ -146,3 +146,11 @@ Two localized source issues were repaired, followed by one observed planning wea
 - Two separately graded validation-study attempts both deferred finite participant/time bounds. The method now permits justified, explicitly provisional operational limits while distinguishing them from calibrated inferential thresholds, saturation claims and permission to execute. It does not impose a universal sample or time box.
 
 The first two issues were source-level gaps/contradictions, not demonstrated universal model failures; the third was a repeated, independently graded partial result. Frozen pre-change and patched copies allow targeted diagnosis without claiming that longer text necessarily improves outcomes. No agent, phase, provider, hook, schema, installer, mandatory output or live activation was added. Existing structural tests protect routing and contracts; observed outputs and independent judgments are the evidence for these bounded research cases, not a proof of all-runtime or real-customer quality.
+
+## Architecture Pro: supported run initialization
+
+Architecture Pro already had run-packet validators, a `before-phase-transition` hook, and an append-only event writer. None of those helpers could create `state.json`. `resolve-architecture-root.mjs` created only a directory. Manually writing state is forbidden, so every new run was stuck before Phase 1.
+
+`scripts/architecture-run.mjs initialize` is the supported lifecycle CLI. It creates a new run ID, schema-valid `state.json`, and a present-time `run-started` / `phase-started` trace under a contained architecture slug. Occupied roots are refused. Callers start a new slug and reverify prior artifacts as untrusted evidence; the initializer never marks imported phases complete, infers approvals, or rewrites history. See `docs/architecture-pro-lifecycle.md`.
+
+This updates canonical harness sources. It does not rewrite in-progress project artifacts, patch plugin caches, or publish a release. Rebuild and reinstall the Claude/Codex plugin from this checkout through the supported packaging/install path before expecting installed runtimes to see the helper.

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "suite": "review-pro",
+  "accepted_run": "wf_23fde964-bf7",
+  "rubric_version": 1,
+  "accepted_at": "2026-09-11T05:26:57",
+  "criteria": {
+    "baseline/evidence-integrity/miscited-refund-review/blocks-the-handoff": 1,
+    "baseline/evidence-integrity/miscited-refund-review/catches-the-unverifiable-citation": 1,
+    "baseline/evidence-integrity/miscited-refund-review/does-not-invent-defects": 1,
+    "baseline/evidence-integrity/miscited-refund-review/rejects-the-contradicted-finding": 1,
+    "baseline/evidence-integrity/miscited-refund-review/separates-a-bad-citation-from-a-bad-finding": 1,
+    "harness/evidence-integrity/miscited-refund-review/blocks-the-handoff": 1,
+    "harness/evidence-integrity/miscited-refund-review/catches-the-unverifiable-citation": 1,
+    "harness/evidence-integrity/miscited-refund-review/does-not-invent-defects": 0.333,
+    "harness/evidence-integrity/miscited-refund-review/rejects-the-contradicted-finding": 1,
+    "harness/evidence-integrity/miscited-refund-review/separates-a-bad-citation-from-a-bad-finding": 0.333
+  }
+}

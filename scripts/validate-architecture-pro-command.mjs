@@ -88,6 +88,9 @@ assert(Object.keys(stateExample.phases).join(',') === expectedNumbers.join(','),
 assert(workflowSchema.properties.workflow.enum.includes('architecture-pro'), 'shared workflow trace does not route Architecture Pro');
 assert(hooks.hooks.some(({ workflow, event }) => workflow === 'architecture-pro' && event === 'before-phase-transition'), 'Architecture Pro transition hook is missing');
 assert(hooks.hooks.some(({ workflow, event }) => workflow === 'architecture-pro' && event === 'before-run-completion'), 'Architecture Pro completion hook is missing');
+for (const helper of ['resolve-architecture-root.mjs', 'architecture-source.mjs', 'architecture-run.mjs', 'validate-architecture-pro-run.mjs', 'validate-architecture-handoff.mjs']) {
+  assert(fs.existsSync(path.join(harnessRoot, 'scripts', helper)), `missing Architecture Pro Node helper ${helper}`);
+}
 
 const schemaRoot = path.join(harnessRoot, 'schemas', 'architecture-pro');
 for (const name of ['common', 'policy', 'state', 'consent-receipt', 'evidence', 'evidence-manifest', 'finding', 'decision', 'contract', 'lane-report', 'probe-plan', 'probe-registry']) {
@@ -100,7 +103,7 @@ const focuses = policy.security_routes.map(({ focus }) => focus);
 assert(policy.security_routes.every(({ agent, skill, profile }) => agent === 'security-reviewer' && skill === 'architecture-security-review' && profile === 'static-analysis-read-only'), 'security routes must use the consolidated reviewer contract');
 assert(new Set(focuses).size === focuses.length && focuses.length === 5, 'security focus contracts must be unique and complete');
 for (const lane of policy.lanes) assert(catalogs.agents.has(lane.agent), `policy lane ${lane.id}: unresolved agent ${lane.agent}`);
-for (const required of ['fresh capability-equivalent instance', 'credible viable options', 'option_scope', 'fresh independent challenger', 'weights totaling 100', 'decision reopen', 'DESIGN_CERTIFIED', 'run-events.jsonl', 'digest-bound consent', 'diagram.render', 'single validation entry point']) {
+for (const required of ['fresh capability-equivalent instance', 'credible viable options', 'option_scope', 'fresh independent challenger', 'weights totaling 100', 'decision reopen', 'DESIGN_CERTIFIED', 'run-events.jsonl', 'digest-bound consent', 'diagram.render', 'single validation entry point', 'architecture-run.mjs']) {
   assert(bundle.toLowerCase().includes(required.toLowerCase()), `Architecture Pro bundle lost required behavior: ${required}`);
 }
 assert(!/stop blocked if three credible shapes|produce three viable shapes or record a blocker/i.test(bundle), 'Architecture Pro reintroduced obsolete option-count blocking');

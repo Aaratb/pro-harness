@@ -97,6 +97,11 @@
     "21": "pending"
   },
   "staff_discipline": {
+    "user_flow_validated": false,
+    "design_memo_complete": false,
+    "design_memo_path": null,
+    "user_flow_path": null,
+    "user_flow_waived": false,
     "module_map_approved": false,
     "engineering_requirements_approved": false,
     "module_map_path": null,
